@@ -1,0 +1,450 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tidyverse Code Review Principles",
+    "section": "",
+    "text": "Welcome\nA code review is a process where someone other than the author(s) of a piece of code examines that code.\nAt Google, we use code review to maintain the quality of our code and products.\nThis documentation is the canonical description of Google’s code review processes and policies.\nThis page is an overview of our code review process. There are two other large documents that are a part of this guide:"
+  },
+  {
+    "objectID": "index.html#what-do-code-reviewers-look-for",
+    "href": "index.html#what-do-code-reviewers-look-for",
+    "title": "Tidyverse Code Review Principles",
+    "section": "What Do Code Reviewers Look For?",
+    "text": "What Do Code Reviewers Look For?\nCode reviews should look at:\n\nDesign: Is the code well-designed and appropriate for your system? Does the code follow the design guide?\nFunctionality: Does the code behave as the author likely intended? Is the way the code behaves good for its users?\nComplexity: Could the code be made simpler? Would another developer be able to easily understand and use this code when they come across it in the future?\nTests: Does the code have correct and well-designed automated tests?\nNaming: Did the developer choose clear names for variables, classes, methods, etc.?\nComments: Are the comments clear and useful?\nStyle: Does the code follow our style guide?\nDocumentation: Did the developer also update relevant documentation?\n\n\nPicking the Best Reviewers\nIn general, you want to find the best reviewers you can who are capable of responding to your review within a reasonable period of time.\nThe best reviewer is the person who will be able to give you the most thorough and correct review for the piece of code you are writing. This usually means the owner(s) of the code, who may or may not be the people in the OWNERS file. Sometimes this means asking different people to review different parts of the CL.\nIf you find an ideal reviewer but they are not available, you should at least CC them on your change.\n\n\nIn-Person Reviews (and Pair Programming)\nIf you pair-programmed a piece of code with somebody who was qualified to do a good code review on it, then that code is considered reviewed.\nYou can also do in-person code reviews where the reviewer asks questions and the developer of the change speaks only when spoken to."
+  },
+  {
+    "objectID": "developer/index.html",
+    "href": "developer/index.html",
+    "title": "The CL author’s guide to getting through code review",
+    "section": "",
+    "text": "The pages in this section contain best practices for developers going through code review. These guidelines should help you get through reviews faster and with higher-quality results. You don’t have to read them all, but they are intended to apply to every Google developer, and many people have found it helpful to read the whole set.\n\nWriting Good CL Descriptions\nSmall CLs\nHow to Handle Reviewer Comments\n\nSee also How to Do a Code Review, which gives detailed guidance for code reviewers."
+  },
+  {
+    "objectID": "developer/cl-descriptions.html#firstline",
+    "href": "developer/cl-descriptions.html#firstline",
+    "title": "1  Writing good CL descriptions",
+    "section": "1.1 First Line",
+    "text": "1.1 First Line\n\nShort summary of what is being done.\nComplete sentence, written as though it was an order.\nFollow by empty line.\n\nThe first line of a CL description should be a short summary of specifically what is being done by the CL, followed by a blank line. This is what appears in version control history summaries, so it should be informative enough that future code searchers don’t have to read your CL or its whole description to understand what your CL actually did or how it differs from other CLs. That is, the first line should stand alone, allowing readers to skim through code history much faster.\nTry to keep your first line short, focused, and to the point. The clarity and utility to the reader should be the top concern.\nBy tradition, the first line of a CL description is a complete sentence, written as though it were an order (an imperative sentence). For example, say “Delete the FizzBuzz RPC and replace it with the new system.” instead of “Deleting the FizzBuzz RPC and replacing it with the new system.” You don’t have to write the rest of the description as an imperative sentence, though."
+  },
+  {
+    "objectID": "developer/cl-descriptions.html#informative",
+    "href": "developer/cl-descriptions.html#informative",
+    "title": "1  Writing good CL descriptions",
+    "section": "1.2 Body is Informative",
+    "text": "1.2 Body is Informative\nThe first line should be a short, focused summary, while the rest of the description should fill in the details and include any supplemental information a reader needs to understand the changelist holistically. It might include a brief description of the problem that’s being solved, and why this is the best approach. If there are any shortcomings to the approach, they should be mentioned. If relevant, include background information such as bug numbers, benchmark results, and links to design documents.\nIf you include links to external resources consider that they may not be visible to future readers due to access restrictions or retention policies. Where possible include enough context for reviewers and future readers to understand the CL.\nEven small CLs deserve a little attention to detail. Put the CL in context."
+  },
+  {
+    "objectID": "developer/cl-descriptions.html#bad",
+    "href": "developer/cl-descriptions.html#bad",
+    "title": "1  Writing good CL descriptions",
+    "section": "1.3 Bad CL Descriptions",
+    "text": "1.3 Bad CL Descriptions\n“Fix bug” is an inadequate CL description. What bug? What did you do to fix it? Other similarly bad descriptions include:\n\n“Fix build.”\n“Add patch.”\n“Moving code from A to B.”\n“Phase 1.”\n“Add convenience functions.”\n“kill weird URLs.”\n\nSome of those are real CL descriptions. Although short, they do not provide enough useful information."
+  },
+  {
+    "objectID": "developer/cl-descriptions.html#good",
+    "href": "developer/cl-descriptions.html#good",
+    "title": "1  Writing good CL descriptions",
+    "section": "1.4 Good CL Descriptions",
+    "text": "1.4 Good CL Descriptions\nHere are some examples of good descriptions.\n\n1.4.1 Functionality change\nExample:\n\nrpc: remove size limit on RPC server message freelist.\nServers like FizzBuzz have very large messages and would benefit from reuse. Make the freelist larger, and add a goroutine that frees the freelist entries slowly over time, so that idle servers eventually release all freelist entries.\n\nThe first few words describe what the CL actually does. The rest of the description talks about the problem being solved, why this is a good solution, and a bit more information about the specific implementation.\n\n\n1.4.2 Refactoring\nExample:\n\nConstruct a Task with a TimeKeeper to use its TimeStr and Now methods.\nAdd a Now method to Task, so the borglet() getter method can be removed (which was only used by OOMCandidate to call borglet’s Now method). This replaces the methods on Borglet that delegate to a TimeKeeper.\nAllowing Tasks to supply Now is a step toward eliminating the dependency on Borglet. Eventually, collaborators that depend on getting Now from the Task should be changed to use a TimeKeeper directly, but this has been an accommodation to refactoring in small steps.\nContinuing the long-range goal of refactoring the Borglet Hierarchy.\n\nThe first line describes what the CL does and how this is a change from the past. The rest of the description talks about the specific implementation, the context of the CL, that the solution isn’t ideal, and possible future direction. It also explains why this change is being made.\n\n\n1.4.3 Small CL that needs some context\nExample:\n\nCreate a Python3 build rule for status.py.\nThis allows consumers who are already using this as in Python3 to depend on a rule that is next to the original status build rule instead of somewhere in their own tree. It encourages new consumers to use Python3 if they can, instead of Python2, and significantly simplifies some automated build file refactoring tools being worked on currently.\n\nThe first sentence describes what’s actually being done. The rest of the description explains why the change is being made and gives the reviewer a lot of context."
+  },
+  {
+    "objectID": "developer/cl-descriptions.html#generated-cl-descriptions",
+    "href": "developer/cl-descriptions.html#generated-cl-descriptions",
+    "title": "1  Writing good CL descriptions",
+    "section": "1.5 Generated CL descriptions",
+    "text": "1.5 Generated CL descriptions\nSome CLs are generated by tools. Whenever possible, their descriptions should also follow the advice here. That is, their first line should be short, focused, and stand alone, and the CL description body should include informative details that help reviewers and future code searchers understand each CL’s effect."
+  },
+  {
+    "objectID": "developer/cl-descriptions.html#review-the-description-before-submitting-the-cl",
+    "href": "developer/cl-descriptions.html#review-the-description-before-submitting-the-cl",
+    "title": "1  Writing good CL descriptions",
+    "section": "1.6 Review the description before submitting the CL",
+    "text": "1.6 Review the description before submitting the CL\nCLs can undergo significant change during review. It can be worthwhile to review a CL description before submitting the CL, to ensure that the description still reflects what the CL does.\nNext: Small CLs"
+  },
+  {
+    "objectID": "developer/small-cls.html#why",
+    "href": "developer/small-cls.html#why",
+    "title": "2  Small CLs",
+    "section": "2.1 Why Write Small CLs?",
+    "text": "2.1 Why Write Small CLs?\nSmall, simple CLs are:\n\nReviewed more quickly. It’s easier for a reviewer to find five minutes several times to review small CLs than to set aside a 30 minute block to review one large CL.\nReviewed more thoroughly. With large changes, reviewers and authors tend to get frustrated by large volumes of detailed commentary shifting back and forth—sometimes to the point where important points get missed or dropped.\nLess likely to introduce bugs. Since you’re making fewer changes, it’s easier for you and your reviewer to reason effectively about the impact of the CL and see if a bug has been introduced.\nLess wasted work if they are rejected. If you write a huge CL and then your reviewer says that the overall direction is wrong, you’ve wasted a lot of work.\nEasier to merge. Working on a large CL takes a long time, so you will have lots of conflicts when you merge, and you will have to merge frequently.\nEasier to design well. It’s a lot easier to polish the design and code health of a small change than it is to refine all the details of a large change.\nLess blocking on reviews. Sending self-contained portions of your overall change allows you to continue coding while you wait for your current CL in review.\nSimpler to roll back. A large CL will more likely touch files that get updated between the initial CL submission and a rollback CL, complicating the rollback (the intermediate CLs will probably need to be rolled back too).\n\nNote that reviewers have discretion to reject your change outright for the sole reason of it being too large. Usually they will thank you for your contribution but request that you somehow make it into a series of smaller changes. It can be a lot of work to split up a change after you’ve already written it, or require lots of time arguing about why the reviewer should accept your large change. It’s easier to just write small CLs in the first place."
+  },
+  {
+    "objectID": "developer/small-cls.html#what_is_small",
+    "href": "developer/small-cls.html#what_is_small",
+    "title": "2  Small CLs",
+    "section": "2.2 What is Small?",
+    "text": "2.2 What is Small?\nIn general, the right size for a CL is one self-contained change. This means that:\n\nThe CL makes a minimal change that addresses just one thing. This is usually just one part of a feature, rather than a whole feature at once. In general it’s better to err on the side of writing CLs that are too small vs. CLs that are too large. Work with your reviewer to find out what an acceptable size is.\nThe CL should include related test code.\nEverything the reviewer needs to understand about the CL (except future development) is in the CL, the CL’s description, the existing codebase, or a CL they’ve already reviewed.\nThe system will continue to work well for its users and for the developers after the CL is checked in.\nThe CL is not so small that its implications are difficult to understand. If you add a new API, you should include a usage of the API in the same CL so that reviewers can better understand how the API will be used. This also prevents checking in unused APIs.\n\nThere are no hard and fast rules about how large is “too large.” 100 lines is usually a reasonable size for a CL, and 1000 lines is usually too large, but it’s up to the judgment of your reviewer. The number of files that a change is spread across also affects its “size.” A 200-line change in one file might be okay, but spread across 50 files it would usually be too large.\nKeep in mind that although you have been intimately involved with your code from the moment you started to write it, the reviewer often has no context. What seems like an acceptably-sized CL to you might be overwhelming to your reviewer. When in doubt, write CLs that are smaller than you think you need to write. Reviewers rarely complain about getting CLs that are too small."
+  },
+  {
+    "objectID": "developer/small-cls.html#large_okay",
+    "href": "developer/small-cls.html#large_okay",
+    "title": "2  Small CLs",
+    "section": "2.3 When are Large CLs Okay?",
+    "text": "2.3 When are Large CLs Okay?\nThere are a few situations in which large changes aren’t as bad:\n\nYou can usually count deletion of an entire file as being just one line of change, because it doesn’t take the reviewer very long to review.\nSometimes a large CL has been generated by an automatic refactoring tool that you trust completely, and the reviewer’s job is just to verify and say that they really do want the change. These CLs can be larger, although some of the caveats from above (such as merging and testing) still apply.\n\n\n2.3.1 Splitting by Files\nAnother way to split up a CL is by groupings of files that will require different reviewers but are otherwise self-contained changes.\nFor example: you send off one CL for modifications to a protocol buffer and another CL for changes to the code that uses that proto. You have to submit the proto CL before the code CL, but they can both be reviewed simultaneously. If you do this, you might want to inform both sets of reviewers about the other CL that you wrote, so that they have context for your changes.\nAnother example: you send one CL for a code change and another for the configuration or experiment that uses that code; this is easier to roll back too, if necessary, as configuration/experiment files are sometimes pushed to production faster than code changes."
+  },
+  {
+    "objectID": "developer/small-cls.html#refactoring",
+    "href": "developer/small-cls.html#refactoring",
+    "title": "2  Small CLs",
+    "section": "2.4 Separate Out Refactorings",
+    "text": "2.4 Separate Out Refactorings\nIt’s usually best to do refactorings in a separate CL from feature changes or bug fixes. For example, moving and renaming a class should be in a different CL from fixing a bug in that class. It is much easier for reviewers to understand the changes introduced by each CL when they are separate.\nSmall cleanups such as fixing a local variable name can be included inside of a feature change or bug fix CL, though. It’s up to the judgment of developers and reviewers to decide when a refactoring is so large that it will make the review more difficult if included in your current CL."
+  },
+  {
+    "objectID": "developer/small-cls.html#test_code",
+    "href": "developer/small-cls.html#test_code",
+    "title": "2  Small CLs",
+    "section": "2.5 Keep related test code in the same CL",
+    "text": "2.5 Keep related test code in the same CL\nCLs should include related test code. Remember that smallness here refers the conceptual idea that the CL should be focused and is not a simplistic function on line count.\nA CL that adds or changes logic should be accompanied by new or updated tests for the new behavior. Pure refactoring CLs (that aren’t intended to change behavior) should also be covered by tests; ideally, these tests already exist, but if they don’t, you should add them.\nIndependent test modifications can go into separate CLs first, similar to the refactorings guidelines. That includes:\n\nValidating pre-existing, submitted code with new tests.\n\nEnsures that important logic is covered by tests.\nIncreases confidence in subsequent refactorings on affected code. For example, if you want to refactor code that isn’t already covered by tests, submitting test CLs before submitting refactoring CLs can validate that the tested behavior is unchanged before and after the refactoring.\n\nRefactoring the test code (e.g. introduce helper functions).\nIntroducing larger test framework code (e.g. an integration test)."
+  },
+  {
+    "objectID": "developer/small-cls.html#break",
+    "href": "developer/small-cls.html#break",
+    "title": "2  Small CLs",
+    "section": "2.6 Don’t Break the Build",
+    "text": "2.6 Don’t Break the Build\nIf you have several CLs that depend on each other, you need to find a way to make sure the whole system keeps working after each CL is submitted. Otherwise you might break the build for all your fellow developers for a few minutes between your CL submissions (or even longer if something goes wrong unexpectedly with your later CL submissions)."
+  },
+  {
+    "objectID": "developer/small-cls.html#cant",
+    "href": "developer/small-cls.html#cant",
+    "title": "2  Small CLs",
+    "section": "2.7 Can’t Make it Small Enough",
+    "text": "2.7 Can’t Make it Small Enough\nSometimes you will encounter situations where it seems like your CL has to be large. This is very rarely true. Authors who practice writing small CLs can almost always find a way to decompose functionality into a series of small changes.\nBefore writing a large CL, consider whether preceding it with a refactoring-only CL could pave the way for a cleaner implementation. Talk to your teammates and see if anybody has thoughts on how to implement the functionality in small CLs instead.\nIf all of these options fail (which should be extremely rare) then get consent from your reviewers in advance to review a large CL, so they are warned about what is coming. In this situation, expect to be going through the review process for a long time, be vigilant about not introducing bugs, and be extra diligent about writing tests.\nNext: How to Handle Reviewer Comments"
+  },
+  {
+    "objectID": "developer/handling-comments.html#personal",
+    "href": "developer/handling-comments.html#personal",
+    "title": "3  How to handle reviewer comments",
+    "section": "3.1 Don’t Take it Personally",
+    "text": "3.1 Don’t Take it Personally\nThe goal of review is to maintain the quality of our codebase and our products. When a reviewer provides a critique of your code, think of it as their attempt to help you, the codebase, and Google, rather than as a personal attack on you or your abilities.\nSometimes reviewers feel frustrated and they express that frustration in their comments. This isn’t a good practice for reviewers, but as a developer you should be prepared for this. Ask yourself, “What is the constructive thing that the reviewer is trying to communicate to me?” and then operate as though that’s what they actually said.\nNever respond in anger to code review comments. That is a serious breach of professional etiquette that will live forever in the code review tool. If you are too angry or annoyed to respond kindly, then walk away from your computer for a while, or work on something else until you feel calm enough to reply politely.\nIn general, if a reviewer isn’t providing feedback in a way that’s constructive and polite, explain this to them in person. If you can’t talk to them in person or on a video call, then send them a private email. Explain to them in a kind way what you don’t like and what you’d like them to do differently. If they also respond in a non-constructive way to this private discussion, or it doesn’t have the intended effect, then escalate to your manager as appropriate."
+  },
+  {
+    "objectID": "developer/handling-comments.html#code",
+    "href": "developer/handling-comments.html#code",
+    "title": "3  How to handle reviewer comments",
+    "section": "3.2 Fix the Code",
+    "text": "3.2 Fix the Code\nIf a reviewer says that they don’t understand something in your code, your first response should be to clarify the code itself. If the code can’t be clarified, add a code comment that explains why the code is there. If a comment seems pointless, only then should your response be an explanation in the code review tool.\nIf a reviewer didn’t understand some piece of your code, it’s likely other future readers of the code won’t understand either. Writing a response in the code review tool doesn’t help future code readers, but clarifying your code or adding code comments does help them."
+  },
+  {
+    "objectID": "developer/handling-comments.html#think",
+    "href": "developer/handling-comments.html#think",
+    "title": "3  How to handle reviewer comments",
+    "section": "3.3 Think Collaboratively",
+    "text": "3.3 Think Collaboratively\nWriting a CL can take a lot of work. It’s often really satisfying to finally send one out for review, feel like it’s done, and be pretty sure that no further work is needed. It can be frustrating to receive comments asking for changes, especially if you don’t agree with them.\nAt times like this, take a moment to step back and consider if the reviewer is providing valuable feedback that will help the codebase and Google. Your first question to yourself should always be, “Do I understand what the reviewer is asking for?”\nIf you can’t answer that question, ask the reviewer for clarification.\nAnd then, if you understand the comments but disagree with them, it’s important to think collaboratively, not combatively or defensively:\nBad: “No, I’m not going to do that.”\nGood: “I went with X because of [these pros/cons] with [these tradeoffs]. My understanding is that using Y would be worse because of [these reasons]. Are you suggesting that Y better serves the original tradeoffs, that we should weigh the tradeoffs differently, or something else?”\nRemember, courtesy and respect should always be a first priority. If you disagree with the reviewer, find ways to collaborate: ask for clarifications, discuss pros/cons, and provide explanations of why your method of doing things is better for the codebase, users, and/or Google.\nSometimes, you might know something about the users, codebase, or CL that the reviewer doesn’t know. Fix the code where appropriate, and engage your reviewer in discussion, including giving them more context. Usually you can come to some consensus between yourself and the reviewer based on technical facts."
+  },
+  {
+    "objectID": "developer/handling-comments.html#conflicts",
+    "href": "developer/handling-comments.html#conflicts",
+    "title": "3  How to handle reviewer comments",
+    "section": "3.4 Resolving Conflicts",
+    "text": "3.4 Resolving Conflicts\nYour first step in resolving conflicts should always be to try to come to consensus with your reviewer. If you can’t achieve consensus, see The Standard of Code Review, which gives principles to follow in such a situation."
+  },
+  {
+    "objectID": "reviewer/index.html",
+    "href": "reviewer/index.html",
+    "title": "How to do a code review",
+    "section": "",
+    "text": "The pages in this section contain recommendations on the best way to do code reviews, based on long experience. All together they represent one complete document, broken up into many separate sections. You don’t have to read them all, but many people have found it very helpful to themselves and their team to read the entire set.\n\nThe Standard of Code Review\nWhat to Look For In a Code Review\nNavigating a CL in Review\nSpeed of Code Reviews\nHow to Write Code Review Comments\nHandling Pushback in Code Reviews\n\nSee also the CL Author’s Guide, which gives detailed guidance to developers whose CLs are undergoing review."
+  },
+  {
+    "objectID": "reviewer/standard.html#mentoring",
+    "href": "reviewer/standard.html#mentoring",
+    "title": "4  The Standard of Code Review",
+    "section": "4.1 Mentoring",
+    "text": "4.1 Mentoring\nCode review can have an important function of teaching developers something new about a language, a framework, or general software design principles. It’s always fine to leave comments that help a developer learn something new. Sharing knowledge is part of improving the code health of a system over time. Just keep in mind that if your comment is purely educational, but not critical to meeting the standards described in this document, prefix it with “Nit:” or otherwise indicate that it’s not mandatory for the author to resolve it in this CL."
+  },
+  {
+    "objectID": "reviewer/standard.html#principles",
+    "href": "reviewer/standard.html#principles",
+    "title": "4  The Standard of Code Review",
+    "section": "4.2 Principles",
+    "text": "4.2 Principles\n\nTechnical facts and data overrule opinions and personal preferences.\nOn matters of style, the style guide is the absolute authority. Any purely style point (whitespace, etc.) that is not in the style guide is a matter of personal preference. The style should be consistent with what is there. If there is no previous style, accept the author’s.\nAspects of software design are almost never a pure style issue or just a personal preference. They are based on underlying principles and should be weighed on those principles, not simply by personal opinion. Sometimes there are a few valid options. If the author can demonstrate (either through data or based on solid engineering principles) that several approaches are equally valid, then the reviewer should accept the preference of the author. Otherwise the choice is dictated by standard principles of software design.\nIf no other rule applies, then the reviewer may ask the author to be consistent with what is in the current codebase, as long as that doesn’t worsen the overall code health of the system."
+  },
+  {
+    "objectID": "reviewer/standard.html#conflicts",
+    "href": "reviewer/standard.html#conflicts",
+    "title": "4  The Standard of Code Review",
+    "section": "4.3 Resolving Conflicts",
+    "text": "4.3 Resolving Conflicts\nIn any conflict on a code review, the first step should always be for the developer and reviewer to try to come to consensus, based on the contents of this document and the other documents in The CL Author’s Guide and this Reviewer Guide.\nWhen coming to consensus becomes especially difficult, it can help to have a face-to-face meeting or a video conference between the reviewer and the author, instead of just trying to resolve the conflict through code review comments. (If you do this, though, make sure to record the results of the discussion as a comment on the CL, for future readers.)\nIf that doesn’t resolve the situation, the most common way to resolve it would be to escalate. Often the escalation path is to a broader team discussion, having a Technical Lead weigh in, asking for a decision from a maintainer of the code, or asking an Eng Manager to help out. Don’t let a CL sit around because the author and the reviewer can’t come to an agreement.\nNext: What to look for in a code review"
+  },
+  {
+    "objectID": "reviewer/looking-for.html#design",
+    "href": "reviewer/looking-for.html#design",
+    "title": "5  What to look for in a code review",
+    "section": "5.1 Design",
+    "text": "5.1 Design\nThe most important thing to cover in a review is the overall design of the CL. Do the interactions of various pieces of code in the CL make sense? Does this change belong in your codebase, or in a library? Does it integrate well with the rest of your system? Is now a good time to add this functionality?"
+  },
+  {
+    "objectID": "reviewer/looking-for.html#functionality",
+    "href": "reviewer/looking-for.html#functionality",
+    "title": "5  What to look for in a code review",
+    "section": "5.2 Functionality",
+    "text": "5.2 Functionality\nDoes this CL do what the developer intended? Is what the developer intended good for the users of this code? The “users” are usually both end-users (when they are affected by the change) and developers (who will have to “use” this code in the future).\nMostly, we expect developers to test CLs well-enough that they work correctly by the time they get to code review. However, as the reviewer you should still be thinking about edge cases, looking for concurrency problems, trying to think like a user, and making sure that there are no bugs that you see just by reading the code.\nYou can validate the CL if you want—the time when it’s most important for a reviewer to check a CL’s behavior is when it has a user-facing impact, such as a UI change. It’s hard to understand how some changes will impact a user when you’re just reading the code. For changes like that, you can have the developer give you a demo of the functionality if it’s too inconvenient to patch in the CL and try it yourself.\nAnother time when it’s particularly important to think about functionality during a code review is if there is some sort of parallel programming going on in the CL that could theoretically cause deadlocks or race conditions. These sorts of issues are very hard to detect by just running the code and usually need somebody (both the developer and the reviewer) to think through them carefully to be sure that problems aren’t being introduced. (Note that this is also a good reason not to use concurrency models where race conditions or deadlocks are possible—it can make it very complex to do code reviews or understand the code.)"
+  },
+  {
+    "objectID": "reviewer/looking-for.html#complexity",
+    "href": "reviewer/looking-for.html#complexity",
+    "title": "5  What to look for in a code review",
+    "section": "5.3 Complexity",
+    "text": "5.3 Complexity\nIs the CL more complex than it should be? Check this at every level of the CL—are individual lines too complex? Are functions too complex? Are classes too complex? “Too complex” usually means “can’t be understood quickly by code readers.” It can also mean “developers are likely to introduce bugs when they try to call or modify this code.”\nA particular type of complexity is over-engineering, where developers have made the code more generic than it needs to be, or added functionality that isn’t presently needed by the system. Reviewers should be especially vigilant about over-engineering. Encourage developers to solve the problem they know needs to be solved now, not the problem that the developer speculates might need to be solved in the future. The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#tests",
+    "href": "reviewer/looking-for.html#tests",
+    "title": "5  What to look for in a code review",
+    "section": "5.4 Tests",
+    "text": "5.4 Tests\nAsk for unit, integration, or end-to-end tests as appropriate for the change. In general, tests should be added in the same CL as the production code unless the CL is handling an emergency.\nMake sure that the tests in the CL are correct, sensible, and useful. Tests do not test themselves, and we rarely write tests for our tests—a human must ensure that tests are valid.\nWill the tests actually fail when the code is broken? If the code changes beneath them, will they start producing false positives? Does each test make simple and useful assertions? Are the tests separated appropriately between different test methods?\nRemember that tests are also code that has to be maintained. Don’t accept complexity in tests just because they aren’t part of the main binary."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#naming",
+    "href": "reviewer/looking-for.html#naming",
+    "title": "5  What to look for in a code review",
+    "section": "5.5 Naming",
+    "text": "5.5 Naming\nDid the developer pick good names for everything? A good name is long enough to fully communicate what the item is or does, without being so long that it becomes hard to read."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#comments",
+    "href": "reviewer/looking-for.html#comments",
+    "title": "5  What to look for in a code review",
+    "section": "5.6 Comments",
+    "text": "5.6 Comments\nDid the developer write clear comments in understandable English? Are all of the comments actually necessary? Usually comments are useful when they explain why some code exists, and should not be explaining what some code is doing. If the code isn’t clear enough to explain itself, then the code should be made simpler. There are some exceptions (regular expressions and complex algorithms often benefit greatly from comments that explain what they’re doing, for example) but mostly comments are for information that the code itself can’t possibly contain, like the reasoning behind a decision.\nIt can also be helpful to look at comments that were there before this CL. Maybe there is a TODO that can be removed now, a comment advising against this change being made, etc.\nNote that comments are different from documentation of classes, modules, or functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#style",
+    "href": "reviewer/looking-for.html#style",
+    "title": "5  What to look for in a code review",
+    "section": "5.7 Style",
+    "text": "5.7 Style\nWe have style guides at Google for all of our major languages, and even for most of the minor languages. Make sure the CL follows the appropriate style guides.\nIf you want to improve some style point that isn’t in the style guide, prefix your comment with “Nit:” to let the developer know that it’s a nitpick that you think would improve the code but isn’t mandatory. Don’t block CLs from being submitted based only on personal style preferences.\nThe author of the CL should not include major style changes combined with other changes. It makes it hard to see what is being changed in the CL, makes merges and rollbacks more complex, and causes other problems. For example, if the author wants to reformat the whole file, have them send you just the reformatting as one CL, and then send another CL with their functional changes after that."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#consistency",
+    "href": "reviewer/looking-for.html#consistency",
+    "title": "5  What to look for in a code review",
+    "section": "5.8 Consistency",
+    "text": "5.8 Consistency\nWhat if the existing code is inconsistent with the style guide? Per our code review principles, the style guide is the absolute authority: if something is required by the style guide, the CL should follow the guidelines.\nIn some cases, the style guide makes recommendations rather than declaring requirements. In these cases, it’s a judgment call whether the new code should be consistent with the recommendations or the surrounding code. Bias towards following the style guide unless the local inconsistency would be too confusing.\nIf no other rule applies, the author should maintain consistency with the existing code.\nEither way, encourage the author to file a bug and add a TODO for cleaning up existing code."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#documentation",
+    "href": "reviewer/looking-for.html#documentation",
+    "title": "5  What to look for in a code review",
+    "section": "5.9 Documentation",
+    "text": "5.9 Documentation\nIf a CL changes how users build, test, interact with, or release code, check to see that it also updates associated documentation, including READMEs, g3doc pages, and any generated reference docs. If the CL deletes or deprecates code, consider whether the documentation should also be deleted. If documentation is missing, ask for it."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#every-line",
+    "href": "reviewer/looking-for.html#every-line",
+    "title": "5  What to look for in a code review",
+    "section": "5.10 Every Line",
+    "text": "5.10 Every Line\nIn the general case, look at every line of code that you have been assigned to review. Some things like data files, generated code, or large data structures you can scan over sometimes, but don’t scan over a human-written class, function, or block of code and assume that what’s inside of it is okay. Obviously some code deserves more careful scrutiny than other code—that’s a judgment call that you have to make—but you should at least be sure that you understand what all the code is doing.\nIf it’s too hard for you to read the code and this is slowing down the review, then you should let the developer know that and wait for them to clarify it before you try to review it. At Google, we hire great software engineers, and you are one of them. If you can’t understand the code, it’s very likely that other developers won’t either. So you’re also helping future developers understand this code, when you ask the developer to clarify it.\nIf you understand the code but you don’t feel qualified to do some part of the review, make sure there is a reviewer on the CL who is qualified, particularly for complex issues such as privacy, security, concurrency, accessibility, internationalization, etc.\n\n5.10.1 Exceptions\nWhat if it doesn’t make sense for you to review every line? For example, you are one of multiple reviewers on a CL and may be asked:\n\nTo review only certain files that are part of a larger change.\nTo review only certain aspects of the CL, such as the high-level design, privacy or security implications, etc.\n\nIn these cases, note in a comment which parts you reviewed. Prefer giving LGTM with comments .\nIf you instead wish to grant LGTM after confirming that other reviewers have reviewed other parts of the CL, note this explicitly in a comment to set expectations. Aim to respond quickly once the CL has reached the desired state."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#context",
+    "href": "reviewer/looking-for.html#context",
+    "title": "5  What to look for in a code review",
+    "section": "5.11 Context",
+    "text": "5.11 Context\nIt is often helpful to look at the CL in a broad context. Usually the code review tool will only show you a few lines of code around the parts that are being changed. Sometimes you have to look at the whole file to be sure that the change actually makes sense. For example, you might see only four new lines being added, but when you look at the whole file, you see those four lines are in a 50-line method that now really needs to be broken up into smaller methods.\nIt’s also useful to think about the CL in the context of the system as a whole. Is this CL improving the code health of the system or is it making the whole system more complex, less tested, etc.? Don’t accept CLs that degrade the code health of the system. Most systems become complex through many small changes that add up, so it’s important to prevent even small complexities in new changes."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#good-things",
+    "href": "reviewer/looking-for.html#good-things",
+    "title": "5  What to look for in a code review",
+    "section": "5.12 Good Things",
+    "text": "5.12 Good Things\nIf you see something nice in the CL, tell the developer, especially when they addressed one of your comments in a great way. Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well. It’s sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong."
+  },
+  {
+    "objectID": "reviewer/looking-for.html#summary",
+    "href": "reviewer/looking-for.html#summary",
+    "title": "5  What to look for in a code review",
+    "section": "5.13 Summary",
+    "text": "5.13 Summary\nIn doing a code review, you should make sure that:\n\nThe code is well-designed.\nThe functionality is good for the users of the code.\nAny UI changes are sensible and look good.\nAny parallel programming is done safely.\nThe code isn’t more complex than it needs to be.\nThe developer isn’t implementing things they might need in the future but don’t know they need now.\nCode has appropriate unit tests.\nTests are well-designed.\nThe developer used clear names for everything.\nComments are clear and useful, and mostly explain why instead of what.\nCode is appropriately documented (generally in g3doc).\nThe code conforms to our style guides.\n\nMake sure to review every line of code you’ve been asked to review, look at the context, make sure you’re improving code health, and compliment developers on good things that they do.\nNext: Navigating a CL in Review"
+  },
+  {
+    "objectID": "reviewer/navigate.html#summary",
+    "href": "reviewer/navigate.html#summary",
+    "title": "6  Navigating a CL in review",
+    "section": "6.1 Summary",
+    "text": "6.1 Summary\nNow that you know what to look for, what’s the most efficient way to manage a review that’s spread across multiple files?\n\nDoes the change make sense? Does it have a good description?\nLook at the most important part of the change first. Is it well-designed overall?\nLook at the rest of the CL in an appropriate sequence."
+  },
+  {
+    "objectID": "reviewer/navigate.html#step_one",
+    "href": "reviewer/navigate.html#step_one",
+    "title": "6  Navigating a CL in review",
+    "section": "6.2 Step One: Take a broad view of the change",
+    "text": "6.2 Step One: Take a broad view of the change\nLook at the CL description and what the CL does in general. Does this change even make sense? If this change shouldn’t have happened in the first place, please respond immediately with an explanation of why the change should not be happening. When you reject a change like this, it’s also a good idea to suggest to the developer what they should have done instead.\nFor example, you might say “Looks like you put some good work into this, thanks! However, we’re actually going in the direction of removing the FooWidget system that you’re modifying here, and so we don’t want to make any new modifications to it right now. How about instead you refactor our new BarWidget class?”\nNote that not only did the reviewer reject the current CL and provide an alternative suggestion, but they did it courteously. This kind of courtesy is important because we want to show that we respect each other as developers even when we disagree.\nIf you get more than a few CLs that represent changes you don’t want to make, you should consider re-working your team’s development process or the posted process for external contributors so that there is more communication before CLs are written. It’s better to tell people “no” before they’ve done a ton of work that now has to be thrown away or drastically re-written."
+  },
+  {
+    "objectID": "reviewer/navigate.html#step_two",
+    "href": "reviewer/navigate.html#step_two",
+    "title": "6  Navigating a CL in review",
+    "section": "6.3 Step Two: Examine the main parts of the CL",
+    "text": "6.3 Step Two: Examine the main parts of the CL\nFind the file or files that are the “main” part of this CL. Often, there is one file that has the largest number of logical changes, and it’s the major piece of the CL. Look at these major parts first. This helps give context to all of the smaller parts of the CL, and generally accelerates doing the code review. If the CL is too large for you to figure out which parts are the major parts, ask the developer what you should look at first, or ask them to split up the CL into multiple CLs.\nIf you see some major design problems with this part of the CL, you should send those comments immediately, even if you don’t have time to review the rest of the CL right now. In fact, reviewing the rest of the CL might be a waste of time, because if the design problems are significant enough, a lot of the other code under review is going to disappear and not matter anyway.\nThere are two major reasons it’s so important to send these major design comments out immediately:\n\nDevelopers often mail a CL and then immediately start new work based on that CL while they wait for review. If there are major design problems in the CL you’re reviewing, they’re also going to have to re-work their later CL. You want to catch them before they’ve done too much extra work on top of the problematic design.\nMajor design changes take longer to do than small changes. Developers nearly all have deadlines; in order to make those deadlines and still have quality code in the codebase, the developer needs to start on any major re-work of the CL as soon as possible."
+  },
+  {
+    "objectID": "reviewer/navigate.html#step_three",
+    "href": "reviewer/navigate.html#step_three",
+    "title": "6  Navigating a CL in review",
+    "section": "6.4 Step Three: Look through the rest of the CL in an appropriate sequence",
+    "text": "6.4 Step Three: Look through the rest of the CL in an appropriate sequence\nOnce you’ve confirmed there are no major design problems with the CL as a whole, try to figure out a logical sequence to look through the files while also making sure you don’t miss reviewing any file. Usually after you’ve looked through the major files, it’s simplest to just go through each file in the order that the code review tool presents them to you. Sometimes it’s also helpful to read the tests first before you read the main code, because then you have an idea of what the change is supposed to be doing.\nNext: Speed of Code Reviews"
+  },
+  {
+    "objectID": "reviewer/speed.html#why",
+    "href": "reviewer/speed.html#why",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.1 Why Should Code Reviews Be Fast?",
+    "text": "7.1 Why Should Code Reviews Be Fast?\nAt Google, we optimize for the speed at which a team of developers can produce a product together, as opposed to optimizing for the speed at which an individual developer can write code. The speed of individual development is important, it’s just not as important as the velocity of the entire team.\nWhen code reviews are slow, several things happen:\n\nThe velocity of the team as a whole is decreased. Yes, the individual who doesn’t respond quickly to the review gets other work done. However, new features and bug fixes for the rest of the team are delayed by days, weeks, or months as each CL waits for review and re-review.\nDevelopers start to protest the code review process. If a reviewer only responds every few days, but requests major changes to the CL each time, that can be frustrating and difficult for developers. Often, this is expressed as complaints about how “strict” the reviewer is being. If the reviewer requests the same substantial changes (changes which really do improve code health), but responds quickly every time the developer makes an update, the complaints tend to disappear. Most complaints about the code review process are actually resolved by making the process faster.\nCode health can be impacted. When reviews are slow, there is increased pressure to allow developers to submit CLs that are not as good as they could be. Slow reviews also discourage code cleanups, refactorings, and further improvements to existing CLs."
+  },
+  {
+    "objectID": "reviewer/speed.html#fast",
+    "href": "reviewer/speed.html#fast",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.2 How Fast Should Code Reviews Be?",
+    "text": "7.2 How Fast Should Code Reviews Be?\nIf you are not in the middle of a focused task, you should do a code review shortly after it comes in.\nOne business day is the maximum time it should take to respond to a code review request (i.e., first thing the next morning).\nFollowing these guidelines means that a typical CL should get multiple rounds of review (if needed) within a single day."
+  },
+  {
+    "objectID": "reviewer/speed.html#interruption",
+    "href": "reviewer/speed.html#interruption",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.3 Speed vs. Interruption",
+    "text": "7.3 Speed vs. Interruption\nThere is one time where the consideration of personal velocity trumps team velocity. If you are in the middle of a focused task, such as writing code, don’t interrupt yourself to do a code review. Research has shown that it can take a long time for a developer to get back into a smooth flow of development after being interrupted. So interrupting yourself while coding is actually more expensive to the team than making another developer wait a bit for a code review.\nInstead, wait for a break point in your work before you respond to a request for review. This could be when your current coding task is completed, after lunch, returning from a meeting, coming back from the breakroom, etc."
+  },
+  {
+    "objectID": "reviewer/speed.html#responses",
+    "href": "reviewer/speed.html#responses",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.4 Fast Responses",
+    "text": "7.4 Fast Responses\nWhen we talk about the speed of code reviews, it is the response time that we are concerned with, as opposed to how long it takes a CL to get through the whole review and be submitted. The whole process should also be fast, ideally, but it’s even more important for the individual responses to come quickly than it is for the whole process to happen rapidly.\nEven if it sometimes takes a long time to get through the entire review process, having quick responses from the reviewer throughout the process significantly eases the frustration developers can feel with “slow” code reviews.\nIf you are too busy to do a full review on a CL when it comes in, you can still send a quick response that lets the developer know when you will get to it, suggest other reviewers who might be able to respond more quickly, or provide some initial broad comments. (Note: none of this means you should interrupt coding even to send a response like this—send the response at a reasonable break point in your work.)\nIt is important that reviewers spend enough time on review that they are certain their “LGTM” means “this code meets our standards.” However, individual responses should still ideally be fast."
+  },
+  {
+    "objectID": "reviewer/speed.html#tz",
+    "href": "reviewer/speed.html#tz",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.5 Cross-Time-Zone Reviews",
+    "text": "7.5 Cross-Time-Zone Reviews\nWhen dealing with time zone differences, try to get back to the author while they have time to respond before the end of their working hours. If they have already finished work for the day, then try to make sure your review is done before they start work the next day."
+  },
+  {
+    "objectID": "reviewer/speed.html#lgtm-with-comments",
+    "href": "reviewer/speed.html#lgtm-with-comments",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.6 LGTM With Comments",
+    "text": "7.6 LGTM With Comments\nIn order to speed up code reviews, there are certain situations in which a reviewer should give LGTM/Approval even though they are also leaving unresolved comments on the CL. This is done when either:\n\nThe reviewer is confident that the developer will appropriately address all the reviewer’s remaining comments.\nThe remaining changes are minor and don’t have to be done by the developer.\n\nThe reviewer should specify which of these options they intend, if it is not otherwise clear.\nLGTM With Comments is especially worth considering when the developer and reviewer are in different time zones and otherwise the developer would be waiting for a whole day just to get “LGTM, Approval.”"
+  },
+  {
+    "objectID": "reviewer/speed.html#large",
+    "href": "reviewer/speed.html#large",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.7 Large CLs",
+    "text": "7.7 Large CLs\nIf somebody sends you a code review that is so large you’re not sure when you will be able to have time to review it, your typical response should be to ask the developer to split the CL into several smaller CLs that build on each other, instead of one huge CL that has to be reviewed all at once. This is usually possible and very helpful to reviewers, even if it takes additional work from the developer.\nIf a CL can’t be broken up into smaller CLs, and you don’t have time to review the entire thing quickly, then at least write some comments on the overall design of the CL and send it back to the developer for improvement. One of your goals as a reviewer should be to always unblock the developer or enable them to take some sort of further action quickly, without sacrificing code health to do so."
+  },
+  {
+    "objectID": "reviewer/speed.html#time",
+    "href": "reviewer/speed.html#time",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.8 Code Review Improvements Over Time",
+    "text": "7.8 Code Review Improvements Over Time\nIf you follow these guidelines and you are strict with your code reviews, you should find that the entire code review process tends to go faster and faster over time. Developers learn what is required for healthy code, and send you CLs that are great from the start, requiring less and less review time. Reviewers learn to respond quickly and not add unnecessary latency into the review process. But don’t compromise on the code review standards or quality for an imagined improvement in velocity—it’s not actually going to make anything happen more quickly, in the long run."
+  },
+  {
+    "objectID": "reviewer/speed.html#emergencies",
+    "href": "reviewer/speed.html#emergencies",
+    "title": "7  Speed of Code Reviews",
+    "section": "7.9 Emergencies",
+    "text": "7.9 Emergencies\nThere are also emergencies where CLs must pass through the whole review process very quickly, and where the quality guidelines would be relaxed. However, please see What Is An Emergency? for a description of which situations actually qualify as emergencies and which don’t.\nNext: How to Write Code Review Comments"
+  },
+  {
+    "objectID": "reviewer/comments.html#summary",
+    "href": "reviewer/comments.html#summary",
+    "title": "8  How to write code review comments",
+    "section": "8.1 Summary",
+    "text": "8.1 Summary\n\nBe kind.\nExplain your reasoning.\nBalance giving explicit directions with just pointing out problems and letting the developer decide.\nEncourage developers to simplify code or add code comments instead of just explaining the complexity to you."
+  },
+  {
+    "objectID": "reviewer/comments.html#courtesy",
+    "href": "reviewer/comments.html#courtesy",
+    "title": "8  How to write code review comments",
+    "section": "8.2 Courtesy",
+    "text": "8.2 Courtesy\nIn general, it is important to be courteous and respectful while also being very clear and helpful to the developer whose code you are reviewing. One way to do this is to be sure that you are always making comments about the code and never making comments about the developer. You don’t always have to follow this practice, but you should definitely use it when saying something that might otherwise be upsetting or contentious. For example:\nBad: “Why did you use threads here when there’s obviously no benefit to be gained from concurrency?”\nGood: “The concurrency model here is adding complexity to the system without any actual performance benefit that I can see. Because there’s no performance benefit, it’s best for this code to be single-threaded instead of using multiple threads.”"
+  },
+  {
+    "objectID": "reviewer/comments.html#why",
+    "href": "reviewer/comments.html#why",
+    "title": "8  How to write code review comments",
+    "section": "8.3 Explain Why",
+    "text": "8.3 Explain Why\nOne thing you’ll notice about the “good” example from above is that it helps the developer understand why you are making your comment. You don’t always need to include this information in your review comments, but sometimes it’s appropriate to give a bit more explanation around your intent, the best practice you’re following, or how your suggestion improves code health."
+  },
+  {
+    "objectID": "reviewer/comments.html#guidance",
+    "href": "reviewer/comments.html#guidance",
+    "title": "8  How to write code review comments",
+    "section": "8.4 Giving Guidance",
+    "text": "8.4 Giving Guidance\nIn general it is the developer’s responsibility to fix a CL, not the reviewer’s. You are not required to do detailed design of a solution or write code for the developer.\nThis doesn’t mean the reviewer should be unhelpful, though. In general you should strike an appropriate balance between pointing out problems and providing direct guidance. Pointing out problems and letting the developer make a decision often helps the developer learn, and makes it easier to do code reviews. It also can result in a better solution, because the developer is closer to the code than the reviewer is.\nHowever, sometimes direct instructions, suggestions, or even code are more helpful. The primary goal of code review is to get the best CL possible. A secondary goal is improving the skills of developers so that they require less and less review over time.\nRemember that people learn from reinforcement of what they are doing well and not just what they could do better. If you see things you like in the CL, comment on those too! Examples: developer cleaned up a messy algorithm, added exemplary test coverage, or you as the reviewer learned something from the CL. Just as with all comments, include why you liked something, further encouraging the developer to continue good practices."
+  },
+  {
+    "objectID": "reviewer/comments.html#label-comment-severity",
+    "href": "reviewer/comments.html#label-comment-severity",
+    "title": "8  How to write code review comments",
+    "section": "8.5 Label comment severity",
+    "text": "8.5 Label comment severity\nConsider labeling the severity of your comments, differentiating required changes from guidelines or suggestions.\nHere are some examples:\n\nNit: This is a minor thing. Technically you should do it, but it won’t hugely impact things.\nOptional (or Consider): I think this may be a good idea, but it’s not strictly required.\nFYI: I don’t expect you to do this in this CL, but you may find this interesting to think about for the future.\n\nThis makes review intent explicit and helps authors prioritize the importance of various comments. It also helps avoid misunderstandings; for example, without comment labels, authors may interpret all comments as mandatory, even if some comments are merely intended to be informational or optional."
+  },
+  {
+    "objectID": "reviewer/comments.html#explanations",
+    "href": "reviewer/comments.html#explanations",
+    "title": "8  How to write code review comments",
+    "section": "8.6 Accepting Explanations",
+    "text": "8.6 Accepting Explanations\nIf you ask a developer to explain a piece of code that you don’t understand, that should usually result in them rewriting the code more clearly. Occasionally, adding a comment in the code is also an appropriate response, as long as it’s not just explaining overly complex code.\nExplanations written only in the code review tool are not helpful to future code readers. They are acceptable only in a few circumstances, such as when you are reviewing an area you are not very familiar with and the developer explains something that normal readers of the code would have already known.\nNext: Handling Pushback in Code Reviews"
+  },
+  {
+    "objectID": "reviewer/pushback.html#who_is_right",
+    "href": "reviewer/pushback.html#who_is_right",
+    "title": "9  Handling pushback in code reviews",
+    "section": "9.1 Who is right?",
+    "text": "9.1 Who is right?\nWhen a developer disagrees with your suggestion, first take a moment to consider if they are correct. Often, they are closer to the code than you are, and so they might really have a better insight about certain aspects of it. Does their argument make sense? Does it make sense from a code health perspective? If so, let them know that they are right and let the issue drop.\nHowever, developers are not always right. In this case the reviewer should further explain why they believe that their suggestion is correct. A good explanation demonstrates both an understanding of the developer’s reply, and additional information about why the change is being requested.\nIn particular, when the reviewer believes their suggestion will improve code health, they should continue to advocate for the change, if they believe the resulting code quality improvement justifies the additional work requested. Improving code health tends to happen in small steps.\nSometimes it takes a few rounds of explaining a suggestion before it really sinks in. Just make sure to always stay polite and let the developer know that you hear what they’re saying, you just don’t agree."
+  },
+  {
+    "objectID": "reviewer/pushback.html#upsetting_developers",
+    "href": "reviewer/pushback.html#upsetting_developers",
+    "title": "9  Handling pushback in code reviews",
+    "section": "9.2 Upsetting Developers",
+    "text": "9.2 Upsetting Developers\nReviewers sometimes believe that the developer will be upset if the reviewer insists on an improvement. Sometimes developers do become upset, but it is usually brief and they become very thankful later that you helped them improve the quality of their code. Usually, if you are polite in your comments, developers actually don’t become upset at all, and the worry is just in the reviewer’s mind. Upsets are usually more about the way comments are written than about the reviewer’s insistence on code quality."
+  },
+  {
+    "objectID": "reviewer/pushback.html#later",
+    "href": "reviewer/pushback.html#later",
+    "title": "9  Handling pushback in code reviews",
+    "section": "9.3 Cleaning It Up Later",
+    "text": "9.3 Cleaning It Up Later\nA common source of push back is that developers (understandably) want to get things done. They don’t want to go through another round of review just to get this CL in. So they say they will clean something up in a later CL, and thus you should LGTM this CL now. Some developers are very good about this, and will immediately write a follow-up CL that fixes the issue. However, experience shows that as more time passes after a developer writes the original CL, the less likely this clean up is to happen. In fact, usually unless the developer does the clean up immediately after the present CL, it never happens. This isn’t because developers are irresponsible, but because they have a lot of work to do and the cleanup gets lost or forgotten in the press of other work. Thus, it is usually best to insist that the developer clean up their CL now, before the code is in the codebase and “done.” Letting people “clean things up later” is a common way for codebases to degenerate.\nIf a CL introduces new complexity, it must be cleaned up before submission unless it is an emergency. If the CL exposes surrounding problems and they can’t be addressed right now, the developer should file a bug for the cleanup and assign it to themselves so that it doesn’t get lost. They can optionally also write a TODO comment in the code that references the filed bug."
+  },
+  {
+    "objectID": "reviewer/pushback.html#strictness",
+    "href": "reviewer/pushback.html#strictness",
+    "title": "9  Handling pushback in code reviews",
+    "section": "9.4 General Complaints About Strictness",
+    "text": "9.4 General Complaints About Strictness\nIf you previously had fairly lax code reviews and you switch to having strict reviews, some developers will complain very loudly. Improving the speed of your code reviews usually causes these complaints to fade away.\nSometimes it can take months for these complaints to fade away, but eventually developers tend to see the value of strict code reviews as they see what great code they help generate. Sometimes the loudest protesters even become your strongest supporters once something happens that causes them to really see the value you’re adding by being strict."
+  },
+  {
+    "objectID": "reviewer/pushback.html#conflicts",
+    "href": "reviewer/pushback.html#conflicts",
+    "title": "9  Handling pushback in code reviews",
+    "section": "9.5 Resolving Conflicts",
+    "text": "9.5 Resolving Conflicts\nIf you are following all of the above but you still encounter a conflict between yourself and a developer that can’t be resolved, see The Standard of Code Review for guidelines and principles that can help resolve the conflict."
+  },
+  {
+    "objectID": "emergencies.html#what",
+    "href": "emergencies.html#what",
+    "title": "10  Emergencies",
+    "section": "10.1 What Is An Emergency?",
+    "text": "10.1 What Is An Emergency?\nAn emergency CL would be a small change that: allows a major launch to continue instead of rolling back, fixes a bug significantly affecting users in production, handles a pressing legal issue, closes a major security hole, etc.\nIn emergencies we really do care about the speed of the entire code review process, not just the speed of response. In this case only, the reviewer should care more about the speed of the review and the correctness of the code (does it actually resolve the emergency?) than anything else. Also (perhaps obviously) such reviews should take priority over all other code reviews, when they come up.\nHowever, after the emergency is resolved you should look over the emergency CLs again and give them a more thorough review."
+  },
+  {
+    "objectID": "emergencies.html#not",
+    "href": "emergencies.html#not",
+    "title": "10  Emergencies",
+    "section": "10.2 What Is NOT An Emergency?",
+    "text": "10.2 What Is NOT An Emergency?\nTo be clear, the following cases are not an emergency:\n\nWanting to launch this week rather than next week (unless there is some actual hard deadline for launch such as a partner agreement).\nThe developer has worked on a feature for a very long time and they really want to get the CL in.\nThe reviewers are all in another timezone where it is currently nighttime or they are away on an off-site.\nIt is the end of the day on a Friday and it would just be great to get this CL in before the developer leaves for the weekend.\nA manager says that this review has to be complete and the CL checked in today because of a soft (not hard) deadline.\nRolling back a CL that is causing test failures or build breakages.\n\nAnd so on."
+  },
+  {
+    "objectID": "emergencies.html#deadlines",
+    "href": "emergencies.html#deadlines",
+    "title": "10  Emergencies",
+    "section": "10.3 What Is a Hard Deadline?",
+    "text": "10.3 What Is a Hard Deadline?\nA hard deadline is one where something disastrous would happen if you miss it. For example:\n\nSubmitting your CL by a certain date is necessary for a contractual obligation.\nYour product will completely fail in the marketplace if not released by a certain date.\nSome hardware manufacturers only ship new hardware once a year. If you miss the deadline to submit code to them, that could be disastrous, depending on what type of code you’re trying to ship.\n\nDelaying a release for a week is not disastrous. Missing an important conference might be disastrous, but often is not.\nMost deadlines are soft deadlines, not hard deadlines. They represent a desire for a feature to be done by a certain time. They are important, but you shouldn’t be sacrificing code health to make them.\nIf you have a long release cycle (several weeks) it can be tempting to sacrifice code review quality to get a feature in before the next cycle. However, this pattern, if repeated, is a common way for projects to build up overwhelming technical debt. If developers are routinely submitting CLs near the end of the cycle that “must get in” with only superficial review, then the team should modify its process so that large feature changes happen early in the cycle and have enough time for good review."
+  }
+]
