@@ -1,0 +1,16 @@
+project:
+  type: book
+
+book:
+  title: "Tidyverse Code Review Principles"
+  author: "Davis Vaughan"
+  date: "12/11/2022"
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
