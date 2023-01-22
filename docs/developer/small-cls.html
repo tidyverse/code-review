@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.253">
+<meta name="generator" content="quarto-1.2.169">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse Code Review Principles - 2&nbsp; Small CLs</title>
+<title>Tidyverse Code Review Principles - 8&nbsp; Small CLs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Small CLs</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small CLs</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../developer/index.html" class="sidebar-item-text sidebar-link">The CL author's guide to getting through code review</a>
+            <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to Review a Pull Request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -108,24 +108,39 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/cl-descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></a>
+  <a href="../reviewer/purpose.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Purpose of Code Review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/small-cls.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Small CLs</span></a>
+  <a href="../reviewer/looking-for.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What to look for in a code review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
+  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to do a code review</a>
+            <a href="../developer/index.html" class="sidebar-item-text sidebar-link">How to Author a Pull Request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -133,32 +148,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/standard.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Standard of Code Review</span></a>
+  <a href="../developer/cl-descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/looking-for.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What to look for in a code review</span></a>
+  <a href="../developer/small-cls.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small CLs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></a>
+  <a href="../developer/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
   </div>
 </li>
       </ul>
@@ -177,16 +177,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why" id="toc-why" class="nav-link active" data-scroll-target="#why"><span class="toc-section-number">2.1</span>  Why Write Small CLs?</a></li>
-  <li><a href="#what_is_small" id="toc-what_is_small" class="nav-link" data-scroll-target="#what_is_small"><span class="toc-section-number">2.2</span>  What is Small?</a></li>
-  <li><a href="#large_okay" id="toc-large_okay" class="nav-link" data-scroll-target="#large_okay"><span class="toc-section-number">2.3</span>  When are Large CLs Okay?</a>
+  <li><a href="#why" id="toc-why" class="nav-link active" data-scroll-target="#why"><span class="toc-section-number">8.1</span>  Why Write Small CLs?</a></li>
+  <li><a href="#what_is_small" id="toc-what_is_small" class="nav-link" data-scroll-target="#what_is_small"><span class="toc-section-number">8.2</span>  What is Small?</a></li>
+  <li><a href="#large_okay" id="toc-large_okay" class="nav-link" data-scroll-target="#large_okay"><span class="toc-section-number">8.3</span>  When are Large CLs Okay?</a>
   <ul class="collapse">
-  <li><a href="#splitting-files" id="toc-splitting-files" class="nav-link" data-scroll-target="#splitting-files"><span class="toc-section-number">2.3.1</span>  Splitting by Files</a></li>
+  <li><a href="#splitting-files" id="toc-splitting-files" class="nav-link" data-scroll-target="#splitting-files"><span class="toc-section-number">8.3.1</span>  Splitting by Files</a></li>
   </ul></li>
-  <li><a href="#refactoring" id="toc-refactoring" class="nav-link" data-scroll-target="#refactoring"><span class="toc-section-number">2.4</span>  Separate Out Refactorings</a></li>
-  <li><a href="#test_code" id="toc-test_code" class="nav-link" data-scroll-target="#test_code"><span class="toc-section-number">2.5</span>  Keep related test code in the same CL</a></li>
-  <li><a href="#break" id="toc-break" class="nav-link" data-scroll-target="#break"><span class="toc-section-number">2.6</span>  Don’t Break the Build</a></li>
-  <li><a href="#cant" id="toc-cant" class="nav-link" data-scroll-target="#cant"><span class="toc-section-number">2.7</span>  Can’t Make it Small Enough</a></li>
+  <li><a href="#refactoring" id="toc-refactoring" class="nav-link" data-scroll-target="#refactoring"><span class="toc-section-number">8.4</span>  Separate Out Refactorings</a></li>
+  <li><a href="#test_code" id="toc-test_code" class="nav-link" data-scroll-target="#test_code"><span class="toc-section-number">8.5</span>  Keep related test code in the same CL</a></li>
+  <li><a href="#break" id="toc-break" class="nav-link" data-scroll-target="#break"><span class="toc-section-number">8.6</span>  Don’t Break the Build</a></li>
+  <li><a href="#cant" id="toc-cant" class="nav-link" data-scroll-target="#cant"><span class="toc-section-number">8.7</span>  Can’t Make it Small Enough</a></li>
   </ul>
 </nav>
     </div>
@@ -195,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Small CLs</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small CLs</span></h1>
 </div>
 
 
@@ -210,8 +210,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="why" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="why"><span class="header-section-number">2.1</span> Why Write Small CLs?</h2>
+<section id="why" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="why"><span class="header-section-number">8.1</span> Why Write Small CLs?</h2>
 <p>Small, simple CLs are:</p>
 <ul>
 <li><strong>Reviewed more quickly.</strong> It’s easier for a reviewer to find five minutes several times to review small CLs than to set aside a 30 minute block to review one large CL.</li>
@@ -225,8 +225,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Note that <strong>reviewers have discretion to reject your change outright for the sole reason of it being too large.</strong> Usually they will thank you for your contribution but request that you somehow make it into a series of smaller changes. It can be a lot of work to split up a change after you’ve already written it, or require lots of time arguing about why the reviewer should accept your large change. It’s easier to just write small CLs in the first place.</p>
 </section>
-<section id="what_is_small" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="what_is_small"><span class="header-section-number">2.2</span> What is Small?</h2>
+<section id="what_is_small" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="what_is_small"><span class="header-section-number">8.2</span> What is Small?</h2>
 <p>In general, the right size for a CL is <strong>one self-contained change</strong>. This means that:</p>
 <ul>
 <li>The CL makes a minimal change that addresses <strong>just one thing</strong>. This is usually just one part of a feature, rather than a whole feature at once. In general it’s better to err on the side of writing CLs that are too small vs.&nbsp;CLs that are too large. Work with your reviewer to find out what an acceptable size is.</li>
@@ -238,27 +238,27 @@ ul.task-list li input[type="checkbox"] {
 <p>There are no hard and fast rules about how large is “too large.” 100 lines is usually a reasonable size for a CL, and 1000 lines is usually too large, but it’s up to the judgment of your reviewer. The number of files that a change is spread across also affects its “size.” A 200-line change in one file might be okay, but spread across 50 files it would usually be too large.</p>
 <p>Keep in mind that although you have been intimately involved with your code from the moment you started to write it, the reviewer often has no context. What seems like an acceptably-sized CL to you might be overwhelming to your reviewer. When in doubt, write CLs that are smaller than you think you need to write. Reviewers rarely complain about getting CLs that are too small.</p>
 </section>
-<section id="large_okay" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="large_okay"><span class="header-section-number">2.3</span> When are Large CLs Okay?</h2>
+<section id="large_okay" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="large_okay"><span class="header-section-number">8.3</span> When are Large CLs Okay?</h2>
 <p>There are a few situations in which large changes aren’t as bad:</p>
 <ul>
 <li>You can usually count deletion of an entire file as being just one line of change, because it doesn’t take the reviewer very long to review.</li>
 <li>Sometimes a large CL has been generated by an automatic refactoring tool that you trust completely, and the reviewer’s job is just to verify and say that they really do want the change. These CLs can be larger, although some of the caveats from above (such as merging and testing) still apply.</li>
 </ul>
-<section id="splitting-files" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="splitting-files"><span class="header-section-number">2.3.1</span> Splitting by Files</h3>
+<section id="splitting-files" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="splitting-files"><span class="header-section-number">8.3.1</span> Splitting by Files</h3>
 <p>Another way to split up a CL is by groupings of files that will require different reviewers but are otherwise self-contained changes.</p>
 <p>For example: you send off one CL for modifications to a protocol buffer and another CL for changes to the code that uses that proto. You have to submit the proto CL before the code CL, but they can both be reviewed simultaneously. If you do this, you might want to inform both sets of reviewers about the other CL that you wrote, so that they have context for your changes.</p>
 <p>Another example: you send one CL for a code change and another for the configuration or experiment that uses that code; this is easier to roll back too, if necessary, as configuration/experiment files are sometimes pushed to production faster than code changes.</p>
 </section>
 </section>
-<section id="refactoring" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="refactoring"><span class="header-section-number">2.4</span> Separate Out Refactorings</h2>
+<section id="refactoring" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="refactoring"><span class="header-section-number">8.4</span> Separate Out Refactorings</h2>
 <p>It’s usually best to do refactorings in a separate CL from feature changes or bug fixes. For example, moving and renaming a class should be in a different CL from fixing a bug in that class. It is much easier for reviewers to understand the changes introduced by each CL when they are separate.</p>
 <p>Small cleanups such as fixing a local variable name can be included inside of a feature change or bug fix CL, though. It’s up to the judgment of developers and reviewers to decide when a refactoring is so large that it will make the review more difficult if included in your current CL.</p>
 </section>
-<section id="test_code" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="test_code"><span class="header-section-number">2.5</span> Keep related test code in the same CL</h2>
+<section id="test_code" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="test_code"><span class="header-section-number">8.5</span> Keep related test code in the same CL</h2>
 <p>CLs should include related test code. Remember that <a href="#what_is_small">smallness</a> here refers the conceptual idea that the CL should be focused and is not a simplistic function on line count.</p>
 <p>A CL that adds or changes logic should be accompanied by new or updated tests for the new behavior. Pure refactoring CLs (that aren’t intended to change behavior) should also be covered by tests; ideally, these tests already exist, but if they don’t, you should add them.</p>
 <p><em>Independent</em> test modifications can go into separate CLs first, similar to the <a href="#refactoring">refactorings guidelines</a>. That includes:</p>
@@ -272,12 +272,12 @@ ul.task-list li input[type="checkbox"] {
 <li>Introducing larger test framework code (e.g.&nbsp;an integration test).</li>
 </ul>
 </section>
-<section id="break" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="break"><span class="header-section-number">2.6</span> Don’t Break the Build</h2>
+<section id="break" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="break"><span class="header-section-number">8.6</span> Don’t Break the Build</h2>
 <p>If you have several CLs that depend on each other, you need to find a way to make sure the whole system keeps working after each CL is submitted. Otherwise you might break the build for all your fellow developers for a few minutes between your CL submissions (or even longer if something goes wrong unexpectedly with your later CL submissions).</p>
 </section>
-<section id="cant" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="cant"><span class="header-section-number">2.7</span> Can’t Make it Small Enough</h2>
+<section id="cant" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="cant"><span class="header-section-number">8.7</span> Can’t Make it Small Enough</h2>
 <p>Sometimes you will encounter situations where it seems like your CL <em>has</em> to be large. This is very rarely true. Authors who practice writing small CLs can almost always find a way to decompose functionality into a series of small changes.</p>
 <p>Before writing a large CL, consider whether preceding it with a refactoring-only CL could pave the way for a cleaner implementation. Talk to your teammates and see if anybody has thoughts on how to implement the functionality in small CLs instead.</p>
 <p>If all of these options fail (which should be extremely rare) then get consent from your reviewers in advance to review a large CL, so they are warned about what is coming. In this situation, expect to be going through the review process for a long time, be vigilant about not introducing bugs, and be extra diligent about writing tests.</p>
@@ -423,12 +423,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../developer/cl-descriptions.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../developer/handling-comments.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

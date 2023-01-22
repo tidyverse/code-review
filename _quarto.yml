@@ -8,19 +8,19 @@ book:
   date: "12/11/2022"
   chapters:
     - index.qmd
-    - part: developer/index.qmd
-      chapters:
-      - developer/cl-descriptions.qmd
-      - developer/small-cls.qmd
-      - developer/handling-comments.qmd
     - part: reviewer/index.qmd
       chapters:
-      - reviewer/standard.qmd
+      - reviewer/purpose.qmd
       - reviewer/looking-for.qmd
       - reviewer/navigate.qmd
       - reviewer/speed.qmd
       - reviewer/comments.qmd
       - reviewer/pushback.qmd
+    - part: developer/index.qmd
+      chapters:
+      - developer/cl-descriptions.qmd
+      - developer/small-cls.qmd
+      - developer/handling-comments.qmd
     - emergencies.qmd
 
 format:

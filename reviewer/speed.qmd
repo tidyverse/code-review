@@ -1,4 +1,4 @@
-# Speed of Code Reviews
+# Speed of Code Reviews {#sec-speed}
 
 ## Why Should Code Reviews Be Fast? {#why}
 

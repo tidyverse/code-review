@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.253">
+<meta name="generator" content="quarto-1.2.169">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse Code Review Principles - 3&nbsp; How to handle reviewer comments</title>
+<title>Tidyverse Code Review Principles - 9&nbsp; How to handle reviewer comments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../reviewer/index.html" rel="next">
+<link href="../emergencies.html" rel="next">
 <link href="../developer/small-cls.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../developer/index.html" class="sidebar-item-text sidebar-link">The CL author's guide to getting through code review</a>
+            <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to Review a Pull Request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -108,24 +108,39 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/cl-descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></a>
+  <a href="../reviewer/purpose.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Purpose of Code Review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/small-cls.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Small CLs</span></a>
+  <a href="../reviewer/looking-for.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What to look for in a code review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/handling-comments.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
+  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to do a code review</a>
+            <a href="../developer/index.html" class="sidebar-item-text sidebar-link">How to Author a Pull Request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -133,32 +148,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/standard.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Standard of Code Review</span></a>
+  <a href="../developer/cl-descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/looking-for.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What to look for in a code review</span></a>
+  <a href="../developer/small-cls.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small CLs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></a>
+  <a href="../developer/handling-comments.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
   </div>
 </li>
       </ul>
@@ -177,10 +177,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#personal" id="toc-personal" class="nav-link active" data-scroll-target="#personal"><span class="toc-section-number">3.1</span>  Don’t Take it Personally</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code"><span class="toc-section-number">3.2</span>  Fix the Code</a></li>
-  <li><a href="#think" id="toc-think" class="nav-link" data-scroll-target="#think"><span class="toc-section-number">3.3</span>  Think Collaboratively</a></li>
-  <li><a href="#conflicts" id="toc-conflicts" class="nav-link" data-scroll-target="#conflicts"><span class="toc-section-number">3.4</span>  Resolving Conflicts</a></li>
+  <li><a href="#personal" id="toc-personal" class="nav-link active" data-scroll-target="#personal"><span class="toc-section-number">9.1</span>  Don’t Take it Personally</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code"><span class="toc-section-number">9.2</span>  Fix the Code</a></li>
+  <li><a href="#think" id="toc-think" class="nav-link" data-scroll-target="#think"><span class="toc-section-number">9.3</span>  Think Collaboratively</a></li>
+  <li><a href="#conflicts" id="toc-conflicts" class="nav-link" data-scroll-target="#conflicts"><span class="toc-section-number">9.4</span>  Resolving Conflicts</a></li>
   </ul>
 </nav>
     </div>
@@ -189,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></h1>
 </div>
 
 
@@ -205,20 +205,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>When you’ve sent a CL out for review, it’s likely that your reviewer will respond with several comments on your CL. Here are some useful things to know about handling reviewer comments.</p>
-<section id="personal" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="personal"><span class="header-section-number">3.1</span> Don’t Take it Personally</h2>
+<section id="personal" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="personal"><span class="header-section-number">9.1</span> Don’t Take it Personally</h2>
 <p>The goal of review is to maintain the quality of our codebase and our products. When a reviewer provides a critique of your code, think of it as their attempt to help you, the codebase, and Google, rather than as a personal attack on you or your abilities.</p>
 <p>Sometimes reviewers feel frustrated and they express that frustration in their comments. This isn’t a good practice for reviewers, but as a developer you should be prepared for this. Ask yourself, “What is the constructive thing that the reviewer is trying to communicate to me?” and then operate as though that’s what they actually said.</p>
 <p><strong>Never respond in anger to code review comments.</strong> That is a serious breach of professional etiquette that will live forever in the code review tool. If you are too angry or annoyed to respond kindly, then walk away from your computer for a while, or work on something else until you feel calm enough to reply politely.</p>
 <p>In general, if a reviewer isn’t providing feedback in a way that’s constructive and polite, explain this to them in person. If you can’t talk to them in person or on a video call, then send them a private email. Explain to them in a kind way what you don’t like and what you’d like them to do differently. If they also respond in a non-constructive way to this private discussion, or it doesn’t have the intended effect, then escalate to your manager as appropriate.</p>
 </section>
-<section id="code" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="code"><span class="header-section-number">3.2</span> Fix the Code</h2>
+<section id="code" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="code"><span class="header-section-number">9.2</span> Fix the Code</h2>
 <p>If a reviewer says that they don’t understand something in your code, your first response should be to clarify the code itself. If the code can’t be clarified, add a code comment that explains why the code is there. If a comment seems pointless, only then should your response be an explanation in the code review tool.</p>
 <p>If a reviewer didn’t understand some piece of your code, it’s likely other future readers of the code won’t understand either. Writing a response in the code review tool doesn’t help future code readers, but clarifying your code or adding code comments does help them.</p>
 </section>
-<section id="think" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="think"><span class="header-section-number">3.3</span> Think Collaboratively</h2>
+<section id="think" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="think"><span class="header-section-number">9.3</span> Think Collaboratively</h2>
 <p>Writing a CL can take a lot of work. It’s often really satisfying to finally send one out for review, feel like it’s done, and be pretty sure that no further work is needed. It can be frustrating to receive comments asking for changes, especially if you don’t agree with them.</p>
 <p>At times like this, take a moment to step back and consider if the reviewer is providing valuable feedback that will help the codebase and Google. Your first question to yourself should always be, “Do I understand what the reviewer is asking for?”</p>
 <p>If you can’t answer that question, ask the reviewer for clarification.</p>
@@ -228,8 +228,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Remember, <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/cr_respect.md"><strong>courtesy and respect</strong></a> <strong>should always be a first priority</strong>. If you disagree with the reviewer, find ways to collaborate: ask for clarifications, discuss pros/cons, and provide explanations of why your method of doing things is better for the codebase, users, and/or Google.</p>
 <p>Sometimes, you might know something about the users, codebase, or CL that the reviewer doesn’t know. <a href="#code">Fix the code</a> where appropriate, and engage your reviewer in discussion, including giving them more context. Usually you can come to some consensus between yourself and the reviewer based on technical facts.</p>
 </section>
-<section id="conflicts" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="conflicts"><span class="header-section-number">3.4</span> Resolving Conflicts</h2>
+<section id="conflicts" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="conflicts"><span class="header-section-number">9.4</span> Resolving Conflicts</h2>
 <p>Your first step in resolving conflicts should always be to try to come to consensus with your reviewer. If you can’t achieve consensus, see <a href="../reviewer/standard.md">The Standard of Code Review</a>, which gives principles to follow in such a situation.</p>
 
 
@@ -372,12 +372,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../developer/small-cls.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Small CLs</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small CLs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../reviewer/index.html" class="pagination-link">
-        <span class="nav-page-text">How to do a code review</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../emergencies.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Emergencies</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

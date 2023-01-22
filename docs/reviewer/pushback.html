@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.253">
+<meta name="generator" content="quarto-1.2.169">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse Code Review Principles - 9&nbsp; Handling pushback in code reviews</title>
+<title>Tidyverse Code Review Principles - 6&nbsp; Handling pushback in code reviews</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../emergencies.html" rel="next">
+<link href="../developer/index.html" rel="next">
 <link href="../reviewer/comments.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../developer/index.html" class="sidebar-item-text sidebar-link">The CL author's guide to getting through code review</a>
+            <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to Review a Pull Request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -108,24 +108,39 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/cl-descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></a>
+  <a href="../reviewer/purpose.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Purpose of Code Review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/small-cls.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Small CLs</span></a>
+  <a href="../reviewer/looking-for.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What to look for in a code review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
+  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to do a code review</a>
+            <a href="../developer/index.html" class="sidebar-item-text sidebar-link">How to Author a Pull Request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -133,32 +148,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/standard.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Standard of Code Review</span></a>
+  <a href="../developer/cl-descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/looking-for.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What to look for in a code review</span></a>
+  <a href="../developer/small-cls.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small CLs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></a>
+  <a href="../developer/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
   </div>
 </li>
       </ul>
@@ -177,11 +177,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#who_is_right" id="toc-who_is_right" class="nav-link active" data-scroll-target="#who_is_right"><span class="toc-section-number">9.1</span>  Who is right?</a></li>
-  <li><a href="#upsetting_developers" id="toc-upsetting_developers" class="nav-link" data-scroll-target="#upsetting_developers"><span class="toc-section-number">9.2</span>  Upsetting Developers</a></li>
-  <li><a href="#later" id="toc-later" class="nav-link" data-scroll-target="#later"><span class="toc-section-number">9.3</span>  Cleaning It Up Later</a></li>
-  <li><a href="#strictness" id="toc-strictness" class="nav-link" data-scroll-target="#strictness"><span class="toc-section-number">9.4</span>  General Complaints About Strictness</a></li>
-  <li><a href="#conflicts" id="toc-conflicts" class="nav-link" data-scroll-target="#conflicts"><span class="toc-section-number">9.5</span>  Resolving Conflicts</a></li>
+  <li><a href="#who_is_right" id="toc-who_is_right" class="nav-link active" data-scroll-target="#who_is_right"><span class="toc-section-number">6.1</span>  Who is right?</a></li>
+  <li><a href="#upsetting_developers" id="toc-upsetting_developers" class="nav-link" data-scroll-target="#upsetting_developers"><span class="toc-section-number">6.2</span>  Upsetting Developers</a></li>
+  <li><a href="#later" id="toc-later" class="nav-link" data-scroll-target="#later"><span class="toc-section-number">6.3</span>  Cleaning It Up Later</a></li>
+  <li><a href="#strictness" id="toc-strictness" class="nav-link" data-scroll-target="#strictness"><span class="toc-section-number">6.4</span>  General Complaints About Strictness</a></li>
+  <li><a href="#conflicts" id="toc-conflicts" class="nav-link" data-scroll-target="#conflicts"><span class="toc-section-number">6.5</span>  Resolving Conflicts</a></li>
   </ul>
 </nav>
     </div>
@@ -190,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></h1>
+<h1 class="title"><span id="sec-pushback" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback in code reviews</span></span></h1>
 </div>
 
 
@@ -206,30 +206,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>Sometimes a developer will push back on a code review. Either they will disagree with your suggestion or they will complain that you are being too strict in general.</p>
-<section id="who_is_right" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="who_is_right"><span class="header-section-number">9.1</span> Who is right?</h2>
+<section id="who_is_right" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="who_is_right"><span class="header-section-number">6.1</span> Who is right?</h2>
 <p>When a developer disagrees with your suggestion, first take a moment to consider if they are correct. Often, they are closer to the code than you are, and so they might really have a better insight about certain aspects of it. Does their argument make sense? Does it make sense from a code health perspective? If so, let them know that they are right and let the issue drop.</p>
 <p>However, developers are not always right. In this case the reviewer should further explain why they believe that their suggestion is correct. A good explanation demonstrates both an understanding of the developer’s reply, and additional information about why the change is being requested.</p>
 <p>In particular, when the reviewer believes their suggestion will improve code health, they should continue to advocate for the change, if they believe the resulting code quality improvement justifies the additional work requested. <strong>Improving code health tends to happen in small steps.</strong></p>
 <p>Sometimes it takes a few rounds of explaining a suggestion before it really sinks in. Just make sure to always stay <a href="comments.md#courtesy">polite</a> and let the developer know that you <em>hear</em> what they’re saying, you just don’t <em>agree</em>.</p>
 </section>
-<section id="upsetting_developers" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="upsetting_developers"><span class="header-section-number">9.2</span> Upsetting Developers</h2>
+<section id="upsetting_developers" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="upsetting_developers"><span class="header-section-number">6.2</span> Upsetting Developers</h2>
 <p>Reviewers sometimes believe that the developer will be upset if the reviewer insists on an improvement. Sometimes developers do become upset, but it is usually brief and they become very thankful later that you helped them improve the quality of their code. Usually, if you are <a href="comments.md#courtesy">polite</a> in your comments, developers actually don’t become upset at all, and the worry is just in the reviewer’s mind. Upsets are usually more about <a href="comments.md#courtesy">the way comments are written</a> than about the reviewer’s insistence on code quality.</p>
 </section>
-<section id="later" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="later"><span class="header-section-number">9.3</span> Cleaning It Up Later</h2>
+<section id="later" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="later"><span class="header-section-number">6.3</span> Cleaning It Up Later</h2>
 <p>A common source of push back is that developers (understandably) want to get things done. They don’t want to go through another round of review just to get this CL in. So they say they will clean something up in a later CL, and thus you should LGTM <em>this</em> CL now. Some developers are very good about this, and will immediately write a follow-up CL that fixes the issue. However, experience shows that as more time passes after a developer writes the original CL, the less likely this clean up is to happen. In fact, usually unless the developer does the clean up <em>immediately</em> after the present CL, it never happens. This isn’t because developers are irresponsible, but because they have a lot of work to do and the cleanup gets lost or forgotten in the press of other work. Thus, it is usually best to insist that the developer clean up their CL <em>now</em>, before the code is in the codebase and “done.” Letting people “clean things up later” is a common way for codebases to degenerate.</p>
 <p>If a CL introduces new complexity, it must be cleaned up before submission unless it is an <a href="../emergencies.md">emergency</a>. If the CL exposes surrounding problems and they can’t be addressed right now, the developer should file a bug for the cleanup and assign it to themselves so that it doesn’t get lost. They can optionally also write a TODO comment in the code that references the filed bug.</p>
 </section>
-<section id="strictness" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="strictness"><span class="header-section-number">9.4</span> General Complaints About Strictness</h2>
+<section id="strictness" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="strictness"><span class="header-section-number">6.4</span> General Complaints About Strictness</h2>
 <p>If you previously had fairly lax code reviews and you switch to having strict reviews, some developers will complain very loudly. Improving the <a href="speed.md">speed</a> of your code reviews usually causes these complaints to fade away.</p>
 <p>Sometimes it can take months for these complaints to fade away, but eventually developers tend to see the value of strict code reviews as they see what great code they help generate. Sometimes the loudest protesters even become your strongest supporters once something happens that causes them to really see the value you’re adding by being strict.</p>
 </section>
-<section id="conflicts" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="conflicts"><span class="header-section-number">9.5</span> Resolving Conflicts</h2>
-<p>If you are following all of the above but you still encounter a conflict between yourself and a developer that can’t be resolved, see <a href="standard.md">The Standard of Code Review</a> for guidelines and principles that can help resolve the conflict.</p>
+<section id="conflicts" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="conflicts"><span class="header-section-number">6.5</span> Resolving Conflicts</h2>
+<p>In any conflict on a code review, the first step should always be for the developer and reviewer to try to come to consensus, based on the contents of this document and the other documents in <a href="../developer/index.md">The PR Author’s Guide</a> and this <a href="index.md">Reviewer Guide</a>.</p>
+<p>When coming to consensus becomes especially difficult, it can help to have a face-to-face meeting or a video conference between the reviewer and the author, instead of just trying to resolve the conflict through code review comments. (If you do this, though, make sure to record the results of the discussion as a comment on the PR, for future readers.)</p>
+<p>If that doesn’t resolve the situation, the most common way to resolve it would be to escalate. Often the escalation path is to a broader team discussion, having a Technical Lead weigh in, asking for a decision from a maintainer of the code, or asking an Eng Manager to help out. <strong>Don’t let a PR sit around because the author and the reviewer can’t come to an agreement.</strong></p>
 
 
 </section>
@@ -371,12 +373,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../reviewer/comments.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How to write code review comments</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../emergencies.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Emergencies</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../developer/index.html" class="pagination-link">
+        <span class="nav-page-text">How to Author a Pull Request</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

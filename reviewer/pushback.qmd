@@ -1,4 +1,4 @@
-# Handling pushback in code reviews
+# Handling pushback in code reviews {#sec-pushback}
 
 Sometimes a developer will push back on a code review.
 Either they will disagree with your suggestion or they will complain that you are being too strict in general.
@@ -53,4 +53,11 @@ Sometimes the loudest protesters even become your strongest supporters once some
 
 ## Resolving Conflicts {#conflicts}
 
-If you are following all of the above but you still encounter a conflict between yourself and a developer that can't be resolved, see [The Standard of Code Review](standard.md) for guidelines and principles that can help resolve the conflict.
+In any conflict on a code review, the first step should always be for the developer and reviewer to try to come to consensus, based on the contents of this document and the other documents in [The PR Author's Guide](../developer/index.md) and this [Reviewer Guide](index.md).
+
+When coming to consensus becomes especially difficult, it can help to have a face-to-face meeting or a video conference between the reviewer and the author, instead of just trying to resolve the conflict through code review comments.
+(If you do this, though, make sure to record the results of the discussion as a comment on the PR, for future readers.)
+
+If that doesn't resolve the situation, the most common way to resolve it would be to escalate.
+Often the escalation path is to a broader team discussion, having a Technical Lead weigh in, asking for a decision from a maintainer of the code, or asking an Eng Manager to help out.
+**Don't let a PR sit around because the author and the reviewer can't come to an agreement.**

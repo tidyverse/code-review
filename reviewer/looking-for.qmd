@@ -1,4 +1,4 @@
-# What to look for in a code review
+# What to look for in a code review {#sec-looking-for}
 
 Note: Always make sure to take into account [The Standard of Code Review](standard.md) when considering each of these points.
 

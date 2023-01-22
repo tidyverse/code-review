@@ -1,0 +1,63 @@
+# The Purpose of Code Review {#sec-purpose}
+
+The primary purpose of code review is to ensure that the overall "code health" of Posit's software (both R packages and other tools) is improving over time.
+All of the tools and processes of code review are designed to this end.
+
+In order to accomplish this, a series of trade-offs have to be balanced.
+
+First, developers must be able to *make progress* on their tasks.
+If you never submit an improvement to the codebase, then the codebase never improves.
+Also, if a reviewer makes it very difficult for *any* change to go in, then developers are discouraged from making improvements in the future.
+
+On the other hand, it is the duty of the reviewer to make sure that each PR is of such a quality that the overall code health of their codebase is not decreasing as time goes on.
+This can be tricky, because codebases often degrade through small decreases in code health over time.
+This isn't necessarily anyone's fault.
+It is a natural process resulting from the accumulation of technical debt over time, which must continually be fought against.
+
+Also, a reviewer typically has ownership and responsibility over the code they are reviewing.
+When the reviewer is also the maintainer of the software, keeping the codebase consistent and maintainable is an even higher priority, because the reviewer is the one that has to maintain the code going forward.
+
+Thus, we get the following rule as the standard we expect in code reviews:
+
+**In general, reviewers should favor approving a PR once it is in a state where it definitely improves the overall code health of the system being worked on, even if the PR isn't perfect.**
+
+That is *the* senior principle among all of the code review guidelines.
+
+There are limitations to this, of course.
+For example, if a PR adds a feature that the reviewer doesn't want in their system, then the reviewer can certainly deny approval even if the code is well-designed.
+
+A key point here is that there is no such thing as "perfect" code---there is only *better* code.
+Reviewers should not require the author to polish every tiny piece of a PR before granting approval.
+Rather, the reviewer should balance out the need to make forward progress compared to the importance of the changes they are suggesting.
+Instead of seeking perfection, what a reviewer should seek is *continuous improvement*.
+A PR that, as a whole, improves the maintainability, readability, and understandability of the system shouldn't be delayed for days or weeks because it isn't "perfect."
+
+Another way to think about code health is in terms of letter grades (like A, B+, or C-).
+If the particular section of the code base the PR is targeting is currently at a C and the changes would bring it up to a B, then that is an improvement worth merging.
+
+Reviewers should *always* feel free to leave comments expressing that something could be better, but if it's not very important, note in the comment that this is just a point of polish that the developer can choose to ignore.
+
+## Mentoring {#sec-mentoring}
+
+At Posit, we believe that code review is an important part of on-boarding new developers.
+As a reviewer, it is encouraged to leave comments that help a developer learn something new.
+Linking out to sections of the style guide, design guide, or this code review guide are ways to point to a concrete source of truth that the developer can read to align their future code with Posit standards.
+
+Pair programming is also an excellent way to perform a code review.
+One way to do this is to have the reviewer live-review a pull request, which often teaches the developer what the reviewer looks for when they review PRs, and gives both parties a way to have an immediate discussion about any tricky design points.
+It is generally useful to document any insights from the pair programming session as a comment in the code review.
+
+## Principles {#sec-principles}
+
+-   Technical facts and data overrule opinions and personal preferences.
+
+-   On matters of style, the [style guide](https://style.tidyverse.org/) is the absolute authority.
+    Any purely stylistic point (whitespace, etc.) that is not in the style guide is a matter of personal preference or is something that should be hashed out and added to the style guide.
+    The most important rule about style is to be consistent with what is already in the codebase.
+
+-   **Aspects of software design are almost never a pure style issue or just a personal preference.** They are based on underlying principles and should be weighed on those principles, not simply by personal opinion.
+    Sometimes there are a few valid options.
+    If the author can demonstrate (either through data or based on solid engineering principles) that several approaches are equally valid, then the reviewer should accept the preference of the author.
+    Otherwise the choice is dictated by standard principles of software design.
+
+-   If no other rule applies, then the reviewer may ask the author to be consistent with what is in the current codebase, as long as that doesn't worsen the overall code health of the system.
