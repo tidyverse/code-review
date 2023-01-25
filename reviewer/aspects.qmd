@@ -46,10 +46,7 @@ The future problem should be solved once it arrives and you can see its actual s
 In general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test.
 If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:
 
-```{r}
-#| eval: false
-test_that("`my_function()` throws an error when given strings (#553)")
-```
+    test_that("`my_function()` throws an error when given strings (#553)")
 
 Recent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.
 
@@ -179,3 +176,4 @@ In doing a code review, you should make sure that:
 -   Code is appropriately documented.
 -   A news bullet has been added if applicable.
 -   The code conforms to our style guide.
+
