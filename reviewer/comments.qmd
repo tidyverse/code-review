@@ -1,4 +1,4 @@
-# Writing code review comments {#sec-comments}
+# Writing review comments {#sec-comments}
 
 ## Courtesy {#sec-courtesy}
 

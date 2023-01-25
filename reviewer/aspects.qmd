@@ -1,4 +1,4 @@
-# Aspects of a code review {#sec-aspects}
+# Aspects of a review {#sec-aspects}
 
 ## Design {#sec-design}
 

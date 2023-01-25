@@ -44,91 +44,91 @@
   {
     "objectID": "reviewer/aspects.html#sec-design",
     "href": "reviewer/aspects.html#sec-design",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.1 Design",
     "text": "2.1 Design\nThe most important thing to cover in a review is the overall design of the PR. Do the interactions of various pieces of code in the PR make sense? Does this change belong in your codebase, or somewhere upstream? Does it integrate well with the rest of your system?\nHopefully, you and the PR author aligned on the design aspect of the PR before they worked on it. If not, it is often worth pausing and having a separate conversation about the overall design rather than directly reviewing their PR, as that conversation might result in the PR being completely rewritten or closed altogether."
   },
   {
     "objectID": "reviewer/aspects.html#functionality",
     "href": "reviewer/aspects.html#functionality",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.2 Functionality",
     "text": "2.2 Functionality\nDoes this PR do what the developer intended? Is what the developer intended good for the users of this code? The “users” are usually both end-users (when they are affected by the change) and developers (who will have to “use” this code in the future).\nMostly, we expect developers to test PRs well-enough that they work correctly by the time they get to code review. However, as the reviewer you should still be thinking about edge cases, trying to think like a user, and making sure that there are no bugs that you see just by reading the code. In R, typical edge cases to watch out for include checking what happens if the user passes in an object of an unexpected type, or what happens if they pass in an object of zero length.\nAn important part of validating the functionality of a PR is trying it out locally. This is particularly important if the PR has a user-facing impact, such as a new function or argument. At Posit, we generally check out PRs on R packages locally using usethis::pr_fetch(<pr-number>). This is a great time to try out edge cases in the code. It also makes it very easy to create a reprex that you can share with the PR author in a GitHub comment if you do find an issue."
   },
   {
     "objectID": "reviewer/aspects.html#complexity",
     "href": "reviewer/aspects.html#complexity",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.3 Complexity",
     "text": "2.3 Complexity\nIs the PR more complex than it should be? Check this at every level of the PR—are individual lines too complex? Are functions too complex? “Too complex” usually means “can’t be understood quickly by code readers.” A way to check for this is to try and “run” the function in your head from top to bottom. If it is exceedingly difficult to do this, the PR might be too complex.\nComplexity can also mean that developers are likely to introduce bugs when they try to call or modify that code in the future.\nA particular type of complexity is over-engineering, where developers have made the code more generic than it needs to be, or added functionality that isn’t presently needed by the system. Reviewers should be especially vigilant about over-engineering. Encourage developers to solve the problem they know needs to be solved now, not the problem that the developer speculates might need to be solved in the future. The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe."
   },
   {
     "objectID": "reviewer/aspects.html#tests",
     "href": "reviewer/aspects.html#tests",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.4 Tests",
     "text": "2.4 Tests\nIn general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test. If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:\ntest_that(\"`my_function()` throws an error when given strings (#553)\")\nRecent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.\nMake sure that the tests in the PR are correct, sensible, and useful. Tests do not test themselves, and we rarely write tests for our tests—a human must ensure that tests are valid.\nTests should also strive to be as minimal as possible. When a user opens an issue with a bug report, chances are that they have included an example that is tailored to their use case, but isn’t a minimal example of the bug in question. When you write a test for the bug fix, it is worth spending time making the example as minimal as possible so it isolates the bug and is easy to understand in the future. Remember that tests have to be maintained too!\nCross-package integration tests are more difficult, but the tidymodels ecosystem accomplishes this using a separate GitHub-only R package named extratests that is run on a daily basis."
   },
   {
     "objectID": "reviewer/aspects.html#sec-naming",
     "href": "reviewer/aspects.html#sec-naming",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.5 Naming",
     "text": "2.5 Naming\nDid the developer make an attempt to pick names that are consistent with the rest of the codebase? In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms."
   },
   {
     "objectID": "reviewer/aspects.html#sec-code-comments",
     "href": "reviewer/aspects.html#sec-code-comments",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.6 Comments",
     "text": "2.6 Comments\nCode comments are useful when they explain why some code exists, rather than what the code is doing. Useful comments contain information that can’t possibly be in the code, like the reasoning behind a decision. One example of a good code comment is this one which is part of code that powers tidyr::unnest(). It describes the exact combination of inputs required for a very rare branch of code to run. Without the context provided by that comment, it can be a little difficult to know why that branch is there. Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like these in tidyr.\nNote that comments are different from documentation of functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used."
   },
   {
     "objectID": "reviewer/aspects.html#style",
     "href": "reviewer/aspects.html#style",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.7 Style",
     "text": "2.7 Style\nAt Posit, our R packages follow the tidyverse style guide. Two packages support this style guide, styler, which allows you to restyle files or packages, and lintr, which performs automated checks to ensure that you conform to the style guide.\nAdmittedly, many of us don’t use these tools religiously. The important thing is that if there is a point of contention about style in a PR, we can point to the style guide to resolve it.\nThe author of the PR should not include major style changes combined with other changes. It makes it hard to see what is being changed in the PR, makes merges and rollbacks more complex, and causes other problems. If the author wants to reformat the whole file, request that they send you just the reformatting as one PR, and then send another PR with their functional changes after that."
   },
   {
     "objectID": "reviewer/aspects.html#consistency",
     "href": "reviewer/aspects.html#consistency",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.8 Consistency",
     "text": "2.8 Consistency\nWhat if the existing code is inconsistent with the style guide? Per our code review principles, the style guide is the absolute authority: if something is required by the style guide, the PR should follow the guidelines.\nIn some cases, the style guide makes recommendations rather than declaring requirements. In these cases, it’s a judgment call whether the new code should be consistent with the recommendations or the surrounding code.\nConsistency is also heavily related to naming, and the reviewer should ensure that the author has chosen function names, argument names, and local variable names that are consistent with the rest of the codebase. Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that loc always stands for an integer value corresponding to a vector index. This is particularly helpful in R, since static typing isn’t available to provide this information for you."
   },
   {
     "objectID": "reviewer/aspects.html#sec-documentation",
     "href": "reviewer/aspects.html#sec-documentation",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.9 Documentation",
     "text": "2.9 Documentation\nIf a PR changes how users interact with the package, check to see that it also updates any associated documentation. This includes both R package documentation and updating the pkgdown reference index if a new function is added.\nOccasionally it is useful to document internal functions that aren’t seen by users. This can be useful for other developers to reference as they use common internal helpers. One example of this is tidyr:::df_append(), which includes this internal function documentation marked with @noRd.\nIt is generally also good practice to provide a news bullet in a NEWS.md file that is associated with the change. This is another place where providing the GitHub issue or PR number is useful, like:\n* `my_function()` now checks that `x` is a numeric value (#565).\nIf there isn’t a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you need a GitHub PR number to link to, but you haven’t opened the PR yet. One way to resolve this is to:\n\nGo ahead and open the PR without the commit changing the NEWS.md file.\nAdd the news bullet and link to the now open PR.\nPush with a commit message like NEWS bullet."
   },
   {
     "objectID": "reviewer/aspects.html#every-line",
     "href": "reviewer/aspects.html#every-line",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.10 Every Line",
     "text": "2.10 Every Line\nIn the general case, look at every line of code that you have been assigned to review. Some things like data files, generated code, or large data structures you can scan over sometimes, but don’t scan over a human-written function or block of code and assume that what’s inside of it is okay. Obviously some code deserves more careful scrutiny than other code—that’s a judgment call that you have to make—but you should at least be sure that you understand what all the code is doing.\nIf reviewing every line is too hard and is slowing down the review, then you should let the developer know and ask them to clarify it (possibly providing suggestions of your own, if possible). This also applies to code that you understand, but it took a long time for you to figure it out (or you had to run it locally to understand it). If you can’t understand the code, it is likely that other reviewers won’t be able to either! Taking a moment to have the developer clarify confusing sections of code will help future developers when it is modified further.\nIf you understand the code but you don’t feel qualified to do some part of the review, it is perfectly acceptable (and preferred!) that you let the author know, and suggest that they request a review from another developer who has more expertise in that area."
   },
   {
     "objectID": "reviewer/aspects.html#context",
     "href": "reviewer/aspects.html#context",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.11 Context",
     "text": "2.11 Context\nIt is often helpful to look at the PR in a broad context. Usually the code review tool on GitHub will only show you a few lines of code around the parts that are being changed. Sometimes you have to look at the whole file to be sure that the change actually makes sense. For example, you might see only four new lines being added, but when you look at the whole file, you see those four lines are in a 50-line helper that now really needs to be broken up into smaller functions.\nIt’s also useful to think about the PR in the context of the system as a whole. Is this PR improving the code health of the system or is it making the whole system more complex, less tested, etc.? PRs should always maintain or improve the overall health of the codebase. Most systems become complex through many small changes that add up, so it’s important to prevent even small complexities in new changes.\nSometimes the timing of the PR isn’t right. It is possible that the codebase may need restructuring before a PR can be accepted. You can generally recognize this when the PR has a large number of changes to parts of the codebase that are seemingly unrelated to the purpose of the PR itself. In those cases, it is often worth suggesting that the author submit a few smaller focused PRs first that prepare the codebase for the larger PR. This reduces the complexity of the larger PR, making it easier to understand and faster to review."
   },
   {
     "objectID": "reviewer/aspects.html#good-things",
     "href": "reviewer/aspects.html#good-things",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.12 Compliments",
     "text": "2.12 Compliments\nIf you see something nice in the PR, tell the developer, especially when they addressed one of your comments in a great way. Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well. It’s sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong."
   },
   {
     "objectID": "reviewer/aspects.html#summary",
     "href": "reviewer/aspects.html#summary",
-    "title": "2  Aspects of a code review",
+    "title": "2  Aspects of a review",
     "section": "2.13 Summary",
     "text": "2.13 Summary\nIn doing a code review, you should make sure that:\n\nThe code is well-designed.\nThe functionality is an improvement for the users of the code.\nAny UI changes are sensible and well-structured.\nThe code is only as complex as it has to be.\nThe developer isn’t implementing things they might need in the future but don’t know they need now.\nCode has appropriate unit tests.\nTests are well-designed and minimal.\nThe developer used clear and consistent names.\nComments are clear and useful, and mostly explain why instead of what.\nCode is appropriately documented.\nA news bullet has been added if applicable.\nThe code conforms to our style guide."
   },
@@ -163,91 +163,91 @@
   {
     "objectID": "reviewer/speed.html#why",
     "href": "reviewer/speed.html#why",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.1 Why should code reviews be fast?",
     "text": "4.1 Why should code reviews be fast?\nThe speed of an individual developer is important, but the speed at which a team of developers can produce high quality code is even more important. When code reviews are slow, several things happen:\n\nDevelopers start to protest the code review process. If a reviewer only responds every few days, but requests major changes to the PR each time, that can be frustrating and difficult for developers. If the reviewer requests the same substantial changes (changes which really do improve code health), but responds quickly every time the developer makes an update, the frustration tends to disappear. Most complaints about the code review process are actually resolved by making the process faster.\nThe velocity of the team as a whole is decreased. Yes, the individual who doesn’t respond quickly to the review gets other work done. However, new features and bug fixes for the rest of the team are delayed by days, weeks, or months as each PR waits for review.\nCode health can be impacted. When reviews are slow, developers are actually incentivized to submit less PRs and to make each one larger. If you think that it is going to take days to get a single small change reviewed, you are going to be pressured to include one more thing in your PR just to avoid another multi-day review process. To ensure that each PR only improves the health of the codebase, code review must be fast enough that developers don’t feel hamstrung by it."
   },
   {
     "objectID": "reviewer/speed.html#sec-turnaround",
     "href": "reviewer/speed.html#sec-turnaround",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.2 Average turnaround time",
     "text": "4.2 Average turnaround time\nIf you are not in the middle of a focused task, you should do a code review shortly after it comes in.\nOn average, an internal PR should be reviewed within 2-4 work hours of PR submission. It should take at most two business days to respond to a review request.\nFollowing these guidelines means that a typical PR should get multiple rounds of review (if needed) within a single day, although most PRs should only require a single round of review, typically an approval with comments.\nIf this seems difficult, it is worth reviewing your PR process. If you have so many PRs to review that you can’t get to your own work, then you might need to distribute the reviews to your team more. Not speaking up when you are overwhelmed by PRs can in turn slow down an entire team!"
   },
   {
     "objectID": "reviewer/speed.html#sec-interruption",
     "href": "reviewer/speed.html#sec-interruption",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.3 Speed vs Interruption",
     "text": "4.3 Speed vs Interruption\nThere is one time where the consideration of personal velocity trumps team velocity. If you are in the middle of a focused task, such as writing code, don’t interrupt yourself to do a code review. Research has shown that it can take a long time for a developer to get back into a smooth flow of development after being interrupted. So interrupting yourself while coding is actually more expensive to the team than making another developer wait a bit for a code review. If you want to read more about this, Paul Graham’s post on Maker vs Manager is very good.\nInstead, wait for a break point in your work before you respond to a request for review. This could be when your current coding task is completed, after lunch, returning from a meeting, coming back from the breakroom, etc. Most “deep work” sessions last around 2-3 hours, so batching your code reviews and handling multiple of them at once after a focused session is generally a good idea and is in line with the 2-4 hour average turnaround time mentioned above."
   },
   {
     "objectID": "reviewer/speed.html#sec-responses",
     "href": "reviewer/speed.html#sec-responses",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.4 Fast rounds",
     "text": "4.4 Fast rounds\nWhen we talk about the speed of code reviews, it is the response time of a single round of review that we are concerned with, as opposed to how long it takes a PR to get through the whole review and be merged. The whole process should also be fast, ideally, but it’s even more important for the individual responses to come quickly than it is for the whole process to happen rapidly. Developers typically don’t mind going through multiple rounds of review if each round happens quickly.\nIf you are too busy to do a full review on a PR when it comes in, you can still send a quick response that lets the developer know when you will get to it, suggest other reviewers who might be able to respond more quickly, or provide some initial broad comments (none of this means you should interrupt coding even to send a response like this—send the response at a reasonable break point in your work)."
   },
   {
     "objectID": "reviewer/speed.html#detailed-review",
     "href": "reviewer/speed.html#detailed-review",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.5 Detailed review",
     "text": "4.5 Detailed review\nWith all of this discussion about speed, it can be tempting to just do a surface level review and respond with “LGTM.” Resist this temptation. The whole purpose of code review is to ensure that the code health of the code base is improving, and you are unlikely to catch potential bugs with a surface level review.\nIt is important to start a round of code review shortly after the PR is submitted, but PRs vary greatly in their complexity and sufficiently carrying out the review can sometimes take a decent amount of time. In general:\n\nSmall PRs take anywhere from 5-15 minutes and don’t typically require checking the code out locally. This should be the majority of code reviews that tackle small bugs or documentation changes. You should typically be able to “run” the code related to these changes in your head.\nMedium PRs take up to 30 minutes and often involve using usethis::pr_fetch() and exploring the code locally. This typically includes PRs that implement new features or small UI changes.\nLarge PRs can take up to 1 hour, and occasionally even longer. These should be very rare, and are reserved for large refactorings, especially if there are unavoidable behavior changes mixed in. Large PRs are typically undesirable because they slow the velocity of the entire team, so typically the reviewer should ask the developer if the PR can be split into multiple smaller PRs. If you don’t have time to review a large PR and it can’t be made any smaller, provide some broad comments on the design of the PR, and consider requesting another colleague to take a look."
   },
   {
     "objectID": "reviewer/speed.html#sec-cross-time-zone",
     "href": "reviewer/speed.html#sec-cross-time-zone",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.6 Cross-time-zone reviews",
     "text": "4.6 Cross-time-zone reviews\nWhen dealing with time zone differences, try to get back to the author while they have time to respond before the end of their working hours. If they have already finished work for the day, then try to make sure your review is done before they start work the next day."
   },
   {
     "objectID": "reviewer/speed.html#sec-approve-with-comments",
     "href": "reviewer/speed.html#sec-approve-with-comments",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.7 Approve with comments",
     "text": "4.7 Approve with comments\nThe most common kind of PR review at Posit is known as “approved with comments.” It involves leaving a few minor comments on a PR, while also hitting the Approve button on the GitHub review UI:\n\n\n\n\n\nThis gives the PR author permission to merge the PR as soon as they have addressed the comments without needing to request another round of review. This is done when either:\n\nThe reviewer is confident that the developer will appropriately address all the reviewer’s remaining comments.\nThe remaining changes are minor and don’t have to be done by the developer.\n\nApproving with comments is largely about the experience of the PR author. For new developers that are still being onboarded, it is common to use the Comment option instead, which is a signal to the developer that they should request another round of review when they have finished addressing your comments. It is important to remember to be patient with new developers; they are going to need multiple rounds of detailed reviews early on, but putting in this extra effort up front tends to lead to faster PRs in the future as the author learns more about what is expected from their PRs."
   },
   {
     "objectID": "reviewer/speed.html#sec-request-changes",
     "href": "reviewer/speed.html#sec-request-changes",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.8 Requesting changes",
     "text": "4.8 Requesting changes\nGitHub also includes a third option when submitting a review, Request changes. This is typically reserved for more drastic changes that absolutely require another round of review. This option is rare to see in internal PRs, but is somewhat common with external PRs where the PR author is unlikely to be a core contributor on the project, and might not have the same expertise as another Posit employee."
   },
   {
     "objectID": "reviewer/speed.html#sec-over-time",
     "href": "reviewer/speed.html#sec-over-time",
-    "title": "4  Speed of code reviews",
+    "title": "4  Speed of reviews",
     "section": "4.9 Code review improvements over time",
     "text": "4.9 Code review improvements over time\nIf you follow these guidelines and you are strict with your code reviews, you should find that the entire code review process tends to speed up over time. Developers learn what is required for healthy code, and send you PRs that are great from the start, requiring less and less review time. Reviewers learn to respond quickly and not add unnecessary latency into the review process. But don’t compromise on code quality for an imagined improvement in velocity—it’s not actually going to make anything happen more quickly, in the long run."
   },
   {
     "objectID": "reviewer/comments.html#sec-courtesy",
     "href": "reviewer/comments.html#sec-courtesy",
-    "title": "5  Writing code review comments",
+    "title": "5  Writing review comments",
     "section": "5.1 Courtesy",
     "text": "5.1 Courtesy\nIn general, it is important to be courteous and respectful while also being very clear and helpful to the developer whose code you are reviewing. One way to do this is to be sure that you are always making comments about the code and never making comments about the developer. You don’t always have to follow this practice, but you should definitely use it when saying something that might otherwise be upsetting or contentious. For example:\nBad: “Why did you use threads here when there’s obviously no benefit to be gained from concurrency?”\nGood: “The concurrency model here is adding complexity to the system without any actual performance benefit that I can see. Because there’s no performance benefit, it’s best for this code to be single-threaded instead of using multiple threads.”"
   },
   {
     "objectID": "reviewer/comments.html#sec-why",
     "href": "reviewer/comments.html#sec-why",
-    "title": "5  Writing code review comments",
+    "title": "5  Writing review comments",
     "section": "5.2 Explain why",
     "text": "5.2 Explain why\nOne thing you’ll notice about the “good” example from above is that it helps the developer understand why you are making your comment. You don’t always need to include this information in your review comments, but sometimes it’s appropriate to give a bit more explanation around your intent, the best practice you’re following (like the design or style guide), or how your suggestion improves code health."
   },
   {
     "objectID": "reviewer/comments.html#sec-guidance",
     "href": "reviewer/comments.html#sec-guidance",
-    "title": "5  Writing code review comments",
+    "title": "5  Writing review comments",
     "section": "5.3 Giving guidance",
     "text": "5.3 Giving guidance\nIn general it is the developer’s responsibility to fix a PR, not the reviewer’s. You are not required to do detailed design of a solution or write code for the developer.\nThis doesn’t mean the reviewer should be unhelpful, though. In general you should strike an appropriate balance between pointing out problems and providing direct guidance. Pointing out problems and letting the developer make a decision often helps the developer learn, and makes it easier to do code reviews. It also can result in a better solution, because the developer is closer to the code than the reviewer is.\nOne example of this is to simply point out a section of code that confused you, or which took a long time to understand. This isn’t a direct call to action, but prompts the developer to take another look at the code of that section to see if it can be further simplified or clarified (like with a why code comment).\nAnother way to demonstrate an issue is to provide the author a reprex that demonstrates that there is still a bug in their PR. The developer can then decide how to resolve it.\nHowever, sometimes direct instructions, suggestions, or even code are more helpful. The primary goal of code review is to get the best PR possible. A secondary goal is improving the skills of developers so that they require less and less review over time.\nRemember that people learn from reinforcement of what they are doing well and not just what they could do better. If you see things you like in the PR, comment on those too! Examples: developer cleaned up a messy algorithm, added exemplary test coverage, or you as the reviewer learned something from the PR. Just as with all comments, include why you liked something, further encouraging the developer to continue good practices."
   },
   {
     "objectID": "reviewer/comments.html#sec-label-comment-severity",
     "href": "reviewer/comments.html#sec-label-comment-severity",
-    "title": "5  Writing code review comments",
+    "title": "5  Writing review comments",
     "section": "5.4 Label comment severity",
     "text": "5.4 Label comment severity\nConsider labeling the severity of your comments, differentiating required changes from guidelines or suggestions.\nHere are some examples:\n\nNit: This is a minor thing. Technically you should do it, but it won’t hugely impact things.\nOptional (or Consider): I think this may be a good idea, but it’s not strictly required.\nFYI: I don’t expect you to do this in this PR, but you may find this interesting to think about for the future.\n\nThis makes review intent explicit and helps authors prioritize the importance of various comments. It also helps avoid misunderstandings; for example, without comment labels, authors may interpret all comments as mandatory, even if some comments are merely intended to be informational or optional."
   },
