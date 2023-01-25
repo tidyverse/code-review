@@ -53,7 +53,14 @@ Sometimes, you might know something about the users, codebase, or CL that the re
 [Fix the code](#code) where appropriate, and engage your reviewer in discussion, including giving them more context.
 Usually you can come to some consensus between yourself and the reviewer based on technical facts.
 
+## Who "resolves" GitHub comments?
+
+TODO something about the author resolving comments if they immediately address them, typically with a thumbs up emoji.
+Leave it unresolved if it requires another round of discussion.
+Show a picture of the resolve menu on github.
+
 ## Resolving Conflicts {#conflicts}
 
 Your first step in resolving conflicts should always be to try to come to consensus with your reviewer.
 If you can't achieve consensus, see [The Standard of Code Review](../reviewer/standard.md), which gives principles to follow in such a situation.
+

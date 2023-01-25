@@ -123,12 +123,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing code review comments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -182,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#complexity" id="toc-complexity" class="nav-link" data-scroll-target="#complexity"><span class="toc-section-number">2.3</span>  Complexity</a></li>
   <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests"><span class="toc-section-number">2.4</span>  Tests</a></li>
   <li><a href="#sec-naming" id="toc-sec-naming" class="nav-link" data-scroll-target="#sec-naming"><span class="toc-section-number">2.5</span>  Naming</a></li>
-  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments"><span class="toc-section-number">2.6</span>  Comments</a></li>
+  <li><a href="#sec-code-comments" id="toc-sec-code-comments" class="nav-link" data-scroll-target="#sec-code-comments"><span class="toc-section-number">2.6</span>  Comments</a></li>
   <li><a href="#style" id="toc-style" class="nav-link" data-scroll-target="#style"><span class="toc-section-number">2.7</span>  Style</a></li>
   <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="toc-section-number">2.8</span>  Consistency</a></li>
   <li><a href="#sec-documentation" id="toc-sec-documentation" class="nav-link" data-scroll-target="#sec-documentation"><span class="toc-section-number">2.9</span>  Documentation</a></li>
@@ -243,8 +243,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-naming"><span class="header-section-number">2.5</span> Naming</h2>
 <p>Did the developer make an attempt to pick names that are consistent with the rest of the codebase? In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms.</p>
 </section>
-<section id="comments" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="comments"><span class="header-section-number">2.6</span> Comments</h2>
+<section id="sec-code-comments" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-code-comments"><span class="header-section-number">2.6</span> Comments</h2>
 <p>Code comments are useful when they explain <em>why</em> some code exists, rather than <em>what</em> the code is doing. Useful comments contain information that can’t possibly be in the code, like the reasoning behind a decision. One example of a good code comment is <a href="https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/chop.R#L270-L275">this one</a> which is part of code that powers <code>tidyr::unnest()</code>. It describes the exact combination of inputs required for a very rare branch of code to run. Without the <em>context</em> provided by that comment, it can be a little difficult to know why that branch is there. Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like <a href="https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/tests/testthat/test-chop.R#L231-L249">these</a> in tidyr.</p>
 <p>Note that comments are different from <a href="#sec-documentation">documentation</a> of functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used.</p>
 </section>

@@ -65,7 +65,7 @@ Cross-package integration tests are more difficult, but the [tidymodels](https:/
 Did the developer make an attempt to pick names that are consistent with the rest of the codebase?
 In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms.
 
-## Comments
+## Comments {#sec-code-comments}
 
 Code comments are useful when they explain *why* some code exists, rather than *what* the code is doing.
 Useful comments contain information that can't possibly be in the code, like the reasoning behind a decision.

@@ -9,7 +9,7 @@ Here are three steps to tackle most code reviews:
 2.  Look at the most important part of the change first. Is it well-designed overall?
 3.  Look at the rest of the PR in an appropriate sequence.
 
-## Take a broad view of the change
+## Take a broad view of the change {#sec-broad}
 
 Before looking at any code, you should familiarize yourself with the GitHub issue / bug report that the PR is resolving, and read over the PR [description](#sec-descriptions) to better orient yourself.
 Does this change even make sense?

@@ -123,12 +123,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing code review comments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -177,17 +177,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#firstline" id="toc-firstline" class="nav-link active" data-scroll-target="#firstline"><span class="toc-section-number">7.1</span>  First Line</a></li>
-  <li><a href="#informative" id="toc-informative" class="nav-link" data-scroll-target="#informative"><span class="toc-section-number">7.2</span>  Body is Informative</a></li>
-  <li><a href="#bad" id="toc-bad" class="nav-link" data-scroll-target="#bad"><span class="toc-section-number">7.3</span>  Bad CL Descriptions</a></li>
-  <li><a href="#good" id="toc-good" class="nav-link" data-scroll-target="#good"><span class="toc-section-number">7.4</span>  Good CL Descriptions</a>
+  <li><a href="#todo" id="toc-todo" class="nav-link active" data-scroll-target="#todo"><span class="toc-section-number">7.1</span>  TODO:</a></li>
+  <li><a href="#firstline" id="toc-firstline" class="nav-link" data-scroll-target="#firstline"><span class="toc-section-number">7.2</span>  First Line</a></li>
+  <li><a href="#informative" id="toc-informative" class="nav-link" data-scroll-target="#informative"><span class="toc-section-number">7.3</span>  Body is Informative</a></li>
+  <li><a href="#bad" id="toc-bad" class="nav-link" data-scroll-target="#bad"><span class="toc-section-number">7.4</span>  Bad CL Descriptions</a></li>
+  <li><a href="#good" id="toc-good" class="nav-link" data-scroll-target="#good"><span class="toc-section-number">7.5</span>  Good CL Descriptions</a>
   <ul class="collapse">
-  <li><a href="#functionality-change" id="toc-functionality-change" class="nav-link" data-scroll-target="#functionality-change"><span class="toc-section-number">7.4.1</span>  Functionality change</a></li>
-  <li><a href="#refactoring" id="toc-refactoring" class="nav-link" data-scroll-target="#refactoring"><span class="toc-section-number">7.4.2</span>  Refactoring</a></li>
-  <li><a href="#small-cl-that-needs-some-context" id="toc-small-cl-that-needs-some-context" class="nav-link" data-scroll-target="#small-cl-that-needs-some-context"><span class="toc-section-number">7.4.3</span>  Small CL that needs some context</a></li>
+  <li><a href="#functionality-change" id="toc-functionality-change" class="nav-link" data-scroll-target="#functionality-change"><span class="toc-section-number">7.5.1</span>  Functionality change</a></li>
+  <li><a href="#refactoring" id="toc-refactoring" class="nav-link" data-scroll-target="#refactoring"><span class="toc-section-number">7.5.2</span>  Refactoring</a></li>
+  <li><a href="#small-cl-that-needs-some-context" id="toc-small-cl-that-needs-some-context" class="nav-link" data-scroll-target="#small-cl-that-needs-some-context"><span class="toc-section-number">7.5.3</span>  Small CL that needs some context</a></li>
   </ul></li>
-  <li><a href="#generated-cl-descriptions" id="toc-generated-cl-descriptions" class="nav-link" data-scroll-target="#generated-cl-descriptions"><span class="toc-section-number">7.5</span>  Generated CL descriptions</a></li>
-  <li><a href="#review-the-description-before-submitting-the-cl" id="toc-review-the-description-before-submitting-the-cl" class="nav-link" data-scroll-target="#review-the-description-before-submitting-the-cl"><span class="toc-section-number">7.6</span>  Review the description before submitting the CL</a></li>
+  <li><a href="#generated-cl-descriptions" id="toc-generated-cl-descriptions" class="nav-link" data-scroll-target="#generated-cl-descriptions"><span class="toc-section-number">7.6</span>  Generated CL descriptions</a></li>
+  <li><a href="#review-the-description-before-submitting-the-cl" id="toc-review-the-description-before-submitting-the-cl" class="nav-link" data-scroll-target="#review-the-description-before-submitting-the-cl"><span class="toc-section-number">7.7</span>  Review the description before submitting the CL</a></li>
   </ul>
 </nav>
     </div>
@@ -211,10 +212,14 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="todo" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="todo"><span class="header-section-number">7.1</span> TODO:</h2>
+<p>Also include a section about commenting on your own PR after you submit it. But find a way to balance a PR comment vs a code comment.</p>
 <p>A CL description is a public record of <strong>what</strong> change is being made and <strong>why</strong> it was made. It will become a permanent part of our version control history, and will possibly be read by hundreds of people other than your reviewers over the years.</p>
 <p>Future developers will search for your CL based on its description. Someone in the future might be looking for your change because of a faint memory of its relevance but without the specifics handy. If all the important information is in the code and not the description, it’s going to be a lot harder for them to locate your CL.</p>
-<section id="firstline" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="firstline"><span class="header-section-number">7.1</span> First Line</h2>
+</section>
+<section id="firstline" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="firstline"><span class="header-section-number">7.2</span> First Line</h2>
 <ul>
 <li>Short summary of what is being done.</li>
 <li>Complete sentence, written as though it was an order.</li>
@@ -224,14 +229,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Try to keep your first line short, focused, and to the point. The clarity and utility to the reader should be the top concern.</p>
 <p>By tradition, the first line of a CL description is a complete sentence, written as though it were an order (an imperative sentence). For example, say “<strong>Delete</strong> the FizzBuzz RPC and <strong>replace</strong> it with the new system.” instead of “<strong>Deleting</strong> the FizzBuzz RPC and <strong>replacing</strong> it with the new system.” You don’t have to write the rest of the description as an imperative sentence, though.</p>
 </section>
-<section id="informative" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="informative"><span class="header-section-number">7.2</span> Body is Informative</h2>
+<section id="informative" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="informative"><span class="header-section-number">7.3</span> Body is Informative</h2>
 <p>The <a href="#firstline">first line</a> should be a short, focused summary, while the rest of the description should fill in the details and include any supplemental information a reader needs to understand the changelist holistically. It might include a brief description of the problem that’s being solved, and why this is the best approach. If there are any shortcomings to the approach, they should be mentioned. If relevant, include background information such as bug numbers, benchmark results, and links to design documents.</p>
 <p>If you include links to external resources consider that they may not be visible to future readers due to access restrictions or retention policies. Where possible include enough context for reviewers and future readers to understand the CL.</p>
 <p>Even small CLs deserve a little attention to detail. Put the CL in context.</p>
 </section>
-<section id="bad" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="bad"><span class="header-section-number">7.3</span> Bad CL Descriptions</h2>
+<section id="bad" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="bad"><span class="header-section-number">7.4</span> Bad CL Descriptions</h2>
 <p>“Fix bug” is an inadequate CL description. What bug? What did you do to fix it? Other similarly bad descriptions include:</p>
 <ul>
 <li>“Fix build.”</li>
@@ -243,11 +248,11 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Some of those are real CL descriptions. Although short, they do not provide enough useful information.</p>
 </section>
-<section id="good" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="good"><span class="header-section-number">7.4</span> Good CL Descriptions</h2>
+<section id="good" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="good"><span class="header-section-number">7.5</span> Good CL Descriptions</h2>
 <p>Here are some examples of good descriptions.</p>
-<section id="functionality-change" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="functionality-change"><span class="header-section-number">7.4.1</span> Functionality change</h3>
+<section id="functionality-change" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="functionality-change"><span class="header-section-number">7.5.1</span> Functionality change</h3>
 <p>Example:</p>
 <blockquote class="blockquote">
 <p>rpc: remove size limit on RPC server message freelist.</p>
@@ -255,8 +260,8 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p>The first few words describe what the CL actually does. The rest of the description talks about the problem being solved, why this is a good solution, and a bit more information about the specific implementation.</p>
 </section>
-<section id="refactoring" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="refactoring"><span class="header-section-number">7.4.2</span> Refactoring</h3>
+<section id="refactoring" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="refactoring"><span class="header-section-number">7.5.2</span> Refactoring</h3>
 <p>Example:</p>
 <blockquote class="blockquote">
 <p>Construct a Task with a TimeKeeper to use its TimeStr and Now methods.</p>
@@ -266,8 +271,8 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p>The first line describes what the CL does and how this is a change from the past. The rest of the description talks about the specific implementation, the context of the CL, that the solution isn’t ideal, and possible future direction. It also explains <em>why</em> this change is being made.</p>
 </section>
-<section id="small-cl-that-needs-some-context" class="level3" data-number="7.4.3">
-<h3 data-number="7.4.3" class="anchored" data-anchor-id="small-cl-that-needs-some-context"><span class="header-section-number">7.4.3</span> Small CL that needs some context</h3>
+<section id="small-cl-that-needs-some-context" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="small-cl-that-needs-some-context"><span class="header-section-number">7.5.3</span> Small CL that needs some context</h3>
 <p>Example:</p>
 <blockquote class="blockquote">
 <p>Create a Python3 build rule for status.py.</p>
@@ -276,12 +281,12 @@ ul.task-list li input[type="checkbox"] {
 <p>The first sentence describes what’s actually being done. The rest of the description explains <em>why</em> the change is being made and gives the reviewer a lot of context.</p>
 </section>
 </section>
-<section id="generated-cl-descriptions" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="generated-cl-descriptions"><span class="header-section-number">7.5</span> Generated CL descriptions</h2>
+<section id="generated-cl-descriptions" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="generated-cl-descriptions"><span class="header-section-number">7.6</span> Generated CL descriptions</h2>
 <p>Some CLs are generated by tools. Whenever possible, their descriptions should also follow the advice here. That is, their first line should be short, focused, and stand alone, and the CL description body should include informative details that help reviewers and future code searchers understand each CL’s effect.</p>
 </section>
-<section id="review-the-description-before-submitting-the-cl" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="review-the-description-before-submitting-the-cl"><span class="header-section-number">7.6</span> Review the description before submitting the CL</h2>
+<section id="review-the-description-before-submitting-the-cl" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="review-the-description-before-submitting-the-cl"><span class="header-section-number">7.7</span> Review the description before submitting the CL</h2>
 <p>CLs can undergo significant change during review. It can be worthwhile to review a CL description before submitting the CL, to ensure that the description still reflects what the CL does.</p>
 <p>Next: <a href="small-cls.md">Small CLs</a></p>
 

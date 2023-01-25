@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse code review principles - 4&nbsp; Speed of Code Reviews</title>
+<title>Tidyverse code review principles - 4&nbsp; Speed of code reviews</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -123,12 +123,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing code review comments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -177,16 +177,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#todo" id="toc-todo" class="nav-link active" data-scroll-target="#todo"><span class="toc-section-number">4.0.1</span>  TODO:</a></li>
-  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why"><span class="toc-section-number">4.1</span>  Why Should Code Reviews Be Fast?</a></li>
-  <li><a href="#fast" id="toc-fast" class="nav-link" data-scroll-target="#fast"><span class="toc-section-number">4.2</span>  How Fast Should Code Reviews Be?</a></li>
-  <li><a href="#interruption" id="toc-interruption" class="nav-link" data-scroll-target="#interruption"><span class="toc-section-number">4.3</span>  Speed vs.&nbsp;Interruption</a></li>
-  <li><a href="#responses" id="toc-responses" class="nav-link" data-scroll-target="#responses"><span class="toc-section-number">4.4</span>  Fast Responses</a></li>
-  <li><a href="#tz" id="toc-tz" class="nav-link" data-scroll-target="#tz"><span class="toc-section-number">4.5</span>  Cross-Time-Zone Reviews</a></li>
-  <li><a href="#lgtm-with-comments" id="toc-lgtm-with-comments" class="nav-link" data-scroll-target="#lgtm-with-comments"><span class="toc-section-number">4.6</span>  LGTM With Comments</a></li>
-  <li><a href="#large" id="toc-large" class="nav-link" data-scroll-target="#large"><span class="toc-section-number">4.7</span>  Large CLs</a></li>
-  <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time"><span class="toc-section-number">4.8</span>  Code Review Improvements Over Time</a></li>
-  <li><a href="#emergencies" id="toc-emergencies" class="nav-link" data-scroll-target="#emergencies"><span class="toc-section-number">4.9</span>  Emergencies</a></li>
+  <li><a href="#why" id="toc-why" class="nav-link active" data-scroll-target="#why"><span class="toc-section-number">4.1</span>  Why should code reviews be fast?</a></li>
+  <li><a href="#sec-turnaround" id="toc-sec-turnaround" class="nav-link" data-scroll-target="#sec-turnaround"><span class="toc-section-number">4.2</span>  Average turnaround time</a></li>
+  <li><a href="#sec-interruption" id="toc-sec-interruption" class="nav-link" data-scroll-target="#sec-interruption"><span class="toc-section-number">4.3</span>  Speed vs Interruption</a></li>
+  <li><a href="#sec-responses" id="toc-sec-responses" class="nav-link" data-scroll-target="#sec-responses"><span class="toc-section-number">4.4</span>  Fast rounds</a></li>
+  <li><a href="#detailed-review" id="toc-detailed-review" class="nav-link" data-scroll-target="#detailed-review"><span class="toc-section-number">4.5</span>  Detailed review</a></li>
+  <li><a href="#sec-cross-time-zone" id="toc-sec-cross-time-zone" class="nav-link" data-scroll-target="#sec-cross-time-zone"><span class="toc-section-number">4.6</span>  Cross-time-zone reviews</a></li>
+  <li><a href="#sec-approve-with-comments" id="toc-sec-approve-with-comments" class="nav-link" data-scroll-target="#sec-approve-with-comments"><span class="toc-section-number">4.7</span>  Approve with comments</a></li>
+  <li><a href="#sec-request-changes" id="toc-sec-request-changes" class="nav-link" data-scroll-target="#sec-request-changes"><span class="toc-section-number">4.8</span>  Requesting changes</a></li>
+  <li><a href="#sec-over-time" id="toc-sec-over-time" class="nav-link" data-scroll-target="#sec-over-time"><span class="toc-section-number">4.9</span>  Code review improvements over time</a></li>
   </ul>
 </nav>
     </div>
@@ -195,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-speed" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></span></h1>
+<h1 class="title"><span id="sec-speed" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></span></h1>
 </div>
 
 
@@ -210,65 +209,68 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="todo" class="level3" data-number="4.0.1">
-<h3 data-number="4.0.1" class="anchored" data-anchor-id="todo"><span class="header-section-number">4.0.1</span> TODO:</h3>
-<p>Something about code reviews being fast, but don’t be surprised if they take 30 minutes or an hour. Doing a thorough job of code review is valuable but time consuming.</p>
-</section>
 <section id="why" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="why"><span class="header-section-number">4.1</span> Why Should Code Reviews Be Fast?</h2>
-<p><strong>At Google, we optimize for the speed at which a team of developers can produce a product together</strong>, as opposed to optimizing for the speed at which an individual developer can write code. The speed of individual development is important, it’s just not <em>as</em> important as the velocity of the entire team.</p>
-<p>When code reviews are slow, several things happen:</p>
+<h2 data-number="4.1" class="anchored" data-anchor-id="why"><span class="header-section-number">4.1</span> Why should code reviews be fast?</h2>
+<p>The speed of an individual developer is important, but the speed at which a <em>team</em> of developers can produce high quality code is even more important. When code reviews are slow, several things happen:</p>
 <ul>
-<li><strong>The velocity of the team as a whole is decreased.</strong> Yes, the individual who doesn’t respond quickly to the review gets other work done. However, new features and bug fixes for the rest of the team are delayed by days, weeks, or months as each CL waits for review and re-review.</li>
-<li><strong>Developers start to protest the code review process.</strong> If a reviewer only responds every few days, but requests major changes to the CL each time, that can be frustrating and difficult for developers. Often, this is expressed as complaints about how “strict” the reviewer is being. If the reviewer requests the <em>same</em> substantial changes (changes which really do improve code health), but responds <em>quickly</em> every time the developer makes an update, the complaints tend to disappear. <strong>Most complaints about the code review process are actually resolved by making the process faster.</strong></li>
-<li><strong>Code health can be impacted.</strong> When reviews are slow, there is increased pressure to allow developers to submit CLs that are not as good as they could be. Slow reviews also discourage code cleanups, refactorings, and further improvements to existing CLs.</li>
+<li><p><strong>Developers start to protest the code review process.</strong> If a reviewer only responds every few days, but requests major changes to the PR each time, that can be frustrating and difficult for developers. If the reviewer requests the <em>same</em> substantial changes (changes which really do improve code health), but responds <em>quickly</em> every time the developer makes an update, the frustration tends to disappear. <strong>Most complaints about the code review process are actually resolved by making the process faster.</strong></p></li>
+<li><p><strong>The velocity of the team as a whole is decreased.</strong> Yes, the individual who doesn’t respond quickly to the review gets other work done. However, new features and bug fixes for the rest of the team are delayed by days, weeks, or months as each PR waits for review.</p></li>
+<li><p><strong>Code health can be impacted.</strong> When reviews are slow, developers are actually incentivized to submit <em>less</em> PRs and to make each one <em>larger</em>. If you think that it is going to take days to get a single small change reviewed, you are going to be pressured to include <em>one more thing</em> in your PR just to avoid another multi-day review process. To ensure that each PR only improves the health of the codebase, code review must be fast enough that developers don’t feel hamstrung by it.</p></li>
 </ul>
 </section>
-<section id="fast" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="fast"><span class="header-section-number">4.2</span> How Fast Should Code Reviews Be?</h2>
-<p>If you are not in the middle of a focused task, <strong>you should do a code review shortly after it comes in.</strong></p>
-<p><strong>One business day is the maximum time it should take to respond</strong> to a code review request (i.e., first thing the next morning).</p>
-<p>Following these guidelines means that a typical CL should get multiple rounds of review (if needed) within a single day.</p>
+<section id="sec-turnaround" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-turnaround"><span class="header-section-number">4.2</span> Average turnaround time</h2>
+<p>If you are not in the middle of a focused task, you should do a code review shortly after it comes in.</p>
+<p>On average, an internal PR should be reviewed within 2-4 work hours of PR submission. It should take at most two business days to respond to a review request.</p>
+<p>Following these guidelines means that a typical PR should get multiple rounds of review (if needed) within a single day, although most PRs should only require a single round of review, typically an <a href="#sec-approve-with-comments">approval with comments</a>.</p>
+<p>If this seems difficult, it is worth reviewing your PR process. If you have so many PRs to review that you can’t get to your own work, then you might need to distribute the reviews to your team more. Not speaking up when you are overwhelmed by PRs can in turn slow down an entire team!</p>
 </section>
-<section id="interruption" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="interruption"><span class="header-section-number">4.3</span> Speed vs.&nbsp;Interruption</h2>
-<p>There is one time where the consideration of personal velocity trumps team velocity. <strong>If you are in the middle of a focused task, such as writing code, don’t interrupt yourself to do a code review.</strong> Research has shown that it can take a long time for a developer to get back into a smooth flow of development after being interrupted. So interrupting yourself while coding is actually <em>more</em> expensive to the team than making another developer wait a bit for a code review.</p>
-<p>Instead, wait for a break point in your work before you respond to a request for review. This could be when your current coding task is completed, after lunch, returning from a meeting, coming back from the breakroom, etc.</p>
+<section id="sec-interruption" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-interruption"><span class="header-section-number">4.3</span> Speed vs Interruption</h2>
+<p>There is one time where the consideration of personal velocity trumps team velocity. <strong>If you are in the middle of a focused task, such as writing code, don’t interrupt yourself to do a code review.</strong> Research has shown that it can take a long time for a developer to get back into a smooth flow of development after being interrupted. So interrupting yourself while coding is actually <em>more</em> expensive to the team than making another developer wait a bit for a code review. If you want to read more about this, Paul Graham’s post on <a href="http://www.paulgraham.com/makersschedule.html">Maker vs Manager</a> is very good.</p>
+<p>Instead, wait for a break point in your work before you respond to a request for review. This could be when your current coding task is completed, after lunch, returning from a meeting, coming back from the breakroom, etc. Most “deep work” sessions last around 2-3 hours, so batching your code reviews and handling multiple of them at once after a focused session is generally a good idea and is in line with the 2-4 hour <a href="#sec-turnaround">average turnaround time</a> mentioned above.</p>
 </section>
-<section id="responses" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="responses"><span class="header-section-number">4.4</span> Fast Responses</h2>
-<p>When we talk about the speed of code reviews, it is the <em>response</em> time that we are concerned with, as opposed to how long it takes a CL to get through the whole review and be submitted. The whole process should also be fast, ideally, but <strong>it’s even more important for the <em>individual responses</em> to come quickly than it is for the whole process to happen rapidly.</strong></p>
-<p>Even if it sometimes takes a long time to get through the entire review <em>process</em>, having quick responses from the reviewer throughout the process significantly eases the frustration developers can feel with “slow” code reviews.</p>
-<p>If you are too busy to do a full review on a CL when it comes in, you can still send a quick response that lets the developer know when you will get to it, suggest other reviewers who might be able to respond more quickly, or <a href="navigate.md">provide some initial broad comments</a>. (Note: none of this means you should interrupt coding even to send a response like this—send the response at a reasonable break point in your work.)</p>
-<p><strong>It is important that reviewers spend enough time on review that they are certain their “LGTM” means “this code meets <a href="standard.md">our standards</a>.”</strong> However, individual responses should still ideally be <a href="#fast">fast</a>.</p>
+<section id="sec-responses" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-responses"><span class="header-section-number">4.4</span> Fast rounds</h2>
+<p>When we talk about the speed of code reviews, it is the response time of a <em>single round</em> of review that we are concerned with, as opposed to how long it takes a PR to get through the whole review and be merged. The whole process should also be fast, ideally, but it’s even more important for the <em>individual responses</em> to come quickly than it is for the whole process to happen rapidly. Developers typically don’t mind going through multiple rounds of review if each round happens quickly.</p>
+<p>If you are too busy to do a full review on a PR when it comes in, you can still send a quick response that lets the developer know when you will get to it, suggest other reviewers who might be able to respond more quickly, or <a href="navigate.html#sec-broad">provide some initial broad comments</a> (none of this means you should interrupt coding even to send a response like this—send the response at a reasonable break point in your work).</p>
 </section>
-<section id="tz" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="tz"><span class="header-section-number">4.5</span> Cross-Time-Zone Reviews</h2>
+<section id="detailed-review" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="detailed-review"><span class="header-section-number">4.5</span> Detailed review</h2>
+<p>With all of this discussion about speed, it can be tempting to just do a surface level review and respond with “LGTM.” <strong>Resist this temptation</strong>. The whole <a href="purpose.html">purpose of code review</a> is to ensure that the code health of the code base is improving, and you are unlikely to catch potential bugs with a surface level review.</p>
+<p>It is important to <em>start</em> a round of code review shortly after the PR is submitted, but PRs vary greatly in their complexity and sufficiently carrying out the review can sometimes take a decent amount of time. In general:</p>
+<ul>
+<li><p><strong>Small PRs</strong> take anywhere from <strong>5-15 minutes</strong> and don’t typically require checking the code out locally. This should be the majority of code reviews that tackle small bugs or documentation changes. You should typically be able to “run” the code related to these changes in your head.</p></li>
+<li><p><strong>Medium PRs</strong> take up to <strong>30 minutes</strong> and often involve using <code>usethis::pr_fetch()</code> and exploring the code locally. This typically includes PRs that implement new features or small UI changes.</p></li>
+<li><p><strong>Large PRs</strong> can take up to <strong>1 hour</strong>, and occasionally even longer. These should be very rare, and are reserved for large refactorings, especially if there are unavoidable behavior changes mixed in. Large PRs are typically undesirable because they slow the velocity of the entire team, so typically the reviewer should ask the developer if the PR can be <a href="../developer/small-cls.html">split into multiple smaller PRs</a>. If you don’t have time to review a large PR and it can’t be made any smaller, provide some broad comments on the design of the PR, and consider requesting another colleague to take a look.</p></li>
+</ul>
+</section>
+<section id="sec-cross-time-zone" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-cross-time-zone"><span class="header-section-number">4.6</span> Cross-time-zone reviews</h2>
 <p>When dealing with time zone differences, try to get back to the author while they have time to respond before the end of their working hours. If they have already finished work for the day, then try to make sure your review is done before they start work the next day.</p>
 </section>
-<section id="lgtm-with-comments" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="lgtm-with-comments"><span class="header-section-number">4.6</span> LGTM With Comments</h2>
-<p>In order to speed up code reviews, there are certain situations in which a reviewer should give LGTM/Approval even though they are also leaving unresolved comments on the CL. This is done when either:</p>
+<section id="sec-approve-with-comments" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sec-approve-with-comments"><span class="header-section-number">4.7</span> Approve with comments</h2>
+<p>The most common kind of PR review at Posit is known as “approved with comments.” It involves leaving a few minor comments on a PR, while also hitting the <code>Approve</code> button on the GitHub review UI:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/approve-with-comments.png" class="img-fluid figure-img" width="600"></p>
+</figure>
+</div>
+<p>This gives the PR author permission to merge the PR as soon as they have addressed the comments without needing to request another round of review. This is done when either:</p>
 <ul>
 <li>The reviewer is confident that the developer will appropriately address all the reviewer’s remaining comments.</li>
 <li>The remaining changes are minor and don’t <em>have</em> to be done by the developer.</li>
 </ul>
-<p>The reviewer should specify which of these options they intend, if it is not otherwise clear.</p>
-<p>LGTM With Comments is especially worth considering when the developer and reviewer are in different time zones and otherwise the developer would be waiting for a whole day just to get “LGTM, Approval.”</p>
+<p>Approving with comments is largely about the experience of the PR author. For new developers that are still being onboarded, it is common to use the <code>Comment</code> option instead, which is a signal to the developer that they should request another round of review when they have finished addressing your comments. It is important to remember to be patient with new developers; they are going to need multiple rounds of detailed reviews early on, but putting in this extra effort up front tends to lead to faster PRs in the future as the author learns more about what is expected from their PRs.</p>
 </section>
-<section id="large" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="large"><span class="header-section-number">4.7</span> Large CLs</h2>
-<p>If somebody sends you a code review that is so large you’re not sure when you will be able to have time to review it, your typical response should be to ask the developer to <a href="../developer/small-cls.md">split the CL into several smaller CLs</a> that build on each other, instead of one huge CL that has to be reviewed all at once. This is usually possible and very helpful to reviewers, even if it takes additional work from the developer.</p>
-<p>If a CL <em>can’t</em> be broken up into smaller CLs, and you don’t have time to review the entire thing quickly, then at least write some comments on the overall design of the CL and send it back to the developer for improvement. One of your goals as a reviewer should be to always unblock the developer or enable them to take some sort of further action quickly, without sacrificing code health to do so.</p>
+<section id="sec-request-changes" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="sec-request-changes"><span class="header-section-number">4.8</span> Requesting changes</h2>
+<p>GitHub also includes a third option when submitting a review, <code>Request changes</code>. This is typically reserved for more drastic changes that absolutely require another round of review. This option is rare to see in <em>internal PRs</em>, but is somewhat common with <em>external PRs</em> where the PR author is unlikely to be a core contributor on the project, and might not have the same expertise as another Posit employee.</p>
 </section>
-<section id="time" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="time"><span class="header-section-number">4.8</span> Code Review Improvements Over Time</h2>
-<p>If you follow these guidelines and you are strict with your code reviews, you should find that the entire code review process tends to go faster and faster over time. Developers learn what is required for healthy code, and send you CLs that are great from the start, requiring less and less review time. Reviewers learn to respond quickly and not add unnecessary latency into the review process. But <strong>don’t compromise on the <a href="standard.md">code review standards</a> or quality for an imagined improvement in velocity</strong>—it’s not actually going to make anything happen more quickly, in the long run.</p>
-</section>
-<section id="emergencies" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="emergencies"><span class="header-section-number">4.9</span> Emergencies</h2>
-<p>There are also <a href="../emergencies.md">emergencies</a> where CLs must pass through the <em>whole</em> review process very quickly, and where the quality guidelines would be relaxed. However, please see <a href="../emergencies.md#what">What Is An Emergency?</a> for a description of which situations actually qualify as emergencies and which don’t.</p>
-<p>Next: <a href="comments.md">How to Write Code Review Comments</a></p>
+<section id="sec-over-time" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="sec-over-time"><span class="header-section-number">4.9</span> Code review improvements over time</h2>
+<p>If you follow these guidelines and you are strict with your code reviews, you should find that the entire code review process tends to speed up over time. Developers learn what is required for healthy code, and send you PRs that are great from the start, requiring less and less review time. Reviewers learn to respond quickly and not add unnecessary latency into the review process. But <strong>don’t compromise on code quality for an imagined improvement in velocity</strong>—it’s not actually going to make anything happen more quickly, in the long run.</p>
 
 
 </section>
@@ -415,7 +417,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../reviewer/comments.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing code review comments</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

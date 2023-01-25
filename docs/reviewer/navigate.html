@@ -123,12 +123,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing code review comments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -178,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary"><span class="toc-section-number">3.1</span>  Summary</a></li>
-  <li><a href="#take-a-broad-view-of-the-change" id="toc-take-a-broad-view-of-the-change" class="nav-link" data-scroll-target="#take-a-broad-view-of-the-change"><span class="toc-section-number">3.2</span>  Take a broad view of the change</a></li>
+  <li><a href="#sec-broad" id="toc-sec-broad" class="nav-link" data-scroll-target="#sec-broad"><span class="toc-section-number">3.2</span>  Take a broad view of the change</a></li>
   <li><a href="#examine-the-main-parts-of-the-pr" id="toc-examine-the-main-parts-of-the-pr" class="nav-link" data-scroll-target="#examine-the-main-parts-of-the-pr"><span class="toc-section-number">3.3</span>  Examine the main parts of the PR</a></li>
   <li><a href="#look-through-the-rest-of-the-pr" id="toc-look-through-the-rest-of-the-pr" class="nav-link" data-scroll-target="#look-through-the-rest-of-the-pr"><span class="toc-section-number">3.4</span>  Look through the rest of the PR</a></li>
   </ul>
@@ -213,8 +213,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Look at the rest of the PR in an appropriate sequence.</li>
 </ol>
 </section>
-<section id="take-a-broad-view-of-the-change" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="take-a-broad-view-of-the-change"><span class="header-section-number">3.2</span> Take a broad view of the change</h2>
+<section id="sec-broad" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-broad"><span class="header-section-number">3.2</span> Take a broad view of the change</h2>
 <p>Before looking at any code, you should familiarize yourself with the GitHub issue / bug report that the PR is resolving, and read over the PR <a href="../developer/cl-descriptions.html">description</a> to better orient yourself. Does this change even make sense? You can save everyone time if the answer is <em>no</em> by stopping the review there and responding with an explanation of why the change isn’t necessary. Ideally, for <em>internal PRs</em>, you will have discussed this ahead of time to avoid the author putting in unnecessary work (and feeling bad if their work is rejected). For <em>external PRs</em>, occasionally you do have to reject PRs from community members if they don’t fit the overall <a href="aspects.html#sec-design">design</a> of the codebase. You should do this nicely, thanking them for their contribution, and requesting that next time they open an issue first and ask if we’d accept a PR for that issue, which would have saved them time if we had an opportunity to preemptively say no.</p>
 <p>For example, you might say: “Looks like you put some good work into this, thanks! However, we’re actually going in the direction of removing the <code>foo()</code> helper that you’re modifying here, and so we don’t want to make any new modifications to it right now. In the future, it is best if you open an issue first to highlight the bug or feature and ask if we’d accept a pull request for it at this time.”</p>
 <p>If you get more than a few PRs that represent changes you don’t want to make, you should consider re-working your team’s development process or the posted process for external contributors so that there is more communication before PRs are written. It’s better to tell people “no” before they’ve done a ton of work that now has to be thrown away or drastically re-written.</p>
@@ -376,7 +376,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../reviewer/speed.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

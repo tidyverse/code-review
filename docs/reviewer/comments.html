@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse code review principles - 5&nbsp; How to write code review comments</title>
+<title>Tidyverse code review principles - 5&nbsp; Writing code review comments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing code review comments</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -123,12 +123,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></a>
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></a>
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing code review comments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -177,12 +177,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary"><span class="toc-section-number">5.1</span>  Summary</a></li>
-  <li><a href="#courtesy" id="toc-courtesy" class="nav-link" data-scroll-target="#courtesy"><span class="toc-section-number">5.2</span>  Courtesy</a></li>
-  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why"><span class="toc-section-number">5.3</span>  Explain Why</a></li>
-  <li><a href="#guidance" id="toc-guidance" class="nav-link" data-scroll-target="#guidance"><span class="toc-section-number">5.4</span>  Giving Guidance</a></li>
-  <li><a href="#label-comment-severity" id="toc-label-comment-severity" class="nav-link" data-scroll-target="#label-comment-severity"><span class="toc-section-number">5.5</span>  Label comment severity</a></li>
-  <li><a href="#explanations" id="toc-explanations" class="nav-link" data-scroll-target="#explanations"><span class="toc-section-number">5.6</span>  Accepting Explanations</a></li>
+  <li><a href="#sec-courtesy" id="toc-sec-courtesy" class="nav-link active" data-scroll-target="#sec-courtesy"><span class="toc-section-number">5.1</span>  Courtesy</a></li>
+  <li><a href="#sec-why" id="toc-sec-why" class="nav-link" data-scroll-target="#sec-why"><span class="toc-section-number">5.2</span>  Explain why</a></li>
+  <li><a href="#sec-guidance" id="toc-sec-guidance" class="nav-link" data-scroll-target="#sec-guidance"><span class="toc-section-number">5.3</span>  Giving guidance</a></li>
+  <li><a href="#sec-label-comment-severity" id="toc-sec-label-comment-severity" class="nav-link" data-scroll-target="#sec-label-comment-severity"><span class="toc-section-number">5.4</span>  Label comment severity</a></li>
   </ul>
 </nav>
     </div>
@@ -191,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-comments" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to write code review comments</span></span></h1>
+<h1 class="title"><span id="sec-comments" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing code review comments</span></span></h1>
 </div>
 
 
@@ -206,48 +204,35 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="summary" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.1</span> Summary</h2>
-<ul>
-<li>Be kind.</li>
-<li>Explain your reasoning.</li>
-<li>Balance giving explicit directions with just pointing out problems and letting the developer decide.</li>
-<li>Encourage developers to simplify code or add code comments instead of just explaining the complexity to you.</li>
-</ul>
-</section>
-<section id="courtesy" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="courtesy"><span class="header-section-number">5.2</span> Courtesy</h2>
-<p>In general, it is important to be <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/cr_respect.md">courteous and respectful</a> while also being very clear and helpful to the developer whose code you are reviewing. One way to do this is to be sure that you are always making comments about the <em>code</em> and never making comments about the <em>developer</em>. You don’t always have to follow this practice, but you should definitely use it when saying something that might otherwise be upsetting or contentious. For example:</p>
+<section id="sec-courtesy" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-courtesy"><span class="header-section-number">5.1</span> Courtesy</h2>
+<p>In general, it is important to be courteous and respectful while also being very clear and helpful to the developer whose code you are reviewing. One way to do this is to be sure that you are always making comments about the <em>code</em> and never making comments about the <em>developer</em>. You don’t always have to follow this practice, but you should definitely use it when saying something that might otherwise be upsetting or contentious. For example:</p>
 <p>Bad: “Why did <strong>you</strong> use threads here when there’s obviously no benefit to be gained from concurrency?”</p>
 <p>Good: “The concurrency model here is adding complexity to the system without any actual performance benefit that I can see. Because there’s no performance benefit, it’s best for this code to be single-threaded instead of using multiple threads.”</p>
 </section>
-<section id="why" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="why"><span class="header-section-number">5.3</span> Explain Why</h2>
-<p>One thing you’ll notice about the “good” example from above is that it helps the developer understand <em>why</em> you are making your comment. You don’t always need to include this information in your review comments, but sometimes it’s appropriate to give a bit more explanation around your intent, the best practice you’re following, or how your suggestion improves code health.</p>
+<section id="sec-why" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-why"><span class="header-section-number">5.2</span> Explain why</h2>
+<p>One thing you’ll notice about the “good” example from above is that it helps the developer understand <em>why</em> you are making your comment. You don’t always need to include this information in your review comments, but sometimes it’s appropriate to give a bit more explanation around your intent, the best practice you’re following (like the design or style guide), or how your suggestion improves code health.</p>
 </section>
-<section id="guidance" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="guidance"><span class="header-section-number">5.4</span> Giving Guidance</h2>
-<p><strong>In general it is the developer’s responsibility to fix a CL, not the reviewer’s.</strong> You are not required to do detailed design of a solution or write code for the developer.</p>
+<section id="sec-guidance" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-guidance"><span class="header-section-number">5.3</span> Giving guidance</h2>
+<p><strong>In general it is the developer’s responsibility to fix a PR, not the reviewer’s.</strong> You are not required to do detailed design of a solution or write code for the developer.</p>
 <p>This doesn’t mean the reviewer should be unhelpful, though. In general you should strike an appropriate balance between pointing out problems and providing direct guidance. Pointing out problems and letting the developer make a decision often helps the developer learn, and makes it easier to do code reviews. It also can result in a better solution, because the developer is closer to the code than the reviewer is.</p>
-<p>However, sometimes direct instructions, suggestions, or even code are more helpful. The primary goal of code review is to get the best CL possible. A secondary goal is improving the skills of developers so that they require less and less review over time.</p>
-<p>Remember that people learn from reinforcement of what they are doing well and not just what they could do better. If you see things you like in the CL, comment on those too! Examples: developer cleaned up a messy algorithm, added exemplary test coverage, or you as the reviewer learned something from the CL. Just as with all comments, include <a href="#why">why</a> you liked something, further encouraging the developer to continue good practices.</p>
+<p>One example of this is to simply point out a section of code that confused you, or which took a long time to understand. This isn’t a direct call to action, but prompts the developer to take another look at the code of that section to see if it can be further simplified or clarified (like with a <em>why</em> <a href="aspects.html#sec-code-comments">code comment</a>).</p>
+<p>Another way to demonstrate an issue is to provide the author a <a href="https://reprex.tidyverse.org/">reprex</a> that demonstrates that there is still a bug in their PR. The developer can then decide how to resolve it.</p>
+<p>However, sometimes direct instructions, suggestions, or even code are more helpful. The primary goal of code review is to get the best PR possible. A secondary goal is improving the skills of developers so that they require less and less review over time.</p>
+<p>Remember that people learn from reinforcement of what they are doing well and not just what they could do better. If you see things you like in the PR, comment on those too! Examples: developer cleaned up a messy algorithm, added exemplary test coverage, or you as the reviewer learned something from the PR. Just as with all comments, include why you liked something, further encouraging the developer to continue good practices.</p>
 </section>
-<section id="label-comment-severity" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="label-comment-severity"><span class="header-section-number">5.5</span> Label comment severity</h2>
+<section id="sec-label-comment-severity" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-label-comment-severity"><span class="header-section-number">5.4</span> Label comment severity</h2>
 <p>Consider labeling the severity of your comments, differentiating required changes from guidelines or suggestions.</p>
 <p>Here are some examples:</p>
 <blockquote class="blockquote">
 <p>Nit: This is a minor thing. Technically you should do it, but it won’t hugely impact things.</p>
 <p>Optional (or Consider): I think this may be a good idea, but it’s not strictly required.</p>
-<p>FYI: I don’t expect you to do this in this CL, but you may find this interesting to think about for the future.</p>
+<p>FYI: I don’t expect you to do this in this PR, but you may find this interesting to think about for the future.</p>
 </blockquote>
 <p>This makes review intent explicit and helps authors prioritize the importance of various comments. It also helps avoid misunderstandings; for example, without comment labels, authors may interpret all comments as mandatory, even if some comments are merely intended to be informational or optional.</p>
-</section>
-<section id="explanations" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="explanations"><span class="header-section-number">5.6</span> Accepting Explanations</h2>
-<p>If you ask a developer to explain a piece of code that you don’t understand, that should usually result in them <strong>rewriting the code more clearly</strong>. Occasionally, adding a comment in the code is also an appropriate response, as long as it’s not just explaining overly complex code.</p>
-<p><strong>Explanations written only in the code review tool are not helpful to future code readers.</strong> They are acceptable only in a few circumstances, such as when you are reviewing an area you are not very familiar with and the developer explains something that normal readers of the code would have already known.</p>
-<p>Next: <a href="pushback.md">Handling Pushback in Code Reviews</a></p>
 
 
 </section>
@@ -389,7 +374,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../reviewer/speed.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of Code Reviews</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of code reviews</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

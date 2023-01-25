@@ -1,5 +1,10 @@
 # Writing good CL descriptions {#sec-descriptions}
 
+## TODO:
+
+Also include a section about commenting on your own PR after you submit it.
+But find a way to balance a PR comment vs a code comment.
+
 A CL description is a public record of **what** change is being made and **why** it was made.
 It will become a permanent part of our version control history, and will possibly be read by hundreds of people other than your reviewers over the years.
 
