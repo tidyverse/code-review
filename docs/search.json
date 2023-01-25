@@ -254,35 +254,35 @@
   {
     "objectID": "reviewer/pushback.html#sec-who-is-right",
     "href": "reviewer/pushback.html#sec-who-is-right",
-    "title": "6  Handling pushback in code reviews",
+    "title": "6  Handling pushback",
     "section": "6.1 Who is right?",
     "text": "6.1 Who is right?\nWhen a developer disagrees with your suggestion, first take a moment to consider if they are correct. Often, they are closer to the code than you are, and so they might really have a better insight about certain aspects of it. Does their argument make sense? Does it make sense from a code health perspective? If so, let them know that they are right and let the issue drop.\nHowever, developers are not always right. In this case, the reviewer should further explain why they believe that their suggestion is correct. A good explanation demonstrates both an understanding of the developer’s reply, and additional information about why the change is being requested. Good explanations are additionally reinforced by facts or external official resources like the design or style guide.\nIn particular, when the reviewer believes their suggestion will avoid a drop in code health, then they should continue to advocate for the change if they believe the resulting code quality improvement justifies the additional work requested. On the other hand, if the PR already improves the overall health of the codebase, it isn’t worth arguing every little stylistic point. Code improvements often happen in small steps.\nSometimes it takes a few rounds of explaining a suggestion before it really sinks in. Just make sure to always stay polite and let the developer know that you hear what they’re saying, you just don’t agree."
   },
   {
     "objectID": "reviewer/pushback.html#upsetting_developers",
     "href": "reviewer/pushback.html#upsetting_developers",
-    "title": "6  Handling pushback in code reviews",
+    "title": "6  Handling pushback",
     "section": "6.2 Upsetting developers",
     "text": "6.2 Upsetting developers\nReviewers sometimes believe that the developer will be upset if the reviewer insists on an improvement. Sometimes developers do become upset, but it is usually brief and they become very thankful later that you helped them improve the quality of their code. Usually, if you are polite in your comments, developers actually don’t become upset at all, and the worry is just in the reviewer’s mind."
   },
   {
     "objectID": "reviewer/pushback.html#later",
     "href": "reviewer/pushback.html#later",
-    "title": "6  Handling pushback in code reviews",
+    "title": "6  Handling pushback",
     "section": "6.3 Cleaning it up later",
     "text": "6.3 Cleaning it up later\nA common source of push back is that developers (understandably) want to get things done. They don’t want to go through another round of review just to get this PR in. So they say they will clean something up in a later PR, and thus you should approve this PR now. Some developers are very good about this, and will immediately write a follow-up PR that fixes the issue. However, experience shows that as more time passes after a developer writes the original PR, the less likely this clean up is to happen. In fact, usually unless the developer does the clean up immediately after the present PR, it never happens. This isn’t because developers are irresponsible, but because they have a lot of work to do and the cleanup gets lost or forgotten in the press of other work. Thus, it is usually best to insist that the developer clean up their PR now, before the code is in the codebase and “done.”\nNote that PR cleanup is different from the case where a PR exposes a bug that is technically unrelated to that PR. In the spirit of keeping PRs small, in those cases it is best to open an issue with a reproducible example demonstrating the issue, so that it is tracked and can be addressed after merging the current PR."
   },
   {
     "objectID": "reviewer/pushback.html#strictness",
     "href": "reviewer/pushback.html#strictness",
-    "title": "6  Handling pushback in code reviews",
+    "title": "6  Handling pushback",
     "section": "6.4 General complaints about strictness",
     "text": "6.4 General complaints about strictness\nIf you previously had fairly lax code reviews and you switch to having strict reviews, some developers will complain very loudly. Improving the speed of your code reviews usually causes these complaints to fade away.\nSometimes it can take months for these complaints to fade away, but eventually developers tend to see the value of strict code reviews as they see what great code they help generate. Sometimes the loudest protesters even become your strongest supporters once something happens that causes them to really see the value you’re adding by being strict."
   },
   {
     "objectID": "reviewer/pushback.html#conflicts",
     "href": "reviewer/pushback.html#conflicts",
-    "title": "6  Handling pushback in code reviews",
+    "title": "6  Handling pushback",
     "section": "6.5 Resolving conflicts",
     "text": "6.5 Resolving conflicts\nIn any conflict on a code review, the first step should always be for the author and reviewer to try to come to consensus, based on the contents of this guide.\nWhen coming to consensus becomes especially difficult, it can help to have a face-to-face meeting or a video conference, instead of just trying to resolve the conflict through code review comments. (If you do this, though, make sure to record the results of the discussion as a comment on the PR, for future readers.)\nIf that doesn’t resolve the situation, the next step is to escalate. Often the escalation path leads to having a third team member weigh in, or having a broader team discussion for particularly complicated issues. Don’t let a PR sit around because the author and the reviewer can’t come to an agreement.\nRemember to respect your colleagues even when you disagree. You both want to generate the best results possible, and just happen to have different beliefs about how to get there."
   },

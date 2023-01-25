@@ -1,4 +1,4 @@
-# Handling pushback in code reviews {#sec-pushback}
+# Handling pushback {#sec-pushback}
 
 Sometimes a developer will push back on a code review.
 Either they will disagree with your suggestion or they will complain that you are being too strict in general.
