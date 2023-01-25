@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse code review principles - 3&nbsp; Navigating a CL in review</title>
+<title>Tidyverse code review principles - 3&nbsp; Navigating a PR in review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a PR in review</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></a>
+  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a PR in review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -178,9 +178,9 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary"><span class="toc-section-number">3.1</span>  Summary</a></li>
-  <li><a href="#step_one" id="toc-step_one" class="nav-link" data-scroll-target="#step_one"><span class="toc-section-number">3.2</span>  Step One: Take a broad view of the change</a></li>
-  <li><a href="#step_two" id="toc-step_two" class="nav-link" data-scroll-target="#step_two"><span class="toc-section-number">3.3</span>  Step Two: Examine the main parts of the CL</a></li>
-  <li><a href="#step_three" id="toc-step_three" class="nav-link" data-scroll-target="#step_three"><span class="toc-section-number">3.4</span>  Step Three: Look through the rest of the CL in an appropriate sequence</a></li>
+  <li><a href="#take-a-broad-view-of-the-change" id="toc-take-a-broad-view-of-the-change" class="nav-link" data-scroll-target="#take-a-broad-view-of-the-change"><span class="toc-section-number">3.2</span>  Take a broad view of the change</a></li>
+  <li><a href="#examine-the-main-parts-of-the-pr" id="toc-examine-the-main-parts-of-the-pr" class="nav-link" data-scroll-target="#examine-the-main-parts-of-the-pr"><span class="toc-section-number">3.3</span>  Examine the main parts of the PR</a></li>
+  <li><a href="#look-through-the-rest-of-the-pr" id="toc-look-through-the-rest-of-the-pr" class="nav-link" data-scroll-target="#look-through-the-rest-of-the-pr"><span class="toc-section-number">3.4</span>  Look through the rest of the PR</a></li>
   </ul>
 </nav>
     </div>
@@ -189,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-navigate" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a CL in review</span></span></h1>
+<h1 class="title"><span id="sec-navigate" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a PR in review</span></span></h1>
 </div>
 
 
@@ -206,34 +206,30 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="summary" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.1</span> Summary</h2>
-<p>Now that you know <a href="looking-for.md">what to look for</a>, what’s the most efficient way to manage a review that’s spread across multiple files?</p>
+<p>Now that you know <a href="aspects.html">what to look for</a>, what’s the most efficient way to manage a review that’s spread across multiple files? Here are three steps to tackle most code reviews:</p>
 <ol type="1">
-<li>Does the change make sense? Does it have a good <a href="../developer/cl-descriptions.md">description</a>?</li>
+<li>Before looking at any code, ask yourself if the rationale behind the change make sense.</li>
 <li>Look at the most important part of the change first. Is it well-designed overall?</li>
-<li>Look at the rest of the CL in an appropriate sequence.</li>
+<li>Look at the rest of the PR in an appropriate sequence.</li>
 </ol>
 </section>
-<section id="step_one" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="step_one"><span class="header-section-number">3.2</span> Step One: Take a broad view of the change</h2>
-<p>Look at the <a href="../developer/cl-descriptions.md">CL description</a> and what the CL does in general. Does this change even make sense? If this change shouldn’t have happened in the first place, please respond immediately with an explanation of why the change should not be happening. When you reject a change like this, it’s also a good idea to suggest to the developer what they should have done instead.</p>
-<p>For example, you might say “Looks like you put some good work into this, thanks! However, we’re actually going in the direction of removing the FooWidget system that you’re modifying here, and so we don’t want to make any new modifications to it right now. How about instead you refactor our new BarWidget class?”</p>
-<p>Note that not only did the reviewer reject the current CL and provide an alternative suggestion, but they did it <em>courteously</em>. This kind of courtesy is important because we want to show that we respect each other as developers even when we disagree.</p>
-<p>If you get more than a few CLs that represent changes you don’t want to make, you should consider re-working your team’s development process or the posted process for external contributors so that there is more communication before CLs are written. It’s better to tell people “no” before they’ve done a ton of work that now has to be thrown away or drastically re-written.</p>
+<section id="take-a-broad-view-of-the-change" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="take-a-broad-view-of-the-change"><span class="header-section-number">3.2</span> Take a broad view of the change</h2>
+<p>Before looking at any code, you should familiarize yourself with the GitHub issue / bug report that the PR is resolving, and read over the PR <a href="../developer/cl-descriptions.html">description</a> to better orient yourself. Does this change even make sense? You can save everyone time if the answer is <em>no</em> by stopping the review there and responding with an explanation of why the change isn’t necessary. Ideally, for <em>internal PRs</em>, you will have discussed this ahead of time to avoid the author putting in unnecessary work (and feeling bad if their work is rejected). For <em>external PRs</em>, occasionally you do have to reject PRs from community members if they don’t fit the overall <a href="aspects.html#sec-design">design</a> of the codebase. You should do this nicely, thanking them for their contribution, and requesting that next time they open an issue first and ask if we’d accept a PR for that issue, which would have saved them time if we had an opportunity to preemptively say no.</p>
+<p>For example, you might say: “Looks like you put some good work into this, thanks! However, we’re actually going in the direction of removing the <code>foo()</code> helper that you’re modifying here, and so we don’t want to make any new modifications to it right now. In the future, it is best if you open an issue first to highlight the bug or feature and ask if we’d accept a pull request for it at this time.”</p>
+<p>If you get more than a few PRs that represent changes you don’t want to make, you should consider re-working your team’s development process or the posted process for external contributors so that there is more communication before PRs are written. It’s better to tell people “no” before they’ve done a ton of work that now has to be thrown away or drastically re-written.</p>
 </section>
-<section id="step_two" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="step_two"><span class="header-section-number">3.3</span> Step Two: Examine the main parts of the CL</h2>
-<p>Find the file or files that are the “main” part of this CL. Often, there is one file that has the largest number of logical changes, and it’s the major piece of the CL. Look at these major parts first. This helps give context to all of the smaller parts of the CL, and generally accelerates doing the code review. If the CL is too large for you to figure out which parts are the major parts, ask the developer what you should look at first, or ask them to <a href="../developer/small-cls.md">split up the CL into multiple CLs</a>.</p>
-<p>If you see some major design problems with this part of the CL, you should send those comments immediately, even if you don’t have time to review the rest of the CL right now. In fact, reviewing the rest of the CL might be a waste of time, because if the design problems are significant enough, a lot of the other code under review is going to disappear and not matter anyway.</p>
-<p>There are two major reasons it’s so important to send these major design comments out immediately:</p>
-<ul>
-<li>Developers often mail a CL and then immediately start new work based on that CL while they wait for review. If there are major design problems in the CL you’re reviewing, they’re also going to have to re-work their later CL. You want to catch them before they’ve done too much extra work on top of the problematic design.</li>
-<li>Major design changes take longer to do than small changes. Developers nearly all have deadlines; in order to make those deadlines and still have quality code in the codebase, the developer needs to start on any major re-work of the CL as soon as possible.</li>
-</ul>
+<section id="examine-the-main-parts-of-the-pr" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="examine-the-main-parts-of-the-pr"><span class="header-section-number">3.3</span> Examine the main parts of the PR</h2>
+<p>Find the file or files that are the “main” part of this PR. Often, there is one file that has the largest number of logical changes. Ideally, the PR description will point you to this if there is any ambiguity. Look at these major parts first. This helps give context to all of the smaller parts of the PR, and generally accelerates doing the code review. If the PR is too large for you to figure out which parts are the major parts, ask the developer what you should look at first, or ask them to <a href="../developer/small-cls.html">split up the PR into multiple PRs</a>.</p>
+<p>If you see some major design problems with this part of the PR, you should send those comments immediately, even if you don’t have time to review the rest of the PR right now. In fact, reviewing the rest of the PR might be a waste of time, because if the design problems are significant enough, a lot of the other code under review is going to disappear and not matter anyway.</p>
+<p>This is also a great time to use <code>usethis::pr_fetch()</code> to pull the PR down locally and try it out. Chances are that the main part of the PR has to do with the main UI changes, so this is a nice time to check that the changes in the PR line up with the output you get from running the code locally.</p>
 </section>
-<section id="step_three" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="step_three"><span class="header-section-number">3.4</span> Step Three: Look through the rest of the CL in an appropriate sequence</h2>
-<p>Once you’ve confirmed there are no major design problems with the CL as a whole, try to figure out a logical sequence to look through the files while also making sure you don’t miss reviewing any file. Usually after you’ve looked through the major files, it’s simplest to just go through each file in the order that the code review tool presents them to you. Sometimes it’s also helpful to read the tests first before you read the main code, because then you have an idea of what the change is supposed to be doing.</p>
-<p>Next: <a href="speed.md">Speed of Code Reviews</a></p>
+<section id="look-through-the-rest-of-the-pr" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="look-through-the-rest-of-the-pr"><span class="header-section-number">3.4</span> Look through the rest of the PR</h2>
+<p>Once you’ve confirmed there are no major design problems with the PR as a whole, try to figure out a logical sequence to look through the files while also making sure you don’t miss reviewing any file. Usually after you’ve looked through the major files, it’s simplest to just go through each file in the order that the code review tool presents them to you. Sometimes it’s also helpful to read the tests first before you read the main code, because then you have an idea of what the change is supposed to be doing.</p>
+<p>For R code, you can generally ignore the generated documentation files ending in <code>.Rd</code> while reviewing the PR. GitHub will collapse these by default.</p>
+<p>While reading through the PR, make sure to keep the <a href="aspects.html">aspects of code review</a> in mind.</p>
 
 
 </section>

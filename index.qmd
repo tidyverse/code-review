@@ -18,6 +18,8 @@ In particular, you will see references to [`devtools`](https://devtools.r-lib.or
 ## Terminology
 
 -   **PR** - Shortened notation for a *pull request*.
+-   **Internal PR** - A pull request that is both authored and reviewed by Posit employees.
+-   **External PR** - A pull request that is authored by a community member, and reviewed by a Posit employee.
 
 ## Acknowledgements
 

@@ -11,7 +11,7 @@
     "href": "index.html#terminology",
     "title": "Tidyverse code review principles",
     "section": "Terminology",
-    "text": "Terminology\n\nPR - Shortened notation for a pull request."
+    "text": "Terminology\n\nPR - Shortened notation for a pull request.\nInternal PR - A pull request that is both authored and reviewed by Posit employees.\nExternal PR - A pull request that is authored by a community member, and reviewed by a Posit employee."
   },
   {
     "objectID": "index.html#acknowledgements",
@@ -42,8 +42,8 @@
     "text": "1.2 Principles\n\nTechnical facts and data overrule opinions and personal preferences.\nOn matters of style, the style guide is the absolute authority. Any purely stylistic point (whitespace, etc.) that is not in the style guide is a matter of personal preference or is something that should be hashed out and added to the style guide. The most important rule about style is to be consistent with what is already in the codebase.\nAspects of software design are almost never a pure style issue or just a personal preference. They are based on underlying principles and should be weighed on those principles, not simply by personal opinion. Sometimes there are a few valid options. If the author can demonstrate (either through data or based on solid engineering principles) that several approaches are equally valid, then the reviewer should accept the preference of the author. Otherwise the choice is dictated by standard principles of software design.\nIf no other rule applies, then the reviewer may ask the author to be consistent with what is in the current codebase, as long as that doesn’t worsen the overall code health of the system."
   },
   {
-    "objectID": "reviewer/aspects.html#design",
-    "href": "reviewer/aspects.html#design",
+    "objectID": "reviewer/aspects.html#sec-design",
+    "href": "reviewer/aspects.html#sec-design",
     "title": "2  Aspects of a code review",
     "section": "2.1 Design",
     "text": "2.1 Design\nThe most important thing to cover in a review is the overall design of the PR. Do the interactions of various pieces of code in the PR make sense? Does this change belong in your codebase, or somewhere upstream? Does it integrate well with the rest of your system?\nHopefully, you and the PR author aligned on the design aspect of the PR before they worked on it. If not, it is often worth pausing and having a separate conversation about the overall design rather than directly reviewing their PR, as that conversation might result in the PR being completely rewritten or closed altogether."
@@ -135,30 +135,30 @@
   {
     "objectID": "reviewer/navigate.html#summary",
     "href": "reviewer/navigate.html#summary",
-    "title": "3  Navigating a CL in review",
+    "title": "3  Navigating a PR in review",
     "section": "3.1 Summary",
-    "text": "3.1 Summary\nNow that you know what to look for, what’s the most efficient way to manage a review that’s spread across multiple files?\n\nDoes the change make sense? Does it have a good description?\nLook at the most important part of the change first. Is it well-designed overall?\nLook at the rest of the CL in an appropriate sequence."
+    "text": "3.1 Summary\nNow that you know what to look for, what’s the most efficient way to manage a review that’s spread across multiple files? Here are three steps to tackle most code reviews:\n\nBefore looking at any code, ask yourself if the rationale behind the change make sense.\nLook at the most important part of the change first. Is it well-designed overall?\nLook at the rest of the PR in an appropriate sequence."
   },
   {
-    "objectID": "reviewer/navigate.html#step_one",
-    "href": "reviewer/navigate.html#step_one",
-    "title": "3  Navigating a CL in review",
-    "section": "3.2 Step One: Take a broad view of the change",
-    "text": "3.2 Step One: Take a broad view of the change\nLook at the CL description and what the CL does in general. Does this change even make sense? If this change shouldn’t have happened in the first place, please respond immediately with an explanation of why the change should not be happening. When you reject a change like this, it’s also a good idea to suggest to the developer what they should have done instead.\nFor example, you might say “Looks like you put some good work into this, thanks! However, we’re actually going in the direction of removing the FooWidget system that you’re modifying here, and so we don’t want to make any new modifications to it right now. How about instead you refactor our new BarWidget class?”\nNote that not only did the reviewer reject the current CL and provide an alternative suggestion, but they did it courteously. This kind of courtesy is important because we want to show that we respect each other as developers even when we disagree.\nIf you get more than a few CLs that represent changes you don’t want to make, you should consider re-working your team’s development process or the posted process for external contributors so that there is more communication before CLs are written. It’s better to tell people “no” before they’ve done a ton of work that now has to be thrown away or drastically re-written."
+    "objectID": "reviewer/navigate.html#take-a-broad-view-of-the-change",
+    "href": "reviewer/navigate.html#take-a-broad-view-of-the-change",
+    "title": "3  Navigating a PR in review",
+    "section": "3.2 Take a broad view of the change",
+    "text": "3.2 Take a broad view of the change\nBefore looking at any code, you should familiarize yourself with the GitHub issue / bug report that the PR is resolving, and read over the PR description to better orient yourself. Does this change even make sense? You can save everyone time if the answer is no by stopping the review there and responding with an explanation of why the change isn’t necessary. Ideally, for internal PRs, you will have discussed this ahead of time to avoid the author putting in unnecessary work (and feeling bad if their work is rejected). For external PRs, occasionally you do have to reject PRs from community members if they don’t fit the overall design of the codebase. You should do this nicely, thanking them for their contribution, and requesting that next time they open an issue first and ask if we’d accept a PR for that issue, which would have saved them time if we had an opportunity to preemptively say no.\nFor example, you might say: “Looks like you put some good work into this, thanks! However, we’re actually going in the direction of removing the foo() helper that you’re modifying here, and so we don’t want to make any new modifications to it right now. In the future, it is best if you open an issue first to highlight the bug or feature and ask if we’d accept a pull request for it at this time.”\nIf you get more than a few PRs that represent changes you don’t want to make, you should consider re-working your team’s development process or the posted process for external contributors so that there is more communication before PRs are written. It’s better to tell people “no” before they’ve done a ton of work that now has to be thrown away or drastically re-written."
   },
   {
-    "objectID": "reviewer/navigate.html#step_two",
-    "href": "reviewer/navigate.html#step_two",
-    "title": "3  Navigating a CL in review",
-    "section": "3.3 Step Two: Examine the main parts of the CL",
-    "text": "3.3 Step Two: Examine the main parts of the CL\nFind the file or files that are the “main” part of this CL. Often, there is one file that has the largest number of logical changes, and it’s the major piece of the CL. Look at these major parts first. This helps give context to all of the smaller parts of the CL, and generally accelerates doing the code review. If the CL is too large for you to figure out which parts are the major parts, ask the developer what you should look at first, or ask them to split up the CL into multiple CLs.\nIf you see some major design problems with this part of the CL, you should send those comments immediately, even if you don’t have time to review the rest of the CL right now. In fact, reviewing the rest of the CL might be a waste of time, because if the design problems are significant enough, a lot of the other code under review is going to disappear and not matter anyway.\nThere are two major reasons it’s so important to send these major design comments out immediately:\n\nDevelopers often mail a CL and then immediately start new work based on that CL while they wait for review. If there are major design problems in the CL you’re reviewing, they’re also going to have to re-work their later CL. You want to catch them before they’ve done too much extra work on top of the problematic design.\nMajor design changes take longer to do than small changes. Developers nearly all have deadlines; in order to make those deadlines and still have quality code in the codebase, the developer needs to start on any major re-work of the CL as soon as possible."
+    "objectID": "reviewer/navigate.html#examine-the-main-parts-of-the-pr",
+    "href": "reviewer/navigate.html#examine-the-main-parts-of-the-pr",
+    "title": "3  Navigating a PR in review",
+    "section": "3.3 Examine the main parts of the PR",
+    "text": "3.3 Examine the main parts of the PR\nFind the file or files that are the “main” part of this PR. Often, there is one file that has the largest number of logical changes. Ideally, the PR description will point you to this if there is any ambiguity. Look at these major parts first. This helps give context to all of the smaller parts of the PR, and generally accelerates doing the code review. If the PR is too large for you to figure out which parts are the major parts, ask the developer what you should look at first, or ask them to split up the PR into multiple PRs.\nIf you see some major design problems with this part of the PR, you should send those comments immediately, even if you don’t have time to review the rest of the PR right now. In fact, reviewing the rest of the PR might be a waste of time, because if the design problems are significant enough, a lot of the other code under review is going to disappear and not matter anyway.\nThis is also a great time to use usethis::pr_fetch() to pull the PR down locally and try it out. Chances are that the main part of the PR has to do with the main UI changes, so this is a nice time to check that the changes in the PR line up with the output you get from running the code locally."
   },
   {
-    "objectID": "reviewer/navigate.html#step_three",
-    "href": "reviewer/navigate.html#step_three",
-    "title": "3  Navigating a CL in review",
-    "section": "3.4 Step Three: Look through the rest of the CL in an appropriate sequence",
-    "text": "3.4 Step Three: Look through the rest of the CL in an appropriate sequence\nOnce you’ve confirmed there are no major design problems with the CL as a whole, try to figure out a logical sequence to look through the files while also making sure you don’t miss reviewing any file. Usually after you’ve looked through the major files, it’s simplest to just go through each file in the order that the code review tool presents them to you. Sometimes it’s also helpful to read the tests first before you read the main code, because then you have an idea of what the change is supposed to be doing.\nNext: Speed of Code Reviews"
+    "objectID": "reviewer/navigate.html#look-through-the-rest-of-the-pr",
+    "href": "reviewer/navigate.html#look-through-the-rest-of-the-pr",
+    "title": "3  Navigating a PR in review",
+    "section": "3.4 Look through the rest of the PR",
+    "text": "3.4 Look through the rest of the PR\nOnce you’ve confirmed there are no major design problems with the PR as a whole, try to figure out a logical sequence to look through the files while also making sure you don’t miss reviewing any file. Usually after you’ve looked through the major files, it’s simplest to just go through each file in the order that the code review tool presents them to you. Sometimes it’s also helpful to read the tests first before you read the main code, because then you have an idea of what the change is supposed to be doing.\nFor R code, you can generally ignore the generated documentation files ending in .Rd while reviewing the PR. GitHub will collapse these by default.\nWhile reading through the PR, make sure to keep the aspects of code review in mind."
   },
   {
     "objectID": "reviewer/speed.html#why",

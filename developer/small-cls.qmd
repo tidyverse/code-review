@@ -1,4 +1,4 @@
-# Small CLs
+# Small CLs {#sec-small}
 
 ## Why Write Small CLs? {#why}
 

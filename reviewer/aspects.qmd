@@ -1,6 +1,6 @@
 # Aspects of a code review {#sec-aspects}
 
-## Design
+## Design {#sec-design}
 
 The most important thing to cover in a review is the overall design of the PR.
 Do the interactions of various pieces of code in the PR make sense?
@@ -176,4 +176,3 @@ In doing a code review, you should make sure that:
 -   Code is appropriately documented.
 -   A news bullet has been added if applicable.
 -   The code conforms to our style guide.
-
