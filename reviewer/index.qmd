@@ -1,14 +1,7 @@
-# How to review a pull request
+# How to review a pull request {#sec-reviewer}
 
 The pages in this section contain recommendations on the best way to do code reviews, based on long experience.
 All together they represent one complete document, broken up into many separate sections.
 You don't have to read them all, but many people have found it very helpful to read the entire set.
 
--   In @sec-purpose, we'll look at why we do code review in the first place.
--   In @sec-aspects,
--   In @sec-navigate,
--   In @sec-speed,
--   In @sec-comments
--   In @sec-pushback,
-
-The other half of this guide is contained within How to Author a Pull Request.
+The other half of this guide is contained within [How to author a pull request](#sec-author).

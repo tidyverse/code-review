@@ -25,7 +25,7 @@
     "href": "reviewer/index.html",
     "title": "How to review a pull request",
     "section": "",
-    "text": "The pages in this section contain recommendations on the best way to do code reviews, based on long experience. All together they represent one complete document, broken up into many separate sections. You don’t have to read them all, but many people have found it very helpful to read the entire set.\n\nIn Chapter 1, we’ll look at why we do code review in the first place.\nIn Chapter 2,\nIn Chapter 3,\nIn Chapter 4,\nIn Chapter 5\nIn Chapter 6,\n\nThe other half of this guide is contained within How to Author a Pull Request."
+    "text": "The pages in this section contain recommendations on the best way to do code reviews, based on long experience. All together they represent one complete document, broken up into many separate sections. You don’t have to read them all, but many people have found it very helpful to read the entire set.\nThe other half of this guide is contained within How to author a pull request."
   },
   {
     "objectID": "reviewer/purpose.html#sec-mentoring",
@@ -303,7 +303,7 @@
   {
     "objectID": "developer/index.html",
     "href": "developer/index.html",
-    "title": "How to Author a Pull Request",
+    "title": "How to author a pull request",
     "section": "",
     "text": "The pages in this section contain best practices for developers going through code review. These guidelines should help you get through reviews faster and with higher-quality results. You don’t have to read them all, but they are intended to apply to every Google developer, and many people have found it helpful to read the whole set.\n\nWriting Good CL Descriptions\nSmall CLs\nHow to Handle Reviewer Comments\n\nSee also How to Do a Code Review, which gives detailed guidance for code reviewers."
   },
