@@ -8,10 +8,12 @@ It is intended to be used as a way to get new developers up to speed on how we d
 
 The guide is broken into two sections:
 
--   How to Review a Pull Request
--   How to Author a Pull Request
+-   How to review a pull request
+-   How to author a pull request
 
 At Posit, we mostly use [GitHub](https://github.com/) as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub's tooling.
+Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests.
+In particular, you will see references to [`devtools`](https://devtools.r-lib.org/) and [`usethis`](https://usethis.r-lib.org/) throughout this guide.
 
 ## Terminology
 

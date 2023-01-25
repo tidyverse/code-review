@@ -1,5 +1,10 @@
 # Speed of Code Reviews {#sec-speed}
 
+### TODO:
+
+Something about code reviews being fast, but don't be surprised if they take 30 minutes or an hour.
+Doing a thorough job of code review is valuable but time consuming.
+
 ## Why Should Code Reviews Be Fast? {#why}
 
 **At Google, we optimize for the speed at which a team of developers can produce a product together**, as opposed to optimizing for the speed at which an individual developer can write code.

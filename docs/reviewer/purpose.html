@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse Code Review Principles - 1&nbsp; The Purpose of Code Review</title>
+<title>Tidyverse code review principles - 1&nbsp; The purpose of code review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../reviewer/looking-for.html" rel="next">
+<link href="../reviewer/aspects.html" rel="next">
 <link href="../reviewer/index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Purpose of Code Review</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The purpose of code review</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Tidyverse Code Review Principles</a> 
+      <a href="../">Tidyverse code review principles</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to Review a Pull Request</a>
+            <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to review a pull request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -108,12 +108,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/purpose.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Purpose of Code Review</span></a>
+  <a href="../reviewer/purpose.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The purpose of code review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/looking-for.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What to look for in a code review</span></a>
+  <a href="../reviewer/aspects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aspects of a code review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -187,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-purpose" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Purpose of Code Review</span></span></h1>
+<h1 class="title"><span id="sec-purpose" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The purpose of code review</span></span></h1>
 </div>
 
 
@@ -224,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>Technical facts and data overrule opinions and personal preferences.</p></li>
 <li><p>On matters of style, the <a href="https://style.tidyverse.org/">style guide</a> is the absolute authority. Any purely stylistic point (whitespace, etc.) that is not in the style guide is a matter of personal preference or is something that should be hashed out and added to the style guide. The most important rule about style is to be consistent with what is already in the codebase.</p></li>
-<li><p><strong>Aspects of software design are almost never a pure style issue or just a personal preference.</strong> They are based on underlying principles and should be weighed on those principles, not simply by personal opinion. Sometimes there are a few valid options. If the author can demonstrate (either through data or based on solid engineering principles) that several approaches are equally valid, then the reviewer should accept the preference of the author. Otherwise the choice is dictated by standard principles of software design.</p></li>
+<li><p>Aspects of software design are almost never a pure style issue or just a personal preference. They are based on underlying principles and should be weighed on those principles, not simply by personal opinion. Sometimes there are a few valid options. If the author can demonstrate (either through data or based on solid engineering principles) that several approaches are equally valid, then the reviewer should accept the preference of the author. Otherwise the choice is dictated by standard principles of software design.</p></li>
 <li><p>If no other rule applies, then the reviewer may ask the author to be consistent with what is in the current codebase, as long as that doesn’t worsen the overall code health of the system.</p></li>
 </ul>
 
@@ -368,12 +368,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../reviewer/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How to Review a Pull Request</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How to review a pull request</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../reviewer/looking-for.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What to look for in a code review</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../reviewer/aspects.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aspects of a code review</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

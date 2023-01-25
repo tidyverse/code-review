@@ -1,4 +1,4 @@
-# The Purpose of Code Review {#sec-purpose}
+# The purpose of code review {#sec-purpose}
 
 The primary purpose of code review is to ensure that the overall "code health" of Posit's software (both R packages and other tools) is improving over time.
 All of the tools and processes of code review are designed to this end.
@@ -55,7 +55,8 @@ It is generally useful to document any insights from the pair programming sessio
     Any purely stylistic point (whitespace, etc.) that is not in the style guide is a matter of personal preference or is something that should be hashed out and added to the style guide.
     The most important rule about style is to be consistent with what is already in the codebase.
 
--   **Aspects of software design are almost never a pure style issue or just a personal preference.** They are based on underlying principles and should be weighed on those principles, not simply by personal opinion.
+-   Aspects of software design are almost never a pure style issue or just a personal preference.
+    They are based on underlying principles and should be weighed on those principles, not simply by personal opinion.
     Sometimes there are a few valid options.
     If the author can demonstrate (either through data or based on solid engineering principles) that several approaches are equally valid, then the reviewer should accept the preference of the author.
     Otherwise the choice is dictated by standard principles of software design.

@@ -2,135 +2,135 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Tidyverse Code Review Principles",
+    "title": "Tidyverse code review principles",
     "section": "",
-    "text": "Welcome\nA code review is a process where someone other than the author of a piece of code examines that code. At Posit, we use code review to maintain the quality of our code and products.\nThis guide serves as a reference for different aspects of the code review process. It is intended to be used as a way to get new developers up to speed on how we do code review at Posit, and to serve as a linkable resource when there are questions about aspects of the code review process.\nThe guide is broken into two sections:\nAt Posit, we mostly use GitHub as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub’s tooling."
+    "text": "Welcome\nA code review is a process where someone other than the author of a piece of code examines that code. At Posit, we use code review to maintain the quality of our code and products.\nThis guide serves as a reference for different aspects of the code review process. It is intended to be used as a way to get new developers up to speed on how we do code review at Posit, and to serve as a linkable resource when there are questions about aspects of the code review process.\nThe guide is broken into two sections:\nAt Posit, we mostly use GitHub as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub’s tooling. Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests. In particular, you will see references to devtools and usethis throughout this guide."
   },
   {
     "objectID": "index.html#terminology",
     "href": "index.html#terminology",
-    "title": "Tidyverse Code Review Principles",
+    "title": "Tidyverse code review principles",
     "section": "Terminology",
     "text": "Terminology\n\nPR - Shortened notation for a pull request."
   },
   {
     "objectID": "index.html#acknowledgements",
     "href": "index.html#acknowledgements",
-    "title": "Tidyverse Code Review Principles",
+    "title": "Tidyverse code review principles",
     "section": "Acknowledgements",
     "text": "Acknowledgements\nThis guide is a forked and modified version of Google’s code review principles."
   },
   {
     "objectID": "reviewer/index.html",
     "href": "reviewer/index.html",
-    "title": "How to Review a Pull Request",
+    "title": "How to review a pull request",
     "section": "",
     "text": "The pages in this section contain recommendations on the best way to do code reviews, based on long experience. All together they represent one complete document, broken up into many separate sections. You don’t have to read them all, but many people have found it very helpful to read the entire set.\n\nIn Chapter 1, we’ll look at why we do code review in the first place.\nIn Chapter 2,\nIn Chapter 3,\nIn Chapter 4,\nIn Chapter 5\nIn Chapter 6,\n\nThe other half of this guide is contained within How to Author a Pull Request."
   },
   {
     "objectID": "reviewer/purpose.html#sec-mentoring",
     "href": "reviewer/purpose.html#sec-mentoring",
-    "title": "1  The Purpose of Code Review",
+    "title": "1  The purpose of code review",
     "section": "1.1 Mentoring",
     "text": "1.1 Mentoring\nAt Posit, we believe that code review is an important part of on-boarding new developers. As a reviewer, it is encouraged to leave comments that help a developer learn something new. Linking out to sections of the style guide, design guide, or this code review guide are ways to point to a concrete source of truth that the developer can read to align their future code with Posit standards.\nPair programming is also an excellent way to perform a code review. One way to do this is to have the reviewer live-review a pull request, which often teaches the developer what the reviewer looks for when they review PRs, and gives both parties a way to have an immediate discussion about any tricky design points. It is generally useful to document any insights from the pair programming session as a comment in the code review."
   },
   {
     "objectID": "reviewer/purpose.html#sec-principles",
     "href": "reviewer/purpose.html#sec-principles",
-    "title": "1  The Purpose of Code Review",
+    "title": "1  The purpose of code review",
     "section": "1.2 Principles",
     "text": "1.2 Principles\n\nTechnical facts and data overrule opinions and personal preferences.\nOn matters of style, the style guide is the absolute authority. Any purely stylistic point (whitespace, etc.) that is not in the style guide is a matter of personal preference or is something that should be hashed out and added to the style guide. The most important rule about style is to be consistent with what is already in the codebase.\nAspects of software design are almost never a pure style issue or just a personal preference. They are based on underlying principles and should be weighed on those principles, not simply by personal opinion. Sometimes there are a few valid options. If the author can demonstrate (either through data or based on solid engineering principles) that several approaches are equally valid, then the reviewer should accept the preference of the author. Otherwise the choice is dictated by standard principles of software design.\nIf no other rule applies, then the reviewer may ask the author to be consistent with what is in the current codebase, as long as that doesn’t worsen the overall code health of the system."
   },
   {
-    "objectID": "reviewer/looking-for.html#design",
-    "href": "reviewer/looking-for.html#design",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#design",
+    "href": "reviewer/aspects.html#design",
+    "title": "2  Aspects of a code review",
     "section": "2.1 Design",
-    "text": "2.1 Design\nThe most important thing to cover in a review is the overall design of the CL. Do the interactions of various pieces of code in the CL make sense? Does this change belong in your codebase, or in a library? Does it integrate well with the rest of your system? Is now a good time to add this functionality?"
+    "text": "2.1 Design\nThe most important thing to cover in a review is the overall design of the PR. Do the interactions of various pieces of code in the PR make sense? Does this change belong in your codebase, or somewhere upstream? Does it integrate well with the rest of your system?\nHopefully, you and the PR author aligned on the design aspect of the PR before they worked on it. If not, it is often worth pausing and having a separate conversation about the overall design rather than directly reviewing their PR, as that conversation might result in the PR being completely rewritten or closed altogether."
   },
   {
-    "objectID": "reviewer/looking-for.html#functionality",
-    "href": "reviewer/looking-for.html#functionality",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#functionality",
+    "href": "reviewer/aspects.html#functionality",
+    "title": "2  Aspects of a code review",
     "section": "2.2 Functionality",
-    "text": "2.2 Functionality\nDoes this CL do what the developer intended? Is what the developer intended good for the users of this code? The “users” are usually both end-users (when they are affected by the change) and developers (who will have to “use” this code in the future).\nMostly, we expect developers to test CLs well-enough that they work correctly by the time they get to code review. However, as the reviewer you should still be thinking about edge cases, looking for concurrency problems, trying to think like a user, and making sure that there are no bugs that you see just by reading the code.\nYou can validate the CL if you want—the time when it’s most important for a reviewer to check a CL’s behavior is when it has a user-facing impact, such as a UI change. It’s hard to understand how some changes will impact a user when you’re just reading the code. For changes like that, you can have the developer give you a demo of the functionality if it’s too inconvenient to patch in the CL and try it yourself.\nAnother time when it’s particularly important to think about functionality during a code review is if there is some sort of parallel programming going on in the CL that could theoretically cause deadlocks or race conditions. These sorts of issues are very hard to detect by just running the code and usually need somebody (both the developer and the reviewer) to think through them carefully to be sure that problems aren’t being introduced. (Note that this is also a good reason not to use concurrency models where race conditions or deadlocks are possible—it can make it very complex to do code reviews or understand the code.)"
+    "text": "2.2 Functionality\nDoes this PR do what the developer intended? Is what the developer intended good for the users of this code? The “users” are usually both end-users (when they are affected by the change) and developers (who will have to “use” this code in the future).\nMostly, we expect developers to test PRs well-enough that they work correctly by the time they get to code review. However, as the reviewer you should still be thinking about edge cases, trying to think like a user, and making sure that there are no bugs that you see just by reading the code. In R, typical edge cases to watch out for include checking what happens if the user passes in an object of an unexpected type, or what happens if they pass in an object of zero length.\nAn important part of validating the functionality of a PR is trying it out locally. This is particularly important if the PR has a user-facing impact, such as a new function or argument. At Posit, we generally check out PRs on R packages locally using usethis::pr_fetch(<pr-number>). This is a great time to try out edge cases in the code. It also makes it very easy to create a reprex that you can share with the PR author in a GitHub comment if you do find an issue."
   },
   {
-    "objectID": "reviewer/looking-for.html#complexity",
-    "href": "reviewer/looking-for.html#complexity",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#complexity",
+    "href": "reviewer/aspects.html#complexity",
+    "title": "2  Aspects of a code review",
     "section": "2.3 Complexity",
-    "text": "2.3 Complexity\nIs the CL more complex than it should be? Check this at every level of the CL—are individual lines too complex? Are functions too complex? Are classes too complex? “Too complex” usually means “can’t be understood quickly by code readers.” It can also mean “developers are likely to introduce bugs when they try to call or modify this code.”\nA particular type of complexity is over-engineering, where developers have made the code more generic than it needs to be, or added functionality that isn’t presently needed by the system. Reviewers should be especially vigilant about over-engineering. Encourage developers to solve the problem they know needs to be solved now, not the problem that the developer speculates might need to be solved in the future. The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe."
+    "text": "2.3 Complexity\nIs the PR more complex than it should be? Check this at every level of the PR—are individual lines too complex? Are functions too complex? “Too complex” usually means “can’t be understood quickly by code readers.” A way to check for this is to try and “run” the function in your head from top to bottom. If it is exceedingly difficult to do this, the PR might be too complex.\nComplexity can also mean that developers are likely to introduce bugs when they try to call or modify that code in the future.\nA particular type of complexity is over-engineering, where developers have made the code more generic than it needs to be, or added functionality that isn’t presently needed by the system. Reviewers should be especially vigilant about over-engineering. Encourage developers to solve the problem they know needs to be solved now, not the problem that the developer speculates might need to be solved in the future. The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe."
   },
   {
-    "objectID": "reviewer/looking-for.html#tests",
-    "href": "reviewer/looking-for.html#tests",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#tests",
+    "href": "reviewer/aspects.html#tests",
+    "title": "2  Aspects of a code review",
     "section": "2.4 Tests",
-    "text": "2.4 Tests\nAsk for unit, integration, or end-to-end tests as appropriate for the change. In general, tests should be added in the same CL as the production code unless the CL is handling an emergency.\nMake sure that the tests in the CL are correct, sensible, and useful. Tests do not test themselves, and we rarely write tests for our tests—a human must ensure that tests are valid.\nWill the tests actually fail when the code is broken? If the code changes beneath them, will they start producing false positives? Does each test make simple and useful assertions? Are the tests separated appropriately between different test methods?\nRemember that tests are also code that has to be maintained. Don’t accept complexity in tests just because they aren’t part of the main binary."
+    "text": "2.4 Tests\nIn general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test. If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:\n\ntest_that(\"`my_function()` throws an error when given strings (#553)\")\n\nRecent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.\nMake sure that the tests in the PR are correct, sensible, and useful. Tests do not test themselves, and we rarely write tests for our tests—a human must ensure that tests are valid.\nTests should also strive to be as minimal as possible. When a user opens an issue with a bug report, chances are that they have included an example that is tailored to their use case, but isn’t a minimal example of the bug in question. When you write a test for the bug fix, it is worth spending time making the example as minimal as possible so it isolates the bug and is easy to understand in the future. Remember that tests have to be maintained too!\nCross-package integration tests are more difficult, but the tidymodels ecosystem accomplishes this using a separate GitHub-only R package named extratests that is run on a daily basis."
   },
   {
-    "objectID": "reviewer/looking-for.html#naming",
-    "href": "reviewer/looking-for.html#naming",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#sec-naming",
+    "href": "reviewer/aspects.html#sec-naming",
+    "title": "2  Aspects of a code review",
     "section": "2.5 Naming",
-    "text": "2.5 Naming\nDid the developer pick good names for everything? A good name is long enough to fully communicate what the item is or does, without being so long that it becomes hard to read."
+    "text": "2.5 Naming\nDid the developer make an attempt to pick names that are consistent with the rest of the codebase? In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms."
   },
   {
-    "objectID": "reviewer/looking-for.html#comments",
-    "href": "reviewer/looking-for.html#comments",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#comments",
+    "href": "reviewer/aspects.html#comments",
+    "title": "2  Aspects of a code review",
     "section": "2.6 Comments",
-    "text": "2.6 Comments\nDid the developer write clear comments in understandable English? Are all of the comments actually necessary? Usually comments are useful when they explain why some code exists, and should not be explaining what some code is doing. If the code isn’t clear enough to explain itself, then the code should be made simpler. There are some exceptions (regular expressions and complex algorithms often benefit greatly from comments that explain what they’re doing, for example) but mostly comments are for information that the code itself can’t possibly contain, like the reasoning behind a decision.\nIt can also be helpful to look at comments that were there before this CL. Maybe there is a TODO that can be removed now, a comment advising against this change being made, etc.\nNote that comments are different from documentation of classes, modules, or functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used."
+    "text": "2.6 Comments\nCode comments are useful when they explain why some code exists, rather than what the code is doing. Useful comments contain information that can’t possibly be in the code, like the reasoning behind a decision. One example of a good code comment is this one which is part of code that powers tidyr::unnest(). It describes the exact combination of inputs required for a very rare branch of code to run. Without the context provided by that comment, it can be a little difficult to know why that branch is there. Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like these in tidyr.\nNote that comments are different from documentation of functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used."
   },
   {
-    "objectID": "reviewer/looking-for.html#style",
-    "href": "reviewer/looking-for.html#style",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#style",
+    "href": "reviewer/aspects.html#style",
+    "title": "2  Aspects of a code review",
     "section": "2.7 Style",
-    "text": "2.7 Style\nWe have style guides at Google for all of our major languages, and even for most of the minor languages. Make sure the CL follows the appropriate style guides.\nIf you want to improve some style point that isn’t in the style guide, prefix your comment with “Nit:” to let the developer know that it’s a nitpick that you think would improve the code but isn’t mandatory. Don’t block CLs from being submitted based only on personal style preferences.\nThe author of the CL should not include major style changes combined with other changes. It makes it hard to see what is being changed in the CL, makes merges and rollbacks more complex, and causes other problems. For example, if the author wants to reformat the whole file, have them send you just the reformatting as one CL, and then send another CL with their functional changes after that."
+    "text": "2.7 Style\nAt Posit, our R packages follow the tidyverse style guide. Two packages support this style guide, styler, which allows you to restyle files or packages, and lintr, which performs automated checks to ensure that you conform to the style guide.\nAdmittedly, many of us don’t use these tools religiously. The important thing is that if there is a point of contention about style in a PR, we can point to the style guide to resolve it.\nThe author of the PR should not include major style changes combined with other changes. It makes it hard to see what is being changed in the PR, makes merges and rollbacks more complex, and causes other problems. If the author wants to reformat the whole file, request that they send you just the reformatting as one PR, and then send another PR with their functional changes after that."
   },
   {
-    "objectID": "reviewer/looking-for.html#consistency",
-    "href": "reviewer/looking-for.html#consistency",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#consistency",
+    "href": "reviewer/aspects.html#consistency",
+    "title": "2  Aspects of a code review",
     "section": "2.8 Consistency",
-    "text": "2.8 Consistency\nWhat if the existing code is inconsistent with the style guide? Per our code review principles, the style guide is the absolute authority: if something is required by the style guide, the CL should follow the guidelines.\nIn some cases, the style guide makes recommendations rather than declaring requirements. In these cases, it’s a judgment call whether the new code should be consistent with the recommendations or the surrounding code. Bias towards following the style guide unless the local inconsistency would be too confusing.\nIf no other rule applies, the author should maintain consistency with the existing code.\nEither way, encourage the author to file a bug and add a TODO for cleaning up existing code."
+    "text": "2.8 Consistency\nWhat if the existing code is inconsistent with the style guide? Per our code review principles, the style guide is the absolute authority: if something is required by the style guide, the PR should follow the guidelines.\nIn some cases, the style guide makes recommendations rather than declaring requirements. In these cases, it’s a judgment call whether the new code should be consistent with the recommendations or the surrounding code.\nConsistency is also heavily related to naming, and the reviewer should ensure that the author has chosen function names, argument names, and local variable names that are consistent with the rest of the codebase. Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that loc always stands for an integer value corresponding to a vector index. This is particularly helpful in R, since static typing isn’t available to provide this information for you."
   },
   {
-    "objectID": "reviewer/looking-for.html#documentation",
-    "href": "reviewer/looking-for.html#documentation",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#sec-documentation",
+    "href": "reviewer/aspects.html#sec-documentation",
+    "title": "2  Aspects of a code review",
     "section": "2.9 Documentation",
-    "text": "2.9 Documentation\nIf a CL changes how users build, test, interact with, or release code, check to see that it also updates associated documentation, including READMEs, g3doc pages, and any generated reference docs. If the CL deletes or deprecates code, consider whether the documentation should also be deleted. If documentation is missing, ask for it."
+    "text": "2.9 Documentation\nIf a PR changes how users interact with the package, check to see that it also updates any associated documentation. This includes both R package documentation and updating the pkgdown reference index if a new function is added.\nOccasionally it is useful to document internal functions that aren’t seen by users. This can be useful for other developers to reference as they use common internal helpers. One example of this is tidyr:::df_append(), which includes this internal function documentation marked with @noRd.\nIt is generally also good practice to provide a news bullet in a NEWS.md file that is associated with the change. This is another place where providing the GitHub issue or PR number is useful, like:\n* `my_function()` now checks that `x` is a numeric value (#565).\nIf there isn’t a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you need a GitHub PR number to link to, but you haven’t opened the PR yet. One way to resolve this is to:\n\nGo ahead and open the PR without the commit changing the NEWS.md file.\nAdd the news bullet and link to the now open PR.\nPush with a commit message like NEWS bullet."
   },
   {
-    "objectID": "reviewer/looking-for.html#every-line",
-    "href": "reviewer/looking-for.html#every-line",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#every-line",
+    "href": "reviewer/aspects.html#every-line",
+    "title": "2  Aspects of a code review",
     "section": "2.10 Every Line",
-    "text": "2.10 Every Line\nIn the general case, look at every line of code that you have been assigned to review. Some things like data files, generated code, or large data structures you can scan over sometimes, but don’t scan over a human-written class, function, or block of code and assume that what’s inside of it is okay. Obviously some code deserves more careful scrutiny than other code—that’s a judgment call that you have to make—but you should at least be sure that you understand what all the code is doing.\nIf it’s too hard for you to read the code and this is slowing down the review, then you should let the developer know that and wait for them to clarify it before you try to review it. At Google, we hire great software engineers, and you are one of them. If you can’t understand the code, it’s very likely that other developers won’t either. So you’re also helping future developers understand this code, when you ask the developer to clarify it.\nIf you understand the code but you don’t feel qualified to do some part of the review, make sure there is a reviewer on the CL who is qualified, particularly for complex issues such as privacy, security, concurrency, accessibility, internationalization, etc.\n\n2.10.1 Exceptions\nWhat if it doesn’t make sense for you to review every line? For example, you are one of multiple reviewers on a CL and may be asked:\n\nTo review only certain files that are part of a larger change.\nTo review only certain aspects of the CL, such as the high-level design, privacy or security implications, etc.\n\nIn these cases, note in a comment which parts you reviewed. Prefer giving LGTM with comments .\nIf you instead wish to grant LGTM after confirming that other reviewers have reviewed other parts of the CL, note this explicitly in a comment to set expectations. Aim to respond quickly once the CL has reached the desired state."
+    "text": "2.10 Every Line\nIn the general case, look at every line of code that you have been assigned to review. Some things like data files, generated code, or large data structures you can scan over sometimes, but don’t scan over a human-written function or block of code and assume that what’s inside of it is okay. Obviously some code deserves more careful scrutiny than other code—that’s a judgment call that you have to make—but you should at least be sure that you understand what all the code is doing.\nIf reviewing every line is too hard and is slowing down the review, then you should let the developer know and ask them to clarify it (possibly providing suggestions of your own, if possible). This also applies to code that you understand, but it took a long time for you to figure it out (or you had to run it locally to understand it). If you can’t understand the code, it is likely that other reviewers won’t be able to either! Taking a moment to have the developer clarify confusing sections of code will help future developers when it is modified further.\nIf you understand the code but you don’t feel qualified to do some part of the review, it is perfectly acceptable (and preferred!) that you let the author know, and suggest that they request a review from another developer who has more expertise in that area."
   },
   {
-    "objectID": "reviewer/looking-for.html#context",
-    "href": "reviewer/looking-for.html#context",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#context",
+    "href": "reviewer/aspects.html#context",
+    "title": "2  Aspects of a code review",
     "section": "2.11 Context",
-    "text": "2.11 Context\nIt is often helpful to look at the CL in a broad context. Usually the code review tool will only show you a few lines of code around the parts that are being changed. Sometimes you have to look at the whole file to be sure that the change actually makes sense. For example, you might see only four new lines being added, but when you look at the whole file, you see those four lines are in a 50-line method that now really needs to be broken up into smaller methods.\nIt’s also useful to think about the CL in the context of the system as a whole. Is this CL improving the code health of the system or is it making the whole system more complex, less tested, etc.? Don’t accept CLs that degrade the code health of the system. Most systems become complex through many small changes that add up, so it’s important to prevent even small complexities in new changes."
+    "text": "2.11 Context\nIt is often helpful to look at the PR in a broad context. Usually the code review tool on GitHub will only show you a few lines of code around the parts that are being changed. Sometimes you have to look at the whole file to be sure that the change actually makes sense. For example, you might see only four new lines being added, but when you look at the whole file, you see those four lines are in a 50-line helper that now really needs to be broken up into smaller functions.\nIt’s also useful to think about the PR in the context of the system as a whole. Is this PR improving the code health of the system or is it making the whole system more complex, less tested, etc.? PRs should always maintain or improve the overall health of the codebase. Most systems become complex through many small changes that add up, so it’s important to prevent even small complexities in new changes.\nSometimes the timing of the PR isn’t right. It is possible that the codebase may need restructuring before a PR can be accepted. You can generally recognize this when the PR has a large number of changes to parts of the codebase that are seemingly unrelated to the purpose of the PR itself. In those cases, it is often worth suggesting that the author submit a few smaller focused PRs first that prepare the codebase for the larger PR. This reduces the complexity of the larger PR, making it easier to understand and faster to review."
   },
   {
-    "objectID": "reviewer/looking-for.html#good-things",
-    "href": "reviewer/looking-for.html#good-things",
-    "title": "2  What to look for in a code review",
-    "section": "2.12 Good Things",
-    "text": "2.12 Good Things\nIf you see something nice in the CL, tell the developer, especially when they addressed one of your comments in a great way. Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well. It’s sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong."
+    "objectID": "reviewer/aspects.html#good-things",
+    "href": "reviewer/aspects.html#good-things",
+    "title": "2  Aspects of a code review",
+    "section": "2.12 Compliments",
+    "text": "2.12 Compliments\nIf you see something nice in the PR, tell the developer, especially when they addressed one of your comments in a great way. Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well. It’s sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong."
   },
   {
-    "objectID": "reviewer/looking-for.html#summary",
-    "href": "reviewer/looking-for.html#summary",
-    "title": "2  What to look for in a code review",
+    "objectID": "reviewer/aspects.html#summary",
+    "href": "reviewer/aspects.html#summary",
+    "title": "2  Aspects of a code review",
     "section": "2.13 Summary",
-    "text": "2.13 Summary\nIn doing a code review, you should make sure that:\n\nThe code is well-designed.\nThe functionality is good for the users of the code.\nAny UI changes are sensible and look good.\nAny parallel programming is done safely.\nThe code isn’t more complex than it needs to be.\nThe developer isn’t implementing things they might need in the future but don’t know they need now.\nCode has appropriate unit tests.\nTests are well-designed.\nThe developer used clear names for everything.\nComments are clear and useful, and mostly explain why instead of what.\nCode is appropriately documented (generally in g3doc).\nThe code conforms to our style guides.\n\nMake sure to review every line of code you’ve been asked to review, look at the context, make sure you’re improving code health, and compliment developers on good things that they do.\nNext: Navigating a CL in Review"
+    "text": "2.13 Summary\nIn doing a code review, you should make sure that:\n\nThe code is well-designed.\nThe functionality is an improvement for the users of the code.\nAny UI changes are sensible and well-structured.\nThe code is only as complex as it has to be.\nThe developer isn’t implementing things they might need in the future but don’t know they need now.\nCode has appropriate unit tests.\nTests are well-designed and minimal.\nThe developer used clear and consistent names.\nComments are clear and useful, and mostly explain why instead of what.\nCode is appropriately documented.\nA news bullet has been added if applicable.\nThe code conforms to our style guide."
   },
   {
     "objectID": "reviewer/navigate.html#summary",

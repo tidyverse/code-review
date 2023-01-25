@@ -3,15 +3,14 @@ project:
   output-dir: docs
 
 book:
-  title: "Tidyverse Code Review Principles"
+  title: "Tidyverse code review principles"
   author: "Davis Vaughan"
-  date: "12/11/2022"
   chapters:
     - index.qmd
     - part: reviewer/index.qmd
       chapters:
       - reviewer/purpose.qmd
-      - reviewer/looking-for.qmd
+      - reviewer/aspects.qmd
       - reviewer/navigate.qmd
       - reviewer/speed.qmd
       - reviewer/comments.qmd

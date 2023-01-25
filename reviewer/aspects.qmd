@@ -1,0 +1,181 @@
+# Aspects of a code review {#sec-aspects}
+
+## Design
+
+The most important thing to cover in a review is the overall design of the PR.
+Do the interactions of various pieces of code in the PR make sense?
+Does this change belong in your codebase, or somewhere upstream?
+Does it integrate well with the rest of your system?
+
+Hopefully, you and the PR author aligned on the design aspect of the PR before they worked on it.
+If not, it is often worth pausing and having a separate conversation about the overall design rather than directly reviewing their PR, as that conversation might result in the PR being completely rewritten or closed altogether.
+
+## Functionality
+
+Does this PR do what the developer intended?
+Is what the developer intended good for the users of this code?
+The "users" are usually both end-users (when they are affected by the change) and developers (who will have to "use" this code in the future).
+
+Mostly, we expect developers to test PRs well-enough that they work correctly by the time they get to code review.
+However, as the reviewer you should still be thinking about edge cases, trying to think like a user, and making sure that there are no bugs that you see just by reading the code.
+In R, typical edge cases to watch out for include checking what happens if the user passes in an object of an unexpected type, or what happens if they pass in an object of zero length.
+
+An important part of validating the functionality of a PR is trying it out locally.
+This is particularly important if the PR has a user-facing impact, such as a new function or argument.
+At Posit, we generally check out PRs on R packages locally using `usethis::pr_fetch(<pr-number>)`.
+This is a great time to try out edge cases in the code.
+It also makes it very easy to create a [reprex](https://reprex.tidyverse.org/) that you can share with the PR author in a GitHub comment if you do find an issue.
+
+## Complexity
+
+Is the PR more complex than it should be?
+Check this at every level of the PR---are individual lines too complex?
+Are functions too complex?
+"Too complex" usually means "can't be understood quickly by code readers." A way to check for this is to try and "run" the function in your head from top to bottom.
+If it is exceedingly difficult to do this, the PR might be too complex.
+
+Complexity can also mean that developers are likely to introduce bugs when they try to call or modify that code in the future.
+
+A particular type of complexity is **over-engineering**, where developers have made the code more generic than it needs to be, or added functionality that isn't presently needed by the system.
+Reviewers should be especially vigilant about over-engineering.
+Encourage developers to solve the problem they know needs to be solved *now*, not the problem that the developer speculates *might* need to be solved in the future.
+The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe.
+
+## Tests
+
+In general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test.
+If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:
+
+```{r}
+#| eval: false
+test_that("`my_function()` throws an error when given strings (#553)")
+```
+
+Recent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.
+
+Make sure that the tests in the PR are correct, sensible, and useful.
+Tests do not test themselves, and we rarely write tests for our tests---a human must ensure that tests are valid.
+
+Tests should also strive to be as minimal as possible.
+When a user opens an issue with a bug report, chances are that they have included an example that is tailored to their use case, but isn't a minimal example of the bug in question.
+When you write a test for the bug fix, it is worth spending time making the example as minimal as possible so it isolates the bug and is easy to understand in the future.
+Remember that tests have to be maintained too!
+
+Cross-package integration tests are more difficult, but the [tidymodels](https://www.tidymodels.org/) ecosystem accomplishes this using a separate GitHub-only R package named [extratests](https://github.com/tidymodels/extratests) that is run on a daily basis.
+
+## Naming {#sec-naming}
+
+Did the developer make an attempt to pick names that are consistent with the rest of the codebase?
+In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms.
+
+## Comments
+
+Code comments are useful when they explain *why* some code exists, rather than *what* the code is doing.
+Useful comments contain information that can't possibly be in the code, like the reasoning behind a decision.
+One example of a good code comment is [this one](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/chop.R#L270-L275) which is part of code that powers `tidyr::unnest()`.
+It describes the exact combination of inputs required for a very rare branch of code to run.
+Without the *context* provided by that comment, it can be a little difficult to know why that branch is there.
+Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like [these](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/tests/testthat/test-chop.R#L231-L249) in tidyr.
+
+Note that comments are different from [documentation](#sec-documentation) of functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used.
+
+## Style
+
+At Posit, our R packages follow the [tidyverse style guide](https://style.tidyverse.org/).
+Two packages support this style guide, [styler](https://styler.r-lib.org/), which allows you to restyle files or packages, and [lintr](https://lintr.r-lib.org/), which performs automated checks to ensure that you conform to the style guide.
+
+Admittedly, many of us don't use these tools religiously.
+The important thing is that if there is a point of contention about style in a PR, we can point to the style guide to resolve it.
+
+The author of the PR should not include major style changes combined with other changes.
+It makes it hard to see what is being changed in the PR, makes merges and rollbacks more complex, and causes other problems.
+If the author wants to reformat the whole file, request that they send you just the reformatting as one PR, and then send another PR with their functional changes after that.
+
+## Consistency
+
+What if the existing code is inconsistent with the style guide?
+Per our [code review principles](#sec-principles), the style guide is the absolute authority: if something is required by the style guide, the PR should follow the guidelines.
+
+In some cases, the style guide makes recommendations rather than declaring requirements.
+In these cases, it's a judgment call whether the new code should be consistent with the recommendations or the surrounding code.
+
+Consistency is also heavily related to [naming](#sec-naming), and the reviewer should ensure that the author has chosen function names, argument names, and local variable names that are consistent with the rest of the codebase.
+Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that `loc` always stands for an integer value corresponding to a vector index.
+This is particularly helpful in R, since static typing isn't available to provide this information for you.
+
+## Documentation {#sec-documentation}
+
+If a PR changes how users interact with the package, check to see that it also updates any associated documentation.
+This includes both R package documentation and updating the [pkgdown](https://pkgdown.r-lib.org/) reference index if a new function is added.
+
+Occasionally it is useful to document *internal* functions that aren't seen by users.
+This can be useful for other developers to reference as they use common internal helpers.
+One example of this is `tidyr:::df_append()`, which includes this [internal function documentation](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1) marked with `@noRd`.
+
+It is generally also good practice to provide a news bullet in a `NEWS.md` file that is associated with the change.
+This is another place where providing the GitHub issue or PR number is useful, like:
+
+    * `my_function()` now checks that `x` is a numeric value (#565).
+
+If there isn't a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you need a GitHub PR number to link to, but you haven't opened the PR yet.
+One way to resolve this is to:
+
+-   Go ahead and open the PR without the commit changing the `NEWS.md` file.
+
+-   Add the news bullet and link to the now open PR.
+
+-   Push with a commit message like `NEWS bullet`.
+
+## Every Line {#every-line}
+
+In the general case, look at *every* line of code that you have been assigned to review.
+Some things like data files, generated code, or large data structures you can scan over sometimes, but don't scan over a human-written function or block of code and assume that what's inside of it is okay.
+Obviously some code deserves more careful scrutiny than other code---that's a judgment call that you have to make---but you should at least be sure that you *understand* what all the code is doing.
+
+If reviewing every line is too hard and is slowing down the review, then you should let the developer know and ask them to clarify it (possibly providing suggestions of your own, if possible).
+This also applies to code that you understand, but it took a long time for you to figure it out (or you had to run it locally to understand it).
+If you can't understand the code, it is likely that other reviewers won't be able to either!
+Taking a moment to have the developer clarify confusing sections of code will help future developers when it is modified further.
+
+If you understand the code but you don't feel qualified to do some part of the review, it is perfectly acceptable (and preferred!) that you let the author know, and suggest that they request a review from another developer who has more expertise in that area.
+
+## Context
+
+It is often helpful to look at the PR in a broad context.
+Usually the code review tool on GitHub will only show you a few lines of code around the parts that are being changed.
+Sometimes you have to look at the whole file to be sure that the change actually makes sense.
+For example, you might see only four new lines being added, but when you look at the whole file, you see those four lines are in a 50-line helper that now really needs to be broken up into smaller functions.
+
+It's also useful to think about the PR in the context of the system as a whole.
+Is this PR improving the code health of the system or is it making the whole system more complex, less tested, etc.?
+PRs should *always* maintain or improve the overall health of the codebase.
+Most systems become complex through many small changes that add up, so it's important to prevent even small complexities in new changes.
+
+Sometimes the timing of the PR isn't right.
+It is possible that the codebase may need restructuring before a PR can be accepted.
+You can generally recognize this when the PR has a large number of changes to parts of the codebase that are seemingly unrelated to the purpose of the PR itself.
+In those cases, it is often worth suggesting that the author submit a few smaller focused PRs first that prepare the codebase for the larger PR.
+This reduces the complexity of the larger PR, making it easier to understand and faster to review.
+
+## Compliments {#good-things}
+
+If you see something nice in the PR, tell the developer, especially when they addressed one of your comments in a great way.
+Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well.
+It's sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong.
+
+## Summary
+
+In doing a code review, you should make sure that:
+
+-   The code is well-designed.
+-   The functionality is an improvement for the users of the code.
+-   Any UI changes are sensible and well-structured.
+-   The code is only as complex as it has to be.
+-   The developer isn't implementing things they *might* need in the future but don't know they need now.
+-   Code has appropriate unit tests.
+-   Tests are well-designed and minimal.
+-   The developer used clear and consistent names.
+-   Comments are clear and useful, and mostly explain *why* instead of *what*.
+-   Code is appropriately documented.
+-   A news bullet has been added if applicable.
+-   The code conforms to our style guide.
