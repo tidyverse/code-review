@@ -20,7 +20,6 @@ book:
       - developer/descriptions.qmd
       - developer/small.qmd
       - developer/handling-comments.qmd
-    - emergencies.qmd
 
 format:
   html:
