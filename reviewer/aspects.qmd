@@ -69,7 +69,21 @@ In general, we also prefer longer names that fully describe the functionality ra
 
 Code comments are useful when they explain *why* some code exists, rather than *what* the code is doing.
 Useful comments contain information that can't possibly be in the code, like the reasoning behind a decision.
-One example of a good code comment is [this one](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/chop.R#L270-L275) which is part of code that powers `tidyr::unnest()`.
+One example of a good code comment is [this one](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/chop.R#L270-L275) which is part of code that powers `tidyr::unnest()`:
+
+    <snip>
+
+    col <- list_unchop(col, ptype = col_ptype)
+
+    if (is_null(col)) {
+      # This can happen when both of these are true:
+      # - `col` was an empty list(), or a list of all `NULL`s.
+      # - No ptype was specified for `col`, either by the user or by a list-of.
+      col <- unspecified(0L)
+    }
+
+    <snip>
+
 It describes the exact combination of inputs required for a very rare branch of code to run.
 Without the *context* provided by that comment, it can be a little difficult to know why that branch is there.
 Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like [these](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/tests/testthat/test-chop.R#L231-L249) in tidyr.
