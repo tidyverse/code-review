@@ -5,6 +5,9 @@ project:
 book:
   title: "Tidyverse code review principles"
   author: "Davis Vaughan"
+  repo-url: https://github.com/DavisVaughan/code-review
+  repo-branch: main
+  repo-actions: [edit, issue]
   chapters:
     - index.qmd
     - part: reviewer/index.qmd
