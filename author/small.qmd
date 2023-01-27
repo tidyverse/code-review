@@ -4,7 +4,10 @@
 
 Small, simple PRs are:
 
--   **Reviewed more [quickly](#sec-speed).** It's easier for a reviewer to find five minutes several times to review small PRs than to set aside a 30 minute block to review one large PR.
+-   **Reviewed more [quickly](#sec-speed).** It's easier for a reviewer to find 5-10 minutes several times to review small PRs than to set aside an hour long block to review one large PR.
+    Large PRs also have a negative compounding affect.
+    Reviewers don't enjoy getting assigned large PRs, and often push them off repeatedly in favor of working on other smaller PRs or more interesting features.
+    The result is that an hour long review turns into a 2-business-day long review because of *PR dread*.
 
 -   **Reviewed more thoroughly.** With large changes, reviewers and authors tend to get frustrated by large volumes of detailed commentary shifting back and forth---sometimes to the point where important points get missed or dropped.
 
