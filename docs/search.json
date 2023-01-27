@@ -291,7 +291,7 @@
     "href": "developer/index.html",
     "title": "How to author a pull request",
     "section": "",
-    "text": "The pages in this section contain best practices for developers going through code review. These guidelines should help you get through reviews faster and with higher-quality results. You don’t have to read them all, but they are intended to apply to every Google developer, and many people have found it helpful to read the whole set.\n\nWriting Good CL Descriptions\nSmall CLs\nHow to Handle Reviewer Comments\n\nSee also How to Do a Code Review, which gives detailed guidance for code reviewers."
+    "text": "The pages in this section contain best practices for developers authoring a pull request to be reviewed. These guidelines should help you get through reviews faster and with higher-quality results. You don’t have to read them all, but many people have found it helpful to read the whole set.\nThe other half of this guide is contained within How to review a pull request."
   },
   {
     "objectID": "developer/cl-descriptions.html#todo",

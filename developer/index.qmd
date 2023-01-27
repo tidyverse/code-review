@@ -1,11 +1,7 @@
 # How to author a pull request {#sec-author}
 
-The pages in this section contain best practices for developers going through code review.
+The pages in this section contain best practices for developers authoring a pull request to be reviewed.
 These guidelines should help you get through reviews faster and with higher-quality results.
-You don't have to read them all, but they are intended to apply to every Google developer, and many people have found it helpful to read the whole set.
+You don't have to read them all, but many people have found it helpful to read the whole set.
 
--   [Writing Good CL Descriptions](cl-descriptions.md)
--   [Small CLs](small-cls.md)
--   [How to Handle Reviewer Comments](handling-comments.md)
-
-See also [How to Do a Code Review](../reviewer/index.md), which gives detailed guidance for code reviewers.
+The other half of this guide is contained within [How to review a pull request](#sec-reviewer).
