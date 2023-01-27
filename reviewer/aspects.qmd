@@ -159,20 +159,3 @@ This reduces the complexity of the larger PR, making it easier to understand and
 If you see something nice in the PR, tell the developer, especially when they addressed one of your comments in a great way.
 Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well.
 It's sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong.
-
-## Summary
-
-In doing a code review, you should make sure that:
-
--   The code is well-designed.
--   The functionality is an improvement for the users of the code.
--   Any UI changes are sensible and well-structured.
--   The code is only as complex as it has to be.
--   The developer isn't implementing things they *might* need in the future but don't know they need now.
--   Code has appropriate unit tests.
--   Tests are well-designed and minimal.
--   The developer used clear and consistent names.
--   Comments are clear and useful, and mostly explain *why* instead of *what*.
--   Code is appropriately documented.
--   A news bullet has been added if applicable.
--   The code conforms to our style guide.
