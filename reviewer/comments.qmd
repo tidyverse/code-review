@@ -40,6 +40,17 @@ If you see things you like in the PR, comment on those too!
 Examples: developer cleaned up a messy algorithm, added exemplary test coverage, or you as the reviewer learned something from the PR.
 Just as with all comments, include why you liked something, further encouraging the developer to continue good practices.
 
+## GitHub suggestions
+
+For very small tweaks, like typos or additions to comments, GitHub provides a feature known as *suggestions*.
+As a reviewer, you can add suggestions using the workflow shown below, and the author can accept them directly in the GitHub UI and commit them into the PR (which can then pull locally to get everything up to date if they have more work to do).
+
+![](img/add-suggestion.png){fig-align="center" width="900"}
+
+![](img/write-suggestion.png){fig-align="center" width="900"}
+
+As a reviewer, you can add multiple suggestions and the author can *batch* multiple suggestions into a single commit.
+
 ## Label comment severity {#sec-label-comment-severity}
 
 Consider labeling the severity of your comments, differentiating required changes from guidelines or suggestions.
