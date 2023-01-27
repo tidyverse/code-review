@@ -41,7 +41,7 @@ Reviewers should be especially vigilant about over-engineering.
 Encourage developers to solve the problem they know needs to be solved *now*, not the problem that the developer speculates *might* need to be solved in the future.
 The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe.
 
-## Tests
+## Tests {#sec-tests}
 
 In general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test.
 If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:

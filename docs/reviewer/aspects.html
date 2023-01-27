@@ -148,12 +148,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/cl-descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing good CL descriptions</span></a>
+  <a href="../developer/descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/small-cls.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small CLs</span></a>
+  <a href="../developer/small.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -180,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-design" id="toc-sec-design" class="nav-link active" data-scroll-target="#sec-design"><span class="toc-section-number">2.1</span>  Design</a></li>
   <li><a href="#functionality" id="toc-functionality" class="nav-link" data-scroll-target="#functionality"><span class="toc-section-number">2.2</span>  Functionality</a></li>
   <li><a href="#complexity" id="toc-complexity" class="nav-link" data-scroll-target="#complexity"><span class="toc-section-number">2.3</span>  Complexity</a></li>
-  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests"><span class="toc-section-number">2.4</span>  Tests</a></li>
+  <li><a href="#sec-tests" id="toc-sec-tests" class="nav-link" data-scroll-target="#sec-tests"><span class="toc-section-number">2.4</span>  Tests</a></li>
   <li><a href="#sec-naming" id="toc-sec-naming" class="nav-link" data-scroll-target="#sec-naming"><span class="toc-section-number">2.5</span>  Naming</a></li>
   <li><a href="#sec-code-comments" id="toc-sec-code-comments" class="nav-link" data-scroll-target="#sec-code-comments"><span class="toc-section-number">2.6</span>  Comments</a></li>
   <li><a href="#style" id="toc-style" class="nav-link" data-scroll-target="#style"><span class="toc-section-number">2.7</span>  Style</a></li>
@@ -230,8 +230,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Complexity can also mean that developers are likely to introduce bugs when they try to call or modify that code in the future.</p>
 <p>A particular type of complexity is <strong>over-engineering</strong>, where developers have made the code more generic than it needs to be, or added functionality that isn’t presently needed by the system. Reviewers should be especially vigilant about over-engineering. Encourage developers to solve the problem they know needs to be solved <em>now</em>, not the problem that the developer speculates <em>might</em> need to be solved in the future. The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe.</p>
 </section>
-<section id="tests" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="tests"><span class="header-section-number">2.4</span> Tests</h2>
+<section id="sec-tests" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-tests"><span class="header-section-number">2.4</span> Tests</h2>
 <p>In general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test. If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:</p>
 <pre><code>test_that("`my_function()` throws an error when given strings (#553)")</code></pre>
 <p>Recent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.</p>

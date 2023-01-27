@@ -18,7 +18,7 @@ book:
     - part: developer/index.qmd
       chapters:
       - developer/descriptions.qmd
-      - developer/small-cls.qmd
+      - developer/small.qmd
       - developer/handling-comments.qmd
     - emergencies.qmd
 
