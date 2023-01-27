@@ -1,0 +1,148 @@
+# Writing PR descriptions {#sec-descriptions}
+
+When you submit a pull request through GitHub, you are able to include a PR title and a PR description detailing what the pull request is about.
+Leaving a detailed and useful description is a vital part of ensuring that your reviewer has a successful experience.
+There are three big reasons why writing a comprehensive PR description is useful:
+
+-   You have the opportunity to orient and prepare your reviewer for your PR before they've seen any code.
+
+-   Forcing yourself to describe (in words) how your PR works is actually a great way to check that it is implemented correctly.
+    If you are having trouble describing the PR, it probably needs to be broken down into simpler pieces.
+
+-   You can take advantage of GitHub's linking features, including auto-closing issues and referencing related issues.
+
+Future developers will search for your PR based on its description.
+Someone in the future might be looking for your change because of a faint memory of its relevance but without the specifics handy.
+If all the important information is in the code and not the description, it's going to be a lot harder for them to locate your PR.
+
+## Orienting your reviewer {#sec-orienting}
+
+### Title
+
+The title of your pull request should be a very short summary of *what* is being done.
+Ideally it should be shorter than 72 characters, because this is what appears in version control history summaries and that is the typical limit before the title is truncated.
+It should be informative enough that future code searchers don't have to read your PR or its whole description to understand what your PR actually *did*.
+That is, the first line should stand alone, allowing readers to skim through code history much faster.
+
+### Body {#sec-body}
+
+The body of a PR description should contain the context a reviewer needs to get into a mental state where they can understand your PR.
+It might include:
+
+-   A brief description of the problem being solved
+
+-   Possible shortcomings of the approach being used
+
+-   Links to other relevant issues (using GitHub [features](#sec-github-features))
+
+-   A before/after [reprex](https://reprex.tidyverse.org/) that shows what the behavior used to be vs the behavior in this PR
+
+-   A before/after benchmark (using the [bench](https://bench.r-lib.org/) package)
+
+The description should give your reviewer an idea of the code they are about to see, even before they've looked at it.
+By outlining any potential shortcomings, you give the reviewer ideas to keep in mind while they look over your code.
+
+Bad descriptions typically don't contain enough context about the problem the PR is trying to solve.
+"Fix bug" is an inadequate PR description.
+What bug?
+What did you do to fix it?
+Other similarly bad descriptions include:
+
+-   "Add patch."
+-   "Moving code from A to B."
+-   "Phase 1."
+-   "Add convenience functions."
+-   "kill weird URLs."
+
+Here are some examples of good descriptions.
+
+#### Functionality change
+
+> Title: Remove size limit on RPC server message `freelist`
+>
+> Body: Servers like FizzBuzz have very large messages and would benefit from reuse.
+> This PR makes the `freelist` larger, and adds a routine that frees the `freelist` entries slowly over time, so that idle servers eventually release all `freelist` entries.
+
+The title describes what the PR actually does.
+The rest of the description talks about the problem being solved, why this is a good solution, and a bit more information about the specific implementation.
+
+#### Refactoring
+
+> Title: Construct a `Task` with a `TimeKeeper` to use its `TimeStr` and `Now` methods
+>
+> Body: This PR adds a `Now` method to `Task`, so the `borglet()` getter method can be removed (which was only used by `OOMCandidate` to call borglet's `Now` method).
+> This replaces the methods on `Borglet` that delegate to a `TimeKeeper`.
+>
+> Allowing `Task`s to supply `Now` is a step toward eliminating the dependency on `Borglet`.
+> Eventually, collaborators that depend on getting `Now` from the `Task` should be changed to use a `TimeKeeper` directly, but this refactoring will happen in small steps.
+>
+> Continuing the long-range goal of refactoring the Borglet Hierarchy.
+
+The first line describes what the PR does and how this is a change from the past.
+The rest of the description talks about the specific implementation, the context of the PR, that the solution isn't ideal, and possible future direction.
+It also explains *why* this change is being made.
+
+#### Performance improvement
+
+This real [vctrs PR](https://github.com/r-lib/vctrs/pull/1760) contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package.
+If you look at the changed lines of code, there is really only 1 changed line:
+
+    const double load_adjusted_size = x_size / 0.77;
+
+Changed to:
+
+    const double load_adjusted_size = x_size / 0.50;
+
+This is an example where even though the number of lines of changed code is very small, the PR itself required a large amount of context and justification.
+This context doesn't belong inside the codebase, but is important for the reviewer as they try to understand why this change was made and whether or not it was the right decision.
+The PR mentions:
+
+-   Other sources of information justifying the change
+
+-   Before/after benchmarks showing improved performance
+
+-   Cases where the performance *doesn't* improve, and context about why
+
+## GitHub features {#sec-github-features}
+
+GitHub includes a number of tools to make authoring PRs a little more streamlined.
+Using these tools is good practice at Posit.
+
+### Closes
+
+In the description [body](#sec-body), it is useful to mention what issue is *closed* or *fixed* by this PR.
+Specifically, if you mention `Closes #545` or `Fixes #545` in the body of your PR description, then GitHub will automatically close that issue when the PR is merged.
+This also helps provide context to both the reviewer and future developers.
+
+### Commenting on your own PR
+
+GitHub allows the PR author to *also* be their own reviewer.
+If you open the `Files changed` menu on GitHub, you can add comments on sections of code that you've written, like this:
+
+![](img/leaving-a-comment.png){fig-align="center" width="900"}
+
+Once you've added your "review," you can then `Comment` on the PR:
+
+![](img/finish-review.png){fig-align="center" width="900"}
+
+You won't be able to `Approve`, as you can't approve your own PR.
+
+Commenting on your own PR is a great way to provide scoped comments inline with the code that they are related to.
+Comments like this are also great because they start a thread where a reviewer can easily respond to that point without cluttering the rest of the PR.
+Once the comment has been addressed, it can optionally be marked as *resolved* by the PR author and collapsed.
+
+PR comments like this should be reserved for ideas that don't belong in the codebase itself (i.e. as a code comment).
+They typically call the reviewer's attention to something in the PR that they might otherwise miss, or they call out a part of the code that the PR author is a little uncertain about.
+
+Here are a few real examples of employees at Posit commenting on our own PRs:
+
+-   [Implement `dplyr::cross_join()`](https://github.com/tidyverse/dplyr/pull/6612)
+
+-   [Refactoring classes in readxl](https://github.com/tidyverse/readxl/pull/683)
+
+## Review before submitting
+
+PRs can undergo significant change during review.
+It can be worthwhile to review a PR description before submitting the PR, to ensure that the description still reflects what the PR does and that it is grammatically correct.
+
+If your codebase uses continuous integration to also run checks on your PR, you should also ensure that those are all passing before requesting a review.

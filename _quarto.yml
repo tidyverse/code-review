@@ -17,7 +17,7 @@ book:
       - reviewer/pushback.qmd
     - part: developer/index.qmd
       chapters:
-      - developer/cl-descriptions.qmd
+      - developer/descriptions.qmd
       - developer/small-cls.qmd
       - developer/handling-comments.qmd
     - emergencies.qmd
