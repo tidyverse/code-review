@@ -51,7 +51,7 @@ Improving the [speed](#sec-speed) of your code reviews usually causes these comp
 Sometimes it can take months for these complaints to fade away, but eventually developers tend to see the value of strict code reviews as they see what great code they help generate.
 Sometimes the loudest protesters even become your strongest supporters once something happens that causes them to really see the value you're adding by being strict.
 
-## Resolving conflicts {#conflicts}
+## Resolving conflicts {#sec-conflicts}
 
 In any conflict on a code review, the first step should always be for the author and reviewer to try to come to consensus, based on the contents of this guide.
 

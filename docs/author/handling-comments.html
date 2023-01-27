@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse code review principles - 9&nbsp; How to handle reviewer comments</title>
+<title>Tidyverse code review principles - 9&nbsp; Handling reviewer comments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling reviewer comments</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/handling-comments.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
+  <a href="../author/handling-comments.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling reviewer comments</span></a>
   </div>
 </li>
       </ul>
@@ -171,11 +171,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#personal" id="toc-personal" class="nav-link active" data-scroll-target="#personal"><span class="toc-section-number">9.1</span>  Don’t Take it Personally</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code"><span class="toc-section-number">9.2</span>  Fix the Code</a></li>
-  <li><a href="#think" id="toc-think" class="nav-link" data-scroll-target="#think"><span class="toc-section-number">9.3</span>  Think Collaboratively</a></li>
-  <li><a href="#who-resolves-github-comments" id="toc-who-resolves-github-comments" class="nav-link" data-scroll-target="#who-resolves-github-comments"><span class="toc-section-number">9.4</span>  Who “resolves” GitHub comments?</a></li>
-  <li><a href="#conflicts" id="toc-conflicts" class="nav-link" data-scroll-target="#conflicts"><span class="toc-section-number">9.5</span>  Resolving Conflicts</a></li>
+  <li><a href="#sec-personal" id="toc-sec-personal" class="nav-link active" data-scroll-target="#sec-personal"><span class="toc-section-number">9.1</span>  Don’t take it personally</a></li>
+  <li><a href="#sec-fix-code" id="toc-sec-fix-code" class="nav-link" data-scroll-target="#sec-fix-code"><span class="toc-section-number">9.2</span>  Fix the code</a></li>
+  <li><a href="#sec-think-collaboratively" id="toc-sec-think-collaboratively" class="nav-link" data-scroll-target="#sec-think-collaboratively"><span class="toc-section-number">9.3</span>  Think collaboratively</a></li>
+  <li><a href="#sec-resolve-comments" id="toc-sec-resolve-comments" class="nav-link" data-scroll-target="#sec-resolve-comments"><span class="toc-section-number">9.4</span>  Who “resolves” GitHub comments?</a></li>
+  <li><a href="#resolving-conflicts" id="toc-resolving-conflicts" class="nav-link" data-scroll-target="#resolving-conflicts"><span class="toc-section-number">9.5</span>  Resolving conflicts</a></li>
   </ul>
 </nav>
     </div>
@@ -184,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling reviewer comments</span></h1>
 </div>
 
 
@@ -199,37 +199,47 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>When you’ve sent a CL out for review, it’s likely that your reviewer will respond with several comments on your CL. Here are some useful things to know about handling reviewer comments.</p>
-<section id="personal" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="personal"><span class="header-section-number">9.1</span> Don’t Take it Personally</h2>
-<p>The goal of review is to maintain the quality of our codebase and our products. When a reviewer provides a critique of your code, think of it as their attempt to help you, the codebase, and Google, rather than as a personal attack on you or your abilities.</p>
+<p>When you’ve sent a PR out for review, it’s likely that your reviewer will respond with several comments on your PR. Here are some useful things to know about handling reviewer comments.</p>
+<section id="sec-personal" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="sec-personal"><span class="header-section-number">9.1</span> Don’t take it personally</h2>
+<p>The goal of review is to maintain the quality of our packages. When a reviewer provides a critique of your code, think of it as their attempt to help you, the codebase, and Posit, rather than as a personal attack on you or your abilities. Most of the time, the reviewer is trying to help you grow as a developer.</p>
 <p>Sometimes reviewers feel frustrated and they express that frustration in their comments. This isn’t a good practice for reviewers, but as a developer you should be prepared for this. Ask yourself, “What is the constructive thing that the reviewer is trying to communicate to me?” and then operate as though that’s what they actually said.</p>
 <p><strong>Never respond in anger to code review comments.</strong> That is a serious breach of professional etiquette that will live forever in the code review tool. If you are too angry or annoyed to respond kindly, then walk away from your computer for a while, or work on something else until you feel calm enough to reply politely.</p>
-<p>In general, if a reviewer isn’t providing feedback in a way that’s constructive and polite, explain this to them in person. If you can’t talk to them in person or on a video call, then send them a private email. Explain to them in a kind way what you don’t like and what you’d like them to do differently. If they also respond in a non-constructive way to this private discussion, or it doesn’t have the intended effect, then escalate to your manager as appropriate.</p>
+<p>In general, if a reviewer isn’t providing feedback in a way that’s constructive and polite, explain this to them in person. If you can’t talk to them in person or on a video call, then send them a private message. Explain to them in a kind way what you don’t like and what you’d like them to do differently. If they also respond in a non-constructive way to this private discussion, or it doesn’t have the intended effect, then escalate internally as appropriate.</p>
 </section>
-<section id="code" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="code"><span class="header-section-number">9.2</span> Fix the Code</h2>
-<p>If a reviewer says that they don’t understand something in your code, your first response should be to clarify the code itself. If the code can’t be clarified, add a code comment that explains why the code is there. If a comment seems pointless, only then should your response be an explanation in the code review tool.</p>
+<section id="sec-fix-code" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="sec-fix-code"><span class="header-section-number">9.2</span> Fix the code</h2>
+<p>If a reviewer says that they don’t understand something in your code, your first response should be to clarify the code itself. If the code can’t be clarified, add a code comment that explains why the code is there. If a comment seems pointless, only then should your only response be an explanation in the code review tool.</p>
 <p>If a reviewer didn’t understand some piece of your code, it’s likely other future readers of the code won’t understand either. Writing a response in the code review tool doesn’t help future code readers, but clarifying your code or adding code comments does help them.</p>
 </section>
-<section id="think" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="think"><span class="header-section-number">9.3</span> Think Collaboratively</h2>
-<p>Writing a CL can take a lot of work. It’s often really satisfying to finally send one out for review, feel like it’s done, and be pretty sure that no further work is needed. It can be frustrating to receive comments asking for changes, especially if you don’t agree with them.</p>
-<p>At times like this, take a moment to step back and consider if the reviewer is providing valuable feedback that will help the codebase and Google. Your first question to yourself should always be, “Do I understand what the reviewer is asking for?”</p>
+<section id="sec-think-collaboratively" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="sec-think-collaboratively"><span class="header-section-number">9.3</span> Think collaboratively</h2>
+<p>Writing a PR can take a lot of work. It’s often really satisfying to finally send one out for review, feel like it’s done, and be pretty sure that no further work is needed. It can be frustrating to receive comments asking for changes, especially if you don’t agree with them.</p>
+<p>At times like this, take a moment to step back and consider if the reviewer is providing valuable feedback that will improve the package. Your first question to yourself should always be, “Do I understand what the reviewer is asking for?”</p>
 <p>If you can’t answer that question, ask the reviewer for clarification.</p>
-<p>And then, if you understand the comments but disagree with them, it’s important to think collaboratively, not combatively or defensively:</p>
+<p>If you understand the comments but disagree with them, it’s important to think collaboratively, not combatively or defensively:</p>
+<blockquote class="blockquote">
 <p>Bad: “No, I’m not going to do that.”</p>
-<p>Good: “I went with X because of [these pros/cons] with [these tradeoffs]. My understanding is that using Y would be worse because of [these reasons]. Are you suggesting that Y better serves the original tradeoffs, that we should weigh the tradeoffs differently, or something else?”</p>
-<p>Remember, <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/cr_respect.md"><strong>courtesy and respect</strong></a> <strong>should always be a first priority</strong>. If you disagree with the reviewer, find ways to collaborate: ask for clarifications, discuss pros/cons, and provide explanations of why your method of doing things is better for the codebase, users, and/or Google.</p>
-<p>Sometimes, you might know something about the users, codebase, or CL that the reviewer doesn’t know. <a href="#code">Fix the code</a> where appropriate, and engage your reviewer in discussion, including giving them more context. Usually you can come to some consensus between yourself and the reviewer based on technical facts.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Good: “I went with X because of [these pros/cons] with [these tradeoffs]. My understanding is that using Y would be worse because of [these reasons]. Can you help me understand if there is something that I am missing?”</p>
+</blockquote>
+<p>Remember, <strong>courtesy and respect</strong> <strong>should always be a first priority</strong>. If you disagree with the reviewer, find ways to collaborate: ask for clarifications, discuss pros/cons, and provide explanations of why your method of doing things is better for the codebase and for users.</p>
+<p>Sometimes, you might know something about the users, codebase, or PR that the reviewer doesn’t know. <a href="#sec-fix-code">Fix the code</a> where appropriate, and engage your reviewer in discussion, including giving them more context. Usually you can come to some consensus between yourself and the reviewer based on technical facts.</p>
 </section>
-<section id="who-resolves-github-comments" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="who-resolves-github-comments"><span class="header-section-number">9.4</span> Who “resolves” GitHub comments?</h2>
-<p>TODO something about the author resolving comments if they immediately address them, typically with a thumbs up emoji. Leave it unresolved if it requires another round of discussion. Show a picture of the resolve menu on github.</p>
+<section id="sec-resolve-comments" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sec-resolve-comments"><span class="header-section-number">9.4</span> Who “resolves” GitHub comments?</h2>
+<p>On GitHub, there is button for <code>Resolve conversation</code> that appears under a comment thread:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/resolve-conversation.png" class="img-fluid figure-img" width="900"></p>
+</figure>
+</div>
+<p>This button will collapse the conversation, essentially marking the comment as “completed.” Both the author and reviewer see this button, so who’s job is it to resolve? At Posit, we typically expect the PR author to use the resolve button. One typical workflow is to add a thumbs-up emoji or a comment saying that you have handled their comment, and to then resolve the conversation. If you have a question about their comment that requires further input, then add a comment of your own and leave the thread open. Closing resolved threads can reduce the overall noise in the PR, especially if it goes through multiple rounds of review.</p>
 </section>
-<section id="conflicts" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="conflicts"><span class="header-section-number">9.5</span> Resolving Conflicts</h2>
-<p>Your first step in resolving conflicts should always be to try to come to consensus with your reviewer. If you can’t achieve consensus, see <a href="../reviewer/standard.md">The Standard of Code Review</a>, which gives principles to follow in such a situation.</p>
+<section id="resolving-conflicts" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="resolving-conflicts"><span class="header-section-number">9.5</span> Resolving conflicts</h2>
+<p>If you are having difficulty coming to an agreement with your reviewer, try the advice in the reviewer section on <a href="../reviewer/pushback.html#sec-conflicts">conflicts</a>.</p>
 
 
 </section>
