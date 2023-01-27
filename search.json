@@ -126,13 +126,6 @@
     "text": "2.12 Compliments\nIf you see something nice in the PR, tell the developer, especially when they addressed one of your comments in a great way. Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well. It’s sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong."
   },
   {
-    "objectID": "reviewer/aspects.html#summary",
-    "href": "reviewer/aspects.html#summary",
-    "title": "2  Aspects of a review",
-    "section": "2.13 Summary",
-    "text": "2.13 Summary\nIn doing a code review, you should make sure that:\n\nThe code is well-designed.\nThe functionality is an improvement for the users of the code.\nAny UI changes are sensible and well-structured.\nThe code is only as complex as it has to be.\nThe developer isn’t implementing things they might need in the future but don’t know they need now.\nCode has appropriate unit tests.\nTests are well-designed and minimal.\nThe developer used clear and consistent names.\nComments are clear and useful, and mostly explain why instead of what.\nCode is appropriately documented.\nA news bullet has been added if applicable.\nThe code conforms to our style guide."
-  },
-  {
     "objectID": "reviewer/navigate.html#summary",
     "href": "reviewer/navigate.html#summary",
     "title": "3  Navigating a PR in review",
