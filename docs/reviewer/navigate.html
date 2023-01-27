@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../developer/index.html" class="sidebar-item-text sidebar-link">How to author a pull request</a>
+            <a href="../author/index.html" class="sidebar-item-text sidebar-link">How to author a pull request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -148,17 +148,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
+  <a href="../author/descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/small.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></a>
+  <a href="../author/small.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
+  <a href="../author/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
   </div>
 </li>
       </ul>
@@ -210,13 +210,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="sec-broad" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="sec-broad"><span class="header-section-number">3.2</span> Take a broad view of the change</h2>
-<p>Before looking at any code, you should familiarize yourself with the GitHub issue / bug report that the PR is resolving, and read over the PR <a href="../developer/descriptions.html">description</a> to better orient yourself. Does this change even make sense? You can save everyone time if the answer is <em>no</em> by stopping the review there and responding with an explanation of why the change isn’t necessary. Ideally, for <em>internal PRs</em>, you will have discussed this ahead of time to avoid the author putting in unnecessary work (and feeling bad if their work is rejected). For <em>external PRs</em>, occasionally you do have to reject PRs from community members if they don’t fit the overall <a href="aspects.html#sec-design">design</a> of the codebase. You should do this nicely, thanking them for their contribution, and requesting that next time they open an issue first and ask if we’d accept a PR for that issue, which would have saved them time if we had an opportunity to preemptively say no.</p>
+<p>Before looking at any code, you should familiarize yourself with the GitHub issue / bug report that the PR is resolving, and read over the PR <a href="../author/descriptions.html">description</a> to better orient yourself. Does this change even make sense? You can save everyone time if the answer is <em>no</em> by stopping the review there and responding with an explanation of why the change isn’t necessary. Ideally, for <em>internal PRs</em>, you will have discussed this ahead of time to avoid the author putting in unnecessary work (and feeling bad if their work is rejected). For <em>external PRs</em>, occasionally you do have to reject PRs from community members if they don’t fit the overall <a href="aspects.html#sec-design">design</a> of the codebase. You should do this nicely, thanking them for their contribution, and requesting that next time they open an issue first and ask if we’d accept a PR for that issue, which would have saved them time if we had an opportunity to preemptively say no.</p>
 <p>For example, you might say: “Looks like you put some good work into this, thanks! However, we’re actually going in the direction of removing the <code>foo()</code> helper that you’re modifying here, and so we don’t want to make any new modifications to it right now. In the future, it is best if you open an issue first to highlight the bug or feature and ask if we’d accept a pull request for it at this time.”</p>
 <p>If you get more than a few PRs that represent changes you don’t want to make, you should consider re-working your team’s development process or the posted process for external contributors so that there is more communication before PRs are written. It’s better to tell people “no” before they’ve done a ton of work that now has to be thrown away or drastically re-written.</p>
 </section>
 <section id="examine-the-main-parts-of-the-pr" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="examine-the-main-parts-of-the-pr"><span class="header-section-number">3.3</span> Examine the main parts of the PR</h2>
-<p>Find the file or files that are the “main” part of this PR. Often, there is one file that has the largest number of logical changes. Ideally, the PR description will point you to this if there is any ambiguity. Look at these major parts first. This helps give context to all of the smaller parts of the PR, and generally accelerates doing the code review. If the PR is too large for you to figure out which parts are the major parts, ask the developer what you should look at first, or ask them to <a href="../developer/small.html">split up the PR into multiple PRs</a>.</p>
+<p>Find the file or files that are the “main” part of this PR. Often, there is one file that has the largest number of logical changes. Ideally, the PR description will point you to this if there is any ambiguity. Look at these major parts first. This helps give context to all of the smaller parts of the PR, and generally accelerates doing the code review. If the PR is too large for you to figure out which parts are the major parts, ask the developer what you should look at first, or ask them to <a href="../author/small.html">split up the PR into multiple PRs</a>.</p>
 <p>If you see some major design problems with this part of the PR, you should send those comments immediately, even if you don’t have time to review the rest of the PR right now. In fact, reviewing the rest of the PR might be a waste of time, because if the design problems are significant enough, a lot of the other code under review is going to disappear and not matter anyway.</p>
 <p>This is also a great time to use <code>usethis::pr_fetch()</code> to pull the PR down locally and try it out. Chances are that the main part of the PR has to do with the main UI changes, so this is a nice time to check that the changes in the PR line up with the output you get from running the code locally.</p>
 </section>

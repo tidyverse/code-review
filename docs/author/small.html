@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse code review principles - How to author a pull request</title>
+<title>Tidyverse code review principles - 8&nbsp; Small PRs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../developer/descriptions.html" rel="next">
-<link href="../reviewer/pushback.html" rel="prev">
+<link href="../author/handling-comments.html" rel="next">
+<link href="../author/descriptions.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">How to author a pull request</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../developer/index.html" class="sidebar-item-text sidebar-link active">How to author a pull request</a>
+            <a href="../author/index.html" class="sidebar-item-text sidebar-link">How to author a pull request</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -148,17 +148,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
+  <a href="../author/descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/small.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></a>
+  <a href="../author/small.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../developer/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
+  <a href="../author/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></a>
   </div>
 </li>
       </ul>
@@ -168,14 +168,24 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-why" id="toc-sec-why" class="nav-link active" data-scroll-target="#sec-why"><span class="toc-section-number">8.1</span>  Why write small PRs?</a></li>
+  <li><a href="#sec-what-is-small" id="toc-sec-what-is-small" class="nav-link" data-scroll-target="#sec-what-is-small"><span class="toc-section-number">8.2</span>  What is small?</a></li>
+  <li><a href="#sec-refactoring" id="toc-sec-refactoring" class="nav-link" data-scroll-target="#sec-refactoring"><span class="toc-section-number">8.3</span>  Separate out refactorings</a></li>
+  <li><a href="#sec-test-code" id="toc-sec-test-code" class="nav-link" data-scroll-target="#sec-test-code"><span class="toc-section-number">8.4</span>  Add tests</a></li>
+  <li><a href="#sec-large-prs" id="toc-sec-large-prs" class="nav-link" data-scroll-target="#sec-large-prs"><span class="toc-section-number">8.5</span>  Large PRs</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-author" class="quarto-section-identifier d-none d-lg-block">How to author a pull request</span></h1>
+<h1 class="title"><span id="sec-small" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></span></h1>
 </div>
 
 
@@ -190,10 +200,56 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The pages in this section contain best practices for developers authoring a pull request to be reviewed. These guidelines should help you get through reviews faster and with higher-quality results. You don’t have to read them all, but many people have found it helpful to read the whole set.</p>
-<p>The other half of this guide is contained within <a href="../reviewer/index.html">How to review a pull request</a>.</p>
+<section id="sec-why" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="sec-why"><span class="header-section-number">8.1</span> Why write small PRs?</h2>
+<p>Small, simple PRs are:</p>
+<ul>
+<li><p><strong>Reviewed more <a href="../reviewer/speed.html">quickly</a>.</strong> It’s easier for a reviewer to find five minutes several times to review small PRs than to set aside a 30 minute block to review one large PR.</p></li>
+<li><p><strong>Reviewed more thoroughly.</strong> With large changes, reviewers and authors tend to get frustrated by large volumes of detailed commentary shifting back and forth—sometimes to the point where important points get missed or dropped.</p></li>
+<li><p><strong>Less likely to introduce bugs.</strong> Since you’re making fewer changes, it’s easier for you and your reviewer to reason effectively about the impact of the PR and see if a bug has been introduced.</p></li>
+<li><p><strong>Less wasted work if they are rejected.</strong> If you write a huge PR and then your reviewer says that the overall direction is wrong, you’ve wasted a lot of work.</p></li>
+<li><p><strong>Easier to merge.</strong> Working on a large PR takes a long time, so you will have lots of conflicts when you merge.</p></li>
+<li><p><strong>Easier to design well.</strong> It’s a lot easier to polish the design and code health of a small change than it is to refine all the details of a large change.</p></li>
+<li><p><strong>Less blocking on reviews.</strong> Sending self-contained portions of your overall change allows you to continue coding while you wait for your current PR in review.</p></li>
+</ul>
+<p>Note that <strong>reviewers have discretion to reject your change outright for the sole reason of it being too large.</strong> Usually they will thank you for your contribution but request that you somehow make it into a series of smaller changes. It can be a lot of work to split up a change after you’ve already written it, or require lots of time arguing about why the reviewer should accept your large change. It’s easier to just write small PRs in the first place.</p>
+</section>
+<section id="sec-what-is-small" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="sec-what-is-small"><span class="header-section-number">8.2</span> What is small?</h2>
+<p>In general, the right size for a PR is <strong>one self-contained change</strong>. This means that:</p>
+<ul>
+<li>The PR makes a minimal change that addresses <strong>just one thing</strong>. This is sometimes just one part of a feature, rather than a whole feature at once. In general it’s better to err on the side of writing PRs that are too small vs.&nbsp;PRs that are too large. Work with your reviewer to find out what an acceptable size is.</li>
+<li>Everything the reviewer needs to understand the PR is in the PR, the PR’s description, the existing codebase, or a PR they’ve already reviewed.</li>
+<li>The system will continue to work well for its users and for the developers after the PR is checked in.</li>
+<li>The PR is not so small that its implications are difficult to understand. If you add a new function, you should include a usage of the function in the same PR so that reviewers can better understand how the function will be used.</li>
+</ul>
+<p>There are no hard and fast rules about how large is “too large.” 100 lines is usually a reasonable size for a PR, and 1000 lines is usually too large, but it’s up to the judgment of your reviewer. The number of files that a change is spread across also affects its “size.” A 200-line change in one file might be okay, but spread across 50 files it would usually be too large.</p>
+<p>Keep in mind that although you have been intimately involved with your code from the moment you started to write it, the reviewer often has no context. What seems like an acceptably-sized PR to you might be overwhelming to your reviewer. When in doubt, write PRs that are smaller than you think you need to write. Reviewers rarely complain about getting PRs that are too small.</p>
+</section>
+<section id="sec-refactoring" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="sec-refactoring"><span class="header-section-number">8.3</span> Separate out refactorings</h2>
+<p>It’s usually best to do refactorings in a separate PR from feature changes or bug fixes. For example, moving and renaming a function should be in a different PR from fixing a bug in that function. It is much easier for reviewers to understand the changes introduced by each PR when they are separate. It is typically also easier for git to track that you have simply moved a function if you don’t make any behavioral changes in it.</p>
+<p>Small cleanups such as fixing a local variable name can be included inside of a feature change or bug fix PR, though. You can also include small changes to documentation related to code you are touching. It’s up to the judgment of developers and reviewers to decide when a refactoring is so large that it will make the review more difficult if included in your current PR.</p>
+</section>
+<section id="sec-test-code" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="sec-test-code"><span class="header-section-number">8.4</span> Add tests</h2>
+<p>PRs should include related <a href="../reviewer/aspects.html#sec-tests">test code</a>. Remember that smallness here refers the conceptual idea that the PR should be focused and is not a simplistic function of line count.</p>
+<p>A PR that adds or changes logic should be accompanied by new or updated tests for the new behavior. Pure refactoring PRs (that aren’t intended to change behavior) should also be covered by tests. If tests for the code you are refactoring don’t exist, you should add them in a separate PR before doing the refactoring. This gives you a concrete way to validate that the behavior is unchanged before and after the refactoring.</p>
+</section>
+<section id="sec-large-prs" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="sec-large-prs"><span class="header-section-number">8.5</span> Large PRs</h2>
+<p>There are a few situations in which large changes aren’t as bad:</p>
+<ul>
+<li>You can usually count deletion of an entire file as being just one line of change, because it doesn’t take the reviewer very long to review.</li>
+<li>Sometimes a large PR has been generated by an automatic refactoring tool that you trust completely, and the reviewer’s job is just to verify and say that they really do want the change. These PRs can be larger, although some of the caveats from above (such as merging and testing) still apply.</li>
+</ul>
+<p>Sometimes you will encounter situations not captured by the above points where it seems like your PR <em>has</em> to be large. This is very rarely true. Authors who practice writing small PRs can almost always find a way to decompose functionality into a series of small changes.</p>
+<p>Before writing a large PR, consider whether preceding it with a refactoring-only PR could pave the way for a cleaner implementation. Talk to your teammates and see if anybody has thoughts on how to implement the functionality in small PRs instead.</p>
+<p>If you discover a new bug while working on your PR, resisting the urge to tackle it in that PR can help your keep your PR focused and <a href="#sec-what-is-small">small</a>. Instead, open an issue to track the bug and address it in another PR.</p>
+<p>If all of these options fail (which should be extremely rare) then get consent from your reviewers in advance to review a large PR, so they are warned about what is coming. In this situation, expect to be going through the review process for a long time, be vigilant about not introducing bugs, and be extra diligent about writing tests.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -331,13 +387,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reviewer/pushback.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback</span></span>
+      <a href="../author/descriptions.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../developer/descriptions.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../author/handling-comments.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How to handle reviewer comments</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

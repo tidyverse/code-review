@@ -15,11 +15,11 @@ book:
       - reviewer/speed.qmd
       - reviewer/comments.qmd
       - reviewer/pushback.qmd
-    - part: developer/index.qmd
+    - part: author/index.qmd
       chapters:
-      - developer/descriptions.qmd
-      - developer/small.qmd
-      - developer/handling-comments.qmd
+      - author/descriptions.qmd
+      - author/small.qmd
+      - author/handling-comments.qmd
 
 format:
   html:
