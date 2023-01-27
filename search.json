@@ -315,6 +315,13 @@
     "text": "7.3 Review before submitting\nPRs can undergo significant change during review. It can be worthwhile to review a PR description before submitting the PR, to ensure that the description still reflects what the PR does and that it is grammatically correct.\nIf your codebase uses continuous integration to also run checks on your PR, you should also ensure that those are all passing before requesting a review."
   },
   {
+    "objectID": "author/descriptions.html#draft-prs",
+    "href": "author/descriptions.html#draft-prs",
+    "title": "7  Writing PR descriptions",
+    "section": "7.4 Draft PRs",
+    "text": "7.4 Draft PRs\nIf you aren’t quite ready to submit your PR for a full review, but still want to have it up on GitHub (for CI purposes, perhaps), then you can open a Draft PR. When a PR is in draft form, this is a signal to your collaborators that they don’t need to worry themselves with that PR yet.\nA draft PR is also useful if you want to park a proof of concept somewhere, knowing that you will come back and clean it up in the future."
+  },
+  {
     "objectID": "author/small.html#sec-why",
     "href": "author/small.html#sec-why",
     "title": "8  Small PRs",
