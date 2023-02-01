@@ -12,7 +12,7 @@ When code reviews are slow, several things happen:
 -   **The velocity of the team as a whole is decreased.** Yes, the individual who doesn't respond quickly to the review gets other work done.
     However, new features and bug fixes for the rest of the team are delayed by days, weeks, or months as each PR waits for review.
 
--   **Code health can be impacted.** When reviews are slow, developers are actually incentivized to submit *less* PRs and to make each one *larger*.
+-   **Code health can be impacted.** When reviews are slow, developers are actually incentivized to submit *fewer* PRs and to make each one *larger*.
     If you think that it is going to take days to get a single small change reviewed, you are going to be pressured to include *one more thing* in your PR just to avoid another multi-day review process.
     To ensure that each PR only improves the health of the codebase, code review must be fast enough that developers don't feel hamstrung by it.
 
