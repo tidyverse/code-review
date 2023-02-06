@@ -82,7 +82,7 @@ One example of a good code comment is [this one](https://github.com/tidyverse/ti
       col <- unspecified(0L)
     }
 
-    <snip>
+    </snip>
 
 It describes the exact combination of inputs required for a very rare branch of code to run.
 Without the *context* provided by that comment, it can be a little difficult to know why that branch is there.
