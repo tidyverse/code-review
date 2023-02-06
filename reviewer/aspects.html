@@ -254,7 +254,7 @@ if (is_null(col)) {
   col &lt;- unspecified(0L)
 }
 
-&lt;snip&gt;</code></pre>
+&lt;/snip&gt;</code></pre>
 <p>It describes the exact combination of inputs required for a very rare branch of code to run. Without the <em>context</em> provided by that comment, it can be a little difficult to know why that branch is there. Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like <a href="https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/tests/testthat/test-chop.R#L231-L249">these</a> in tidyr.</p>
 <p>Note that comments are different from <a href="#sec-documentation">documentation</a> of functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used.</p>
 </section>
