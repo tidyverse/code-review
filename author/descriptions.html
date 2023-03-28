@@ -188,10 +188,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-github-features" id="toc-sec-github-features" class="nav-link" data-scroll-target="#sec-github-features"><span class="toc-section-number">7.3</span>  GitHub features</a>
   <ul class="collapse">
   <li><a href="#closes" id="toc-closes" class="nav-link" data-scroll-target="#closes"><span class="toc-section-number">7.3.1</span>  Closes</a></li>
-  <li><a href="#sec-commenting-on-your-own-pr" id="toc-sec-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#sec-commenting-on-your-own-pr"><span class="toc-section-number">7.3.2</span>  Commenting on your own PR</a></li>
+  <li><a href="#checklists" id="toc-checklists" class="nav-link" data-scroll-target="#checklists"><span class="toc-section-number">7.3.2</span>  Checklists</a></li>
+  <li><a href="#sec-commenting-on-your-own-pr" id="toc-sec-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#sec-commenting-on-your-own-pr"><span class="toc-section-number">7.3.3</span>  Commenting on your own PR</a></li>
   </ul></li>
   <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.4</span>  Review before submitting</a></li>
-  <li><a href="#draft-prs" id="toc-draft-prs" class="nav-link" data-scroll-target="#draft-prs"><span class="toc-section-number">7.5</span>  Draft PRs</a></li>
+  <li><a href="#sec-draft-pr" id="toc-sec-draft-pr" class="nav-link" data-scroll-target="#sec-draft-pr"><span class="toc-section-number">7.5</span>  Draft PRs</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/descriptions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -283,8 +284,17 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="closes"><span class="header-section-number">7.3.1</span> Closes</h3>
 <p>In the description <a href="#sec-body">body</a>, it is useful to mention what issue is <em>closed</em> or <em>fixed</em> by this PR. Specifically, if you mention <code>Closes #545</code> or <code>Fixes #545</code> in the body of your PR description, then GitHub will automatically close that issue when the PR is merged. This also helps provide context to both the reviewer and future developers.</p>
 </section>
-<section id="sec-commenting-on-your-own-pr" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="sec-commenting-on-your-own-pr"><span class="header-section-number">7.3.2</span> Commenting on your own PR</h3>
+<section id="checklists" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="checklists"><span class="header-section-number">7.3.2</span> Checklists</h3>
+<p>Since GitHub supports Markdown, you can also add checklists to your PR descriptions like this:</p>
+<pre><code>- [ ] Don't forget this
+- [ ] And this</code></pre>
+<p>Which get rendered in the GitHub UI as:</p>
+<p><img src="img/checklists.png" class="img-fluid"></p>
+<p>Checklists are particularly useful in combination with <a href="#sec-draft-pr">Draft PRs</a> where you might push a partially finished PR to GitHub (to get CI to run, or to ask for advice), but you still have a number of tweaks to make that you don’t want to forget about.</p>
+</section>
+<section id="sec-commenting-on-your-own-pr" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="sec-commenting-on-your-own-pr"><span class="header-section-number">7.3.3</span> Commenting on your own PR</h3>
 <p>GitHub allows the PR author to <em>also</em> be their own reviewer. If you open the <code>Files changed</code> menu on GitHub, you can add comments on sections of code that you’ve written, like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -312,8 +322,8 @@ ul.task-list li input[type="checkbox"] {
 <p>PRs can undergo significant change during review. It can be worthwhile to review a PR description before submitting the PR, to ensure that the description still reflects what the PR does and that it is grammatically correct.</p>
 <p>If your codebase uses continuous integration to also run checks on your PR, you should also ensure that those are all passing before requesting a review.</p>
 </section>
-<section id="draft-prs" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="draft-prs"><span class="header-section-number">7.5</span> Draft PRs</h2>
+<section id="sec-draft-pr" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="sec-draft-pr"><span class="header-section-number">7.5</span> Draft PRs</h2>
 <p>If you aren’t quite ready to submit your PR for a full review, but still want to have it up on GitHub (for CI purposes, perhaps), then you can open a <a href="https://github.blog/2019-02-14-introducing-draft-pull-requests/"><em>Draft PR</em></a>. When a PR is in draft form, this is a signal to your collaborators that they don’t need to worry themselves with that PR yet.</p>
 <p>A draft PR is also useful if you want to park a proof of concept somewhere, knowing that you will come back and clean it up in the future.</p>
 
