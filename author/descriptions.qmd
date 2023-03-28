@@ -54,37 +54,32 @@ Other similarly bad descriptions include:
 -   "Add convenience functions."
 -   "kill weird URLs."
 
-## Examples of good PR descriptions
+## Examples of good PR descriptions {#sec-good-pr-descriptions}
 
-### Functionality change
+### New feature
 
-> Title: Remove size limit on RPC server message `freelist`
->
-> Body: Servers like FizzBuzz have very large messages and would benefit from reuse.
-> This PR makes the `freelist` larger, and adds a routine that frees the `freelist` entries slowly over time, so that idle servers eventually release all `freelist` entries.
+This [vctrs PR](https://github.com/r-lib/vctrs/pull/1791) contains an example of adding a new feature to an existing function.
+In this case, a new `relationship` argument was added to `vctrs::vec_locate_matches()`, a function that underlies dplyr's joins, like `left_join()`.
+In this case, the total number of changed lines was fairly high, but that is mostly due to a combination of having to touch R code, C code, documentation, and adding new tests.
+The important thing here is that all of the changes are highly connected, and nothing is extraneous.
 
-The title describes what the PR actually does.
-The rest of the description talks about the problem being solved, why this is a good solution, and a bit more information about the specific implementation.
+There are a number of things that are useful to point out regarding this PR:
 
-### Refactoring
+-   This was a case where the author felt like the reviewer might not be as "close" to the code as the author was, so a high-level review to look for any structural problems was good enough.
+    Since an in-depth review is the default, the author made sure to mention that a high-level review was fine up near the top of the description.
 
-> Title: Construct a `Task` with a `TimeKeeper` to use its `TimeStr` and `Now` methods
->
-> Body: This PR adds a `Now` method to `Task`, so the `borglet()` getter method can be removed (which was only used by `OOMCandidate` to call borglet's `Now` method).
-> This replaces the methods on `Borglet` that delegate to a `TimeKeeper`.
->
-> Allowing `Task`s to supply `Now` is a step toward eliminating the dependency on `Borglet`.
-> Eventually, collaborators that depend on getting `Now` from the `Task` should be changed to use a `TimeKeeper` directly, but this refactoring will happen in small steps.
->
-> Continuing the long-range goal of refactoring the Borglet Hierarchy.
+-   The description enumerates the possible options for `relationship`, along with giving examples of how it would directly tie into dplyr (i.e. providing broader context outside just this PR), and inline code examples.
+    This gives the reviewer as much context as possible up front, and creates an extremely useful history to look back on if the PR ever needs to be revisited.
 
-The first line describes what the PR does and how this is a change from the past.
-The rest of the description talks about the specific implementation, the context of the PR, that the solution isn't ideal, and possible future direction.
-It also explains *why* this change is being made.
+-   The author provided a number of [inline comments](#sec-commenting-on-your-own-pr) to call out particularly tricky parts of the code that might need more context.
+    In particular, the author brought up [one place in the existing code](https://github.com/r-lib/vctrs/pull/1791#discussion_r1113674398) that he found confusing, which the reviewer also agreed was confusing.
+    This was then acted upon in a [separate PR](https://github.com/r-lib/vctrs/pull/1792) (importantly, not in this one, since the change was unrelated).
+
+-   The reviewer brought up [a concern of their own](https://github.com/r-lib/vctrs/pull/1791#discussion_r1114087922), which the author then provided justification for, and the "tie" went to the author since neither party felt strongly about it.
 
 ### Performance improvement
 
-This real [vctrs PR](https://github.com/r-lib/vctrs/pull/1760) contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package.
+This [vctrs PR](https://github.com/r-lib/vctrs/pull/1760) contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package.
 If you look at the changed lines of code, there is really only 1 changed line:
 
 ```         
@@ -118,7 +113,7 @@ In the description [body](#sec-body), it is useful to mention what issue is *clo
 Specifically, if you mention `Closes #545` or `Fixes #545` in the body of your PR description, then GitHub will automatically close that issue when the PR is merged.
 This also helps provide context to both the reviewer and future developers.
 
-### Commenting on your own PR
+### Commenting on your own PR {#sec-commenting-on-your-own-pr}
 
 GitHub allows the PR author to *also* be their own reviewer.
 If you open the `Files changed` menu on GitHub, you can add comments on sections of code that you've written, like this:
