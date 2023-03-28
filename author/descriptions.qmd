@@ -24,6 +24,21 @@ Ideally it should be shorter than 72 characters, because this is what appears in
 It should be informative enough that future code searchers don't have to read your PR or its whole description to understand what your PR actually *did*.
 That is, the first line should stand alone, allowing readers to skim through code history much faster.
 
+Bad titles typically don't contain enough context about the problem the PR is trying to solve.
+"Fix bug" is an inadequate PR title.
+What bug?
+What did you do to fix it?
+Other similarly bad titles include:
+
+-   "Add patch"
+-   "Fixes #123"
+-   "Moving code from A to B"
+-   "Phase 1"
+-   "Add convenience functions"
+
+Avoid restating the title of the corresponding issue in the title of the PR.
+Focus on summarizing what the actual change you made does, rather than what is being fixed.
+
 ### Body {#sec-body}
 
 The body of a PR description should contain the context a reviewer needs to get into a mental state where they can understand your PR.
@@ -47,18 +62,6 @@ This is especially important if the reviewer wasn't a part of that discussion, s
 
 For large PRs, it can also be useful to suggest a recommended reading order to your reviewer.
 This might involve looking at one particular function before another, but could also be a suggestion to look at the examples or tests before looking at the implementation itself, if you feel that they would clarify the purpose of the PR.
-
-Bad descriptions typically don't contain enough context about the problem the PR is trying to solve.
-"Fix bug" is an inadequate PR description.
-What bug?
-What did you do to fix it?
-Other similarly bad descriptions include:
-
--   "Add patch."
--   "Moving code from A to B."
--   "Phase 1."
--   "Add convenience functions."
--   "kill weird URLs."
 
 ## Examples of good PR descriptions {#sec-good-pr-descriptions}
 
