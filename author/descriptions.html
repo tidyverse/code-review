@@ -180,16 +180,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title"><span class="toc-section-number">7.1.1</span>  Title</a></li>
   <li><a href="#sec-body" id="toc-sec-body" class="nav-link" data-scroll-target="#sec-body"><span class="toc-section-number">7.1.2</span>  Body</a></li>
   </ul></li>
-  <li><a href="#examples-of-good-pr-descriptions" id="toc-examples-of-good-pr-descriptions" class="nav-link" data-scroll-target="#examples-of-good-pr-descriptions"><span class="toc-section-number">7.2</span>  Examples of good PR descriptions</a>
+  <li><a href="#sec-good-pr-descriptions" id="toc-sec-good-pr-descriptions" class="nav-link" data-scroll-target="#sec-good-pr-descriptions"><span class="toc-section-number">7.2</span>  Examples of good PR descriptions</a>
   <ul class="collapse">
-  <li><a href="#functionality-change" id="toc-functionality-change" class="nav-link" data-scroll-target="#functionality-change"><span class="toc-section-number">7.2.1</span>  Functionality change</a></li>
-  <li><a href="#refactoring" id="toc-refactoring" class="nav-link" data-scroll-target="#refactoring"><span class="toc-section-number">7.2.2</span>  Refactoring</a></li>
-  <li><a href="#performance-improvement" id="toc-performance-improvement" class="nav-link" data-scroll-target="#performance-improvement"><span class="toc-section-number">7.2.3</span>  Performance improvement</a></li>
+  <li><a href="#new-feature" id="toc-new-feature" class="nav-link" data-scroll-target="#new-feature"><span class="toc-section-number">7.2.1</span>  New feature</a></li>
+  <li><a href="#performance-improvement" id="toc-performance-improvement" class="nav-link" data-scroll-target="#performance-improvement"><span class="toc-section-number">7.2.2</span>  Performance improvement</a></li>
   </ul></li>
   <li><a href="#sec-github-features" id="toc-sec-github-features" class="nav-link" data-scroll-target="#sec-github-features"><span class="toc-section-number">7.3</span>  GitHub features</a>
   <ul class="collapse">
   <li><a href="#closes" id="toc-closes" class="nav-link" data-scroll-target="#closes"><span class="toc-section-number">7.3.1</span>  Closes</a></li>
-  <li><a href="#commenting-on-your-own-pr" id="toc-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#commenting-on-your-own-pr"><span class="toc-section-number">7.3.2</span>  Commenting on your own PR</a></li>
+  <li><a href="#sec-commenting-on-your-own-pr" id="toc-sec-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#sec-commenting-on-your-own-pr"><span class="toc-section-number">7.3.2</span>  Commenting on your own PR</a></li>
   </ul></li>
   <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.4</span>  Review before submitting</a></li>
   <li><a href="#draft-prs" id="toc-draft-prs" class="nav-link" data-scroll-target="#draft-prs"><span class="toc-section-number">7.5</span>  Draft PRs</a></li>
@@ -250,29 +249,22 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="examples-of-good-pr-descriptions" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="examples-of-good-pr-descriptions"><span class="header-section-number">7.2</span> Examples of good PR descriptions</h2>
-<section id="functionality-change" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="functionality-change"><span class="header-section-number">7.2.1</span> Functionality change</h3>
-<blockquote class="blockquote">
-<p>Title: Remove size limit on RPC server message <code>freelist</code></p>
-<p>Body: Servers like FizzBuzz have very large messages and would benefit from reuse. This PR makes the <code>freelist</code> larger, and adds a routine that frees the <code>freelist</code> entries slowly over time, so that idle servers eventually release all <code>freelist</code> entries.</p>
-</blockquote>
-<p>The title describes what the PR actually does. The rest of the description talks about the problem being solved, why this is a good solution, and a bit more information about the specific implementation.</p>
+<section id="sec-good-pr-descriptions" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-good-pr-descriptions"><span class="header-section-number">7.2</span> Examples of good PR descriptions</h2>
+<section id="new-feature" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="new-feature"><span class="header-section-number">7.2.1</span> New feature</h3>
+<p>This <a href="https://github.com/r-lib/vctrs/pull/1791">vctrs PR</a> contains an example of adding a new feature to an existing function. In this case, a new <code>relationship</code> argument was added to <code>vctrs::vec_locate_matches()</code>, a function that underlies dplyr’s joins, like <code>left_join()</code>. In this case, the total number of changed lines was fairly high, but that is mostly due to a combination of having to touch R code, C code, documentation, and adding new tests. The important thing here is that all of the changes are highly connected, and nothing is extraneous.</p>
+<p>There are a number of things that are useful to point out regarding this PR:</p>
+<ul>
+<li><p>This was a case where the author felt like the reviewer might not be as “close” to the code as the author was, so a high-level review to look for any structural problems was good enough. Since an in-depth review is the default, the author made sure to mention that a high-level review was fine up near the top of the description.</p></li>
+<li><p>The description enumerates the possible options for <code>relationship</code>, along with giving examples of how it would directly tie into dplyr (i.e.&nbsp;providing broader context outside just this PR), and inline code examples. This gives the reviewer as much context as possible up front, and creates an extremely useful history to look back on if the PR ever needs to be revisited.</p></li>
+<li><p>The author provided a number of <a href="#sec-commenting-on-your-own-pr">inline comments</a> to call out particularly tricky parts of the code that might need more context. In particular, the author brought up <a href="https://github.com/r-lib/vctrs/pull/1791#discussion_r1113674398">one place in the existing code</a> that he found confusing, which the reviewer also agreed was confusing. This was then acted upon in a <a href="https://github.com/r-lib/vctrs/pull/1792">separate PR</a> (importantly, not in this one, since the change was unrelated).</p></li>
+<li><p>The reviewer brought up <a href="https://github.com/r-lib/vctrs/pull/1791#discussion_r1114087922">a concern of their own</a>, which the author then provided justification for, and the “tie” went to the author since neither party felt strongly about it.</p></li>
+</ul>
 </section>
-<section id="refactoring" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="refactoring"><span class="header-section-number">7.2.2</span> Refactoring</h3>
-<blockquote class="blockquote">
-<p>Title: Construct a <code>Task</code> with a <code>TimeKeeper</code> to use its <code>TimeStr</code> and <code>Now</code> methods</p>
-<p>Body: This PR adds a <code>Now</code> method to <code>Task</code>, so the <code>borglet()</code> getter method can be removed (which was only used by <code>OOMCandidate</code> to call borglet’s <code>Now</code> method). This replaces the methods on <code>Borglet</code> that delegate to a <code>TimeKeeper</code>.</p>
-<p>Allowing <code>Task</code>s to supply <code>Now</code> is a step toward eliminating the dependency on <code>Borglet</code>. Eventually, collaborators that depend on getting <code>Now</code> from the <code>Task</code> should be changed to use a <code>TimeKeeper</code> directly, but this refactoring will happen in small steps.</p>
-<p>Continuing the long-range goal of refactoring the Borglet Hierarchy.</p>
-</blockquote>
-<p>The first line describes what the PR does and how this is a change from the past. The rest of the description talks about the specific implementation, the context of the PR, that the solution isn’t ideal, and possible future direction. It also explains <em>why</em> this change is being made.</p>
-</section>
-<section id="performance-improvement" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="performance-improvement"><span class="header-section-number">7.2.3</span> Performance improvement</h3>
-<p>This real <a href="https://github.com/r-lib/vctrs/pull/1760">vctrs PR</a> contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package. If you look at the changed lines of code, there is really only 1 changed line:</p>
+<section id="performance-improvement" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="performance-improvement"><span class="header-section-number">7.2.2</span> Performance improvement</h3>
+<p>This <a href="https://github.com/r-lib/vctrs/pull/1760">vctrs PR</a> contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package. If you look at the changed lines of code, there is really only 1 changed line:</p>
 <pre><code>const double load_adjusted_size = x_size / 0.77;</code></pre>
 <p>Changed to:</p>
 <pre><code>const double load_adjusted_size = x_size / 0.50;</code></pre>
@@ -291,8 +283,8 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="closes"><span class="header-section-number">7.3.1</span> Closes</h3>
 <p>In the description <a href="#sec-body">body</a>, it is useful to mention what issue is <em>closed</em> or <em>fixed</em> by this PR. Specifically, if you mention <code>Closes #545</code> or <code>Fixes #545</code> in the body of your PR description, then GitHub will automatically close that issue when the PR is merged. This also helps provide context to both the reviewer and future developers.</p>
 </section>
-<section id="commenting-on-your-own-pr" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="commenting-on-your-own-pr"><span class="header-section-number">7.3.2</span> Commenting on your own PR</h3>
+<section id="sec-commenting-on-your-own-pr" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="sec-commenting-on-your-own-pr"><span class="header-section-number">7.3.2</span> Commenting on your own PR</h3>
 <p>GitHub allows the PR author to <em>also</em> be their own reviewer. If you open the <code>Files changed</code> menu on GitHub, you can add comments on sections of code that you’ve written, like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
