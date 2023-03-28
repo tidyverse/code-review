@@ -9,7 +9,7 @@ There are three big reasons why writing a comprehensive PR description is useful
 -   Forcing yourself to describe (in words) how your PR works is actually a great way to check that it is implemented correctly.
     If you are having trouble describing the PR, it probably needs to be broken down into simpler pieces.
 
--   You can take advantage of GitHub's linking features, including auto-closing issues and referencing related issues.
+-   You can take advantage of GitHub specific features, including auto-closing issues, referencing related issues, checklists, and commenting on your own PR.
 
 Future developers will search for your PR based on its description.
 Someone in the future might be looking for your change because of a faint memory of its relevance but without the specifics handy.
