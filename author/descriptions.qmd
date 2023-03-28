@@ -87,11 +87,15 @@ It also explains *why* this change is being made.
 This real [vctrs PR](https://github.com/r-lib/vctrs/pull/1760) contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package.
 If you look at the changed lines of code, there is really only 1 changed line:
 
-    const double load_adjusted_size = x_size / 0.77;
+```         
+const double load_adjusted_size = x_size / 0.77;
+```
 
 Changed to:
 
-    const double load_adjusted_size = x_size / 0.50;
+```         
+const double load_adjusted_size = x_size / 0.50;
+```
 
 This is an example where even though the number of lines of changed code is very small, the PR itself required a large amount of context and justification.
 This context doesn't belong inside the codebase, but is important for the reviewer as they try to understand why this change was made and whether or not it was the right decision.
