@@ -174,4 +174,25 @@ If your codebase uses continuous integration to also run checks on your PR, you 
 
 If you aren't quite ready to submit your PR for a full review, but still want to have it up on GitHub (for CI purposes, perhaps), then you can open a [*Draft PR*](https://github.blog/2019-02-14-introducing-draft-pull-requests/). When a PR is in draft form, this is a signal to your collaborators that they don't need to worry themselves with that PR yet.
 
+Draft PRs are particularly nice for PRs that you want to get into a "final state" (with CI run and a description written), but you'd also like to sleep on it and give it one last self-review on the following day before requesting a review from a colleague.
+It is amazing how many small bugs and documentation typos you can find after self-reviewing a PR the day after you wrote it!
+This also saves time for your eventual reviewer, since you've improved the quality of the PR before they've even taken a look at it.
+
 A draft PR is also useful if you want to park a proof of concept somewhere, knowing that you will come back and clean it up in the future.
+
+## Self-reviews
+
+While this guide mostly focuses on writing PRs with the goal of being reviewed by someone else, it is also useful to create a PR even if no one else is going to review it.
+This situation typically arises if you are the only one working on a package, or if you are creating a new package undergoing rapid development.
+Like with [draft PRs](#sec-draft-pr), opening a PR, sleeping on it, and then rereading it the following day will often reveal bugs or typos that you've missed.
+Functioning as your own reviewer is a great way to practice the principles outlined in this guide, even if you don't work on a team, and can prepare you for future collaborative work.
+
+Leaving a detailed PR description for yourself has more benefits than you might think.
+[Two of the three reasons](#sec-descriptions) for writing a good description outlined at the beginning of this section still apply - forcing yourself to describe the feature in words and using GitHub's many features.
+It also provides valuable historical context if someone else (likely you) needs to come back to this PR months from now to understand why a particular line was implemented a certain way.
+
+Opening a PR also forces CI to run, giving you a chance to fix any minor issues before merging it into your main branch.
+Since CI often takes a few minutes to run, it is typically useful to open a PR and then start working on a separate feature while that CI is running.
+Once the second feature is finished, you can open a PR for that one, then go back to the first PR and merge it in (possibly giving it a self-review before you do so).
+The [`usethis::pr_*()`](https://usethis.r-lib.org/articles/pr-functions.html) family of functions is particularly suited to this workflow.
+As long as you are careful to avoid merge conflicts, this allows you to efficiently work on multiple features in parallel.
