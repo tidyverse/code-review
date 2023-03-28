@@ -10,6 +10,7 @@ book:
   repo-actions: [edit, issue]
   chapters:
     - index.qmd
+    - collaboration/index.qmd
     - part: reviewer/index.qmd
       chapters:
       - reviewer/purpose.qmd

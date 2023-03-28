@@ -67,7 +67,7 @@ Here are some examples:
 This makes review intent explicit and helps authors prioritize the importance of various comments.
 It also helps avoid misunderstandings; for example, without comment labels, authors may interpret all comments as mandatory, even if some comments are merely intended to be informational or optional.
 
-## Finishing off an external PR
+## Finishing off an external PR {#sec-finishing-off-a-pr}
 
 Sometimes when we receive *external PRs*, we decide that, rather than leaving comments for the external contributor, it is more efficient for us as the reviewer (and usually package maintainer) to just finish off the PR and merge it for them.
 This typically happens when we come back to work on a package after letting it lie dormant for a few months, and we find that we have a few PRs from external contributors.
