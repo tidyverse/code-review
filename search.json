@@ -44,84 +44,84 @@
   {
     "objectID": "reviewer/aspects.html#sec-design",
     "href": "reviewer/aspects.html#sec-design",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.1 Design",
     "text": "2.1 Design\nThe most important thing to cover in a review is the overall design of the PR. Do the interactions of various pieces of code in the PR make sense? Does this change belong in your codebase, or somewhere upstream? Does it integrate well with the rest of your system?\nHopefully, you and the PR author aligned on the design aspect of the PR before they worked on it. If not, it is often worth pausing and having a separate conversation about the overall design rather than directly reviewing their PR, as that conversation might result in the PR being completely rewritten or closed altogether."
   },
   {
     "objectID": "reviewer/aspects.html#functionality",
     "href": "reviewer/aspects.html#functionality",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.2 Functionality",
     "text": "2.2 Functionality\nDoes this PR do what the developer intended? Is what the developer intended good for the users of this code? The “users” are usually both end-users (when they are affected by the change) and developers (who will have to “use” this code in the future).\nMostly, we expect developers to test PRs well-enough that they work correctly by the time they get to code review. However, as the reviewer you should still be thinking about edge cases, trying to think like a user, and making sure that there are no bugs that you see just by reading the code. In R, typical edge cases to watch out for include checking what happens if the user passes in an object of an unexpected type, or what happens if they pass in an object of zero length.\nAn important part of validating the functionality of a PR is trying it out locally. This is particularly important if the PR has a user-facing impact, such as a new function or argument. At Posit, we generally check out PRs on R packages locally using usethis::pr_fetch(<pr-number>). This is a great time to try out edge cases in the code. It also makes it very easy to create a reprex that you can share with the PR author in a GitHub comment if you do find an issue."
   },
   {
     "objectID": "reviewer/aspects.html#complexity",
     "href": "reviewer/aspects.html#complexity",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.3 Complexity",
     "text": "2.3 Complexity\nIs the PR more complex than it should be? Check this at every level of the PR—are individual lines too complex? Are functions too complex? “Too complex” usually means “can’t be understood quickly by code readers.” A way to check for this is to try and “run” the function in your head from top to bottom. If it is exceedingly difficult to do this, the PR might be too complex.\nComplexity can also mean that developers are likely to introduce bugs when they try to call or modify that code in the future.\nA particular type of complexity is over-engineering, where developers have made the code more generic than it needs to be, or added functionality that isn’t presently needed by the system. Reviewers should be especially vigilant about over-engineering. Encourage developers to solve the problem they know needs to be solved now, not the problem that the developer speculates might need to be solved in the future. The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe."
   },
   {
     "objectID": "reviewer/aspects.html#sec-tests",
     "href": "reviewer/aspects.html#sec-tests",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.4 Tests",
     "text": "2.4 Tests\nIn general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test. If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:\ntest_that(\"`my_function()` throws an error when given strings (#553)\")\nRecent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.\nMake sure that the tests in the PR are correct, sensible, and useful. Tests do not test themselves, and we rarely write tests for our tests—a human must ensure that tests are valid.\nTests should also strive to be as minimal as possible. When a user opens an issue with a bug report, chances are that they have included an example that is tailored to their use case, but isn’t a minimal example of the bug in question. When you write a test for the bug fix, it is worth spending time making the example as minimal as possible so it isolates the bug and is easy to understand in the future. Remember that tests have to be maintained too!\nCross-package integration tests are more difficult, but the tidymodels ecosystem accomplishes this using a separate GitHub-only R package named extratests that is run on a daily basis."
   },
   {
     "objectID": "reviewer/aspects.html#sec-naming",
     "href": "reviewer/aspects.html#sec-naming",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.5 Naming",
     "text": "2.5 Naming\nDid the developer make an attempt to pick names that are consistent with the rest of the codebase? In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms."
   },
   {
     "objectID": "reviewer/aspects.html#sec-code-comments",
     "href": "reviewer/aspects.html#sec-code-comments",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.6 Comments",
     "text": "2.6 Comments\nCode comments are useful when they explain why some code exists, rather than what the code is doing. Useful comments contain information that can’t possibly be in the code, like the reasoning behind a decision. One example of a good code comment is this one which is part of code that powers tidyr::unnest():\n<snip>\n\ncol <- list_unchop(col, ptype = col_ptype)\n\nif (is_null(col)) {\n  # This can happen when both of these are true:\n  # - `col` was an empty list(), or a list of all `NULL`s.\n  # - No ptype was specified for `col`, either by the user or by a list-of.\n  col <- unspecified(0L)\n}\n\n</snip>\nIt describes the exact combination of inputs required for a very rare branch of code to run. Without the context provided by that comment, it can be a little difficult to know why that branch is there. Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like these in tidyr.\nNote that comments are different from documentation of functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used."
   },
   {
     "objectID": "reviewer/aspects.html#style",
     "href": "reviewer/aspects.html#style",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.7 Style",
     "text": "2.7 Style\nAt Posit, our R packages follow the tidyverse style guide. Two packages support this style guide, styler, which allows you to restyle files or packages, and lintr, which performs automated checks to ensure that you conform to the style guide.\nAdmittedly, many of us don’t use these tools religiously. The important thing is that if there is a point of contention about style in a PR, we can point to the style guide to resolve it.\nThe author of the PR should not include major style changes combined with other changes. It makes it hard to see what is being changed in the PR, makes merges and rollbacks more complex, and causes other problems. If the author wants to reformat the whole file, request that they send you just the reformatting as one PR, and then send another PR with their functional changes after that."
   },
   {
     "objectID": "reviewer/aspects.html#consistency",
     "href": "reviewer/aspects.html#consistency",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.8 Consistency",
     "text": "2.8 Consistency\nWhat if the existing code is inconsistent with the style guide? Per our code review principles, the style guide is the absolute authority: if something is required by the style guide, the PR should follow the guidelines.\nIn some cases, the style guide makes recommendations rather than declaring requirements. In these cases, it’s a judgment call whether the new code should be consistent with the recommendations or the surrounding code.\nConsistency is also heavily related to naming, and the reviewer should ensure that the author has chosen function names, argument names, and local variable names that are consistent with the rest of the codebase. Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that loc always stands for an integer value corresponding to a vector index. This is particularly helpful in R, since static typing isn’t available to provide this information for you."
   },
   {
     "objectID": "reviewer/aspects.html#sec-documentation",
     "href": "reviewer/aspects.html#sec-documentation",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.9 Documentation",
     "text": "2.9 Documentation\nIf a PR changes how users interact with the package, check to see that it also updates any associated documentation. This includes both R package documentation and updating the pkgdown reference index if a new function is added.\nIt is generally also good practice to provide a news bullet in a NEWS.md file that is associated with the change. This is another place where providing the GitHub issue or PR number is useful, like:\n* `my_function()` now checks that `x` is a numeric value (#565).\nFor more on writing good news bullets, see the style guide.\nIf there isn’t a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you’d like a GitHub PR number to link to, but you haven’t opened the PR yet. One way to resolve this is to:\n\nGo ahead and open the PR without the commit changing the NEWS.md file.\nAdd the news bullet and link to the now open PR.\nPush with a commit message like NEWS bullet.\n\nOccasionally it is useful to document internal functions that aren’t seen by users. This can be useful for other developers to reference as they use common internal helpers. One example of this is tidyr:::df_append(), which includes this internal function documentation marked with @noRd."
   },
   {
     "objectID": "reviewer/aspects.html#every-line",
     "href": "reviewer/aspects.html#every-line",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.10 Every Line",
     "text": "2.10 Every Line\nIn the general case, look at every line of code that you have been assigned to review. Some things like data files, generated code, or large data structures you can scan over sometimes, but don’t scan over a human-written function or block of code and assume that what’s inside of it is okay. Obviously some code deserves more careful scrutiny than other code—that’s a judgment call that you have to make—but you should at least be sure that you understand what all the code is doing.\nIf reviewing every line is too hard and is slowing down the review, then you should let the developer know and ask them to clarify it (possibly providing suggestions of your own, if possible). This also applies to code that you understand, but it took a long time for you to figure it out (or you had to run it locally to understand it). If you can’t understand the code, it is likely that other reviewers won’t be able to either! Taking a moment to have the developer clarify confusing sections of code will help future developers when it is modified further.\nIf you understand the code but you don’t feel qualified to do some part of the review, it is perfectly acceptable (and preferred!) that you let the author know, and suggest that they request a review from another developer who has more expertise in that area."
   },
   {
     "objectID": "reviewer/aspects.html#context",
     "href": "reviewer/aspects.html#context",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.11 Context",
     "text": "2.11 Context\nIt is often helpful to look at the PR in a broad context. Usually the code review tool on GitHub will only show you a few lines of code around the parts that are being changed. Sometimes you have to look at the whole file to be sure that the change actually makes sense. For example, you might see only four new lines being added, but when you look at the whole file, you see those four lines are in a 50-line helper that now really needs to be broken up into smaller functions.\nIt’s also useful to think about the PR in the context of the system as a whole. Is this PR improving the code health of the system or is it making the whole system more complex, less tested, etc.? PRs should always maintain or improve the overall health of the codebase. Most systems become complex through many small changes that add up, so it’s important to prevent even small complexities in new changes.\nSometimes the timing of the PR isn’t right. It is possible that the codebase may need restructuring before a PR can be accepted. You can generally recognize this when the PR has a large number of changes to parts of the codebase that are seemingly unrelated to the purpose of the PR itself. In those cases, it is often worth suggesting that the author submit a few smaller focused PRs first that prepare the codebase for the larger PR. This reduces the complexity of the larger PR, making it easier to understand and faster to review."
   },
   {
     "objectID": "reviewer/aspects.html#good-things",
     "href": "reviewer/aspects.html#good-things",
-    "title": "2  Aspects of a review",
+    "title": "2  Aspects of a PR",
     "section": "2.12 Compliments",
     "text": "2.12 Compliments\nIf you see something nice in the PR, tell the developer, especially when they addressed one of your comments in a great way. Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well. It’s sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong."
   },
@@ -151,7 +151,7 @@
     "href": "reviewer/navigate.html#look-through-the-rest-of-the-pr",
     "title": "3  Navigating a PR in review",
     "section": "3.4 Look through the rest of the PR",
-    "text": "3.4 Look through the rest of the PR\nOnce you’ve confirmed there are no major design problems with the PR as a whole, try to figure out a logical sequence to look through the files while also making sure you don’t miss reviewing any file. Usually after you’ve looked through the major files, it’s simplest to just go through each file in the order that the code review tool presents them to you. Sometimes it’s also helpful to read the tests first before you read the main code, because then you have an idea of what the change is supposed to be doing.\nFor R code, you can generally ignore the generated documentation files ending in .Rd while reviewing the PR. GitHub will collapse these by default.\nWhile reading through the PR, make sure to keep the aspects of code review in mind."
+    "text": "3.4 Look through the rest of the PR\nOnce you’ve confirmed there are no major design problems with the PR as a whole, try to figure out a logical sequence to look through the files while also making sure you don’t miss reviewing any file. Usually after you’ve looked through the major files, it’s simplest to just go through each file in the order that the code review tool presents them to you. Sometimes it’s also helpful to read the tests first before you read the main code, because then you have an idea of what the change is supposed to be doing.\nFor R code, you can generally ignore the generated documentation files ending in .Rd while reviewing the PR. GitHub will collapse these by default.\nWhile reading through the PR, make sure to keep the aspects of a PR in mind."
   },
   {
     "objectID": "reviewer/speed.html#why",
