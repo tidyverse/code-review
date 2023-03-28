@@ -47,4 +47,4 @@ Sometimes it's also helpful to read the tests first before you read the main cod
 For R code, you can generally ignore the generated documentation files ending in `.Rd` while reviewing the PR.
 GitHub will collapse these by default.
 
-While reading through the PR, make sure to keep the [aspects of code review](#sec-aspects) in mind.
+While reading through the PR, make sure to keep the [aspects of a PR](#sec-aspects) in mind.

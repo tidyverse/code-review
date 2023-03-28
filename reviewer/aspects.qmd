@@ -1,4 +1,4 @@
-# Aspects of a review {#sec-aspects}
+# Aspects of a PR {#sec-aspects}
 
 ## Design {#sec-design}
 
