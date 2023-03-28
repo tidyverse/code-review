@@ -273,15 +273,16 @@ if (is_null(col)) {
 <section id="sec-documentation" class="level2" data-number="2.9">
 <h2 data-number="2.9" class="anchored" data-anchor-id="sec-documentation"><span class="header-section-number">2.9</span> Documentation</h2>
 <p>If a PR changes how users interact with the package, check to see that it also updates any associated documentation. This includes both R package documentation and updating the <a href="https://pkgdown.r-lib.org/">pkgdown</a> reference index if a new function is added.</p>
-<p>Occasionally it is useful to document <em>internal</em> functions that aren’t seen by users. This can be useful for other developers to reference as they use common internal helpers. One example of this is <code>tidyr:::df_append()</code>, which includes this <a href="https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1">internal function documentation</a> marked with <code>@noRd</code>.</p>
 <p>It is generally also good practice to provide a news bullet in a <code>NEWS.md</code> file that is associated with the change. This is another place where providing the GitHub issue or PR number is useful, like:</p>
 <pre><code>* `my_function()` now checks that `x` is a numeric value (#565).</code></pre>
-<p>If there isn’t a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you need a GitHub PR number to link to, but you haven’t opened the PR yet. One way to resolve this is to:</p>
+<p>For more on writing good news bullets, see the <a href="https://style.tidyverse.org/news.html#bullets">style guide</a>.</p>
+<p>If there isn’t a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you’d like a GitHub PR number to link to, but you haven’t opened the PR yet. One way to resolve this is to:</p>
 <ul>
 <li><p>Go ahead and open the PR without the commit changing the <code>NEWS.md</code> file.</p></li>
 <li><p>Add the news bullet and link to the now open PR.</p></li>
 <li><p>Push with a commit message like <code>NEWS bullet</code>.</p></li>
 </ul>
+<p>Occasionally it is useful to document <em>internal</em> functions that aren’t seen by users. This can be useful for other developers to reference as they use common internal helpers. One example of this is <code>tidyr:::df_append()</code>, which includes this <a href="https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1">internal function documentation</a> marked with <code>@noRd</code>.</p>
 </section>
 <section id="every-line" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="every-line"><span class="header-section-number">2.10</span> Every Line</h2>

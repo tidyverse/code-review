@@ -193,6 +193,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.4</span>  Review before submitting</a></li>
   <li><a href="#sec-draft-pr" id="toc-sec-draft-pr" class="nav-link" data-scroll-target="#sec-draft-pr"><span class="toc-section-number">7.5</span>  Draft PRs</a></li>
+  <li><a href="#self-reviews" id="toc-self-reviews" class="nav-link" data-scroll-target="#self-reviews"><span class="toc-section-number">7.6</span>  Self-reviews</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/descriptions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -220,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>You have the opportunity to orient and prepare your reviewer for your PR before they’ve seen any code.</p></li>
 <li><p>Forcing yourself to describe (in words) how your PR works is actually a great way to check that it is implemented correctly. If you are having trouble describing the PR, it probably needs to be broken down into simpler pieces.</p></li>
-<li><p>You can take advantage of GitHub’s linking features, including auto-closing issues and referencing related issues.</p></li>
+<li><p>You can take advantage of GitHub specific features, including auto-closing issues, referencing related issues, checklists, and commenting on your own PR.</p></li>
 </ul>
 <p>Future developers will search for your PR based on its description. Someone in the future might be looking for your change because of a faint memory of its relevance but without the specifics handy. If all the important information is in the code and not the description, it’s going to be a lot harder for them to locate your PR.</p>
 <section id="sec-orienting" class="level2" data-number="7.1">
@@ -228,6 +229,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="title" class="level3" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="title"><span class="header-section-number">7.1.1</span> Title</h3>
 <p>The title of your pull request should be a very short summary of <em>what</em> is being done. Ideally it should be shorter than 72 characters, because this is what appears in version control history summaries and that is the typical limit before the title is truncated. It should be informative enough that future code searchers don’t have to read your PR or its whole description to understand what your PR actually <em>did</em>. That is, the first line should stand alone, allowing readers to skim through code history much faster.</p>
+<p>Bad titles typically don’t contain enough context about the problem the PR is trying to solve. “Fix bug” is an inadequate PR title. What bug? What did you do to fix it? Other similarly bad titles include:</p>
+<ul>
+<li>“Add patch”</li>
+<li>“Fixes #123”</li>
+<li>“Moving code from A to B”</li>
+<li>“Phase 1”</li>
+<li>“Add convenience functions”</li>
+</ul>
+<p>Avoid restating the title of the corresponding issue in the title of the PR. Focus on summarizing what the actual change you made does, rather than what is being fixed.</p>
 </section>
 <section id="sec-body" class="level3" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="sec-body"><span class="header-section-number">7.1.2</span> Body</h3>
@@ -240,14 +250,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>A before/after benchmark (using the <a href="https://bench.r-lib.org/">bench</a> package)</p></li>
 </ul>
 <p>The description should give your reviewer an idea of the code they are about to see, even before they’ve looked at it. By outlining any potential shortcomings, you give the reviewer ideas to keep in mind while they look over your code.</p>
-<p>Bad descriptions typically don’t contain enough context about the problem the PR is trying to solve. “Fix bug” is an inadequate PR description. What bug? What did you do to fix it? Other similarly bad descriptions include:</p>
-<ul>
-<li>“Add patch.”</li>
-<li>“Moving code from A to B.”</li>
-<li>“Phase 1.”</li>
-<li>“Add convenience functions.”</li>
-<li>“kill weird URLs.”</li>
-</ul>
+<p>If your PR closes a complicated issue that involved a large amount of back and forth discussion, it is worth summarizing the outcome of that discussion in the body of the description. This is especially important if the reviewer wasn’t a part of that discussion, since they’d otherwise have to wade through a large amount of comments to understand why this particular implementation was chosen.</p>
+<p>For large PRs, it can also be useful to suggest a recommended reading order to your reviewer. This might involve looking at one particular function before another, but could also be a suggestion to look at the examples or tests before looking at the implementation itself, if you feel that they would clarify the purpose of the PR.</p>
 </section>
 </section>
 <section id="sec-good-pr-descriptions" class="level2" data-number="7.2">
@@ -325,7 +329,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="sec-draft-pr" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="sec-draft-pr"><span class="header-section-number">7.5</span> Draft PRs</h2>
 <p>If you aren’t quite ready to submit your PR for a full review, but still want to have it up on GitHub (for CI purposes, perhaps), then you can open a <a href="https://github.blog/2019-02-14-introducing-draft-pull-requests/"><em>Draft PR</em></a>. When a PR is in draft form, this is a signal to your collaborators that they don’t need to worry themselves with that PR yet.</p>
+<p>Draft PRs are particularly nice for PRs that you want to get into a “final state” (with CI run and a description written), but you’d also like to sleep on it and give it one last self-review on the following day before requesting a review from a colleague. It is amazing how many small bugs and documentation typos you can find after self-reviewing a PR the day after you wrote it! This also saves time for your eventual reviewer, since you’ve improved the quality of the PR before they’ve even taken a look at it.</p>
 <p>A draft PR is also useful if you want to park a proof of concept somewhere, knowing that you will come back and clean it up in the future.</p>
+</section>
+<section id="self-reviews" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="self-reviews"><span class="header-section-number">7.6</span> Self-reviews</h2>
+<p>While this guide mostly focuses on writing PRs with the goal of being reviewed by someone else, it is also useful to create a PR even if no one else is going to review it. This situation typically arises if you are the only one working on a package, or if you are creating a new package undergoing rapid development. Like with <a href="#sec-draft-pr">draft PRs</a>, opening a PR, sleeping on it, and then rereading it the following day will often reveal bugs or typos that you’ve missed. Functioning as your own reviewer is a great way to practice the principles outlined in this guide, even if you don’t work on a team, and can prepare you for future collaborative work.</p>
+<p>Leaving a detailed PR description for yourself has more benefits than you might think. <a href="#sec-descriptions">Two of the three reasons</a> for writing a good description outlined at the beginning of this section still apply - forcing yourself to describe the feature in words and using GitHub’s many features. It also provides valuable historical context if someone else (likely you) needs to come back to this PR months from now to understand why a particular line was implemented a certain way.</p>
+<p>Opening a PR also forces CI to run, giving you a chance to fix any minor issues before merging it into your main branch. Since CI often takes a few minutes to run, it is typically useful to open a PR and then start working on a separate feature while that CI is running. Once the second feature is finished, you can open a PR for that one, then go back to the first PR and merge it in (possibly giving it a self-review before you do so). The <a href="https://usethis.r-lib.org/articles/pr-functions.html"><code>usethis::pr_*()</code></a> family of functions is particularly suited to this workflow. As long as you are careful to avoid merge conflicts, this allows you to efficiently work on multiple features in parallel.</p>
 
 
 </section>
