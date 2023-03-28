@@ -113,6 +113,21 @@ In the description [body](#sec-body), it is useful to mention what issue is *clo
 Specifically, if you mention `Closes #545` or `Fixes #545` in the body of your PR description, then GitHub will automatically close that issue when the PR is merged.
 This also helps provide context to both the reviewer and future developers.
 
+### Checklists
+
+Since GitHub supports Markdown, you can also add checklists to your PR descriptions like this:
+
+```         
+- [ ] Don't forget this
+- [ ] And this
+```
+
+Which get rendered in the GitHub UI as:
+
+![](img/checklists.png)
+
+Checklists are particularly useful in combination with [Draft PRs](#sec-draft-pr) where you might push a partially finished PR to GitHub (to get CI to run, or to ask for advice), but you still have a number of tweaks to make that you don't want to forget about.
+
 ### Commenting on your own PR {#sec-commenting-on-your-own-pr}
 
 GitHub allows the PR author to *also* be their own reviewer.
@@ -146,7 +161,7 @@ It can be worthwhile to review a PR description before submitting the PR, to ens
 
 If your codebase uses continuous integration to also run checks on your PR, you should also ensure that those are all passing before requesting a review.
 
-## Draft PRs
+## Draft PRs {#sec-draft-pr}
 
 If you aren't quite ready to submit your PR for a full review, but still want to have it up on GitHub (for CI purposes, perhaps), then you can open a [*Draft PR*](https://github.blog/2019-02-14-introducing-draft-pull-requests/). When a PR is in draft form, this is a signal to your collaborators that they don't need to worry themselves with that PR yet.
 
