@@ -180,13 +180,19 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title"><span class="toc-section-number">7.1.1</span>  Title</a></li>
   <li><a href="#sec-body" id="toc-sec-body" class="nav-link" data-scroll-target="#sec-body"><span class="toc-section-number">7.1.2</span>  Body</a></li>
   </ul></li>
-  <li><a href="#sec-github-features" id="toc-sec-github-features" class="nav-link" data-scroll-target="#sec-github-features"><span class="toc-section-number">7.2</span>  GitHub features</a>
+  <li><a href="#examples-of-good-pr-descriptions" id="toc-examples-of-good-pr-descriptions" class="nav-link" data-scroll-target="#examples-of-good-pr-descriptions"><span class="toc-section-number">7.2</span>  Examples of good PR descriptions</a>
   <ul class="collapse">
-  <li><a href="#closes" id="toc-closes" class="nav-link" data-scroll-target="#closes"><span class="toc-section-number">7.2.1</span>  Closes</a></li>
-  <li><a href="#commenting-on-your-own-pr" id="toc-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#commenting-on-your-own-pr"><span class="toc-section-number">7.2.2</span>  Commenting on your own PR</a></li>
+  <li><a href="#functionality-change" id="toc-functionality-change" class="nav-link" data-scroll-target="#functionality-change"><span class="toc-section-number">7.2.1</span>  Functionality change</a></li>
+  <li><a href="#refactoring" id="toc-refactoring" class="nav-link" data-scroll-target="#refactoring"><span class="toc-section-number">7.2.2</span>  Refactoring</a></li>
+  <li><a href="#performance-improvement" id="toc-performance-improvement" class="nav-link" data-scroll-target="#performance-improvement"><span class="toc-section-number">7.2.3</span>  Performance improvement</a></li>
   </ul></li>
-  <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.3</span>  Review before submitting</a></li>
-  <li><a href="#draft-prs" id="toc-draft-prs" class="nav-link" data-scroll-target="#draft-prs"><span class="toc-section-number">7.4</span>  Draft PRs</a></li>
+  <li><a href="#sec-github-features" id="toc-sec-github-features" class="nav-link" data-scroll-target="#sec-github-features"><span class="toc-section-number">7.3</span>  GitHub features</a>
+  <ul class="collapse">
+  <li><a href="#closes" id="toc-closes" class="nav-link" data-scroll-target="#closes"><span class="toc-section-number">7.3.1</span>  Closes</a></li>
+  <li><a href="#commenting-on-your-own-pr" id="toc-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#commenting-on-your-own-pr"><span class="toc-section-number">7.3.2</span>  Commenting on your own PR</a></li>
+  </ul></li>
+  <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.4</span>  Review before submitting</a></li>
+  <li><a href="#draft-prs" id="toc-draft-prs" class="nav-link" data-scroll-target="#draft-prs"><span class="toc-section-number">7.5</span>  Draft PRs</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/descriptions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -242,17 +248,20 @@ ul.task-list li input[type="checkbox"] {
 <li>“Add convenience functions.”</li>
 <li>“kill weird URLs.”</li>
 </ul>
-<p>Here are some examples of good descriptions.</p>
-<section id="functionality-change" class="level4" data-number="7.1.2.1">
-<h4 data-number="7.1.2.1" class="anchored" data-anchor-id="functionality-change"><span class="header-section-number">7.1.2.1</span> Functionality change</h4>
+</section>
+</section>
+<section id="examples-of-good-pr-descriptions" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="examples-of-good-pr-descriptions"><span class="header-section-number">7.2</span> Examples of good PR descriptions</h2>
+<section id="functionality-change" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="functionality-change"><span class="header-section-number">7.2.1</span> Functionality change</h3>
 <blockquote class="blockquote">
 <p>Title: Remove size limit on RPC server message <code>freelist</code></p>
 <p>Body: Servers like FizzBuzz have very large messages and would benefit from reuse. This PR makes the <code>freelist</code> larger, and adds a routine that frees the <code>freelist</code> entries slowly over time, so that idle servers eventually release all <code>freelist</code> entries.</p>
 </blockquote>
 <p>The title describes what the PR actually does. The rest of the description talks about the problem being solved, why this is a good solution, and a bit more information about the specific implementation.</p>
 </section>
-<section id="refactoring" class="level4" data-number="7.1.2.2">
-<h4 data-number="7.1.2.2" class="anchored" data-anchor-id="refactoring"><span class="header-section-number">7.1.2.2</span> Refactoring</h4>
+<section id="refactoring" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="refactoring"><span class="header-section-number">7.2.2</span> Refactoring</h3>
 <blockquote class="blockquote">
 <p>Title: Construct a <code>Task</code> with a <code>TimeKeeper</code> to use its <code>TimeStr</code> and <code>Now</code> methods</p>
 <p>Body: This PR adds a <code>Now</code> method to <code>Task</code>, so the <code>borglet()</code> getter method can be removed (which was only used by <code>OOMCandidate</code> to call borglet’s <code>Now</code> method). This replaces the methods on <code>Borglet</code> that delegate to a <code>TimeKeeper</code>.</p>
@@ -261,8 +270,8 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p>The first line describes what the PR does and how this is a change from the past. The rest of the description talks about the specific implementation, the context of the PR, that the solution isn’t ideal, and possible future direction. It also explains <em>why</em> this change is being made.</p>
 </section>
-<section id="performance-improvement" class="level4" data-number="7.1.2.3">
-<h4 data-number="7.1.2.3" class="anchored" data-anchor-id="performance-improvement"><span class="header-section-number">7.1.2.3</span> Performance improvement</h4>
+<section id="performance-improvement" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="performance-improvement"><span class="header-section-number">7.2.3</span> Performance improvement</h3>
 <p>This real <a href="https://github.com/r-lib/vctrs/pull/1760">vctrs PR</a> contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package. If you look at the changed lines of code, there is really only 1 changed line:</p>
 <pre><code>const double load_adjusted_size = x_size / 0.77;</code></pre>
 <p>Changed to:</p>
@@ -275,16 +284,15 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-</section>
-<section id="sec-github-features" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="sec-github-features"><span class="header-section-number">7.2</span> GitHub features</h2>
+<section id="sec-github-features" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sec-github-features"><span class="header-section-number">7.3</span> GitHub features</h2>
 <p>GitHub includes a number of tools to make authoring PRs a little more streamlined. Using these tools is good practice at Posit.</p>
-<section id="closes" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="closes"><span class="header-section-number">7.2.1</span> Closes</h3>
+<section id="closes" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="closes"><span class="header-section-number">7.3.1</span> Closes</h3>
 <p>In the description <a href="#sec-body">body</a>, it is useful to mention what issue is <em>closed</em> or <em>fixed</em> by this PR. Specifically, if you mention <code>Closes #545</code> or <code>Fixes #545</code> in the body of your PR description, then GitHub will automatically close that issue when the PR is merged. This also helps provide context to both the reviewer and future developers.</p>
 </section>
-<section id="commenting-on-your-own-pr" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="commenting-on-your-own-pr"><span class="header-section-number">7.2.2</span> Commenting on your own PR</h3>
+<section id="commenting-on-your-own-pr" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="commenting-on-your-own-pr"><span class="header-section-number">7.3.2</span> Commenting on your own PR</h3>
 <p>GitHub allows the PR author to <em>also</em> be their own reviewer. If you open the <code>Files changed</code> menu on GitHub, you can add comments on sections of code that you’ve written, like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -307,13 +315,13 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="review-before-submitting" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="review-before-submitting"><span class="header-section-number">7.3</span> Review before submitting</h2>
+<section id="review-before-submitting" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="review-before-submitting"><span class="header-section-number">7.4</span> Review before submitting</h2>
 <p>PRs can undergo significant change during review. It can be worthwhile to review a PR description before submitting the PR, to ensure that the description still reflects what the PR does and that it is grammatically correct.</p>
 <p>If your codebase uses continuous integration to also run checks on your PR, you should also ensure that those are all passing before requesting a review.</p>
 </section>
-<section id="draft-prs" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="draft-prs"><span class="header-section-number">7.4</span> Draft PRs</h2>
+<section id="draft-prs" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="draft-prs"><span class="header-section-number">7.5</span> Draft PRs</h2>
 <p>If you aren’t quite ready to submit your PR for a full review, but still want to have it up on GitHub (for CI purposes, perhaps), then you can open a <a href="https://github.blog/2019-02-14-introducing-draft-pull-requests/"><em>Draft PR</em></a>. When a PR is in draft form, this is a signal to your collaborators that they don’t need to worry themselves with that PR yet.</p>
 <p>A draft PR is also useful if you want to park a proof of concept somewhere, knowing that you will come back and clean it up in the future.</p>
 
