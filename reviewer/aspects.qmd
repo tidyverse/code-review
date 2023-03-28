@@ -46,7 +46,9 @@ The future problem should be solved once it arrives and you can see its actual s
 In general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test.
 If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:
 
-    test_that("`my_function()` throws an error when given strings (#553)")
+```         
+test_that("`my_function()` throws an error when given strings (#553)")
+```
 
 Recent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.
 
@@ -71,18 +73,20 @@ Code comments are useful when they explain *why* some code exists, rather than *
 Useful comments contain information that can't possibly be in the code, like the reasoning behind a decision.
 One example of a good code comment is [this one](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/chop.R#L270-L275) which is part of code that powers `tidyr::unnest()`:
 
-    <snip>
+```         
+<snip>
 
-    col <- list_unchop(col, ptype = col_ptype)
+col <- list_unchop(col, ptype = col_ptype)
 
-    if (is_null(col)) {
-      # This can happen when both of these are true:
-      # - `col` was an empty list(), or a list of all `NULL`s.
-      # - No ptype was specified for `col`, either by the user or by a list-of.
-      col <- unspecified(0L)
-    }
+if (is_null(col)) {
+  # This can happen when both of these are true:
+  # - `col` was an empty list(), or a list of all `NULL`s.
+  # - No ptype was specified for `col`, either by the user or by a list-of.
+  col <- unspecified(0L)
+}
 
-    </snip>
+</snip>
+```
 
 It describes the exact combination of inputs required for a very rare branch of code to run.
 Without the *context* provided by that comment, it can be a little difficult to know why that branch is there.
@@ -126,7 +130,9 @@ One example of this is `tidyr:::df_append()`, which includes this [internal func
 It is generally also good practice to provide a news bullet in a `NEWS.md` file that is associated with the change.
 This is another place where providing the GitHub issue or PR number is useful, like:
 
-    * `my_function()` now checks that `x` is a numeric value (#565).
+```         
+* `my_function()` now checks that `x` is a numeric value (#565).
+```
 
 If there isn't a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you need a GitHub PR number to link to, but you haven't opened the PR yet.
 One way to resolve this is to:
