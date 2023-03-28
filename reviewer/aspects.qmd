@@ -123,10 +123,6 @@ This is particularly helpful in R, since static typing isn't available to provid
 If a PR changes how users interact with the package, check to see that it also updates any associated documentation.
 This includes both R package documentation and updating the [pkgdown](https://pkgdown.r-lib.org/) reference index if a new function is added.
 
-Occasionally it is useful to document *internal* functions that aren't seen by users.
-This can be useful for other developers to reference as they use common internal helpers.
-One example of this is `tidyr:::df_append()`, which includes this [internal function documentation](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1) marked with `@noRd`.
-
 It is generally also good practice to provide a news bullet in a `NEWS.md` file that is associated with the change.
 This is another place where providing the GitHub issue or PR number is useful, like:
 
@@ -134,7 +130,9 @@ This is another place where providing the GitHub issue or PR number is useful, l
 * `my_function()` now checks that `x` is a numeric value (#565).
 ```
 
-If there isn't a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you need a GitHub PR number to link to, but you haven't opened the PR yet.
+For more on writing good news bullets, see the [style guide](https://style.tidyverse.org/news.html#bullets).
+
+If there isn't a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you'd like a GitHub PR number to link to, but you haven't opened the PR yet.
 One way to resolve this is to:
 
 -   Go ahead and open the PR without the commit changing the `NEWS.md` file.
@@ -142,6 +140,10 @@ One way to resolve this is to:
 -   Add the news bullet and link to the now open PR.
 
 -   Push with a commit message like `NEWS bullet`.
+
+Occasionally it is useful to document *internal* functions that aren't seen by users.
+This can be useful for other developers to reference as they use common internal helpers.
+One example of this is `tidyr:::df_append()`, which includes this [internal function documentation](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1) marked with `@noRd`.
 
 ## Every Line {#every-line}
 
