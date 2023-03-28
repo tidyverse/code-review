@@ -42,6 +42,9 @@ It might include:
 The description should give your reviewer an idea of the code they are about to see, even before they've looked at it.
 By outlining any potential shortcomings, you give the reviewer ideas to keep in mind while they look over your code.
 
+For large PRs, it can also be useful to suggest a recommended reading order to your reviewer.
+This might involve looking at one particular function before another, but could also be a suggestion to look at the examples or tests before looking at the implementation itself, if you feel that they would clarify the purpose of the PR.
+
 Bad descriptions typically don't contain enough context about the problem the PR is trying to solve.
 "Fix bug" is an inadequate PR description.
 What bug?
