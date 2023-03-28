@@ -43,14 +43,6 @@ Thus, it is usually best to insist that the developer clean up their PR *now*, b
 Note that PR cleanup is different from the case where a PR exposes a bug that is technically unrelated to that PR.
 In the spirit of [keeping PRs small](#sec-small), in those cases it is best to open an issue with a reproducible example demonstrating the issue, so that it is tracked and can be addressed after merging the current PR.
 
-## General complaints about strictness {#strictness}
-
-If you previously had fairly lax code reviews and you switch to having strict reviews, some developers will complain very loudly.
-Improving the [speed](#sec-speed) of your code reviews usually causes these complaints to fade away.
-
-Sometimes it can take months for these complaints to fade away, but eventually developers tend to see the value of strict code reviews as they see what great code they help generate.
-Sometimes the loudest protesters even become your strongest supporters once something happens that causes them to really see the value you're adding by being strict.
-
 ## Resolving conflicts {#sec-conflicts}
 
 In any conflict on a code review, the first step should always be for the author and reviewer to try to come to consensus, based on the contents of this guide.
