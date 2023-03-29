@@ -95,13 +95,13 @@ There are a number of things that are useful to point out regarding this PR:
 This [vctrs PR](https://github.com/r-lib/vctrs/pull/1760) contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package.
 If you look at the changed lines of code, there is really only 1 changed line:
 
-```         
+``` c
 const double load_adjusted_size = x_size / 0.77;
 ```
 
 Changed to:
 
-```         
+``` c
 const double load_adjusted_size = x_size / 0.50;
 ```
 
@@ -129,7 +129,7 @@ If you'd like to refer to another issue or PR without closing it, then using ter
 
 Since GitHub supports Markdown, you can also add checklists to your PR descriptions like this:
 
-```         
+``` markdown
 - [ ] Don't forget this
 - [ ] And this
 ```
