@@ -64,6 +64,8 @@ Pure refactoring PRs (that aren't intended to change behavior) should also be co
 If tests for the code you are refactoring don't exist, you should add them in a separate PR before doing the refactoring.
 This gives you a concrete way to validate that the behavior is unchanged before and after the refactoring.
 
+For more advice on writing good tests, see [this chapter](https://r-pkgs.org/testing-design.html) of the R Packages book.
+
 ## Large PRs {#sec-large-prs}
 
 There are a few situations in which large changes aren't as bad:
