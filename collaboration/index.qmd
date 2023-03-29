@@ -47,7 +47,7 @@ For example, I am not a regular contributor to usethis, but noticed a small non-
 
 When an external contributor authors a PR, they should not expect an immediate review.
 If the package is in a dormant state, it is possible that the PR won't be looked at for weeks or even months at a time.
-When the reviewer eventually does look at the PR, if they have comments that need to be addressed, then they should feel free to make a judgement call on whether or not to request that the PR author make the changes, or to just [finish off the PR themselves](#sec-finishing-off-a-pr).
+When the reviewer eventually does look at the PR, if they have comments that need to be addressed, then they should feel free to make a judgement call on whether or not to request that the PR author make the changes, or to just [finish off the PR themselves](#sec-finishing-off-an-external-contribution).
 No matter what the reviewer decides, they should thank the author for their contributions.
 
 If the external contributor is a Posit employee and the PR fixes a bug or adds a feature that is a blocker for one of their projects, then the PR author should coordinate with the reviewer to ensure that the PR can be reviewed and merged in a timely manner.
