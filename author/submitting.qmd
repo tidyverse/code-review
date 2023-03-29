@@ -186,6 +186,28 @@ For [external contributions](#sec-external-contributions), the author likely won
 In this case, it is expected that the maintainer of the package will review the PR when they next actively work on it.
 If the author is a Posit employee and this PR is blocking other work, then the author should reach out to the maintainer (i.e. over Slack) to agree on an expected timeline for the review.
 
+## Finishing a PR
+
+After you have [handled the comments](#sec-handling-reviewer-comments) from your reviewer, the PR can get merged in a variety of ways, depending on the [collaboration pattern](#sec-patterns-of-collaboration) being used.
+
+For [close-knit collaboration](#sec-close-knit-collaboration) and when working as an [understudy](#sec-the-understudy), the PR author is typically expected to merge the PR after receiving approval from the reviewer and addressing all comments.
+After [approval](#sec-approve-with-comments) is received, the author is no longer required to wait on further feedback from the reviewer before merging.
+
+For [external contributions](#sec-external-contributions), the author likely does not have permission to merge the PR.
+Instead, it is expected that the reviewer (who is likely also someone with commit rights) will merge the PR for you after all comments have been addressed.
+Depending on the circumstances, the reviewer may also [finish off the PR for you](#sec-finishing-off-an-external-contribution).
+
+GitHub provides various options for actually merging the PR:
+
+![](img/merging.png){fig-align="center" width="400"}
+
+Most of the time, we use `Squash and merge`, which collapses all of the commits into a single commit that gets merged into the main branch.
+Because of this, we typically don't care what the commit history of the actual PR looks like, because it will likely be collapsed anyways.
+
+If the commit history of the PR has been purposefully structured in a meaningful way, we may also use `Create a merge commit` to retain the full history.
+
+After the PR has been merged, `usethis::pr_finish()` can be used to delete the local (and possibly remote) PR branch and switch back to the default branch.
+
 ## Draft PRs {#sec-draft-pr}
 
 If you aren't quite ready to submit your PR for a full review, but still want to have it up on GitHub (for CI purposes, perhaps), then you can open a [*Draft PR*](https://github.blog/2019-02-14-introducing-draft-pull-requests/). When a PR is in draft form, this is a signal to your collaborators that they don't need to worry themselves with that PR yet.
