@@ -2,14 +2,14 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Tidyverse code review principles",
+    "title": "Tidyteam code review principles",
     "section": "",
     "text": "Welcome\nA code review is a process where someone other than the author of a piece of code examines that code. At Posit, we use code review to maintain the quality of our code and products.\nThis guide serves as a reference for different aspects of the code review process. It is written with the tidyteam in mind, which make up the combination of the tidyverse, tidymodels, and mlops groups, but is generally applicable to a large amount of the software development we do at Posit. The guide is intended to be used as a way to get new developers up to speed on how we perform code review, and to serve as a linkable resource when there are questions about aspects of the code review process.\nWe mostly use GitHub as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub’s tooling. Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests. In particular, you will see references to devtools and usethis throughout this guide.\nWe will use the abbreviation PR to mean a pull request, typically on GitHub."
   },
   {
     "objectID": "index.html#acknowledgements",
     "href": "index.html#acknowledgements",
-    "title": "Tidyverse code review principles",
+    "title": "Tidyteam code review principles",
     "section": "Acknowledgements",
     "text": "Acknowledgements\nThis guide is a forked and modified version of Google’s code review principles."
   },
