@@ -37,7 +37,7 @@ If both the understudy and reviewer are Posit employees, discussing the review l
 When an understudy reviews a PR, review is expected to be swift, and the PR assigned to the understudy for review should not require an in-depth knowledge of the package.
 If the understudy isn't available to review, it is fine to merge the PR without waiting for a review, especially if it is blocking some other work.
 
-An understudy may take the form of an intern at Posit, a motivated community member, or another tidyteam member.
+An understudy may be an intern at Posit, a motivated community member, or another tidyteam member.
 
 ### External contributions {#sec-external-contributions}
 
@@ -46,7 +46,7 @@ This may be a one-off PR from a community member, but is often another tidyteam 
 For example, I am not a regular contributor to usethis, but noticed a small non-critical bug and [sent in a PR for it](https://github.com/r-lib/usethis/pull/1786).
 
 When an external contributor authors a PR, they should not expect an immediate review.
-If the package is in a dormant state, it is possible that the PR won't be looked at for weeks at a time.
+If the package is in a dormant state, it is possible that the PR won't be looked at for weeks or even months at a time.
 When the reviewer eventually does look at the PR, if they have comments that need to be addressed, then they should feel free to make a judgement call on whether or not to request that the PR author make the changes, or to just [finish off the PR themselves](#sec-finishing-off-a-pr).
 No matter what the reviewer decides, they should thank the author for their contributions.
 
