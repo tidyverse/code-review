@@ -145,7 +145,7 @@ Occasionally it is useful to document *internal* functions that aren't seen by u
 This can be useful for other developers to reference as they use common internal helpers.
 One example of this is `tidyr:::df_append()`, which includes this [internal function documentation](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1) marked with `@noRd`:
 
-```{r, eval=FALSE}
+``` r
 #' Append new columns (`y`) to an existing data frame (`x`)
 #'
 #' @details
