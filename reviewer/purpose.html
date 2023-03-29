@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
+  <a href="../author/submitting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -205,9 +205,9 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The primary purpose of code review is to ensure that the overall “code health” of Posit’s software (both R packages and other tools) is improving over time. All of the tools and processes of code review are designed to this end.</p>
+<p>The primary purpose of code review is to ensure that the overall “code health” of our packages is improving over time. All of the tools and processes of code review are designed to this end.</p>
 <p>In order to accomplish this, a series of trade-offs have to be balanced.</p>
-<p>First, developers must be able to <em>make progress</em> on their tasks. If you never submit an improvement to the codebase, then the codebase never improves. Also, if a reviewer makes it very difficult for <em>any</em> change to go in, then developers are discouraged from making improvements in the future.</p>
+<p>First, developers must be able to <em>make progress</em> on their tasks. If you never submit an improvement to the codebase, then the codebase never improves. Also, if a reviewer makes it very difficult for <em>any</em> change to go in, then authors are discouraged from making improvements in the future.</p>
 <p>On the other hand, it is the duty of the reviewer to make sure that each PR is of such a quality that the overall code health of their codebase is not decreasing as time goes on. This can be tricky, because codebases often degrade through small decreases in code health over time. This isn’t necessarily anyone’s fault. It is a natural process resulting from the accumulation of technical debt over time, which must continually be fought against.</p>
 <p>Also, a reviewer typically has ownership and responsibility over the code they are reviewing. When the reviewer is also the maintainer of the software, keeping the codebase consistent and maintainable is an even higher priority, because the reviewer is the one that has to maintain the code going forward.</p>
 <p>Thus, we get the following rule as the standard we expect in code reviews:</p>
@@ -216,11 +216,11 @@ ul.task-list li input[type="checkbox"] {
 <p>There are limitations to this, of course. For example, if a PR adds a feature that the reviewer doesn’t want in their system, then the reviewer can certainly deny approval even if the code is well-designed.</p>
 <p>A key point here is that there is no such thing as “perfect” code—there is only <em>better</em> code. Reviewers should not require the author to polish every tiny piece of a PR before granting approval. Rather, the reviewer should balance out the need to make forward progress compared to the importance of the changes they are suggesting. Instead of seeking perfection, what a reviewer should seek is <em>continuous improvement</em>. A PR that, as a whole, improves the maintainability, readability, and understandability of the system shouldn’t be delayed for days or weeks because it isn’t “perfect.”</p>
 <p>Another way to think about code health is in terms of letter grades (like A, B+, or C-). If the particular section of the code base the PR is targeting is currently at a C and the changes would bring it up to a B, then that is an improvement worth merging.</p>
-<p>Reviewers should <em>always</em> feel free to leave comments expressing that something could be better, but if it’s not very important, note in the comment that this is just a point of polish that the developer can choose to ignore.</p>
+<p>Reviewers should <em>always</em> feel free to leave comments expressing that something could be better, but if it’s not very important, note in the comment that this is just a point of polish that the author can choose to ignore.</p>
 <section id="sec-mentoring" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-mentoring"><span class="header-section-number">1.1</span> Mentoring</h2>
-<p>At Posit, we believe that code review is an important part of on-boarding new developers. As a reviewer, it is encouraged to leave comments that help a developer learn something new. Linking out to sections of the style guide, design guide, or this code review guide are ways to point to a concrete source of truth that the developer can read to align their future code with Posit standards.</p>
-<p>Pair programming is also an excellent way to perform a code review. One way to do this is to have the reviewer live-review a pull request, which often teaches the developer what the reviewer looks for when they review PRs, and gives both parties a way to have an immediate discussion about any tricky design points. It is generally useful to document any insights from the pair programming session as a comment in the code review.</p>
+<p>At Posit, we believe that code review is an important part of on-boarding new developers. As a reviewer, it is encouraged to leave comments that help an author learn something new. Linking out to sections of the style guide, design guide, or this code review guide are ways to point to a concrete source of truth that the PR author can read to align their future code with tidyteam standards.</p>
+<p>Pair programming is also an excellent way to perform a code review. One way to do this is to have the reviewer live-review a pull request, which often teaches the author what the reviewer looks for when they review PRs, and gives both parties a way to have an immediate discussion about any tricky design points. It is generally useful to document any insights from the pair programming session as a comment in the code review.</p>
 </section>
 <section id="sec-principles" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="sec-principles"><span class="header-section-number">1.2</span> Principles</h2>

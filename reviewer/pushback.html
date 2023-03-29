@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
+  <a href="../author/submitting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#sec-who-is-right" id="toc-sec-who-is-right" class="nav-link active" data-scroll-target="#sec-who-is-right"><span class="toc-section-number">6.1</span>  Who is right?</a></li>
-  <li><a href="#upsetting_developers" id="toc-upsetting_developers" class="nav-link" data-scroll-target="#upsetting_developers"><span class="toc-section-number">6.2</span>  Upsetting developers</a></li>
+  <li><a href="#upsetting_developers" id="toc-upsetting_developers" class="nav-link" data-scroll-target="#upsetting_developers"><span class="toc-section-number">6.2</span>  Upsetting authors</a></li>
   <li><a href="#later" id="toc-later" class="nav-link" data-scroll-target="#later"><span class="toc-section-number">6.3</span>  Cleaning it up later</a></li>
   <li><a href="#sec-conflicts" id="toc-sec-conflicts" class="nav-link" data-scroll-target="#sec-conflicts"><span class="toc-section-number">6.4</span>  Resolving conflicts</a></li>
   </ul>
@@ -207,21 +207,21 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Sometimes a developer will push back on a code review. Either they will disagree with your suggestion or they will complain that you are being too strict in general.</p>
+<p>Sometimes an author will push back on a code review. Either they will disagree with your suggestion or they will complain that you are being too strict in general.</p>
 <section id="sec-who-is-right" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="sec-who-is-right"><span class="header-section-number">6.1</span> Who is right?</h2>
-<p>When a developer disagrees with your suggestion, first take a moment to consider if they are correct. Often, they are closer to the code than you are, and so they might really have a better insight about certain aspects of it. Does their argument make sense? Does it make sense from a code health perspective? If so, let them know that they are right and let the issue drop.</p>
-<p>However, developers are not always right. In this case, the reviewer should further explain why they believe that their suggestion is correct. A good explanation demonstrates both an understanding of the developer’s reply, and additional information about why the change is being requested. Good explanations are additionally reinforced by facts or external official resources like the design or style guide.</p>
+<p>When an author disagrees with your suggestion, first take a moment to consider if they are correct. Often, they are closer to the code than you are, and so they might really have a better insight about certain aspects of it. Does their argument make sense? Does it make sense from a code health perspective? If so, let them know that they are right and let the issue drop.</p>
+<p>However, authors are not always right. In this case, the reviewer should further explain why they believe that their suggestion is correct. A good explanation demonstrates both an understanding of the author’s reply, and additional information about why the change is being requested. Good explanations are additionally reinforced by facts or external official resources like the design or style guide.</p>
 <p>In particular, when the reviewer believes their suggestion will avoid a drop in code health, then they should continue to advocate for the change if they believe the resulting code quality improvement justifies the additional work requested. On the other hand, if the PR already improves the overall health of the codebase, it isn’t worth arguing every little stylistic point. <strong>Code improvements often happen in small steps</strong>.</p>
-<p>Sometimes it takes a few rounds of explaining a suggestion before it really sinks in. Just make sure to always stay <a href="comments.html#sec-courtesy">polite</a> and let the developer know that you <em>hear</em> what they’re saying, you just don’t <em>agree</em>.</p>
+<p>Sometimes it takes a few rounds of explaining a suggestion before it really sinks in. Just make sure to always stay <a href="comments.html#sec-courtesy">polite</a> and let the author know that you <em>hear</em> what they’re saying, you just don’t <em>agree</em>.</p>
 </section>
 <section id="upsetting_developers" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="upsetting_developers"><span class="header-section-number">6.2</span> Upsetting developers</h2>
-<p>Reviewers sometimes believe that the developer will be upset if the reviewer insists on an improvement. Sometimes developers do become upset, but it is usually brief and they become very thankful later that you helped them improve the quality of their code. Usually, if you are <a href="comments.html#sec-courtesy">polite</a> in your comments, developers actually don’t become upset at all, and the worry is just in the reviewer’s mind.</p>
+<h2 data-number="6.2" class="anchored" data-anchor-id="upsetting_developers"><span class="header-section-number">6.2</span> Upsetting authors</h2>
+<p>Reviewers sometimes believe that the author will be upset if the reviewer insists on an improvement. Sometimes authors do become upset, but it is usually brief and they become very thankful later that you helped them improve the quality of their code. Usually, if you are <a href="comments.html#sec-courtesy">polite</a> in your comments, authors actually don’t become upset at all, and the worry is just in the reviewer’s mind.</p>
 </section>
 <section id="later" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="later"><span class="header-section-number">6.3</span> Cleaning it up later</h2>
-<p>A common source of push back is that developers (understandably) want to get things done. They don’t want to go through another round of review just to get this PR in. So they say they will clean something up in a later PR, and thus you should approve <em>this</em> PR now. Some developers are very good about this, and will immediately write a follow-up PR that fixes the issue. However, experience shows that as more time passes after a developer writes the original PR, the less likely this clean up is to happen. In fact, usually unless the developer does the clean up <em>immediately</em> after the present PR, it never happens. This isn’t because developers are irresponsible, but because they have a lot of work to do and the cleanup gets lost or forgotten in the press of other work. Thus, it is usually best to insist that the developer clean up their PR <em>now</em>, before the code is in the codebase and “done.”</p>
+<p>A common source of push back is that authors (understandably) want to get things done. They don’t want to go through another round of review just to get this PR in. So they say they will clean something up in a later PR, and thus you should approve <em>this</em> PR now. Some developers are very good about this, and will immediately write a follow-up PR that fixes the issue. However, experience shows that as more time passes after an author writes the original PR, the less likely this clean up is to happen. In fact, usually unless the author does the clean up <em>immediately</em> after the present PR, it never happens. This isn’t because the author is irresponsible, but because they have a lot of work to do and the cleanup gets lost or forgotten in the press of other work. Thus, it is usually best to insist that the author clean up their PR <em>now</em>, before the code is in the codebase and “done.”</p>
 <p>Note that PR cleanup is different from the case where a PR exposes a bug that is technically unrelated to that PR. In the spirit of <a href="../author/small.html">keeping PRs small</a>, in those cases it is best to open an issue with a reproducible example demonstrating the issue, so that it is tracked and can be addressed after merging the current PR.</p>
 </section>
 <section id="sec-conflicts" class="level2" data-number="6.4">

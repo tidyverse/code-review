@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyteam code review principles - 7&nbsp; Writing PR descriptions</title>
+<title>Tidyteam code review principles - 7&nbsp; Submitting a PR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -70,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -156,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/descriptions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
+  <a href="../author/submitting.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -180,34 +243,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-orienting" id="toc-sec-orienting" class="nav-link active" data-scroll-target="#sec-orienting"><span class="toc-section-number">7.1</span>  Orienting your reviewer</a>
+  <li><a href="#sec-descriptions" id="toc-sec-descriptions" class="nav-link active" data-scroll-target="#sec-descriptions"><span class="toc-section-number">7.1</span>  Writing PR descriptions</a>
   <ul class="collapse">
-  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title"><span class="toc-section-number">7.1.1</span>  Title</a></li>
-  <li><a href="#sec-body" id="toc-sec-body" class="nav-link" data-scroll-target="#sec-body"><span class="toc-section-number">7.1.2</span>  Body</a></li>
+  <li><a href="#sec-orienting" id="toc-sec-orienting" class="nav-link" data-scroll-target="#sec-orienting"><span class="toc-section-number">7.1.1</span>  Orienting your reviewer</a></li>
+  <li><a href="#sec-good-pr-descriptions" id="toc-sec-good-pr-descriptions" class="nav-link" data-scroll-target="#sec-good-pr-descriptions"><span class="toc-section-number">7.1.2</span>  Examples of good PR descriptions</a></li>
   </ul></li>
-  <li><a href="#sec-good-pr-descriptions" id="toc-sec-good-pr-descriptions" class="nav-link" data-scroll-target="#sec-good-pr-descriptions"><span class="toc-section-number">7.2</span>  Examples of good PR descriptions</a>
+  <li><a href="#sec-github-features" id="toc-sec-github-features" class="nav-link" data-scroll-target="#sec-github-features"><span class="toc-section-number">7.2</span>  GitHub features</a>
   <ul class="collapse">
-  <li><a href="#new-feature" id="toc-new-feature" class="nav-link" data-scroll-target="#new-feature"><span class="toc-section-number">7.2.1</span>  New feature</a></li>
-  <li><a href="#performance-improvement" id="toc-performance-improvement" class="nav-link" data-scroll-target="#performance-improvement"><span class="toc-section-number">7.2.2</span>  Performance improvement</a></li>
+  <li><a href="#closes" id="toc-closes" class="nav-link" data-scroll-target="#closes"><span class="toc-section-number">7.2.1</span>  Closes</a></li>
+  <li><a href="#checklists" id="toc-checklists" class="nav-link" data-scroll-target="#checklists"><span class="toc-section-number">7.2.2</span>  Checklists</a></li>
+  <li><a href="#sec-commenting-on-your-own-pr" id="toc-sec-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#sec-commenting-on-your-own-pr"><span class="toc-section-number">7.2.3</span>  Commenting on your own PR</a></li>
   </ul></li>
-  <li><a href="#sec-github-features" id="toc-sec-github-features" class="nav-link" data-scroll-target="#sec-github-features"><span class="toc-section-number">7.3</span>  GitHub features</a>
-  <ul class="collapse">
-  <li><a href="#closes" id="toc-closes" class="nav-link" data-scroll-target="#closes"><span class="toc-section-number">7.3.1</span>  Closes</a></li>
-  <li><a href="#checklists" id="toc-checklists" class="nav-link" data-scroll-target="#checklists"><span class="toc-section-number">7.3.2</span>  Checklists</a></li>
-  <li><a href="#sec-commenting-on-your-own-pr" id="toc-sec-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#sec-commenting-on-your-own-pr"><span class="toc-section-number">7.3.3</span>  Commenting on your own PR</a></li>
-  </ul></li>
-  <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.4</span>  Review before submitting</a></li>
+  <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.3</span>  Review before submitting</a></li>
+  <li><a href="#sec-request-a-review" id="toc-sec-request-a-review" class="nav-link" data-scroll-target="#sec-request-a-review"><span class="toc-section-number">7.4</span>  Requesting a review</a></li>
   <li><a href="#sec-draft-pr" id="toc-sec-draft-pr" class="nav-link" data-scroll-target="#sec-draft-pr"><span class="toc-section-number">7.5</span>  Draft PRs</a></li>
   <li><a href="#self-reviews" id="toc-self-reviews" class="nav-link" data-scroll-target="#self-reviews"><span class="toc-section-number">7.6</span>  Self-reviews</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/descriptions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/submitting.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-descriptions" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></h1>
 </div>
 
 
@@ -222,6 +281,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="sec-descriptions" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-descriptions"><span class="header-section-number">7.1</span> Writing PR descriptions</h2>
 <p>When you submit a pull request through GitHub, you are able to include a PR title and a PR description detailing what the pull request is about. Leaving a detailed and useful description is a vital part of ensuring that your reviewer has a successful experience. There are three big reasons why writing a comprehensive PR description is useful:</p>
 <ul>
 <li><p>You have the opportunity to orient and prepare your reviewer for your PR before they’ve seen any code.</p></li>
@@ -229,10 +290,10 @@ ul.task-list li input[type="checkbox"] {
 <li><p>You can take advantage of GitHub specific features, including auto-closing issues, referencing related issues, checklists, and commenting on your own PR.</p></li>
 </ul>
 <p>Future developers will search for your PR based on its description. Someone in the future might be looking for your change because of a faint memory of its relevance but without the specifics handy. If all the important information is in the code and not the description, it’s going to be a lot harder for them to locate your PR.</p>
-<section id="sec-orienting" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="sec-orienting"><span class="header-section-number">7.1</span> Orienting your reviewer</h2>
-<section id="title" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="title"><span class="header-section-number">7.1.1</span> Title</h3>
+<section id="sec-orienting" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="sec-orienting"><span class="header-section-number">7.1.1</span> Orienting your reviewer</h3>
+<section id="title" class="level4" data-number="7.1.1.1">
+<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="title"><span class="header-section-number">7.1.1.1</span> Title</h4>
 <p>The title of your pull request should be a very short summary of <em>what</em> is being done. Ideally it should be shorter than 72 characters, because this is what appears in version control history summaries and that is the typical limit before the title is truncated. It should be informative enough that future code searchers don’t have to read your PR or its whole description to understand what your PR actually <em>did</em>. That is, the first line should stand alone, allowing readers to skim through code history much faster.</p>
 <p>Bad titles typically don’t contain enough context about the problem the PR is trying to solve. “Fix bug” is an inadequate PR title. What bug? What did you do to fix it? Other similarly bad titles include:</p>
 <ul>
@@ -244,8 +305,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Avoid restating the title of the corresponding issue in the title of the PR. Focus on summarizing what the actual change you made does, rather than what is being fixed.</p>
 </section>
-<section id="sec-body" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="sec-body"><span class="header-section-number">7.1.2</span> Body</h3>
+<section id="sec-body" class="level4" data-number="7.1.1.2">
+<h4 data-number="7.1.1.2" class="anchored" data-anchor-id="sec-body"><span class="header-section-number">7.1.1.2</span> Body</h4>
 <p>The body of a PR description should contain the context a reviewer needs to get into a mental state where they can understand your PR. It might include:</p>
 <ul>
 <li><p>A brief description of the problem being solved</p></li>
@@ -256,13 +317,16 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>The description should give your reviewer an idea of the code they are about to see, even before they’ve looked at it. By outlining any potential shortcomings, you give the reviewer ideas to keep in mind while they look over your code.</p>
 <p>If your PR closes a complicated issue that involved a large amount of back and forth discussion, it is worth summarizing the outcome of that discussion in the body of the description. This is especially important if the reviewer wasn’t a part of that discussion, since they’d otherwise have to wade through a large amount of comments to understand why this particular implementation was chosen.</p>
+<section id="sec-reading-order" class="level5" data-number="7.1.1.2.1">
+<h5 data-number="7.1.1.2.1" class="anchored" data-anchor-id="sec-reading-order"><span class="header-section-number">7.1.1.2.1</span> Reading order</h5>
 <p>For large PRs, it can also be useful to suggest a recommended reading order to your reviewer. This might involve looking at one particular function before another, but could also be a suggestion to look at the examples or tests before looking at the implementation itself, if you feel that they would clarify the purpose of the PR.</p>
 </section>
 </section>
-<section id="sec-good-pr-descriptions" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="sec-good-pr-descriptions"><span class="header-section-number">7.2</span> Examples of good PR descriptions</h2>
-<section id="new-feature" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="new-feature"><span class="header-section-number">7.2.1</span> New feature</h3>
+</section>
+<section id="sec-good-pr-descriptions" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="sec-good-pr-descriptions"><span class="header-section-number">7.1.2</span> Examples of good PR descriptions</h3>
+<section id="new-feature" class="level4" data-number="7.1.2.1">
+<h4 data-number="7.1.2.1" class="anchored" data-anchor-id="new-feature"><span class="header-section-number">7.1.2.1</span> New feature</h4>
 <p>This <a href="https://github.com/r-lib/vctrs/pull/1791">vctrs PR</a> contains an example of adding a new feature to an existing function. In this case, a new <code>relationship</code> argument was added to <code>vctrs::vec_locate_matches()</code>, a function that underlies dplyr’s joins, like <code>left_join()</code>. In this case, the total number of changed lines was fairly high, but that is mostly due to a combination of having to touch R code, C code, documentation, and adding new tests. The important thing here is that all of the changes are highly connected, and nothing is extraneous.</p>
 <p>There are a number of things that are useful to point out regarding this PR:</p>
 <ul>
@@ -272,12 +336,12 @@ ul.task-list li input[type="checkbox"] {
 <li><p>The reviewer brought up <a href="https://github.com/r-lib/vctrs/pull/1791#discussion_r1114087922">a concern of their own</a>, which the author then provided justification for, and the “tie” went to the author since neither party felt strongly about it.</p></li>
 </ul>
 </section>
-<section id="performance-improvement" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="performance-improvement"><span class="header-section-number">7.2.2</span> Performance improvement</h3>
+<section id="performance-improvement" class="level4" data-number="7.1.2.2">
+<h4 data-number="7.1.2.2" class="anchored" data-anchor-id="performance-improvement"><span class="header-section-number">7.1.2.2</span> Performance improvement</h4>
 <p>This <a href="https://github.com/r-lib/vctrs/pull/1760">vctrs PR</a> contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package. If you look at the changed lines of code, there is really only 1 changed line:</p>
-<pre><code>const double load_adjusted_size = x_size / 0.77;</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">double</span> load_adjusted_size <span class="op">=</span> x_size <span class="op">/</span> <span class="fl">0.77</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Changed to:</p>
-<pre><code>const double load_adjusted_size = x_size / 0.50;</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">double</span> load_adjusted_size <span class="op">=</span> x_size <span class="op">/</span> <span class="fl">0.50</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is an example where even though the number of lines of changed code is very small, the PR itself required a large amount of context and justification. This context doesn’t belong inside the codebase, but is important for the reviewer as they try to understand why this change was made and whether or not it was the right decision. The PR mentions:</p>
 <ul>
 <li><p>Other sources of information justifying the change</p></li>
@@ -286,24 +350,25 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="sec-github-features" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="sec-github-features"><span class="header-section-number">7.3</span> GitHub features</h2>
-<p>GitHub includes a number of tools to make authoring PRs a little more streamlined. Using these tools is good practice at Posit.</p>
-<section id="closes" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="closes"><span class="header-section-number">7.3.1</span> Closes</h3>
-<p>In the description <a href="#sec-body">body</a>, it is useful to mention what issue is <em>closed</em> or <em>fixed</em> by this PR. Specifically, if you mention <code>Closes #545</code> or <code>Fixes #545</code> in the body of your PR description, then GitHub will automatically close that issue when the PR is merged. This also helps provide context to both the reviewer and future developers.</p>
 </section>
-<section id="checklists" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="checklists"><span class="header-section-number">7.3.2</span> Checklists</h3>
+<section id="sec-github-features" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-github-features"><span class="header-section-number">7.2</span> GitHub features</h2>
+<section id="closes" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="closes"><span class="header-section-number">7.2.1</span> Closes</h3>
+<p>In the description <a href="#sec-body">body</a>, it is useful to mention what issue is <em>closed</em> or <em>fixed</em> by this PR. Specifically, if you mention <code>Closes #545</code> or <code>Fixes #545</code> in the body of your PR description, then GitHub will automatically close that issue when the PR is merged. This also helps provide context to both the reviewer and future developers.</p>
+<p>If you’d like to refer to another issue or PR without closing it, then using terminology like <code>Related to #545</code> or <code>Part of #545</code> is a useful way to connect the PR to the issue even if it doesn’t fully resolve it (and GitHub doesn’t do anything special with these phrases).</p>
+</section>
+<section id="checklists" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="checklists"><span class="header-section-number">7.2.2</span> Checklists</h3>
 <p>Since GitHub supports Markdown, you can also add checklists to your PR descriptions like this:</p>
-<pre><code>- [ ] Don't forget this
-- [ ] And this</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Don't forget this</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> And this</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Which get rendered in the GitHub UI as:</p>
 <p><img src="img/checklists.png" class="img-fluid"></p>
 <p>Checklists are particularly useful in combination with <a href="#sec-draft-pr">Draft PRs</a> where you might push a partially finished PR to GitHub (to get CI to run, or to ask for advice), but you still have a number of tweaks to make that you don’t want to forget about.</p>
 </section>
-<section id="sec-commenting-on-your-own-pr" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="sec-commenting-on-your-own-pr"><span class="header-section-number">7.3.3</span> Commenting on your own PR</h3>
+<section id="sec-commenting-on-your-own-pr" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="sec-commenting-on-your-own-pr"><span class="header-section-number">7.2.3</span> Commenting on your own PR</h3>
 <p>GitHub allows the PR author to <em>also</em> be their own reviewer. If you open the <code>Files changed</code> menu on GitHub, you can add comments on sections of code that you’ve written, like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -319,17 +384,24 @@ ul.task-list li input[type="checkbox"] {
 <p>You won’t be able to <code>Approve</code>, as you can’t approve your own PR.</p>
 <p>Commenting on your own PR is a great way to provide scoped comments inline with the code that they are related to. Comments like this are also great because they start a thread where a reviewer can easily respond to that point without cluttering the rest of the PR. Once the comment has been addressed, it can optionally be marked as <em>resolved</em> by the PR author and collapsed.</p>
 <p>PR comments like this should be reserved for ideas that don’t belong in the codebase itself (i.e.&nbsp;as a code comment). They typically call the reviewer’s attention to something in the PR that they might otherwise miss, or they call out a part of the code that the PR author is a little uncertain about.</p>
-<p>Here are a few real examples of employees at Posit commenting on our own PRs:</p>
+<p>Here are a few real examples of tidyteam members commenting on our own PRs:</p>
 <ul>
 <li><p><a href="https://github.com/tidyverse/dplyr/pull/6612">Implement <code>dplyr::cross_join()</code></a></p></li>
 <li><p><a href="https://github.com/tidyverse/readxl/pull/683">Refactoring classes in readxl</a></p></li>
 </ul>
 </section>
 </section>
-<section id="review-before-submitting" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="review-before-submitting"><span class="header-section-number">7.4</span> Review before submitting</h2>
+<section id="review-before-submitting" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="review-before-submitting"><span class="header-section-number">7.3</span> Review before submitting</h2>
 <p>PRs can undergo significant change during review. It can be worthwhile to review a PR description before submitting the PR, to ensure that the description still reflects what the PR does and that it is grammatically correct.</p>
 <p>If your codebase uses continuous integration to also run checks on your PR, you should also ensure that those are all passing before requesting a review.</p>
+</section>
+<section id="sec-request-a-review" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="sec-request-a-review"><span class="header-section-number">7.4</span> Requesting a review</h2>
+<p>For <a href="../collaboration/index.html#sec-close-knit-collaboration">close-knit collaboration</a> and when submitting a PR as an <a href="../collaboration/index.html#sec-the-understudy">understudy</a>, it is expected that the author will use GitHub’s “request a review” feature to officially ask one or more colleagues to be their reviewer.</p>
+<p><img src="img/request-a-review.png" class="img-fluid"></p>
+<p>The reviewer you choose depends on their expertise on the part of the codebase your PR affects. Occasionally, it can be useful to select two reviewers for different purposes - one for high-level API design feedback, and one for a full in-depth review.</p>
+<p>For <a href="../collaboration/index.html#sec-external-contributions">external contributions</a>, the author likely won’t have the ability to select a reviewer. In this case, it is expected that the maintainer of the package will review the PR when they next actively work on it. If the author is a Posit employee and this PR is blocking other work, then the author should reach out to the maintainer (i.e.&nbsp;over Slack) to agree on an expected timeline for the review.</p>
 </section>
 <section id="sec-draft-pr" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="sec-draft-pr"><span class="header-section-number">7.5</span> Draft PRs</h2>

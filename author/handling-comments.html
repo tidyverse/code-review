@@ -155,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/descriptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing PR descriptions</span></a>
+  <a href="../author/submitting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -183,7 +183,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-fix-code" id="toc-sec-fix-code" class="nav-link" data-scroll-target="#sec-fix-code"><span class="toc-section-number">9.2</span>  Fix the code</a></li>
   <li><a href="#sec-think-collaboratively" id="toc-sec-think-collaboratively" class="nav-link" data-scroll-target="#sec-think-collaboratively"><span class="toc-section-number">9.3</span>  Think collaboratively</a></li>
   <li><a href="#sec-resolve-comments" id="toc-sec-resolve-comments" class="nav-link" data-scroll-target="#sec-resolve-comments"><span class="toc-section-number">9.4</span>  Who “resolves” GitHub comments?</a></li>
-  <li><a href="#resolving-conflicts" id="toc-resolving-conflicts" class="nav-link" data-scroll-target="#resolving-conflicts"><span class="toc-section-number">9.5</span>  Resolving conflicts</a></li>
+  <li><a href="#re-requesting-review" id="toc-re-requesting-review" class="nav-link" data-scroll-target="#re-requesting-review"><span class="toc-section-number">9.5</span>  Re-requesting review</a></li>
+  <li><a href="#resolving-conflicts" id="toc-resolving-conflicts" class="nav-link" data-scroll-target="#resolving-conflicts"><span class="toc-section-number">9.6</span>  Resolving conflicts</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/handling-comments.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -210,8 +211,8 @@ ul.task-list li input[type="checkbox"] {
 <p>When you’ve sent a PR out for review, it’s likely that your reviewer will respond with several comments on your PR. Here are some useful things to know about handling reviewer comments.</p>
 <section id="sec-personal" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="sec-personal"><span class="header-section-number">9.1</span> Don’t take it personally</h2>
-<p>The goal of review is to maintain the quality of our packages. When a reviewer provides a critique of your code, think of it as their attempt to help you, the codebase, and Posit, rather than as a personal attack on you or your abilities. Most of the time, the reviewer is trying to help you grow as a developer.</p>
-<p>Sometimes reviewers feel frustrated and they express that frustration in their comments. This isn’t a good practice for reviewers, but as a developer you should be prepared for this. Ask yourself, “What is the constructive thing that the reviewer is trying to communicate to me?” and then operate as though that’s what they actually said.</p>
+<p>The goal of review is to maintain the quality of our packages. When a reviewer provides a critique of your code, think of it as their attempt to help you and the package rather than as a personal attack on you or your abilities. Most of the time, the reviewer is trying to help you grow as a developer.</p>
+<p>Sometimes reviewers feel frustrated and they express that frustration in their comments. This isn’t a good practice for reviewers, but as a PR author you should be prepared for this. Ask yourself, “What is the constructive thing that the reviewer is trying to communicate to me?” and then operate as though that’s what they actually said.</p>
 <p><strong>Never respond in anger to code review comments.</strong> That is a serious breach of professional etiquette that will live forever in the code review tool. If you are too angry or annoyed to respond kindly, then walk away from your computer for a while, or work on something else until you feel calm enough to reply politely.</p>
 <p>In general, if a reviewer isn’t providing feedback in a way that’s constructive and polite, explain this to them in person. If you can’t talk to them in person or on a video call, then send them a private message. Explain to them in a kind way what you don’t like and what you’d like them to do differently. If they also respond in a non-constructive way to this private discussion, or it doesn’t have the intended effect, then escalate internally as appropriate.</p>
 </section>
@@ -243,10 +244,15 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="img/resolve-conversation.png" class="img-fluid figure-img" width="900"></p>
 </figure>
 </div>
-<p>This button will collapse the conversation, essentially marking the comment as “completed.” Both the author and reviewer see this button, so who’s job is it to resolve? At Posit, we typically expect the PR author to use the resolve button. One typical workflow is to add a thumbs-up emoji or a comment saying that you have handled their comment, and to then resolve the conversation. If you have a question about their comment that requires further input, then add a comment of your own and leave the thread open. Closing resolved threads can reduce the overall noise in the PR, especially if it goes through multiple rounds of review.</p>
+<p>This button will collapse the conversation, essentially marking the comment as “completed.” Both the author and reviewer see this button, so who’s job is it to resolve? Within the tidyteam group, we typically expect the PR author to use the resolve button. One typical workflow is to add a thumbs-up emoji or a comment saying that you have handled their comment, and to then resolve the conversation. If you have a question about their comment that requires further input, then add a comment of your own and leave the thread open. Closing resolved threads can reduce the overall noise in the PR, especially if it goes through multiple rounds of review.</p>
 </section>
-<section id="resolving-conflicts" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="resolving-conflicts"><span class="header-section-number">9.5</span> Resolving conflicts</h2>
+<section id="re-requesting-review" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="re-requesting-review"><span class="header-section-number">9.5</span> Re-requesting review</h2>
+<p>If your reviewer has used the <a href="../reviewer/comments.html#sec-approve-with-comments">Comment or Request Changes</a> button in the GitHub UI, then they expect that you will re-request a <a href="submitting.html#sec-request-a-review">review</a> after you have addressed all of their comments.</p>
+<p>For <a href="../collaboration/index.html#sec-external-contributions">external contributions</a> where you might not be able to request a review, it is polite to add a comment tagging the reviewer stating that you have finished incorporating their suggestions.</p>
+</section>
+<section id="resolving-conflicts" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="resolving-conflicts"><span class="header-section-number">9.6</span> Resolving conflicts</h2>
 <p>If you are having difficulty coming to an agreement with your reviewer, try the advice in the reviewer section on <a href="../reviewer/pushback.html#sec-conflicts">conflicts</a>.</p>
 
 
