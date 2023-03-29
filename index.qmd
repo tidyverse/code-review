@@ -8,8 +8,8 @@ It is written with the *tidyteam* in mind, which make up the combination of the 
 The guide is intended to be used as a way to get new developers up to speed on how we perform code review, and to serve as a linkable resource when there are questions about aspects of the code review process.
 
 We mostly use [GitHub](https://github.com/) as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub's tooling.
-Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests.
-In particular, you will see references to [`devtools`](https://devtools.r-lib.org/) and [`usethis`](https://usethis.r-lib.org/) throughout this guide.
+Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests, such as [`devtools`](https://devtools.r-lib.org/) and [`usethis`](https://usethis.r-lib.org/).
+In particular, the family of [`usethis::pr_*()`](https://usethis.r-lib.org/articles/pr-functions.html) functions are extremely useful for managing pull requests on R packages.
 
 We will use the abbreviation PR to mean a *pull request*, typically on GitHub.
 
