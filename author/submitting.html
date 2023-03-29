@@ -256,8 +256,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.3</span>  Review before submitting</a></li>
   <li><a href="#sec-request-a-review" id="toc-sec-request-a-review" class="nav-link" data-scroll-target="#sec-request-a-review"><span class="toc-section-number">7.4</span>  Requesting a review</a></li>
-  <li><a href="#sec-draft-pr" id="toc-sec-draft-pr" class="nav-link" data-scroll-target="#sec-draft-pr"><span class="toc-section-number">7.5</span>  Draft PRs</a></li>
-  <li><a href="#self-reviews" id="toc-self-reviews" class="nav-link" data-scroll-target="#self-reviews"><span class="toc-section-number">7.6</span>  Self-reviews</a></li>
+  <li><a href="#finishing-a-pr" id="toc-finishing-a-pr" class="nav-link" data-scroll-target="#finishing-a-pr"><span class="toc-section-number">7.5</span>  Finishing a PR</a></li>
+  <li><a href="#sec-draft-pr" id="toc-sec-draft-pr" class="nav-link" data-scroll-target="#sec-draft-pr"><span class="toc-section-number">7.6</span>  Draft PRs</a></li>
+  <li><a href="#self-reviews" id="toc-self-reviews" class="nav-link" data-scroll-target="#self-reviews"><span class="toc-section-number">7.7</span>  Self-reviews</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/submitting.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -403,14 +404,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The reviewer you choose depends on their expertise on the part of the codebase your PR affects. Occasionally, it can be useful to select two reviewers for different purposes - one for high-level API design feedback, and one for a full in-depth review.</p>
 <p>For <a href="../collaboration/index.html#sec-external-contributions">external contributions</a>, the author likely won’t have the ability to select a reviewer. In this case, it is expected that the maintainer of the package will review the PR when they next actively work on it. If the author is a Posit employee and this PR is blocking other work, then the author should reach out to the maintainer (i.e.&nbsp;over Slack) to agree on an expected timeline for the review.</p>
 </section>
-<section id="sec-draft-pr" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="sec-draft-pr"><span class="header-section-number">7.5</span> Draft PRs</h2>
+<section id="finishing-a-pr" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="finishing-a-pr"><span class="header-section-number">7.5</span> Finishing a PR</h2>
+<p>After you have <a href="handling-comments.html">handled the comments</a> from your reviewer, the PR can get merged in a variety of ways, depending on the <a href="../collaboration/index.html">collaboration pattern</a> being used.</p>
+<p>For <a href="../collaboration/index.html#sec-close-knit-collaboration">close-knit collaboration</a> and when working as an <a href="../collaboration/index.html#sec-the-understudy">understudy</a>, the PR author is typically expected to merge the PR after receiving approval from the reviewer and addressing all comments. After <a href="../reviewer/comments.html#sec-approve-with-comments">approval</a> is received, the author is no longer required to wait on further feedback from the reviewer before merging.</p>
+<p>For <a href="../collaboration/index.html#sec-external-contributions">external contributions</a>, the author likely does not have permission to merge the PR. Instead, it is expected that the reviewer (who is likely also someone with commit rights) will merge the PR for you after all comments have been addressed. Depending on the circumstances, the reviewer may also <a href="../reviewer/comments.html#sec-finishing-off-an-external-contribution">finish off the PR for you</a>.</p>
+<p>GitHub provides various options for actually merging the PR:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/merging.png" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+<p>Most of the time, we use <code>Squash and merge</code>, which collapses all of the commits into a single commit that gets merged into the main branch. Because of this, we typically don’t care what the commit history of the actual PR looks like, because it will likely be collapsed anyways.</p>
+<p>If the commit history of the PR has been purposefully structured in a meaningful way, we may also use <code>Create a merge commit</code> to retain the full history.</p>
+<p>After the PR has been merged, <code>usethis::pr_finish()</code> can be used to delete the local (and possibly remote) PR branch and switch back to the default branch.</p>
+</section>
+<section id="sec-draft-pr" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="sec-draft-pr"><span class="header-section-number">7.6</span> Draft PRs</h2>
 <p>If you aren’t quite ready to submit your PR for a full review, but still want to have it up on GitHub (for CI purposes, perhaps), then you can open a <a href="https://github.blog/2019-02-14-introducing-draft-pull-requests/"><em>Draft PR</em></a>. When a PR is in draft form, this is a signal to your collaborators that they don’t need to worry themselves with that PR yet.</p>
 <p>Draft PRs are particularly nice for PRs that you want to get into a “final state” (with CI run and a description written), but you’d also like to sleep on it and give it one last self-review on the following day before requesting a review from a colleague. It is amazing how many small bugs and documentation typos you can find after self-reviewing a PR the day after you wrote it! This also saves time for your eventual reviewer, since you’ve improved the quality of the PR before they’ve even taken a look at it.</p>
 <p>A draft PR is also useful if you want to park a proof of concept somewhere, knowing that you will come back and clean it up in the future.</p>
 </section>
-<section id="self-reviews" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="self-reviews"><span class="header-section-number">7.6</span> Self-reviews</h2>
+<section id="self-reviews" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="self-reviews"><span class="header-section-number">7.7</span> Self-reviews</h2>
 <p>While this guide mostly focuses on writing PRs with the goal of being reviewed by someone else, it is also useful to create a PR even if no one else is going to review it. This situation typically arises if you are the only one working on a package, or if you are creating a new package undergoing rapid development. Like with <a href="#sec-draft-pr">draft PRs</a>, opening a PR, sleeping on it, and then rereading it the following day will often reveal bugs or typos that you’ve missed. Functioning as your own reviewer is a great way to practice the principles outlined in this guide, even if you don’t work on a team, and can prepare you for future collaborative work.</p>
 <p>Leaving a detailed PR description for yourself has more benefits than you might think. <a href="#sec-descriptions">Two of the three reasons</a> for writing a good description outlined at the beginning of this section still apply - forcing yourself to describe the feature in words and using GitHub’s many features. It also provides valuable historical context if someone else (likely you) needs to come back to this PR months from now to understand why a particular line was implemented a certain way.</p>
 <p>Opening a PR also forces CI to run, giving you a chance to fix any minor issues before merging it into your main branch. Since CI often takes a few minutes to run, it is typically useful to open a PR and then start working on a separate feature while that CI is running. Once the second feature is finished, you can open a PR for that one, then go back to the first PR and merge it in (possibly giving it a self-review before you do so). The <a href="https://usethis.r-lib.org/articles/pr-functions.html"><code>usethis::pr_*()</code></a> family of functions is particularly suited to this workflow. As long as you are careful to avoid merge conflicts, this allows you to efficiently work on multiple features in parallel.</p>
