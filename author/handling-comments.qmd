@@ -10,7 +10,7 @@ When a reviewer provides a critique of your code, think of it as their attempt t
 Most of the time, the reviewer is trying to help you grow as a developer.
 
 Sometimes reviewers feel frustrated and they express that frustration in their comments.
-This isn't a good practice for reviewers, but as a developer you should be prepared for this.
+This isn't a good practice for reviewers, but as a PR author you should be prepared for this.
 Ask yourself, "What is the constructive thing that the reviewer is trying to communicate to me?" and then operate as though that's what they actually said.
 
 **Never respond in anger to code review comments.** That is a serious breach of professional etiquette that will live forever in the code review tool.

@@ -30,7 +30,7 @@ Often, there is one file that has the largest number of logical changes.
 Ideally, the PR description will point you to this if there is any ambiguity.
 Look at these major parts first.
 This helps give context to all of the smaller parts of the PR, and generally accelerates doing the code review.
-If the PR is too large for you to figure out which parts are the major parts, ask the developer what you should look at first, or ask them to [split up the PR into multiple PRs](#sec-small).
+If the PR is too large for you to figure out which parts are the major parts, ask the author to provide a [recommended reading order](#sec-reading-order), or ask them to [split up the PR into multiple PRs](#sec-small).
 
 If you see some major design problems with this part of the PR, you should send those comments immediately, even if you don't have time to review the rest of the PR right now.
 In fact, reviewing the rest of the PR might be a waste of time, because if the design problems are significant enough, a lot of the other code under review is going to disappear and not matter anyway.

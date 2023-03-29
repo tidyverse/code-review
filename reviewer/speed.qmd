@@ -5,7 +5,7 @@
 The speed of an individual developer is important, but the speed at which a *team* of developers can produce high quality code is even more important.
 When code reviews are slow, several things happen:
 
--   **Developers start to protest the code review process.** If a reviewer only responds every few days, but requests major changes to the PR each time, that can be frustrating and difficult for the author.
+-   **Authors start to protest the code review process.** If a reviewer only responds every few days, but requests major changes to the PR each time, that can be frustrating and difficult for the author.
     If the reviewer requests the *same* substantial changes (changes which really do improve code health), but responds *quickly* every time the author makes an update, the frustration tends to disappear.
     **Most complaints about the code review process are actually resolved by making the process faster.**
 

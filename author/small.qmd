@@ -52,7 +52,7 @@ It is typically also easier for git to track that you have simply moved a functi
 
 Small cleanups such as fixing a local variable name can be included inside of a feature change or bug fix PR, though.
 You can also include small changes to documentation related to code you are touching.
-It's up to the judgment of developers and reviewers to decide when a refactoring is so large that it will make the review more difficult if included in your current PR.
+It's up to the judgment of the reviewer to decide when a refactoring is so large that it will make the review more difficult if included in your current PR.
 
 ## Add tests {#sec-test-code}
 

@@ -12,11 +12,11 @@ If not, it is often worth pausing and having a separate conversation about the o
 
 ## Functionality
 
-Does this PR do what the developer intended?
-Is what the developer intended good for the users of this code?
+Does this PR do what the author intended?
+Is what the author intended good for the users of this code?
 The "users" are usually both end-users (when they are affected by the change) and developers (who will have to "use" this code in the future).
 
-Mostly, we expect developers to test PRs well-enough that they work correctly by the time they get to code review.
+Mostly, we expect authors to test PRs well-enough that they work correctly by the time they get to code review.
 However, as the reviewer you should still be thinking about edge cases, trying to think like a user, and making sure that there are no bugs that you see just by reading the code.
 In R, typical edge cases to watch out for include checking what happens if the user passes in an object of an unexpected type, or what happens if they pass in an object of zero length.
 
@@ -36,9 +36,9 @@ If it is exceedingly difficult to do this, the PR might be too complex.
 
 Complexity can also mean that developers are likely to introduce bugs when they try to call or modify that code in the future.
 
-A particular type of complexity is **over-engineering**, where developers have made the code more generic than it needs to be, or added functionality that isn't presently needed by the system.
+A particular type of complexity is **over-engineering**, where authors have made the code more generic than it needs to be, or added functionality that isn't presently needed by the system.
 Reviewers should be especially vigilant about over-engineering.
-Encourage developers to solve the problem they know needs to be solved *now*, not the problem that the developer speculates *might* need to be solved in the future.
+Encourage the author to solve the problem they know needs to be solved *now*, not the problem that the author speculates *might* need to be solved in the future.
 The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe.
 
 ## Tests {#sec-tests}
@@ -64,7 +64,7 @@ Cross-package integration tests are more difficult, but the [tidymodels](https:/
 
 ## Naming {#sec-naming}
 
-Did the developer make an attempt to pick names that are consistent with the rest of the codebase?
+Did the author make an attempt to pick names that are consistent with the rest of the codebase?
 In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms.
 
 ## Comments {#sec-code-comments}
@@ -151,12 +151,12 @@ In the general case, look at *every* line of code that you have been assigned to
 Some things like data files, generated code, or large data structures you can scan over sometimes, but don't scan over a human-written function or block of code and assume that what's inside of it is okay.
 Obviously some code deserves more careful scrutiny than other code---that's a judgment call that you have to make---but you should at least be sure that you *understand* what all the code is doing.
 
-If reviewing every line is too hard and is slowing down the review, then you should let the developer know and ask them to clarify it (possibly providing suggestions of your own, if possible).
+If reviewing every line is too hard and is slowing down the review, then you should let the author know and ask them to clarify it (possibly providing suggestions of your own, if possible).
 This also applies to code that you understand, but it took a long time for you to figure it out (or you had to run it locally to understand it).
 If you can't understand the code, it is likely that other reviewers won't be able to either!
-Taking a moment to have the developer clarify confusing sections of code will help future developers when it is modified further.
+Taking a moment to have the author clarify confusing sections of code will help future developers when it is modified further.
 
-If you understand the code but you don't feel qualified to do some part of the review, it is perfectly acceptable (and preferred!) that you let the author know, and suggest that they request a review from another developer who has more expertise in that area.
+If you understand the code but you don't feel qualified to do some part of the review, it is perfectly acceptable (and preferred!) that you let the author know, and suggest that they request a review from another colleague who has more expertise in that area.
 
 ## Context
 
@@ -178,6 +178,6 @@ This reduces the complexity of the larger PR, making it easier to understand and
 
 ## Compliments {#good-things}
 
-If you see something nice in the PR, tell the developer, especially when they addressed one of your comments in a great way.
+If you see something nice in the PR, tell the author, especially when they addressed one of your comments in a great way.
 Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well.
-It's sometimes even more valuable, in terms of mentoring, to tell a developer what they did right than to tell them what they did wrong.
+It's sometimes even more valuable, in terms of mentoring, to tell an author what they did right than to tell them what they did wrong.

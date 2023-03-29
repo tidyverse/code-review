@@ -2,8 +2,8 @@
 
 ## Courtesy {#sec-courtesy}
 
-In general, it is important to be courteous and respectful while also being very clear and helpful to the developer whose code you are reviewing.
-One way to do this is to be sure that you are always making comments about the *code* and never making comments about the *developer*.
+In general, it is important to be courteous and respectful while also being very clear and helpful to the author whose code you are reviewing.
+One way to do this is to be sure that you are always making comments about the *code* and never making comments about the *author*.
 You don't always have to follow this practice, but you should definitely use it when saying something that might otherwise be upsetting or contentious.
 For example:
 
@@ -13,32 +13,32 @@ Good: "The concurrency model here is adding complexity to the system without any
 
 ## Explain why {#sec-why}
 
-One thing you'll notice about the "good" example from above is that it helps the developer understand *why* you are making your comment.
+One thing you'll notice about the "good" example from above is that it helps the author understand *why* you are making your comment.
 You don't always need to include this information in your review comments, but sometimes it's appropriate to give a bit more explanation around your intent, the best practice you're following (like the design or style guide), or how your suggestion improves code health.
 
 ## Giving guidance {#sec-guidance}
 
-**In general it is the developer's responsibility to fix a PR, not the reviewer's.** You are not required to do detailed design of a solution or write code for the developer.
+**In general it is the author's responsibility to fix a PR, not the reviewer's.** You are not required to do detailed design of a solution or write code for the author.
 
 This doesn't mean the reviewer should be unhelpful, though.
 In general you should strike an appropriate balance between pointing out problems and providing direct guidance.
-Pointing out problems and letting the developer make a decision often helps the developer learn, and makes it easier to do code reviews.
-It also can result in a better solution, because the developer is closer to the code than the reviewer is.
+Pointing out problems and letting the author make a decision often helps the author learn, and makes it easier to do future code reviews.
+It also can result in a better solution, because the author is typically closer to the code than the reviewer is.
 
 One example of this is to simply point out a section of code that confused you, or which took a long time to understand.
-This isn't a direct call to action, but prompts the developer to take another look at the code of that section to see if it can be further simplified or clarified (like with a *why* [code comment](#sec-code-comments)).
+This isn't a direct call to action, but prompts the author to take another look at the code of that section to see if it can be further simplified or clarified (like with a *why* [code comment](#sec-code-comments)).
 
 Another way to demonstrate an issue is to provide the author a [reprex](https://reprex.tidyverse.org/) that demonstrates that there is still a bug in their PR.
-The developer can then decide how to resolve it.
+The author can then decide how to resolve it.
 
 However, sometimes direct instructions, suggestions, or even code are more helpful.
 The primary goal of code review is to get the best PR possible.
-A secondary goal is improving the skills of developers so that they require less and less review over time.
+A secondary goal is improving the skills of PR authors so that they require less and less review over time.
 
 Remember that people learn from reinforcement of what they are doing well and not just what they could do better.
 If you see things you like in the PR, comment on those too!
-Examples: developer cleaned up a messy algorithm, added exemplary test coverage, or you as the reviewer learned something from the PR.
-Just as with all comments, include why you liked something, further encouraging the developer to continue good practices.
+Examples: author cleaned up a messy algorithm, added exemplary test coverage, or you as the reviewer learned something from the PR.
+Just as with all comments, include why you liked something, further encouraging the author to continue good practices.
 
 ## GitHub suggestions
 

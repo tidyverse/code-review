@@ -1,19 +1,19 @@
 # Handling pushback {#sec-pushback}
 
-Sometimes a developer will push back on a code review.
+Sometimes an author will push back on a code review.
 Either they will disagree with your suggestion or they will complain that you are being too strict in general.
 
 ## Who is right? {#sec-who-is-right}
 
-When a developer disagrees with your suggestion, first take a moment to consider if they are correct.
+When an author disagrees with your suggestion, first take a moment to consider if they are correct.
 Often, they are closer to the code than you are, and so they might really have a better insight about certain aspects of it.
 Does their argument make sense?
 Does it make sense from a code health perspective?
 If so, let them know that they are right and let the issue drop.
 
-However, developers are not always right.
+However, authors are not always right.
 In this case, the reviewer should further explain why they believe that their suggestion is correct.
-A good explanation demonstrates both an understanding of the developer's reply, and additional information about why the change is being requested.
+A good explanation demonstrates both an understanding of the author's reply, and additional information about why the change is being requested.
 Good explanations are additionally reinforced by facts or external official resources like the design or style guide.
 
 In particular, when the reviewer believes their suggestion will avoid a drop in code health, then they should continue to advocate for the change if they believe the resulting code quality improvement justifies the additional work requested.
@@ -21,24 +21,24 @@ On the other hand, if the PR already improves the overall health of the codebase
 **Code improvements often happen in small steps**.
 
 Sometimes it takes a few rounds of explaining a suggestion before it really sinks in.
-Just make sure to always stay [polite](#sec-courtesy) and let the developer know that you *hear* what they're saying, you just don't *agree*.
+Just make sure to always stay [polite](#sec-courtesy) and let the author know that you *hear* what they're saying, you just don't *agree*.
 
-## Upsetting developers {#upsetting_developers}
+## Upsetting authors {#upsetting_developers}
 
-Reviewers sometimes believe that the developer will be upset if the reviewer insists on an improvement.
-Sometimes developers do become upset, but it is usually brief and they become very thankful later that you helped them improve the quality of their code.
-Usually, if you are [polite](#sec-courtesy) in your comments, developers actually don't become upset at all, and the worry is just in the reviewer's mind.
+Reviewers sometimes believe that the author will be upset if the reviewer insists on an improvement.
+Sometimes authors do become upset, but it is usually brief and they become very thankful later that you helped them improve the quality of their code.
+Usually, if you are [polite](#sec-courtesy) in your comments, authors actually don't become upset at all, and the worry is just in the reviewer's mind.
 
 ## Cleaning it up later {#later}
 
-A common source of push back is that developers (understandably) want to get things done.
+A common source of push back is that authors (understandably) want to get things done.
 They don't want to go through another round of review just to get this PR in.
 So they say they will clean something up in a later PR, and thus you should approve *this* PR now.
 Some developers are very good about this, and will immediately write a follow-up PR that fixes the issue.
-However, experience shows that as more time passes after a developer writes the original PR, the less likely this clean up is to happen.
-In fact, usually unless the developer does the clean up *immediately* after the present PR, it never happens.
-This isn't because developers are irresponsible, but because they have a lot of work to do and the cleanup gets lost or forgotten in the press of other work.
-Thus, it is usually best to insist that the developer clean up their PR *now*, before the code is in the codebase and "done."
+However, experience shows that as more time passes after an author writes the original PR, the less likely this clean up is to happen.
+In fact, usually unless the author does the clean up *immediately* after the present PR, it never happens.
+This isn't because the author is irresponsible, but because they have a lot of work to do and the cleanup gets lost or forgotten in the press of other work.
+Thus, it is usually best to insist that the author clean up their PR *now*, before the code is in the codebase and "done."
 
 Note that PR cleanup is different from the case where a PR exposes a bug that is technically unrelated to that PR.
 In the spirit of [keeping PRs small](#sec-small), in those cases it is best to open an issue with a reproducible example demonstrating the issue, so that it is tracked and can be addressed after merging the current PR.

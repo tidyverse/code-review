@@ -20,7 +20,7 @@ In a close-knit collaboration, the PR author and PR reviewer are both heavy cont
 It is common for them to be in close contact with each other (i.e. over Slack), and they often coordinate with each other to avoid overlapping each other's work.
 
 With this pattern, reviews are typically swift to avoid blocking one another, which means it is particularly important to focus on writing [small](#sec-small) PRs.
-Reviews are also in-depth by default, since both developers have significant amount of experience with the package, and should communicate with each other if a superficial review is good enough.
+Reviews are also in-depth by default, since both the author and reviewer have significant amount of experience with the package, and should communicate with each other if a superficial review is good enough.
 
 Note that close-knit collaborators aren't restricted to Posit employees.
 ggplot2, dtplyr, and dbplyr have a number of core contributors that aren't employed by Posit that would be considered under this pattern.

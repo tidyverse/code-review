@@ -60,6 +60,8 @@ By outlining any potential shortcomings, you give the reviewer ideas to keep in 
 If your PR closes a complicated issue that involved a large amount of back and forth discussion, it is worth summarizing the outcome of that discussion in the body of the description.
 This is especially important if the reviewer wasn't a part of that discussion, since they'd otherwise have to wade through a large amount of comments to understand why this particular implementation was chosen.
 
+#### Reading order {#sec-reading-order}
+
 For large PRs, it can also be useful to suggest a recommended reading order to your reviewer.
 This might involve looking at one particular function before another, but could also be a suggestion to look at the examples or tests before looking at the implementation itself, if you feel that they would clarify the purpose of the PR.
 
