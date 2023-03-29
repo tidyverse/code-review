@@ -67,6 +67,29 @@ Here are some examples:
 This makes review intent explicit and helps authors prioritize the importance of various comments.
 It also helps avoid misunderstandings; for example, without comment labels, authors may interpret all comments as mandatory, even if some comments are merely intended to be informational or optional.
 
+## Approve with comments {#sec-approve-with-comments}
+
+When you've finished leaving review comments, GitHub provides a number of options for categorizing your review.
+The most common kind of PR review within the tidyteam group is known as "approved with comments." It involves leaving a few minor comments on a PR, while also hitting the `Approve` button on the GitHub review UI:
+
+![](img/approve-with-comments.png){fig-align="center" width="600"}
+
+This gives the PR author permission to merge the PR as soon as they have addressed the comments without needing to request another round of review.
+This is done when either:
+
+-   The reviewer is confident that the author will appropriately address all the reviewer's remaining comments.
+-   The remaining changes are minor and don't *have* to be done by the author.
+
+Approving with comments is largely about the experience of the PR author.
+For new authors that are still being onboarded, it is common for reviewers to use the `Comment` option instead, which is a signal to the author that they should request another round of review when they have finished addressing your comments.
+It is important to remember to be patient with new developers; they are going to need multiple rounds of detailed reviews early on, but putting in this extra effort up front tends to lead to faster PRs in the future as the author learns more about what is expected from their PRs.
+
+## Requesting changes {#sec-request-changes}
+
+GitHub also includes a third option when submitting a review, `Request changes`.
+This is typically reserved for more drastic changes that absolutely require another round of review.
+This option is rare to see in [close-knit collaboration](#sec-close-knit-collaboration), when both the author and reviewer are experts, but is somewhat common when the author is an [understudy](#sec-the-understudy) and with [external contributions](#sec-external-contributions), where the author likely doesn't have as much expertise as the reviewer.
+
 ## Finishing off an external contribution {#sec-finishing-off-an-external-contribution}
 
 Sometimes when we receive [external contributions](#sec-external-contributions), we decide that rather than leaving comments for the external contributor, it is more efficient for us as the reviewer (and usually package maintainer) to just finish off the PR and merge it for them.
