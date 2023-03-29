@@ -173,7 +173,7 @@ It can be worthwhile to review a PR description before submitting the PR, to ens
 
 If your codebase uses continuous integration to also run checks on your PR, you should also ensure that those are all passing before requesting a review.
 
-## Requesting a review
+## Requesting a review {#sec-request-a-review}
 
 For [close-knit collaboration](#sec-close-knit-collaboration) and when submitting a PR as an [understudy](#sec-the-understudy), it is expected that the author will use GitHub's "request a review" feature to officially ask one or more colleagues to be their reviewer.
 

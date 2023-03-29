@@ -66,6 +66,12 @@ One typical workflow is to add a thumbs-up emoji or a comment saying that you ha
 If you have a question about their comment that requires further input, then add a comment of your own and leave the thread open.
 Closing resolved threads can reduce the overall noise in the PR, especially if it goes through multiple rounds of review.
 
+## Re-requesting review
+
+If your reviewer has used the [Comment or Request Changes](#sec-approve-with-comments) button in the GitHub UI, then they expect that you will re-request a [review](#sec-request-a-review) after you have addressed all of their comments.
+
+For [external contributions](#sec-external-contributions) where you might not be able to request a review, it is polite to add a comment tagging the reviewer stating that you have finished incorporating their suggestions.
+
 ## Resolving conflicts
 
 If you are having difficulty coming to an agreement with your reviewer, try the advice in the reviewer section on [conflicts](#sec-conflicts).
