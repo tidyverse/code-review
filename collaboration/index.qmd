@@ -3,7 +3,7 @@
 Within the tidyteam group, the way we collaborate with colleagues and external contributors is highly dependent on the context of who is working on a particular package, how closely the contributors are working together, and how often that package is updated.
 A large amount of the advice in this guide is independent of any specific collaboration context, but some aspects, such as the expected turnaround time of a code review, and the level of detail that is expected from a review, is closely tied to it.
 
-It is important to keep in mind that package development at Posit is probably a little different from software development at other companies.
+It is important to keep in mind that package development within the tidyteam group is probably a little different from software development at other companies.
 Packages often lie dormant for awhile as the core maintainer works on other projects, which means that sometimes PRs take longer to get reviewed than expected.
 This is typically expected when working with other tidyteam colleagues, but can be surprising to a community member that is submitting their first PR.
 If you don't see any recent activity on the `main` branch of a package, it is likely that the package is dormant, but rest assured that we will eventually get to your PR.
