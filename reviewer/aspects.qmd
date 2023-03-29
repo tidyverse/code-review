@@ -108,14 +108,11 @@ If the author wants to reformat the whole file, request that they send you just 
 
 ## Consistency
 
-What if the existing code is inconsistent with the style guide?
-Per our [code review principles](#sec-principles), the style guide is the absolute authority: if something is required by the style guide, the PR should follow the guidelines.
-
 In some cases, the style guide makes recommendations rather than declaring requirements.
-In these cases, it's a judgment call whether the new code should be consistent with the recommendations or the surrounding code.
+In these cases, it's a judgment call (typically by the reviewer / maintainer) whether the new code should be consistent with the recommendations or the surrounding code.
 
 Consistency is also heavily related to [naming](#sec-naming), and the reviewer should ensure that the author has chosen function names, argument names, and local variable names that are consistent with the rest of the codebase.
-Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that `loc` always stands for an integer value corresponding to a vector index.
+Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that, say, `loc` always stands for an integer value corresponding to a vector index.
 This is particularly helpful in R, since static typing isn't available to provide this information for you.
 
 ## Documentation {#sec-documentation}
