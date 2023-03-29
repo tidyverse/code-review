@@ -143,7 +143,35 @@ One way to resolve this is to:
 
 Occasionally it is useful to document *internal* functions that aren't seen by users.
 This can be useful for other developers to reference as they use common internal helpers.
-One example of this is `tidyr:::df_append()`, which includes this [internal function documentation](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1) marked with `@noRd`.
+One example of this is `tidyr:::df_append()`, which includes this [internal function documentation](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1) marked with `@noRd`:
+
+```{r, eval=FALSE}
+#' Append new columns (`y`) to an existing data frame (`x`)
+#'
+#' @details
+#' If columns are duplicated between `x` and `y`, then `y` columns are
+#' silently preferred.
+#'
+#' @param x A data frame.
+#' @param y A named list of columns to append. Each column must be the same size
+#'   as `x`.
+#' @param after One of:
+#'   - `NULL` to place `y` at the end.
+#'   - A single column name from `x` to place `y` after.
+#'   - A single integer position (including `0L`) to place `y` after.
+#' @param remove Whether or not to remove the column corresponding to `after`
+#'   from `x`.
+#'
+#' @returns
+#' A bare data frame containing the columns from `x` and any appended columns
+#' from `y`. The type of `x` is not maintained. It is up to the caller to
+#' restore the type of `x` with `reconstruct_tibble()`.
+#'
+#' @noRd
+df_append <- function(x, y, after = NULL, remove = FALSE) {
+  # ...
+}
+```
 
 ## Every Line {#every-line}
 
