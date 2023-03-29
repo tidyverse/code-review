@@ -1,6 +1,6 @@
 # The purpose of code review {#sec-purpose}
 
-The primary purpose of code review is to ensure that the overall "code health" of Posit's software (both R packages and other tools) is improving over time.
+The primary purpose of code review is to ensure that the overall "code health" of our packages is improving over time.
 All of the tools and processes of code review are designed to this end.
 
 In order to accomplish this, a series of trade-offs have to be balanced.
@@ -41,7 +41,7 @@ Reviewers should *always* feel free to leave comments expressing that something 
 
 At Posit, we believe that code review is an important part of on-boarding new developers.
 As a reviewer, it is encouraged to leave comments that help a developer learn something new.
-Linking out to sections of the style guide, design guide, or this code review guide are ways to point to a concrete source of truth that the developer can read to align their future code with Posit standards.
+Linking out to sections of the style guide, design guide, or this code review guide are ways to point to a concrete source of truth that the PR author can read to align their future code with tidyteam standards.
 
 Pair programming is also an excellent way to perform a code review.
 One way to do this is to have the reviewer live-review a pull request, which often teaches the developer what the reviewer looks for when they review PRs, and gives both parties a way to have an immediate discussion about any tricky design points.

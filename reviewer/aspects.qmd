@@ -22,7 +22,7 @@ In R, typical edge cases to watch out for include checking what happens if the u
 
 An important part of validating the functionality of a PR is trying it out locally.
 This is particularly important if the PR has a user-facing impact, such as a new function or argument.
-At Posit, we generally check out PRs on R packages locally using `usethis::pr_fetch(<pr-number>)`.
+Within the tidyteam, we generally check out PRs locally using `usethis::pr_fetch(<pr-number>)`.
 This is a great time to try out edge cases in the code.
 It also makes it very easy to create a [reprex](https://reprex.tidyverse.org/) that you can share with the PR author in a GitHub comment if you do find an issue.
 
@@ -96,7 +96,7 @@ Note that comments are different from [documentation](#sec-documentation) of fun
 
 ## Style
 
-At Posit, our R packages follow the [tidyverse style guide](https://style.tidyverse.org/).
+Tidyteam R packages follow our [style guide](https://style.tidyverse.org/).
 Two packages support this style guide, [styler](https://styler.r-lib.org/), which allows you to restyle files or packages, and [lintr](https://lintr.r-lib.org/), which performs automated checks to ensure that you conform to the style guide.
 
 Admittedly, many of us don't use these tools religiously.

@@ -113,9 +113,6 @@ The PR mentions:
 
 ## GitHub features {#sec-github-features}
 
-GitHub includes a number of tools to make authoring PRs a little more streamlined.
-Using these tools is good practice at Posit.
-
 ### Closes
 
 In the description [body](#sec-body), it is useful to mention what issue is *closed* or *fixed* by this PR.
@@ -157,7 +154,7 @@ Once the comment has been addressed, it can optionally be marked as *resolved* b
 PR comments like this should be reserved for ideas that don't belong in the codebase itself (i.e. as a code comment).
 They typically call the reviewer's attention to something in the PR that they might otherwise miss, or they call out a part of the code that the PR author is a little uncertain about.
 
-Here are a few real examples of employees at Posit commenting on our own PRs:
+Here are a few real examples of tidyteam members commenting on our own PRs:
 
 -   [Implement `dplyr::cross_join()`](https://github.com/tidyverse/dplyr/pull/6612)
 

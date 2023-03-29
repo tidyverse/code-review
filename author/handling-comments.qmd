@@ -6,7 +6,7 @@ Here are some useful things to know about handling reviewer comments.
 ## Don't take it personally {#sec-personal}
 
 The goal of review is to maintain the quality of our packages.
-When a reviewer provides a critique of your code, think of it as their attempt to help you, the codebase, and Posit, rather than as a personal attack on you or your abilities.
+When a reviewer provides a critique of your code, think of it as their attempt to help you and the package rather than as a personal attack on you or your abilities.
 Most of the time, the reviewer is trying to help you grow as a developer.
 
 Sometimes reviewers feel frustrated and they express that frustration in their comments.
@@ -61,7 +61,7 @@ On GitHub, there is button for `Resolve conversation` that appears under a comme
 ![](img/resolve-conversation.png){fig-align="center" width="900"}
 
 This button will collapse the conversation, essentially marking the comment as "completed." Both the author and reviewer see this button, so who's job is it to resolve?
-At Posit, we typically expect the PR author to use the resolve button.
+Within the tidyteam group, we typically expect the PR author to use the resolve button.
 One typical workflow is to add a thumbs-up emoji or a comment saying that you have handled their comment, and to then resolve the conversation.
 If you have a question about their comment that requires further input, then add a comment of your own and leave the thread open.
 Closing resolved threads can reduce the overall noise in the PR, especially if it goes through multiple rounds of review.
