@@ -161,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/small.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></a>
+  <a href="../author/focused.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Focused PRs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -224,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="examine-the-main-parts-of-the-pr" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="examine-the-main-parts-of-the-pr"><span class="header-section-number">3.3</span> Examine the main parts of the PR</h2>
-<p>Find the file or files that are the “main” part of this PR. Often, there is one file that has the largest number of logical changes. Ideally, the PR description will point you to this if there is any ambiguity. Look at these major parts first. This helps give context to all of the smaller parts of the PR, and generally accelerates doing the code review. If the PR is too large for you to figure out which parts are the major parts, ask the author to provide a <a href="../author/submitting.html#sec-reading-order">recommended reading order</a>, or ask them to <a href="../author/small.html">split up the PR into multiple PRs</a>.</p>
+<p>Find the file or files that are the “main” part of this PR. Often, there is one file that has the largest number of logical changes. Ideally, the PR description will point you to this if there is any ambiguity. Look at these major parts first. This helps give context to all of the smaller parts of the PR, and generally accelerates doing the code review. If the PR is too large for you to figure out which parts are the major parts, ask the author to provide a <a href="../author/submitting.html#sec-reading-order">recommended reading order</a>, or ask them to <a href="../author/focused.html">split up the PR into multiple focused PRs</a>.</p>
 <p>If you see some major design problems with this part of the PR, you should send those comments immediately, even if you don’t have time to review the rest of the PR right now. In fact, reviewing the rest of the PR might be a waste of time, because if the design problems are significant enough, a lot of the other code under review is going to disappear and not matter anyway.</p>
 <p>This is also a great time to use <code>usethis::pr_fetch()</code> to pull the PR down locally and try it out. Chances are that the main part of the PR has to do with the main UI changes, so this is a nice time to check that the changes in the PR line up with the output you get from running the code locally.</p>
 </section>

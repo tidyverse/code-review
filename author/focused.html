@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyteam code review principles - 8&nbsp; Small PRs</title>
+<title>Tidyteam code review principles - 8&nbsp; Focused PRs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Focused PRs</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -161,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/small.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></a>
+  <a href="../author/focused.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Focused PRs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -180,20 +180,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-why" id="toc-sec-why" class="nav-link active" data-scroll-target="#sec-why"><span class="toc-section-number">8.1</span>  Why write small PRs?</a></li>
-  <li><a href="#sec-what-is-small" id="toc-sec-what-is-small" class="nav-link" data-scroll-target="#sec-what-is-small"><span class="toc-section-number">8.2</span>  What is small?</a></li>
+  <li><a href="#sec-what-is-focused" id="toc-sec-what-is-focused" class="nav-link active" data-scroll-target="#sec-what-is-focused"><span class="toc-section-number">8.1</span>  What is a focused PR?</a></li>
+  <li><a href="#sec-why" id="toc-sec-why" class="nav-link" data-scroll-target="#sec-why"><span class="toc-section-number">8.2</span>  Why write focused PRs?</a></li>
   <li><a href="#sec-refactoring" id="toc-sec-refactoring" class="nav-link" data-scroll-target="#sec-refactoring"><span class="toc-section-number">8.3</span>  Separate out refactorings</a></li>
   <li><a href="#sec-test-code" id="toc-sec-test-code" class="nav-link" data-scroll-target="#sec-test-code"><span class="toc-section-number">8.4</span>  Add tests</a></li>
   <li><a href="#sec-large-prs" id="toc-sec-large-prs" class="nav-link" data-scroll-target="#sec-large-prs"><span class="toc-section-number">8.5</span>  Large PRs</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/small.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/author/focused.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-small" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Small PRs</span></span></h1>
+<h1 class="title"><span id="sec-focused" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Focused PRs</span></span></h1>
 </div>
 
 
@@ -208,31 +208,31 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="sec-why" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="sec-why"><span class="header-section-number">8.1</span> Why write small PRs?</h2>
-<p>Small, simple PRs are:</p>
+<section id="sec-what-is-focused" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="sec-what-is-focused"><span class="header-section-number">8.1</span> What is a focused PR?</h2>
+<p>In general, a focused PR is <strong>one self-contained change</strong>. This means that:</p>
 <ul>
-<li><p><strong>Reviewed more <a href="../reviewer/speed.html">quickly</a>.</strong> It’s easier for a reviewer to find 5-10 minutes several times to review small PRs than to set aside an hour long block to review one large PR. Large PRs also have a negative compounding affect. Reviewers don’t enjoy getting assigned large PRs, and often push them off repeatedly in favor of working on other smaller PRs or more interesting features. The result is that an hour long review turns into a 2-business-day long review because of <em>PR dread</em>.</p></li>
-<li><p><strong>Reviewed more thoroughly.</strong> With large changes, reviewers and authors tend to get frustrated by large volumes of detailed commentary shifting back and forth—sometimes to the point where important points get missed or dropped.</p></li>
-<li><p><strong>Less likely to introduce bugs.</strong> Since you’re making fewer changes, it’s easier for you and your reviewer to reason effectively about the impact of the PR and see if a bug has been introduced.</p></li>
-<li><p><strong>Less wasted work if they are rejected.</strong> If you write a huge PR and then your reviewer says that the overall direction is wrong, you’ve wasted a lot of work.</p></li>
-<li><p><strong>Easier to merge.</strong> Working on a large PR takes a long time, so you will have lots of conflicts when you merge.</p></li>
-<li><p><strong>Easier to design well.</strong> It’s a lot easier to polish the design and code health of a small change than it is to refine all the details of a large change.</p></li>
-<li><p><strong>Less blocking on reviews.</strong> Sending self-contained portions of your overall change allows you to continue coding while you wait for your current PR in review.</p></li>
+<li><p>The PR makes a minimal change that addresses <strong>just one thing</strong>. This is sometimes just one part of a feature, rather than a whole feature at once. In general it’s better to err on the side of writing PRs that are too small vs.&nbsp;PRs that are too large. Work with your reviewer to find out what an acceptable scope is.</p></li>
+<li><p>Everything the reviewer needs to understand the PR is in the PR, the PR’s description, the existing codebase, or a PR they’ve already recently reviewed.</p></li>
+<li><p>The package will continue to work well for its users and developers after the PR is merged.</p></li>
+<li><p>The PR is not so small that its implications are difficult to understand. If you add a new function, you should include usage of the function in the same PR so that reviewers can better understand its intended purpose.</p></li>
 </ul>
-<p>Note that <strong>reviewers have discretion to reject your change outright for the sole reason of it being too large.</strong> Usually they will thank you for your contribution but request that you somehow make it into a series of smaller changes. It can be a lot of work to split up a change after you’ve already written it, or require lots of time arguing about why the reviewer should accept your large change. It’s easier to just write small PRs in the first place.</p>
+<p>There are no hard and fast rules about how large is “too large.” 100 lines is usually a reasonable size for a PR, and 1000 lines is usually too large, but it’s up to the judgment of your reviewer. The number of files that a change is spread across also affects its “size.” A 200-line change in one file might be okay, but spread across 50 files would usually be too large.</p>
+<p>Keep in mind that although you have been intimately involved with your code from the moment you started to write it, the reviewer often has no context. What seems like a focused PR to you might be overwhelming to your reviewer. When in doubt, write PRs that are smaller than you think you need to write. Reviewers rarely complain about getting PRs that are too small.</p>
 </section>
-<section id="sec-what-is-small" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="sec-what-is-small"><span class="header-section-number">8.2</span> What is small?</h2>
-<p>In general, the right size for a PR is <strong>one self-contained change</strong>. This means that:</p>
+<section id="sec-why" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="sec-why"><span class="header-section-number">8.2</span> Why write focused PRs?</h2>
+<p>Focused PRs are:</p>
 <ul>
-<li>The PR makes a minimal change that addresses <strong>just one thing</strong>. This is sometimes just one part of a feature, rather than a whole feature at once. In general it’s better to err on the side of writing PRs that are too small vs.&nbsp;PRs that are too large. Work with your reviewer to find out what an acceptable size is.</li>
-<li>Everything the reviewer needs to understand the PR is in the PR, the PR’s description, the existing codebase, or a PR they’ve already reviewed.</li>
-<li>The system will continue to work well for its users and for the developers after the PR is checked in.</li>
-<li>The PR is not so small that its implications are difficult to understand. If you add a new function, you should include a usage of the function in the same PR so that reviewers can better understand how the function will be used.</li>
+<li><p><strong>Reviewed more <a href="../reviewer/speed.html">quickly</a>.</strong> It’s easier for a reviewer to find 5-10 minutes several times to review a single bug fix than to set aside an hour long block to review one large PR that implements many new features. Large PRs also have a negative compounding affect. Reviewers don’t enjoy getting assigned PRs that try to do too many things at once, and often push them off repeatedly in favor of working on other smaller PRs or more interesting features. The result is that an hour long review turns into a two-day long review because of <em>PR dread</em>.</p></li>
+<li><p><strong>Reviewed more thoroughly.</strong> When many separate features are being changed at once, reviewers and authors tend to get frustrated by large volumes of detailed commentary shifting back and forth—sometimes to the point where important points get missed or dropped.</p></li>
+<li><p><strong>Less likely to introduce bugs.</strong> Since you’re making fewer changes, it’s easier for you and your reviewer to reason effectively about the impact of the PR and determine if a bug has been introduced.</p></li>
+<li><p><strong>Less wasted work if they are rejected.</strong> If you write a huge PR and your reviewer says that the overall direction is wrong, you’ve wasted a lot of work.</p></li>
+<li><p><strong>Easier to merge.</strong> Working on a large PR takes a long time, so you will likely have lots of conflicts when you eventually merge because the main branch will be past the original point of your branch.</p></li>
+<li><p><strong>Easier to design well.</strong> It’s a lot easier to polish the design and code health of a single change than it is to refine all the details of multiple changes at once.</p></li>
+<li><p><strong>Less blocking on reviews.</strong> Sending self-contained portions of your overall change allows you to continue coding while you wait for your current PR to be reviewed.</p></li>
 </ul>
-<p>There are no hard and fast rules about how large is “too large.” 100 lines is usually a reasonable size for a PR, and 1000 lines is usually too large, but it’s up to the judgment of your reviewer. The number of files that a change is spread across also affects its “size.” A 200-line change in one file might be okay, but spread across 50 files it would usually be too large.</p>
-<p>Keep in mind that although you have been intimately involved with your code from the moment you started to write it, the reviewer often has no context. What seems like an acceptably-sized PR to you might be overwhelming to your reviewer. When in doubt, write PRs that are smaller than you think you need to write. Reviewers rarely complain about getting PRs that are too small.</p>
+<p>Note that <strong>reviewers have discretion to reject your change outright for the sole reason of it being too large.</strong> Usually they will thank you for your contribution but request that you somehow make it into a series of smaller changes. It can be a lot of work to split up a change after you’ve already written it, or require lots of time arguing about why the reviewer should accept your large change. If you have any doubts about your PR being rejected, you should discuss this with your reviewer ahead of time before you get too far into the PR to ensure that you don’t do any unnecessary work.</p>
 </section>
 <section id="sec-refactoring" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="sec-refactoring"><span class="header-section-number">8.3</span> Separate out refactorings</h2>
@@ -241,21 +241,21 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="sec-test-code" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="sec-test-code"><span class="header-section-number">8.4</span> Add tests</h2>
-<p>PRs should include related <a href="../reviewer/aspects.html#sec-tests">test code</a>. Remember that smallness here refers the conceptual idea that the PR should be focused and is not a simplistic function of line count.</p>
+<p>Focused PRs should include related <a href="../reviewer/aspects.html#sec-tests">test code</a>. Remember that focused here refers to the idea of having a single self-contained PR, and not to minimizing the overall line count.</p>
 <p>A PR that adds or changes logic should be accompanied by new or updated tests for the new behavior. Pure refactoring PRs (that aren’t intended to change behavior) should also be covered by tests. If tests for the code you are refactoring don’t exist, you should add them in a separate PR before doing the refactoring. This gives you a concrete way to validate that the behavior is unchanged before and after the refactoring.</p>
 <p>For more advice on writing good tests, see <a href="https://r-pkgs.org/testing-design.html">this chapter</a> of the R Packages book.</p>
 </section>
 <section id="sec-large-prs" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="sec-large-prs"><span class="header-section-number">8.5</span> Large PRs</h2>
-<p>There are a few situations in which large changes aren’t as bad:</p>
+<p>There are a few situations in which large changes that affect hundreds of lines aren’t as bad:</p>
 <ul>
-<li>You can usually count deletion of an entire file as being just one line of change, because it doesn’t take the reviewer very long to review.</li>
-<li>Sometimes a large PR has been generated by an automatic refactoring tool that you trust completely, and the reviewer’s job is just to verify and say that they really do want the change. These PRs can be larger, although some of the caveats from above (such as merging and testing) still apply.</li>
+<li>You can usually count deletion of an entire file as a single change, because it doesn’t take the reviewer very long to review.</li>
+<li>Sometimes a large PR has been generated by an automatic refactoring tool that you trust completely, and the reviewer’s job is just to verify and say that they really do want the change. With that said, the above point about ensuring that the refactored code is also well-tested still applies.</li>
 </ul>
-<p>Sometimes you will encounter situations not captured by the above points where it seems like your PR <em>has</em> to be large. This is very rarely true. Authors who practice writing small PRs can almost always find a way to decompose functionality into a series of small changes.</p>
-<p>Before writing a large PR, consider whether preceding it with a refactoring-only PR could pave the way for a cleaner implementation. Talk to your teammates and see if anybody has thoughts on how to implement the functionality in small PRs instead.</p>
-<p>If you discover a new bug while working on your PR, resisting the urge to tackle it in that PR can help your keep your PR focused and <a href="#sec-what-is-small">small</a>. Instead, open an issue to track the bug and address it in another PR.</p>
-<p>If all of these options fail (which should be extremely rare) then get consent from your reviewers in advance to review a large PR, so they are warned about what is coming. In this situation, expect to be going through the review process for a long time, be vigilant about not introducing bugs, and be extra diligent about writing tests.</p>
+<p>Sometimes you will encounter situations not captured by the above points where it seems like your PR <em>has</em> to be large. This is very rarely true. Authors who practice writing focused PRs can almost always find a way to decompose functionality into a series of small changes.</p>
+<p>Before writing a large PR, consider whether preceding it with a refactoring-only PR could pave the way for a cleaner implementation. Talk to your teammates and see if anybody has thoughts on how to implement the functionality in focused PRs instead.</p>
+<p>If you discover a new bug while working on your PR, resisting the urge to tackle it in that PR can help your keep your PR focused. Instead, open an issue to track the bug and address it separately.</p>
+<p>If all of these options fail (which should be extremely rare) then get consent from your reviewers in advance to review a large PR, so they are warned about what is coming. In this situation, expect the review process to take longer, be vigilant about not introducing bugs, and be extra diligent about writing tests.</p>
 
 
 </section>
