@@ -4,22 +4,14 @@ A code review is a process where someone other than the author of a piece of cod
 At Posit, we use code review to maintain the quality of our code and products.
 
 This guide serves as a reference for different aspects of the code review process.
-It is intended to be used as a way to get new developers up to speed on how we do code review at Posit, and to serve as a linkable resource when there are questions about aspects of the code review process.
+It is written with the *tidyteam* in mind, which make up the combination of the [tidyverse](https://www.tidyverse.org/), [tidymodels](https://www.tidymodels.org/), and [mlops](https://vetiver.rstudio.com/) groups, but is generally applicable to a large amount of the software development we do at Posit.
+The guide is intended to be used as a way to get new developers up to speed on how we perform code review, and to serve as a linkable resource when there are questions about aspects of the code review process.
 
-The guide is broken into two sections:
-
--   How to review a pull request
--   How to author a pull request
-
-At Posit, we mostly use [GitHub](https://github.com/) as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub's tooling.
+We mostly use [GitHub](https://github.com/) as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub's tooling.
 Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests.
 In particular, you will see references to [`devtools`](https://devtools.r-lib.org/) and [`usethis`](https://usethis.r-lib.org/) throughout this guide.
 
-## Terminology
-
--   **PR** - Shortened notation for a *pull request*.
--   **Internal PR** - A pull request that is both authored and reviewed by Posit employees.
--   **External PR** - A pull request that is authored by a community member, and reviewed by a Posit employee.
+We will use the abbreviation PR to mean a *pull request*, typically on GitHub.
 
 ## Acknowledgements
 

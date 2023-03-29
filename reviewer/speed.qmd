@@ -5,55 +5,46 @@
 The speed of an individual developer is important, but the speed at which a *team* of developers can produce high quality code is even more important.
 When code reviews are slow, several things happen:
 
--   **Developers start to protest the code review process.** If a reviewer only responds every few days, but requests major changes to the PR each time, that can be frustrating and difficult for developers.
-    If the reviewer requests the *same* substantial changes (changes which really do improve code health), but responds *quickly* every time the developer makes an update, the frustration tends to disappear.
+-   **Developers start to protest the code review process.** If a reviewer only responds every few days, but requests major changes to the PR each time, that can be frustrating and difficult for the author.
+    If the reviewer requests the *same* substantial changes (changes which really do improve code health), but responds *quickly* every time the author makes an update, the frustration tends to disappear.
     **Most complaints about the code review process are actually resolved by making the process faster.**
 
 -   **The velocity of the team as a whole is decreased.** Yes, the individual who doesn't respond quickly to the review gets other work done.
     However, new features and bug fixes for the rest of the team are delayed by days, weeks, or months as each PR waits for review.
 
--   **Code health can be impacted.** When reviews are slow, developers are actually incentivized to submit *fewer* PRs and to make each one *larger*.
+-   **Code health can be impacted.** When reviews are slow, authors are actually incentivized to submit *fewer* PRs and to make each one *larger*.
     If you think that it is going to take days to get a single small change reviewed, you are going to be pressured to include *one more thing* in your PR just to avoid another multi-day review process.
-    To ensure that each PR only improves the health of the codebase, code review must be fast enough that developers don't feel hamstrung by it.
+    To ensure that each PR only improves the health of the codebase, code review must be fast enough that authors don't feel hamstrung by it.
 
-## Average turnaround time {#sec-turnaround}
+## What do we mean by "fast"?
 
-If you are not in the middle of a focused task, you should do a code review shortly after it comes in.
+Rather than suggesting average turnaround times for a PR review (such as 2-4 hours), we feel that it is more useful to categorize PRs under different [patterns of collaboration](#sec-patterns-of-collaboration).
+This recognizes the fact that each PR comes with its own context - a time sensitive bug fix that blocks another colleague is going to be reviewed and merged faster than a small typo in a dormant package that isn't actively being worked on.
 
-On average, an internal PR should be reviewed within 2-4 work hours of PR submission.
-It should take at most two business days to respond to a review request.
+The most important thing is for the author and reviewer to have similar expectations around the amount of time a PR review may take.
+If there is confusion around this, the author and reviewer should discuss this with each other, especially if they are both Posit employees, to ensure that they are on the same page about which [pattern](#sec-patterns-of-collaboration) their style of collaboration falls under (keeping in mind that the patterns can be modified as needed).
 
-Following these guidelines means that a typical PR should get multiple rounds of review (if needed) within a single day, although most PRs should only require a single round of review, typically an [approval with comments](#sec-approve-with-comments).
-
-If this seems difficult, it is worth reviewing your PR process.
-If you have so many PRs to review that you can't get to your own work, then you might need to distribute the reviews to your team more.
+If you are feeling overwhelmed by the amount of PRs that you are in charge of, it is worth reviewing your PR process.
+If you have so many PRs to review that you can't get to your own work, then you might need to distribute the reviews across your team more evenly.
 Not speaking up when you are overwhelmed by PRs can in turn slow down an entire team!
 
 ## Speed vs Interruption {#sec-interruption}
 
 There is one time where the consideration of personal velocity trumps team velocity.
 **If you are in the middle of a focused task, such as writing code, don't interrupt yourself to do a code review.** Research has shown that it can take a long time for a developer to get back into a smooth flow of development after being interrupted.
-So interrupting yourself while coding is actually *more* expensive to the team than making another developer wait a bit for a code review.
+So interrupting yourself while coding is actually *more* expensive to the team than making a PR author wait a bit for a code review.
 If you want to read more about this, Paul Graham's post on [Maker vs Manager](http://www.paulgraham.com/makersschedule.html) is very good.
 
 Instead, wait for a break point in your work before you respond to a request for review.
 This could be when your current coding task is completed, after lunch, returning from a meeting, coming back from the breakroom, etc.
-Most "deep work" sessions last around 2-3 hours, so batching your code reviews and handling multiple of them at once after a focused session is generally a good idea and is in line with the 2-4 hour [average turnaround time](#sec-turnaround) mentioned above.
-
-## Fast rounds {#sec-responses}
-
-When we talk about the speed of code reviews, it is the response time of a *single round* of review that we are concerned with, as opposed to how long it takes a PR to get through the whole review and be merged.
-The whole process should also be fast, ideally, but it's even more important for the *individual responses* to come quickly than it is for the whole process to happen rapidly.
-Developers typically don't mind going through multiple rounds of review if each round happens quickly.
-
-If you are too busy to do a full review on a PR when it comes in, you can still send a quick response that lets the developer know when you will get to it, suggest other reviewers who might be able to respond more quickly, or [provide some initial broad comments](#sec-broad) (none of this means you should interrupt coding even to send a response like this---send the response at a reasonable break point in your work).
+Most "deep work" sessions last around 2-3 hours, so batching your code reviews and handling multiple of them at once after a focused session often works well.
 
 ## Detailed review
 
-With all of this discussion about speed, it can be tempting to just do a surface level review and respond with "LGTM." **Resist this temptation**.
+With all of this discussion about speed, it can be tempting to just do a surface level review and respond with "LGTM." Resist this temptation!
 The whole [purpose of code review](#sec-purpose) is to ensure that the code health of the code base is improving, and you are unlikely to catch potential bugs with a surface level review.
 
-It is important to *start* a round of code review shortly after the PR is submitted, but PRs vary greatly in their complexity and sufficiently carrying out the review can sometimes take a decent amount of time.
+PRs vary greatly in their complexity and sufficiently carrying out the review can take a non-trivial amount of time and cognitive effort.
 In general:
 
 -   **Small PRs** take anywhere from **5-15 minutes** and don't typically require checking the code out locally.
@@ -65,39 +56,32 @@ In general:
 
 -   **Large PRs** can take up to **1 hour**, and occasionally even longer.
     These should be very rare, and are reserved for large refactorings, especially if there are unavoidable behavior changes mixed in.
-    Large PRs are typically undesirable because they slow the velocity of the entire team, so typically the reviewer should ask the developer if the PR can be [split into multiple smaller PRs](#sec-small).
+    Large PRs are typically undesirable because they slow the velocity of the entire team, so typically the reviewer should ask the author if the PR can be [split into multiple smaller PRs](#sec-small).
     If you don't have time to review a large PR and it can't be made any smaller, provide some broad comments on the design of the PR, and consider requesting another colleague to take a look.
 
-## Cross-time-zone reviews {#sec-cross-time-zone}
+## Cross time zone reviews {#sec-cross-time-zone}
 
-When dealing with time zone differences, try to get back to the author while they have time to respond before the end of their working hours.
-If they have already finished work for the day, then try to make sure your review is done before they start work the next day.
+Dealing with time zone differences can be challenging, but when the author and reviewer are [working together closely](#sec-close-knit-collaboration) it is reasonable for the reviewer to ensure that they provide feedback before the author starts work the next day.
+If more rapid turnaround times are needed, then the author should communicate that with the reviewer and attempt to batch multiple PRs in parallel, or set aside a predetermined time during the day when both the author and reviewer are online for review.
 
 ## Approve with comments {#sec-approve-with-comments}
 
-The most common kind of PR review at Posit is known as "approved with comments." It involves leaving a few minor comments on a PR, while also hitting the `Approve` button on the GitHub review UI:
+The most common kind of PR review within the tidyteam group is known as "approved with comments." It involves leaving a few minor comments on a PR, while also hitting the `Approve` button on the GitHub review UI:
 
 ![](img/approve-with-comments.png){fig-align="center" width="600"}
 
 This gives the PR author permission to merge the PR as soon as they have addressed the comments without needing to request another round of review.
 This is done when either:
 
--   The reviewer is confident that the developer will appropriately address all the reviewer's remaining comments.
--   The remaining changes are minor and don't *have* to be done by the developer.
+-   The reviewer is confident that the author will appropriately address all the reviewer's remaining comments.
+-   The remaining changes are minor and don't *have* to be done by the author.
 
 Approving with comments is largely about the experience of the PR author.
-For new developers that are still being onboarded, it is common to use the `Comment` option instead, which is a signal to the developer that they should request another round of review when they have finished addressing your comments.
+For new authors that are still being onboarded, it is common for reviewers to use the `Comment` option instead, which is a signal to the author that they should request another round of review when they have finished addressing your comments.
 It is important to remember to be patient with new developers; they are going to need multiple rounds of detailed reviews early on, but putting in this extra effort up front tends to lead to faster PRs in the future as the author learns more about what is expected from their PRs.
 
 ## Requesting changes {#sec-request-changes}
 
 GitHub also includes a third option when submitting a review, `Request changes`.
 This is typically reserved for more drastic changes that absolutely require another round of review.
-This option is rare to see in *internal PRs*, but is somewhat common with *external PRs* where the PR author is unlikely to be a core contributor on the project, and might not have the same expertise as another Posit employee.
-
-## Code review improvements over time {#sec-over-time}
-
-If you follow these guidelines and you are strict with your code reviews, you should find that the entire code review process tends to speed up over time.
-Developers learn what is required for healthy code, and send you PRs that are great from the start, requiring less and less review time.
-Reviewers learn to respond quickly and not add unnecessary latency into the review process.
-But **don't compromise on code quality for an imagined improvement in velocity**---it's not actually going to make anything happen more quickly, in the long run.
+This option is rare to see in [close-knit collaboration](#sec-close-knit-collaboration), when both the author and reviewer are experts, but is somewhat common when the author is an [understudy](#sec-the-understudy) and with [external contributions](#sec-external-contributions), where the author likely doesn't have as much expertise as the reviewer.

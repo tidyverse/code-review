@@ -14,13 +14,13 @@ Here are three steps to tackle most code reviews:
 Before looking at any code, you should familiarize yourself with the GitHub issue / bug report that the PR is resolving, and read over the PR [description](#sec-descriptions) to better orient yourself.
 Does this change even make sense?
 You can save everyone time if the answer is *no* by stopping the review there and responding with an explanation of why the change isn't necessary.
-Ideally, for *internal PRs*, you will have discussed this ahead of time to avoid the author putting in unnecessary work (and feeling bad if their work is rejected).
-For *external PRs*, occasionally you do have to reject PRs from community members if they don't fit the overall [design](#sec-design) of the codebase.
+Ideally, when performing [close-knit collaboration](#sec-close-knit-collaboration), you will have discussed this ahead of time to avoid the author putting in unnecessary work (and feeling bad if their work is rejected).
+For [external contributions](#sec-external-contributions), occasionally you do have to reject PRs if they don't fit the overall [design](#sec-design) of the codebase.
 You should do this nicely, thanking them for their contribution, and requesting that next time they open an issue first and ask if we'd accept a PR for that issue, which would have saved them time if we had an opportunity to preemptively say no.
 
 For example, you might say: "Looks like you put some good work into this, thanks! However, we're actually going in the direction of removing the `foo()` helper that you're modifying here, and so we don't want to make any new modifications to it right now. In the future, it is best if you open an issue first to highlight the bug or feature and ask if we'd accept a pull request for it at this time."
 
-If you get more than a few PRs that represent changes you don't want to make, you should consider re-working your team's development process or the posted process for external contributors so that there is more communication before PRs are written.
+If you get more than a few PRs that represent changes you don't want to make, you should consider re-working your team's development process or the posted process for [external contributors](#sec-external-contributions) so that there is more communication before PRs are written.
 It's better to tell people "no" before they've done a ton of work that now has to be thrown away or drastically re-written.
 
 ## Examine the main parts of the PR
