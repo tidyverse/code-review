@@ -101,6 +101,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../collaboration/index.html" class="sidebar-item-text sidebar-link">Patterns of collaboration</a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../reviewer/index.html" class="sidebar-item-text sidebar-link">How to review a pull request</a>
@@ -180,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-guidance" id="toc-sec-guidance" class="nav-link" data-scroll-target="#sec-guidance"><span class="toc-section-number">5.3</span>  Giving guidance</a></li>
   <li><a href="#github-suggestions" id="toc-github-suggestions" class="nav-link" data-scroll-target="#github-suggestions"><span class="toc-section-number">5.4</span>  GitHub suggestions</a></li>
   <li><a href="#sec-label-comment-severity" id="toc-sec-label-comment-severity" class="nav-link" data-scroll-target="#sec-label-comment-severity"><span class="toc-section-number">5.5</span>  Label comment severity</a></li>
-  <li><a href="#finishing-off-an-external-pr" id="toc-finishing-off-an-external-pr" class="nav-link" data-scroll-target="#finishing-off-an-external-pr"><span class="toc-section-number">5.6</span>  Finishing off an external PR</a></li>
+  <li><a href="#sec-finishing-off-an-external-contribution" id="toc-sec-finishing-off-an-external-contribution" class="nav-link" data-scroll-target="#sec-finishing-off-an-external-contribution"><span class="toc-section-number">5.6</span>  Finishing off an external contribution</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/reviewer/comments.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -249,10 +254,10 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p>This makes review intent explicit and helps authors prioritize the importance of various comments. It also helps avoid misunderstandings; for example, without comment labels, authors may interpret all comments as mandatory, even if some comments are merely intended to be informational or optional.</p>
 </section>
-<section id="finishing-off-an-external-pr" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="finishing-off-an-external-pr"><span class="header-section-number">5.6</span> Finishing off an external PR</h2>
-<p>Sometimes when we receive <em>external PRs</em>, we decide that, rather than leaving comments for the external contributor, it is more efficient for us as the reviewer (and usually package maintainer) to just finish off the PR and merge it for them. This typically happens when we come back to work on a package after letting it lie dormant for a few months, and we find that we have a few PRs from external contributors. Sometimes these PRs can sit for awhile while no one is actively working on the package, and it might not make much sense to leave comments for the PR author weeks after they sent the PR in. Using <code>usethis::pr_fetch()</code> and <code>usethis::pr_push()</code>, you can instead just take over the PR, fix any minor issues, and merge it in. Make sure that if you do this, you also thank the contributor for their contributions!</p>
-<p>It is also appropriate to suggest to a PR author that you’d like take over the PR if you have already gone through 1-2 rounds of PR review and there are still a few minor edits that need to be made before the PR is ready to be merged.</p>
+<section id="sec-finishing-off-an-external-contribution" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="sec-finishing-off-an-external-contribution"><span class="header-section-number">5.6</span> Finishing off an external contribution</h2>
+<p>Sometimes when we receive <a href="../collaboration/index.html#sec-external-contributions">external contributions</a>, we decide that rather than leaving comments for the external contributor, it is more efficient for us as the reviewer (and usually package maintainer) to just finish off the PR and merge it for them. This typically happens when we come back to work on a package after letting it lie dormant for a few months, and we find that we have a few PRs from external contributors. Sometimes these PRs can sit for awhile while no one is actively working on the package, and it might not make much sense to leave comments for the PR author weeks after they sent the PR in. Using <code>usethis::pr_fetch()</code> and <code>usethis::pr_push()</code>, you can instead just take over the PR, fix any minor issues, and merge it in. Make sure that if you do this, you also thank the contributor for their contributions!</p>
+<p>It is also appropriate to inform a PR author that you’ll finish off a PR if you have already gone through 1-2 rounds of PR review and there are still a few minor edits that need to be made before the PR is ready to be merged.</p>
 
 
 </section>

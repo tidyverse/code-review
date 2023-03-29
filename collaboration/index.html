@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyverse code review principles - 6&nbsp; Handling pushback</title>
+<title>Tidyverse code review principles - Patterns of collaboration</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../author/index.html" rel="next">
-<link href="../reviewer/comments.html" rel="prev">
+<link href="../reviewer/index.html" rel="next">
+<link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback</span></h1>
+      <h1 class="quarto-secondary-nav-title">Patterns of collaboration</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -103,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../collaboration/index.html" class="sidebar-item-text sidebar-link">Patterns of collaboration</a>
+  <a href="../collaboration/index.html" class="sidebar-item-text sidebar-link active">Patterns of collaboration</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback</span></a>
+  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback</span></a>
   </div>
 </li>
       </ul>
@@ -180,19 +180,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-who-is-right" id="toc-sec-who-is-right" class="nav-link active" data-scroll-target="#sec-who-is-right"><span class="toc-section-number">6.1</span>  Who is right?</a></li>
-  <li><a href="#upsetting_developers" id="toc-upsetting_developers" class="nav-link" data-scroll-target="#upsetting_developers"><span class="toc-section-number">6.2</span>  Upsetting developers</a></li>
-  <li><a href="#later" id="toc-later" class="nav-link" data-scroll-target="#later"><span class="toc-section-number">6.3</span>  Cleaning it up later</a></li>
-  <li><a href="#sec-conflicts" id="toc-sec-conflicts" class="nav-link" data-scroll-target="#sec-conflicts"><span class="toc-section-number">6.4</span>  Resolving conflicts</a></li>
+  <li><a href="#sec-close-knit-collaboration" id="toc-sec-close-knit-collaboration" class="nav-link active" data-scroll-target="#sec-close-knit-collaboration">Close-knit collaboration</a></li>
+  <li><a href="#sec-the-understudy" id="toc-sec-the-understudy" class="nav-link" data-scroll-target="#sec-the-understudy">The understudy</a></li>
+  <li><a href="#sec-external-contributions" id="toc-sec-external-contributions" class="nav-link" data-scroll-target="#sec-external-contributions">External contributions</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/reviewer/pushback.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/collaboration/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-pushback" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback</span></span></h1>
+<h1 class="title"><span id="sec-patterns-of-collaboration" class="quarto-section-identifier d-none d-lg-block">Patterns of collaboration</span></h1>
 </div>
 
 
@@ -207,29 +206,28 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Sometimes a developer will push back on a code review. Either they will disagree with your suggestion or they will complain that you are being too strict in general.</p>
-<section id="sec-who-is-right" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="sec-who-is-right"><span class="header-section-number">6.1</span> Who is right?</h2>
-<p>When a developer disagrees with your suggestion, first take a moment to consider if they are correct. Often, they are closer to the code than you are, and so they might really have a better insight about certain aspects of it. Does their argument make sense? Does it make sense from a code health perspective? If so, let them know that they are right and let the issue drop.</p>
-<p>However, developers are not always right. In this case, the reviewer should further explain why they believe that their suggestion is correct. A good explanation demonstrates both an understanding of the developer’s reply, and additional information about why the change is being requested. Good explanations are additionally reinforced by facts or external official resources like the design or style guide.</p>
-<p>In particular, when the reviewer believes their suggestion will avoid a drop in code health, then they should continue to advocate for the change if they believe the resulting code quality improvement justifies the additional work requested. On the other hand, if the PR already improves the overall health of the codebase, it isn’t worth arguing every little stylistic point. <strong>Code improvements often happen in small steps</strong>.</p>
-<p>Sometimes it takes a few rounds of explaining a suggestion before it really sinks in. Just make sure to always stay <a href="comments.html#sec-courtesy">polite</a> and let the developer know that you <em>hear</em> what they’re saying, you just don’t <em>agree</em>.</p>
+<p>Within the tidyteam group, the way we collaborate with colleagues and external contributors is highly dependent on the context of who is working on a particular package, how closely the contributors are working together, and how often that package is updated. A large amount of the advice in this guide is independent of any specific collaboration context, but some aspects, such as the expected turnaround time of a code review, and the level of detail that is expected from a review, is closely tied to it.</p>
+<p>It is important to keep in mind that package development within the tidyteam group is probably a little different from software development at other companies. Packages often lie dormant for awhile as the core maintainer works on other projects, which means that sometimes PRs take longer to get reviewed than expected. This is typically expected when working with other tidyteam colleagues, but can be surprising to a community member that is submitting their first PR. If you don’t see any recent activity on the <code>main</code> branch of a package, it is likely that the package is dormant, but rest assured that we will eventually get to your PR.</p>
+<p>In the following sections, we discuss three patterns of collaboration that we use in the tidyteam group which help us to be explicit about our expectations. These patterns act as a guide and reference, rather than something that is set in stone. Developers should feel free to modify the patterns as needed - the most important thing is that you are <em>communicating</em> these expectations to your team and to your larger user base.</p>
+<p>In other sections of this guide, we reference these three patterns when making a distinction between them is useful.</p>
+<section id="sec-close-knit-collaboration" class="level3">
+<h3 class="anchored" data-anchor-id="sec-close-knit-collaboration">Close-knit collaboration</h3>
+<p>In a close-knit collaboration, the PR author and PR reviewer are both heavy contributors to a particular package. It is common for them to be in close contact with each other (i.e.&nbsp;over Slack), and they often coordinate with each other to avoid overlapping each other’s work.</p>
+<p>With this pattern, reviews are typically swift to avoid blocking one another, which means it is particularly important to focus on writing <a href="../author/small.html">small</a> PRs. Reviews are also in-depth by default, since both developers have significant amount of experience with the package, and should communicate with each other if a superficial review is good enough.</p>
+<p>Note that close-knit collaborators aren’t restricted to Posit employees. ggplot2, dtplyr, and dbplyr have a number of core contributors that aren’t employed by Posit that would be considered under this pattern.</p>
 </section>
-<section id="upsetting_developers" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="upsetting_developers"><span class="header-section-number">6.2</span> Upsetting developers</h2>
-<p>Reviewers sometimes believe that the developer will be upset if the reviewer insists on an improvement. Sometimes developers do become upset, but it is usually brief and they become very thankful later that you helped them improve the quality of their code. Usually, if you are <a href="comments.html#sec-courtesy">polite</a> in your comments, developers actually don’t become upset at all, and the worry is just in the reviewer’s mind.</p>
+<section id="sec-the-understudy" class="level3">
+<h3 class="anchored" data-anchor-id="sec-the-understudy">The understudy</h3>
+<p>An understudy typically follows a project from afar, generally submitting smaller PRs or doing superficial code review with a focus on API design, unit tests, and documentation. This allows the understudy to stay up to date with a project they may potentially take over in the future.</p>
+<p>When an understudy submits a PR, review is typically swift, in-depth, and comes from a core maintainer as long as that maintainer is actively working on that package. Understudy PRs are often smaller in scope, and can occasionally require multiple rounds of review if they aren’t intimately familiar with the specifics of the package they are working on. If both the understudy and reviewer are Posit employees, discussing the review live (i.e.&nbsp;over Zoom) is often very beneficial for the understudy’s overall understanding of the package.</p>
+<p>When an understudy reviews a PR, review is expected to be swift, and the PR assigned to the understudy for review should not require an in-depth knowledge of the package. If the understudy isn’t available to review, it is fine to merge the PR without waiting for a review, especially if it is blocking some other work.</p>
+<p>An understudy may be an intern at Posit, a motivated community member, or another tidyteam member.</p>
 </section>
-<section id="later" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="later"><span class="header-section-number">6.3</span> Cleaning it up later</h2>
-<p>A common source of push back is that developers (understandably) want to get things done. They don’t want to go through another round of review just to get this PR in. So they say they will clean something up in a later PR, and thus you should approve <em>this</em> PR now. Some developers are very good about this, and will immediately write a follow-up PR that fixes the issue. However, experience shows that as more time passes after a developer writes the original PR, the less likely this clean up is to happen. In fact, usually unless the developer does the clean up <em>immediately</em> after the present PR, it never happens. This isn’t because developers are irresponsible, but because they have a lot of work to do and the cleanup gets lost or forgotten in the press of other work. Thus, it is usually best to insist that the developer clean up their PR <em>now</em>, before the code is in the codebase and “done.”</p>
-<p>Note that PR cleanup is different from the case where a PR exposes a bug that is technically unrelated to that PR. In the spirit of <a href="../author/small.html">keeping PRs small</a>, in those cases it is best to open an issue with a reproducible example demonstrating the issue, so that it is tracked and can be addressed after merging the current PR.</p>
-</section>
-<section id="sec-conflicts" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="sec-conflicts"><span class="header-section-number">6.4</span> Resolving conflicts</h2>
-<p>In any conflict on a code review, the first step should always be for the author and reviewer to try to come to consensus, based on the contents of this guide.</p>
-<p>When coming to consensus becomes especially difficult, it can help to have a face-to-face meeting or a video conference, instead of just trying to resolve the conflict through code review comments. (If you do this, though, make sure to record the results of the discussion as a comment on the PR, for future readers.)</p>
-<p>If that doesn’t resolve the situation, the next step is to escalate. Often the escalation path leads to having a third team member offer their own review of the review comments, or having a broader team discussion for particularly complicated issues. <strong>Don’t let a PR sit around because the author and the reviewer can’t come to an agreement.</strong></p>
-<p>Remember to respect your colleagues even when you disagree. You both want to generate the best results possible, and just happen to have different beliefs about how to get there.</p>
+<section id="sec-external-contributions" class="level3">
+<h3 class="anchored" data-anchor-id="sec-external-contributions">External contributions</h3>
+<p>An external contribution is a PR authored by someone who isn’t a regular contributor to a package. This may be a one-off PR from a community member, but is often another tidyteam member that notices a small bug or feature that is missing from a package they don’t typically work on. For example, I am not a regular contributor to usethis, but noticed a small non-critical bug and <a href="https://github.com/r-lib/usethis/pull/1786">sent in a PR for it</a>.</p>
+<p>When an external contributor authors a PR, they should not expect an immediate review. If the package is in a dormant state, it is possible that the PR won’t be looked at for weeks or even months at a time. When the reviewer eventually does look at the PR, if they have comments that need to be addressed, then they should feel free to make a judgement call on whether or not to request that the PR author make the changes, or to just <a href="../reviewer/comments.html#sec-finishing-off-an-external-contribution">finish off the PR themselves</a>. No matter what the reviewer decides, they should thank the author for their contributions.</p>
+<p>If the external contributor is a Posit employee and the PR fixes a bug or adds a feature that is a blocker for one of their projects, then the PR author should coordinate with the reviewer to ensure that the PR can be reviewed and merged in a timely manner. If the PR is a blocker, it is important for the package maintainer to respect the deadlines of the PR author, even if they aren’t currently working on the package.</p>
 
 
 </section>
@@ -370,13 +368,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reviewer/comments.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing review comments</span></span>
+      <a href="../index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../author/index.html" class="pagination-link">
-        <span class="nav-page-text">How to author a pull request</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../reviewer/index.html" class="pagination-link">
+        <span class="nav-page-text">How to review a pull request</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

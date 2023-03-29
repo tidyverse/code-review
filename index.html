@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./reviewer/index.html" rel="next">
+<link href="./collaboration/index.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -99,6 +99,11 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./collaboration/index.html" class="sidebar-item-text sidebar-link">Patterns of collaboration</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -177,7 +182,6 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
   <ul class="collapse">
-  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology</a></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul></li>
   </ul>
@@ -212,21 +216,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">Welcome</h1>
 <p>A code review is a process where someone other than the author of a piece of code examines that code. At Posit, we use code review to maintain the quality of our code and products.</p>
-<p>This guide serves as a reference for different aspects of the code review process. It is intended to be used as a way to get new developers up to speed on how we do code review at Posit, and to serve as a linkable resource when there are questions about aspects of the code review process.</p>
-<p>The guide is broken into two sections:</p>
-<ul>
-<li>How to review a pull request</li>
-<li>How to author a pull request</li>
-</ul>
-<p>At Posit, we mostly use <a href="https://github.com/">GitHub</a> as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub’s tooling. Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests. In particular, you will see references to <a href="https://devtools.r-lib.org/"><code>devtools</code></a> and <a href="https://usethis.r-lib.org/"><code>usethis</code></a> throughout this guide.</p>
-<section id="terminology" class="level2">
-<h2 class="anchored" data-anchor-id="terminology">Terminology</h2>
-<ul>
-<li><strong>PR</strong> - Shortened notation for a <em>pull request</em>.</li>
-<li><strong>Internal PR</strong> - A pull request that is both authored and reviewed by Posit employees.</li>
-<li><strong>External PR</strong> - A pull request that is authored by a community member, and reviewed by a Posit employee.</li>
-</ul>
-</section>
+<p>This guide serves as a reference for different aspects of the code review process. It is written with the <em>tidyteam</em> in mind, which make up the combination of the <a href="https://www.tidyverse.org/">tidyverse</a>, <a href="https://www.tidymodels.org/">tidymodels</a>, and <a href="https://vetiver.rstudio.com/">mlops</a> groups, but is generally applicable to a large amount of the software development we do at Posit. The guide is intended to be used as a way to get new developers up to speed on how we perform code review, and to serve as a linkable resource when there are questions about aspects of the code review process.</p>
+<p>We mostly use <a href="https://github.com/">GitHub</a> as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub’s tooling. Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests. In particular, you will see references to <a href="https://devtools.r-lib.org/"><code>devtools</code></a> and <a href="https://usethis.r-lib.org/"><code>usethis</code></a> throughout this guide.</p>
+<p>We will use the abbreviation PR to mean a <em>pull request</em>, typically on GitHub.</p>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
 <p>This guide is a forked and modified version of Google’s <a href="https://google.github.io/eng-practices/review/">code review principles</a>.</p>
@@ -373,8 +365,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./reviewer/index.html" class="pagination-link">
-        <span class="nav-page-text">How to review a pull request</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./collaboration/index.html" class="pagination-link">
+        <span class="nav-page-text">Patterns of collaboration</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
