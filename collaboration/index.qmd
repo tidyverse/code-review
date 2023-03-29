@@ -30,7 +30,7 @@ ggplot2, dtplyr, and dbplyr have a number of core contributors that aren't emplo
 An understudy typically follows a project from afar, generally submitting smaller PRs or doing superficial code review with a focus on API design, unit tests, and documentation.
 This allows the understudy to stay up to date with a project they may potentially take over in the future.
 
-When an understudy submits a PR, review is typically swift, in-depth, and comes from a core maintainer.
+When an understudy submits a PR, review is typically swift, in-depth, and comes from a core maintainer as long as that maintainer is actively working on that package.
 Understudy PRs are often smaller in scope, and can occasionally require multiple rounds of review if they aren't intimately familiar with the specifics of the package they are working on.
 If both the understudy and reviewer are Posit employees, discussing the review live (i.e. over Zoom) is often very beneficial for the understudy's overall understanding of the package.
 
