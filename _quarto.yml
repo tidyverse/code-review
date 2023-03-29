@@ -21,7 +21,7 @@ book:
       - reviewer/pushback.qmd
     - part: author/index.qmd
       chapters:
-      - author/descriptions.qmd
+      - author/submitting.qmd
       - author/small.qmd
       - author/handling-comments.qmd
 
