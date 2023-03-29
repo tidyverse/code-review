@@ -121,6 +121,8 @@ In the description [body](#sec-body), it is useful to mention what issue is *clo
 Specifically, if you mention `Closes #545` or `Fixes #545` in the body of your PR description, then GitHub will automatically close that issue when the PR is merged.
 This also helps provide context to both the reviewer and future developers.
 
+If you'd like to refer to another issue or PR without closing it, then using terminology like `Related to #545` or `Part of #545` is a useful way to connect the PR to the issue even if it doesn't fully resolve it (and GitHub doesn't do anything special with these phrases).
+
 ### Checklists
 
 Since GitHub supports Markdown, you can also add checklists to your PR descriptions like this:
