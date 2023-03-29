@@ -42,7 +42,7 @@ Just as with all comments, include why you liked something, further encouraging 
 
 ## GitHub suggestions
 
-For very small tweaks, like typos or additions to comments, GitHub provides a feature known as *suggestions*.
+For very small tweaks, like typos or additions to comments, GitHub provides a feature known as [*suggestions*](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request).
 As a reviewer, you can add suggestions using the workflow shown below, and the author can accept them directly in the GitHub UI and commit them into the PR (which can then pull locally to get everything up to date if they have more work to do).
 
 ![](img/add-suggestion.png){fig-align="center" width="900"}
