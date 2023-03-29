@@ -173,7 +173,7 @@ df_append <- function(x, y, after = NULL, remove = FALSE) {
 }
 ```
 
-## Every Line {#every-line}
+## Every line {#every-line}
 
 In the general case, look at *every* line of code that you have been assigned to review.
 Some things like data files, generated code, or large data structures you can scan over sometimes, but don't scan over a human-written function or block of code and assume that what's inside of it is okay.
