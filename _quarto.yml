@@ -22,7 +22,7 @@ book:
     - part: author/index.qmd
       chapters:
       - author/submitting.qmd
-      - author/small.qmd
+      - author/focused.qmd
       - author/handling-comments.qmd
 
 format:

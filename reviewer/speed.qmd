@@ -56,7 +56,7 @@ In general:
 
 -   **Large PRs** can take up to **1 hour**, and occasionally even longer.
     These should be very rare, and are reserved for large refactorings, especially if there are unavoidable behavior changes mixed in.
-    Large PRs are typically undesirable because they slow the velocity of the entire team, so typically the reviewer should ask the author if the PR can be [split into multiple smaller PRs](#sec-small).
+    Large PRs are typically undesirable because they slow the velocity of the entire team, so typically the reviewer should ask the author if the PR can be [split into multiple smaller focused PRs](#sec-focused).
     If you don't have time to review a large PR and it can't be made any smaller, provide some broad comments on the design of the PR, and consider requesting another colleague to take a look.
 
 ## Cross time zone reviews {#sec-cross-time-zone}

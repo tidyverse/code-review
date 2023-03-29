@@ -1,0 +1,95 @@
+# Focused PRs {#sec-focused}
+
+## What is a focused PR? {#sec-what-is-focused}
+
+In general, a focused PR is **one self-contained change**.
+This means that:
+
+-   The PR makes a minimal change that addresses **just one thing**.
+    This is sometimes just one part of a feature, rather than a whole feature at once.
+    In general it's better to err on the side of writing PRs that are too small vs. PRs that are too large.
+    Work with your reviewer to find out what an acceptable scope is.
+
+-   Everything the reviewer needs to understand the PR is in the PR, the PR's description, the existing codebase, or a PR they've already recently reviewed.
+
+-   The package will continue to work well for its users and developers after the PR is merged.
+
+-   The PR is not so small that its implications are difficult to understand.
+    If you add a new function, you should include usage of the function in the same PR so that reviewers can better understand its intended purpose.
+
+There are no hard and fast rules about how large is "too large." 100 lines is usually a reasonable size for a PR, and 1000 lines is usually too large, but it's up to the judgment of your reviewer.
+The number of files that a change is spread across also affects its "size." A 200-line change in one file might be okay, but spread across 50 files would usually be too large.
+
+Keep in mind that although you have been intimately involved with your code from the moment you started to write it, the reviewer often has no context.
+What seems like a focused PR to you might be overwhelming to your reviewer.
+When in doubt, write PRs that are smaller than you think you need to write.
+Reviewers rarely complain about getting PRs that are too small.
+
+## Why write focused PRs? {#sec-why}
+
+Focused PRs are:
+
+-   **Reviewed more [quickly](#sec-speed).** It's easier for a reviewer to find 5-10 minutes several times to review a single bug fix than to set aside an hour long block to review one large PR that implements many new features.
+    Large PRs also have a negative compounding affect.
+    Reviewers don't enjoy getting assigned PRs that try to do too many things at once, and often push them off repeatedly in favor of working on other smaller PRs or more interesting features.
+    The result is that an hour long review turns into a two-day long review because of *PR dread*.
+
+-   **Reviewed more thoroughly.** When many separate features are being changed at once, reviewers and authors tend to get frustrated by large volumes of detailed commentary shifting back and forth---sometimes to the point where important points get missed or dropped.
+
+-   **Less likely to introduce bugs.** Since you're making fewer changes, it's easier for you and your reviewer to reason effectively about the impact of the PR and determine if a bug has been introduced.
+
+-   **Less wasted work if they are rejected.** If you write a huge PR and your reviewer says that the overall direction is wrong, you've wasted a lot of work.
+
+-   **Easier to merge.** Working on a large PR takes a long time, so you will likely have lots of conflicts when you eventually merge because the main branch will be past the original point of your branch.
+
+-   **Easier to design well.** It's a lot easier to polish the design and code health of a single change than it is to refine all the details of multiple changes at once.
+
+-   **Less blocking on reviews.** Sending self-contained portions of your overall change allows you to continue coding while you wait for your current PR to be reviewed.
+
+Note that **reviewers have discretion to reject your change outright for the sole reason of it being too large.** Usually they will thank you for your contribution but request that you somehow make it into a series of smaller changes.
+It can be a lot of work to split up a change after you've already written it, or require lots of time arguing about why the reviewer should accept your large change.
+If you have any doubts about your PR being rejected, you should discuss this with your reviewer ahead of time before you get too far into the PR to ensure that you don't do any unnecessary work.
+
+## Separate out refactorings {#sec-refactoring}
+
+It's usually best to do refactorings in a separate PR from feature changes or bug fixes.
+For example, moving and renaming a function should be in a different PR from fixing a bug in that function.
+It is much easier for reviewers to understand the changes introduced by each PR when they are separate.
+It is typically also easier for git to track that you have simply moved a function if you don't make any behavioral changes in it.
+
+Small cleanups such as fixing a local variable name can be included inside of a feature change or bug fix PR, though.
+You can also include small changes to documentation related to code you are touching.
+It's up to the judgment of the reviewer to decide when a refactoring is so large that it will make the review more difficult if included in your current PR.
+
+## Add tests {#sec-test-code}
+
+Focused PRs should include related [test code](#sec-tests).
+Remember that focused here refers to the idea of having a single self-contained PR, and not to minimizing the overall line count.
+
+A PR that adds or changes logic should be accompanied by new or updated tests for the new behavior.
+Pure refactoring PRs (that aren't intended to change behavior) should also be covered by tests.
+If tests for the code you are refactoring don't exist, you should add them in a separate PR before doing the refactoring.
+This gives you a concrete way to validate that the behavior is unchanged before and after the refactoring.
+
+For more advice on writing good tests, see [this chapter](https://r-pkgs.org/testing-design.html) of the R Packages book.
+
+## Large PRs {#sec-large-prs}
+
+There are a few situations in which large changes that affect hundreds of lines aren't as bad:
+
+-   You can usually count deletion of an entire file as a single change, because it doesn't take the reviewer very long to review.
+-   Sometimes a large PR has been generated by an automatic refactoring tool that you trust completely, and the reviewer's job is just to verify and say that they really do want the change. With that said, the above point about ensuring that the refactored code is also well-tested still applies.
+
+Sometimes you will encounter situations not captured by the above points where it seems like your PR *has* to be large.
+This is very rarely true.
+Authors who practice writing focused PRs can almost always find a way to decompose functionality into a series of small changes.
+
+Before writing a large PR, consider whether preceding it with a refactoring-only PR could pave the way for a cleaner implementation.
+Talk to your teammates and see if anybody has thoughts on how to implement the functionality in focused PRs instead.
+
+If you discover a new bug while working on your PR, resisting the urge to tackle it in that PR can help your keep your PR focused.
+Instead, open an issue to track the bug and address it separately.
+
+If all of these options fail (which should be extremely rare) then get consent from your reviewers in advance to review a large PR, so they are warned about what is coming.
+In this situation, expect the review process to take longer, be vigilant about not introducing bugs, and be extra diligent about writing tests.
+

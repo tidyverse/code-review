@@ -41,7 +41,7 @@ This isn't because the author is irresponsible, but because they have a lot of w
 Thus, it is usually best to insist that the author clean up their PR *now*, before the code is in the codebase and "done."
 
 Note that PR cleanup is different from the case where a PR exposes a bug that is technically unrelated to that PR.
-In the spirit of [keeping PRs small](#sec-small), in those cases it is best to open an issue with a reproducible example demonstrating the issue, so that it is tracked and can be addressed after merging the current PR.
+In the spirit of [keeping PRs small and focused](#sec-focused), in those cases it is best to open an issue with a reproducible example demonstrating the issue, so that it is tracked and can be addressed after merging the current PR.
 
 ## Resolving conflicts {#sec-conflicts}
 
