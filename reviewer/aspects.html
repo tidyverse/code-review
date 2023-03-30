@@ -285,8 +285,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="sec-design" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-design"><span class="header-section-number">2.1</span> Design</h2>
-<p>The most important thing to cover in a review is the overall design of the PR. Do the interactions of various pieces of code in the PR make sense? Does this change belong in your codebase, or somewhere upstream? Does it integrate well with the rest of your system?</p>
-<p>Hopefully, you and the PR author aligned on the design aspect of the PR before they worked on it. If not, it is often worth pausing and having a separate conversation about the overall design rather than directly reviewing their PR, as that conversation might result in the PR being completely rewritten or closed altogether.</p>
+<p>The most important thing to cover in a review is the overall design of the PR. Do the interactions of various pieces of code in the PR make sense? Does this change belong in this package, or somewhere upstream? Does it integrate well with the rest of the ecosystem?</p>
+<p>If you’re <a href="../collaboration/index.html#sec-close-knit-collaboration">collaborating closely</a> with the PR author, hopefully you aligned on the design aspect of the PR before they worked on it. If not, it is often worth pausing and having a separate conversation about the overall design rather than directly reviewing their PR, as that conversation might result in the PR being completely rewritten or closed altogether. If you have to close an author’s PR because it doesn’t align with the overall design of the package, encourage them to <a href="../issues/index.html#sec-issue-first-pr-second">open an issue</a> first next time, so they don’t waste their time doing work that may be rejected.</p>
 </section>
 <section id="functionality" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="functionality"><span class="header-section-number">2.2</span> Functionality</h2>
@@ -302,16 +302,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sec-tests" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="sec-tests"><span class="header-section-number">2.4</span> Tests</h2>
-<p>In general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test. If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:</p>
+<p>In general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test. If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for future forensic purposes to include the issue number in the test description, like:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"`my_function()` throws an error when given strings (#553)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Recent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.</p>
-<p>Make sure that the tests in the PR are correct, sensible, and useful. Tests do not test themselves, and we rarely write tests for our tests—a human must ensure that tests are valid.</p>
-<p>Tests should also strive to be as minimal as possible. When a user opens an issue with a bug report, chances are that they have included an example that is tailored to their use case, but isn’t a minimal example of the bug in question. When you write a test for the bug fix, it is worth spending time making the example as minimal as possible so it isolates the bug and is easy to understand in the future. Remember that tests have to be maintained too!</p>
+<p>Recent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which make these extremely valuable for looking up historical context of a particular bug.</p>
+<p>Make sure that the tests in the PR are correct, sensible, and useful. Tests do not test themselves, and we rarely write tests for our tests—a human must ensure that tests are valid so they should be as straightforward and self-contained as possible.</p>
+<p>Tests should also strive to be as minimal as possible. When a user opens an <a href="../issues/index.html">issue</a> with a bug report, chances are that they have included an example that is tailored to their use case, but it likely isn’t a <em>minimal</em> example of the bug in question. When you write a test for the bug fix, it is worth spending time making the example as minimal as possible so it isolates the bug and is easy to understand in the future.</p>
+<p>For an in-depth analysis of test design, see <a href="https://r-pkgs.org/testing-design.html">the testing chapter</a> of R Packages.</p>
 <p>Cross-package integration tests are more difficult, but the <a href="https://www.tidymodels.org/">tidymodels</a> ecosystem accomplishes this using a separate GitHub-only R package named <a href="https://github.com/tidymodels/extratests">extratests</a> that is run on a daily basis.</p>
 </section>
 <section id="sec-naming" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-naming"><span class="header-section-number">2.5</span> Naming</h2>
-<p>Did the author make an attempt to pick names that are consistent with the rest of the codebase? In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms.</p>
+<p>Did the author make an attempt to pick names that are consistent with the rest of the package? In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms.</p>
 </section>
 <section id="sec-code-comments" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="sec-code-comments"><span class="header-section-number">2.6</span> Comments</h2>
@@ -328,25 +329,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">/</span>snip<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>It describes the exact combination of inputs required for a very rare branch of code to run. Without the <em>context</em> provided by that comment, it can be a little difficult to know why that branch is there. Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like <a href="https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/tests/testthat/test-chop.R#L231-L249">these</a> in tidyr.</p>
+<p>It describes the exact combination of inputs required for a very rare branch of code to run. Without the <em>context</em> provided by that comment, it can be a little difficult to know why that branch is there. Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like <a href="https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/tests/testthat/test-chop.R#L231-L249">these</a> in tidyr:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"unchopping a bare empty list results in unspecified()"</span>, {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">integer</span>(), <span class="at">y =</span> <span class="fu">list</span>())</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  expect <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">integer</span>(), <span class="at">y =</span> <span class="fu">unspecified</span>())</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_identical</span>(<span class="fu">unchop</span>(df, y), expect)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_identical</span>(<span class="fu">unchop</span>(df, y, <span class="at">keep_empty =</span> <span class="cn">TRUE</span>), expect)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"unchopping a bare fully `NULL` list results in unspecified()"</span>, {</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">list</span>(<span class="cn">NULL</span>, <span class="cn">NULL</span>), <span class="at">z =</span> <span class="fu">list</span>(<span class="cn">NULL</span>, <span class="cn">NULL</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  expect <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">integer</span>(), <span class="at">y =</span> <span class="fu">unspecified</span>(), <span class="at">z =</span> <span class="fu">unspecified</span>())</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_identical</span>(<span class="fu">unchop</span>(df, <span class="fu">c</span>(y, z)), expect)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that comments are different from <a href="#sec-documentation">documentation</a> of functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used.</p>
 </section>
 <section id="style" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="style"><span class="header-section-number">2.7</span> Style</h2>
 <p>Tidyteam R packages follow our <a href="https://style.tidyverse.org/">style guide</a>. Two packages support this style guide, <a href="https://styler.r-lib.org/">styler</a>, which allows you to restyle files or packages, and <a href="https://lintr.r-lib.org/">lintr</a>, which performs automated checks to ensure that you conform to the style guide.</p>
 <p>Admittedly, many of us don’t use these tools religiously. The important thing is that if there is a point of contention about style in a PR, we can point to the style guide to resolve it.</p>
-<p>The author of the PR should not include major style changes combined with other changes. It makes it hard to see what is being changed in the PR, makes merges and rollbacks more complex, and causes other problems. If the author wants to reformat the whole file, request that they send you just the reformatting as one PR, and then send another PR with their functional changes after that.</p>
+<p>The author of the PR should not include major style changes combined with other changes. It makes it hard to see what is being changed in the PR and makes merges more complex. If the author wants to reformat the whole file, request that they send you just the reformatting as one PR, and then send another PR with their functional changes after that.</p>
 </section>
 <section id="consistency" class="level2" data-number="2.8">
 <h2 data-number="2.8" class="anchored" data-anchor-id="consistency"><span class="header-section-number">2.8</span> Consistency</h2>
 <p>In some cases, the style guide makes recommendations rather than declaring requirements. In these cases, it’s a judgment call (typically by the reviewer / maintainer) whether the new code should be consistent with the recommendations or the surrounding code.</p>
-<p>Consistency is also heavily related to <a href="#sec-naming">naming</a>, and the reviewer should ensure that the author has chosen function names, argument names, and local variable names that are consistent with the rest of the codebase. Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that, say, <code>loc</code> always stands for an integer value corresponding to a vector index. This is particularly helpful in R, since static typing isn’t available to provide this information for you.</p>
+<p>Consistency is also heavily related to <a href="#sec-naming">naming</a>, and the reviewer should ensure that the author has chosen function names, argument names, and local variable names that are consistent with the rest of the codebase. Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that, say, <code>loc</code> always stands for a positive integer value corresponding to a vector index. This is particularly helpful in R, since static typing isn’t available to provide this information for you.</p>
 </section>
 <section id="sec-documentation" class="level2" data-number="2.9">
 <h2 data-number="2.9" class="anchored" data-anchor-id="sec-documentation"><span class="header-section-number">2.9</span> Documentation</h2>
 <p>If a PR changes how users interact with the package, check to see that it also updates any associated documentation. This includes both R package documentation and updating the <a href="https://pkgdown.r-lib.org/">pkgdown</a> reference index if a new function is added.</p>
 <p>It is generally also good practice to provide a news bullet in a <code>NEWS.md</code> file that is associated with the change. This is another place where providing the GitHub issue or PR number is useful, like:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`my_function()`</span> now checks that <span class="in">`x`</span> is a numeric value (#565).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`my_function()`</span> now checks that <span class="in">`x`</span> is a numeric value (#565).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For more on writing good news bullets, see the <a href="https://style.tidyverse.org/news.html#bullets">style guide</a>.</p>
 <p>If there isn’t a GitHub issue that corresponds to your bug fix or feature, you can be caught in a chicken-and-egg scenario where you’d like a GitHub PR number to link to, but you haven’t opened the PR yet. One way to resolve this is to:</p>
 <ul>
@@ -355,47 +369,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Push with a commit message like <code>NEWS bullet</code>.</p></li>
 </ul>
 <p>Occasionally it is useful to document <em>internal</em> functions that aren’t seen by users. This can be useful for other developers to reference as they use common internal helpers. One example of this is <code>tidyr:::df_append()</code>, which includes this <a href="https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/R/append.R#L1">internal function documentation</a> marked with <code>@noRd</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Append new columns (`y`) to an existing data frame (`x`)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @details</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' If columns are duplicated between `x` and `y`, then `y` columns are</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' silently preferred.</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x A data frame.</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param y A named list of columns to append. Each column must be the same size</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'   as `x`.</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param after One of:</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#'   - `NULL` to place `y` at the end.</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#'   - A single column name from `x` to place `y` after.</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#'   - A single integer position (including `0L`) to place `y` after.</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param remove Whether or not to remove the column corresponding to `after`</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#'   from `x`.</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#' A bare data frame containing the columns from `x` and any appended columns</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#' from `y`. The type of `x` is not maintained. It is up to the caller to</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#' restore the type of `x` with `reconstruct_tibble()`.</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#' @noRd</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>df_append <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">after =</span> <span class="cn">NULL</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Append new columns (`y`) to an existing data frame (`x`)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @details</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' If columns are duplicated between `x` and `y`, then `y` columns are</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' silently preferred.</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x A data frame.</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param y A named list of columns to append. Each column must be the same size</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'   as `x`.</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param after One of:</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#'   - `NULL` to place `y` at the end.</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#'   - A single column name from `x` to place `y` after.</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#'   - A single integer position (including `0L`) to place `y` after.</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param remove Whether or not to remove the column corresponding to `after`</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#'   from `x`.</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#' A bare data frame containing the columns from `x` and any appended columns</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#' from `y`. The type of `x` is not maintained. It is up to the caller to</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#' restore the type of `x` with `reconstruct_tibble()`.</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#' @noRd</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>df_append <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">after =</span> <span class="cn">NULL</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="every-line" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="every-line"><span class="header-section-number">2.10</span> Every line</h2>
-<p>In the general case, look at <em>every</em> line of code that you have been assigned to review. Some things like data files, generated code, or large data structures you can scan over sometimes, but don’t scan over a human-written function or block of code and assume that what’s inside of it is okay. Obviously some code deserves more careful scrutiny than other code—that’s a judgment call that you have to make—but you should at least be sure that you <em>understand</em> what all the code is doing.</p>
-<p>If reviewing every line is too hard and is slowing down the review, then you should let the author know and ask them to clarify it (possibly providing suggestions of your own, if possible). This also applies to code that you understand, but it took a long time for you to figure it out (or you had to run it locally to understand it). If you can’t understand the code, it is likely that other reviewers won’t be able to either! Taking a moment to have the author clarify confusing sections of code will help future developers when it is modified further.</p>
+<p>In general, you should look at every line of code that you have been assigned to review. Some things like data files, generated code, or large data structures you can scan over sometimes, but don’t scan over a human-written function or block of code and assume that what’s inside of it is okay. Obviously some code deserves more careful scrutiny than other code—that’s a judgment call that you have to make—but you should at least be sure that you <em>understand</em> what all the code is doing.</p>
+<p>If reviewing every line is too hard and is slowing down the review, then you should let the author know and ask them to clarify it (possibly providing suggestions of your own, if possible). This also applies to code that you understand, but it took a long time for you to figure it out (or if you had to run it locally to understand it). If you can’t understand the code, it is likely that other reviewers won’t be able to either! Taking a moment to add a <a href="comments.html">comment</a> requesting that the author clarify a confusing section of code will improve the overall quality of the package and help future developers.</p>
 <p>If you understand the code but you don’t feel qualified to do some part of the review, it is perfectly acceptable (and preferred!) that you let the author know, and suggest that they request a review from another colleague who has more expertise in that area.</p>
 </section>
 <section id="context" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="context"><span class="header-section-number">2.11</span> Context</h2>
 <p>It is often helpful to look at the PR in a broad context. Usually the code review tool on GitHub will only show you a few lines of code around the parts that are being changed. Sometimes you have to look at the whole file to be sure that the change actually makes sense. For example, you might see only four new lines being added, but when you look at the whole file, you see those four lines are in a 50-line helper that now really needs to be broken up into smaller functions.</p>
-<p>It’s also useful to think about the PR in the context of the system as a whole. Is this PR improving the code health of the system or is it making the whole system more complex, less tested, etc.? PRs should <em>always</em> maintain or improve the overall health of the codebase. Most systems become complex through many small changes that add up, so it’s important to prevent even small complexities in new changes.</p>
-<p>Sometimes the timing of the PR isn’t right. It is possible that the codebase may need restructuring before a PR can be accepted. You can generally recognize this when the PR has a large number of changes to parts of the codebase that are seemingly unrelated to the purpose of the PR itself. In those cases, it is often worth suggesting that the author submit a few smaller focused PRs first that prepare the codebase for the larger PR. This reduces the complexity of the larger PR, making it easier to understand and faster to review.</p>
+<p>It’s also useful to think about the PR in the context of the package as a whole. Is this PR improving the code health of the package or is it making the package more complex, less tested, etc.? PRs should <em>always</em> maintain or improve the overall health of the package. Most systems become complex through many small changes that add up, so it’s important to prevent even small complexities in new changes if possible.</p>
+<p>Sometimes the timing of the PR isn’t right. It is possible that the package may need restructuring before a PR can be accepted. You can generally recognize this when the PR has a large number of changes to parts of the package that are seemingly unrelated to the purpose of the PR itself. In those cases, it is often worth suggesting that the author submit a few smaller <a href="../author/focused.html">focused</a> PRs first that prepare the package for the larger PR. This reduces the complexity of the larger PR, making it easier to understand and faster to review.</p>
 </section>
 <section id="good-things" class="level2" data-number="2.12">
 <h2 data-number="2.12" class="anchored" data-anchor-id="good-things"><span class="header-section-number">2.12</span> Compliments</h2>
-<p>If you see something nice in the PR, tell the author, especially when they addressed one of your comments in a great way. Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well. It’s sometimes even more valuable, in terms of mentoring, to tell an author what they did right than to tell them what they did wrong.</p>
+<p>If you see something nice in the PR, tell the author, especially when they addressed one of your comments in a great way. Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices as well. It’s sometimes even more valuable, in terms of mentoring, to tell an author what they did right than to tell them what they did wrong.</p>
 
 
 </section>

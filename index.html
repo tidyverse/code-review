@@ -220,10 +220,15 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">Welcome</h1>
-<p>A code review is a process where someone other than the author of a piece of code examines that code. At Posit, we use code review to maintain the quality of our code and products.</p>
-<p>This guide serves as a reference for different aspects of the code review process. It is written with the <em>tidyteam</em> in mind, which make up the combination of the <a href="https://www.tidyverse.org/">tidyverse</a>, <a href="https://www.tidymodels.org/">tidymodels</a>, and <a href="https://vetiver.rstudio.com/">mlops</a> groups, but is generally applicable to a large amount of the software development we do at Posit. The guide is intended to be used as a way to get new developers up to speed on how we perform code review, and to serve as a linkable resource when there are questions about aspects of the code review process.</p>
-<p>We mostly use <a href="https://github.com/">GitHub</a> as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub’s tooling. Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests, such as <a href="https://devtools.r-lib.org/"><code>devtools</code></a> and <a href="https://usethis.r-lib.org/"><code>usethis</code></a>. In particular, the family of <a href="https://usethis.r-lib.org/articles/pr-functions.html"><code>usethis::pr_*()</code></a> functions are extremely useful for managing pull requests on R packages.</p>
-<p>We will use the abbreviation PR to mean a <em>pull request</em>, typically on GitHub.</p>
+<p>A code review is a process where someone other than the author of a piece of code examines that code. At Posit, we use code review to maintain the quality of our packages and products.</p>
+<p>The principles in this guide cover various aspects of the code review process. They are written with the <em>tidyteam</em> in mind, which make up the combination of the <a href="https://www.tidyverse.org/">tidyverse</a>, <a href="https://www.tidymodels.org/">tidymodels</a>, and <a href="https://vetiver.rstudio.com/">mlops</a> groups, but are generally applicable to a large amount of the software development we do at Posit.</p>
+<p>This guide functions as:</p>
+<ul>
+<li><p>A resource for new contributors, whether they are community members or Posit employees.</p></li>
+<li><p>A linkable source of truth when there are questions about our code review process.</p></li>
+</ul>
+<p>We mostly use <a href="https://github.com/">GitHub</a> as the hosting platform for our code, so many details of this guide are specific to GitHub’s tooling. Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests, such as <a href="https://devtools.r-lib.org/"><code>devtools</code></a> and <a href="https://usethis.r-lib.org/"><code>usethis</code></a>. In particular, the family of <a href="https://usethis.r-lib.org/articles/pr-functions.html"><code>usethis::pr_*()</code></a> functions are extremely useful for managing pull requests on R packages.</p>
+<p>We will use the abbreviation PR to mean a <em>pull request</em>.</p>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
 <p>This guide is a forked and modified version of Google’s <a href="https://google.github.io/eng-practices/review/">code review principles</a>.</p>
