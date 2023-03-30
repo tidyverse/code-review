@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidyteam code review principles - How to write an issue</title>
+<title>Tidyteam code review principles - Issues</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">How to write an issue</h1>
+      <h1 class="quarto-secondary-nav-title">Issues</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -172,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../issues/index.html" class="sidebar-item-text sidebar-link active">How to write an issue</a>
+  <a href="../issues/index.html" class="sidebar-item-text sidebar-link active">Issues</a>
   </div>
 </li>
     </ul>
@@ -184,9 +184,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-issue-context" id="toc-sec-issue-context" class="nav-link active" data-scroll-target="#sec-issue-context">Context</a></li>
+  <li><a href="#sec-how-to-write-an-issue" id="toc-sec-how-to-write-an-issue" class="nav-link active" data-scroll-target="#sec-how-to-write-an-issue">How to write an issue</a>
+  <ul class="collapse">
+  <li><a href="#sec-issue-context" id="toc-sec-issue-context" class="nav-link" data-scroll-target="#sec-issue-context">Context</a></li>
   <li><a href="#sec-issue-reprex" id="toc-sec-issue-reprex" class="nav-link" data-scroll-target="#sec-issue-reprex">Reprex</a></li>
+  </ul></li>
   <li><a href="#new-issues-vs-closed-issues" id="toc-new-issues-vs-closed-issues" class="nav-link" data-scroll-target="#new-issues-vs-closed-issues">New issues vs closed issues</a></li>
+  <li><a href="#issue-first-pr-second" id="toc-issue-first-pr-second" class="nav-link" data-scroll-target="#issue-first-pr-second">Issue first, PR second</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/DavisVaughan/code-review/edit/main/issues/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/DavisVaughan/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -195,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-how-to-write-an-issue" class="quarto-section-identifier d-none d-lg-block">How to write an issue</span></h1>
+<h1 class="title"><span id="sec-issues" class="quarto-section-identifier d-none d-lg-block">Issues</span></h1>
 </div>
 
 
@@ -210,6 +214,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="sec-how-to-write-an-issue" class="level2">
+<h2 class="anchored" data-anchor-id="sec-how-to-write-an-issue">How to write an issue</h2>
 <p>GitHub issues are often the first step in the PR process, since many of our PRs are reactions to bug reports and feature requests we receive. Because of this, it is worth spending a little time discussing what makes a high-quality issue.</p>
 <p>While it might seem like opening an issue with just the error message you received is “good enough” for the package maintainer to figure it out, this typically isn’t the case in practice. Maintainers generally need enough context to reproduce the <em>exact</em> issue themselves before working on a solution. Crafting a great issue is a critical part of helping <em>me</em> (the maintainer) help <em>you</em> (the issue opener).</p>
 <p>Great issues are composed of two parts:</p>
@@ -240,9 +246,15 @@ ul.task-list li input[type="checkbox"] {
 <p>Once you’ve gotten comfortable with creating reprexes, you should next work on making them <em>minimal</em>. Creating a minimal reprex is a bit of an artform, and involves stripping down an existing reprex to the minimum amount of packages and code needed to reproduce the issue. Sometimes this requires going a level deeper into the code to figure out where the underlying problem is coming from. For example, with the dplyr issue mentioned in the <a href="#sec-issue-context">context</a> section, <a href="https://github.com/tidyverse/dplyr/issues/6674#issuecomment-1412175315">Hadley further refined</a> the original reprex by removing the <code>mutate()</code>, <code>group_by()</code>, and data frame from the example to show that the problem was directly related to an unexpected amount of overhead in <code>case_when()</code>. Creating minimal reprexes allows us to quickly focus in on the exact problem, resulting in faster PRs, <a href="https://github.com/tidyverse/dplyr/pull/6711">like this one</a>, to resolve them.</p>
 <p>If your reprex involves some kind of performance regression, we recommend that you use the <a href="https://bench.r-lib.org/">bench</a> package to include a before and after reprex. This involves installing a version of the package before the regression (with <code>devtools::install_version()</code>), running a reprex that involves a call to <code>bench::mark()</code> which demonstrates the issue, and then rerunning that same reprex with the faulty version of the package installed. Hadley’s <a href="https://github.com/tidyverse/dplyr/issues/6674#issuecomment-1412175315">minimal reprex</a> mentioned above is a great example of this.</p>
 </section>
-<section id="new-issues-vs-closed-issues" class="level3">
-<h3 class="anchored" data-anchor-id="new-issues-vs-closed-issues">New issues vs closed issues</h3>
+</section>
+<section id="new-issues-vs-closed-issues" class="level2">
+<h2 class="anchored" data-anchor-id="new-issues-vs-closed-issues">New issues vs closed issues</h2>
 <p>If you find that you are having a problem that looks similar to an existing closed issue, we in the tidyteam greatly prefer that you open a new issue rather than commenting on an existing closed one. It is typically much easier for us to keep track of open issues, so the chance of your issue being resolved is much higher if you open a new one with full context, a reprex, and a link to the issue that you believe is related.</p>
+</section>
+<section id="issue-first-pr-second" class="level2">
+<h2 class="anchored" data-anchor-id="issue-first-pr-second">Issue first, PR second</h2>
+<p>If you are an <a href="../collaboration/index.html#sec-external-contributions">external contributor</a> to a package and feel that you have found a bug, it is highly recommended that you open an issue <em>first</em> before attempting a PR. This gives the maintainer a chance to confirm that what you are seeing is actually an issue, and that they are willing to accept a PR for it. Importantly, it avoids the tough situation of a PR author spending a bunch of time on a PR only for it to be closed by the reviewer because they didn’t believe it was a bug or didn’t agree with the approach taken by the author.</p>
+<p>For existing issues, it is typically still worth adding a comment on the issue asking if the maintainer would accept a PR for it. They might have plans to revamp that section of the codebase entirely, which may invalidate your PR altogether. Even if they say yes, remember that you might not get an immediate review if the maintainer isn’t actively working on the package, as mentioned in the <a href="../collaboration/index.html#sec-external-contributions">patterns of collaboration</a> section, but we still value all contributions!</p>
 
 
 </section>
