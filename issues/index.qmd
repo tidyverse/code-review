@@ -1,4 +1,6 @@
-# How to write an issue {#sec-how-to-write-an-issue .unnumbered}
+# Issues {#sec-issues .unnumbered}
+
+## How to write an issue {#sec-how-to-write-an-issue}
 
 GitHub issues are often the first step in the PR process, since many of our PRs are reactions to bug reports and feature requests we receive.
 Because of this, it is worth spending a little time discussing what makes a high-quality issue.
@@ -55,7 +57,17 @@ If your reprex involves some kind of performance regression, we recommend that y
 This involves installing a version of the package before the regression (with `devtools::install_version()`), running a reprex that involves a call to `bench::mark()` which demonstrates the issue, and then rerunning that same reprex with the faulty version of the package installed.
 Hadley's [minimal reprex](https://github.com/tidyverse/dplyr/issues/6674#issuecomment-1412175315) mentioned above is a great example of this.
 
-### New issues vs closed issues
+## New issues vs closed issues
 
 If you find that you are having a problem that looks similar to an existing closed issue, we in the tidyteam greatly prefer that you open a new issue rather than commenting on an existing closed one.
 It is typically much easier for us to keep track of open issues, so the chance of your issue being resolved is much higher if you open a new one with full context, a reprex, and a link to the issue that you believe is related.
+
+## Issue first, PR second
+
+If you are an [external contributor](#sec-external-contributions) to a package and feel that you have found a bug, it is highly recommended that you open an issue *first* before attempting a PR.
+This gives the maintainer a chance to confirm that what you are seeing is actually an issue, and that they are willing to accept a PR for it.
+Importantly, it avoids the tough situation of a PR author spending a bunch of time on a PR only for it to be closed by the reviewer because they didn't believe it was a bug or didn't agree with the approach taken by the author.
+
+For existing issues, it is typically still worth adding a comment on the issue asking if the maintainer would accept a PR for it.
+They might have plans to revamp that section of the codebase entirely, which may invalidate your PR altogether.
+Even if they say yes, remember that you might not get an immediate review if the maintainer isn't actively working on the package, as mentioned in the [patterns of collaboration](#sec-external-contributions) section, but we still value all contributions!
