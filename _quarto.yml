@@ -11,7 +11,7 @@ book:
   chapters:
     - index.qmd
     - collaboration/index.qmd
-    - part: "How to review a pull request"
+    - part: "Reviewing"
       chapters:
       - reviewer/purpose.qmd
       - reviewer/aspects.qmd
@@ -19,7 +19,7 @@ book:
       - reviewer/speed.qmd
       - reviewer/comments.qmd
       - reviewer/pushback.qmd
-    - part: "How to author a pull request"
+    - part: "Authoring"
       chapters:
       - author/submitting.qmd
       - author/focused.qmd
