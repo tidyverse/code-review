@@ -1,0 +1,61 @@
+# How to write an issue {#sec-how-to-write-an-issue .unnumbered}
+
+GitHub issues are often the first step in the PR process, since many of our PRs are reactions to bug reports and feature requests we receive.
+Because of this, it is worth spending a little time discussing what makes a high-quality issue.
+
+While it might seem like opening an issue with just the error message you received is "good enough" for the package maintainer to figure it out, this typically isn't the case in practice.
+Maintainers generally need enough context to reproduce the *exact* issue themselves before working on a solution.
+Crafting a great issue is a critical part of helping *me* (the maintainer) help *you* (the issue opener).
+
+Great issues are composed of two parts:
+
+-   Context around what you are trying to accomplish.
+
+-   A minimal reproducible example of the problem.
+
+### Context {#sec-issue-context}
+
+Issues come in all shapes and sizes, and package maintainers have to work through many of them in a single day, so providing context around exactly what was expected to happen vs what actually happened is extremely helpful.
+Useful context takes the form of a complete paragraph including:
+
+-   The overarching type of problem you are experiencing - such as a bug, performance regression, or a missing feature.
+
+-   The specific functions involved.
+
+-   Any relevant package versions.
+
+-   Links to any relevant issues or pull requests.
+
+This [dplyr issue](https://github.com/tidyverse/dplyr/issues/6674) is a great example of providing useful context:
+
+> Using `case_when` in a `mutate` call with a grouping variable is much, much slower in v1.1.0 compared to v1.0.10.
+> The code works but it's causing a tremendous slowdown in many of the packages I maintain.
+
+The issue author goes on to provide a full before and after benchmark [reprex](#sec-issue-reprex) (which is excellent!), but the context was actually so comprehensive that we could have reproduced this ourselves without it.
+
+### Reprex {#sec-issue-reprex}
+
+A **repr**oducible **ex**ample, or reprex, is the most important part of a high-quality issue.
+To create a reprex, you'll use the [reprex](https://reprex.tidyverse.org/) package.
+To learn how to use the package, [read this article](https://reprex.tidyverse.org/articles/learn-reprex.html).
+If you have the time, you should also watch Jenny Bryan's webinar (linked from that article) that discusses how to use the package.
+
+Without a reprex, it is typically extremely difficult for maintainers to reproduce an issue, which significantly decreases the chance of it getting resolved in a favorable way.
+
+As you get into the habit of creating reprexes for your issues, you'll find that the process of creating the reprex often leads you to solve the problem on your own.
+Because reprex forces you to run your example in a new R session, effectively giving you a "fresh start," you'll commonly discover that you had something "weird" in your main R session that was causing the problem to begin with.
+
+Once you've gotten comfortable with creating reprexes, you should next work on making them *minimal*.
+Creating a minimal reprex is a bit of an artform, and involves stripping down an existing reprex to the minimum amount of packages and code needed to reproduce the issue.
+Sometimes this requires going a level deeper into the code to figure out where the underlying problem is coming from.
+For example, with the dplyr issue mentioned in the [context](#sec-issue-context) section, [Hadley further refined](https://github.com/tidyverse/dplyr/issues/6674#issuecomment-1412175315) the original reprex by removing the `mutate()`, `group_by()`, and data frame from the example to show that the problem was directly related to an unexpected amount of overhead in `case_when()`.
+Creating minimal reprexes allows us to quickly focus in on the exact problem, resulting in faster PRs, [like this one](https://github.com/tidyverse/dplyr/pull/6711), to resolve them.
+
+If your reprex involves some kind of performance regression, we recommend that you use the [bench](https://bench.r-lib.org/) package to include a before and after reprex.
+This involves installing a version of the package before the regression (with `devtools::install_version()`), running a reprex that involves a call to `bench::mark()` which demonstrates the issue, and then rerunning that same reprex with the faulty version of the package installed.
+Hadley's [minimal reprex](https://github.com/tidyverse/dplyr/issues/6674#issuecomment-1412175315) mentioned above is a great example of this.
+
+### New issues vs closed issues
+
+If you find that you are having a problem that looks similar to an existing closed issue, we in the tidyteam greatly prefer that you open a new issue rather than commenting on an existing closed one.
+It is typically much easier for us to keep track of open issues, so the chance of your issue being resolved is much higher if you open a new one with full context, a reprex, and a link to the issue that you believe is related.

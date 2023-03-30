@@ -24,6 +24,7 @@ book:
       - author/submitting.qmd
       - author/focused.qmd
       - author/handling-comments.qmd
+    - issues/index.qmd
 
 format:
   html:
