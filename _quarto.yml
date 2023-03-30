@@ -5,7 +5,7 @@ project:
 book:
   title: "Tidyteam code review principles"
   author: "Davis Vaughan"
-  repo-url: https://github.com/DavisVaughan/code-review
+  repo-url: https://github.com/tidyverse/code-review
   repo-branch: main
   repo-actions: [edit, issue]
   chapters:
