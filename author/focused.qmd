@@ -92,4 +92,3 @@ Instead, open an issue to track the bug and address it separately.
 
 If all of these options fail (which should be extremely rare) then get consent from your reviewers in advance to review a large PR, so they are warned about what is coming.
 In this situation, expect the review process to take longer, be vigilant about not introducing bugs, and be extra diligent about writing tests.
-
