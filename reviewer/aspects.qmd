@@ -4,11 +4,12 @@
 
 The most important thing to cover in a review is the overall design of the PR.
 Do the interactions of various pieces of code in the PR make sense?
-Does this change belong in your codebase, or somewhere upstream?
-Does it integrate well with the rest of your system?
+Does this change belong in this package, or somewhere upstream?
+Does it integrate well with the rest of the ecosystem?
 
-Hopefully, you and the PR author aligned on the design aspect of the PR before they worked on it.
+If you're [collaborating closely](#sec-close-knit-collaboration) with the PR author, hopefully you aligned on the design aspect of the PR before they worked on it.
 If not, it is often worth pausing and having a separate conversation about the overall design rather than directly reviewing their PR, as that conversation might result in the PR being completely rewritten or closed altogether.
+If you have to close an author's PR because it doesn't align with the overall design of the package, encourage them to [open an issue](#sec-issue-first-pr-second) first next time, so they don't waste their time doing work that may be rejected.
 
 ## Functionality
 
@@ -44,27 +45,28 @@ The future problem should be solved once it arrives and you can see its actual s
 ## Tests {#sec-tests}
 
 In general, if a PR fixes a bug or adds a feature, it should be accompanied by a unit test.
-If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for forensic purposes to include the issue number in the test description, like:
+If there is a corresponding issue or PR on GitHub that is linked to the test, it is useful for future forensic purposes to include the issue number in the test description, like:
 
 ``` r
 test_that("`my_function()` throws an error when given strings (#553)")
 ```
 
-Recent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which makes these extremely valuable for looking up historical context of a particular bug.
+Recent versions of the RStudio IDE will automatically generate a hyperlink from this issue number to the corresponding URL on GitHub, which make these extremely valuable for looking up historical context of a particular bug.
 
 Make sure that the tests in the PR are correct, sensible, and useful.
-Tests do not test themselves, and we rarely write tests for our tests---a human must ensure that tests are valid.
+Tests do not test themselves, and we rarely write tests for our tests---a human must ensure that tests are valid so they should be as straightforward and self-contained as possible.
 
 Tests should also strive to be as minimal as possible.
-When a user opens an issue with a bug report, chances are that they have included an example that is tailored to their use case, but isn't a minimal example of the bug in question.
+When a user opens an [issue](#sec-issues) with a bug report, chances are that they have included an example that is tailored to their use case, but it likely isn't a *minimal* example of the bug in question.
 When you write a test for the bug fix, it is worth spending time making the example as minimal as possible so it isolates the bug and is easy to understand in the future.
-Remember that tests have to be maintained too!
+
+For an in-depth analysis of test design, see [the testing chapter](https://r-pkgs.org/testing-design.html) of R Packages.
 
 Cross-package integration tests are more difficult, but the [tidymodels](https://www.tidymodels.org/) ecosystem accomplishes this using a separate GitHub-only R package named [extratests](https://github.com/tidymodels/extratests) that is run on a daily basis.
 
 ## Naming {#sec-naming}
 
-Did the author make an attempt to pick names that are consistent with the rest of the codebase?
+Did the author make an attempt to pick names that are consistent with the rest of the package?
 In general, we also prefer longer names that fully describe the functionality rather than shortened names that require special knowledge of special acronyms.
 
 ## Comments {#sec-code-comments}
@@ -90,7 +92,23 @@ if (is_null(col)) {
 
 It describes the exact combination of inputs required for a very rare branch of code to run.
 Without the *context* provided by that comment, it can be a little difficult to know why that branch is there.
-Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like [these](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/tests/testthat/test-chop.R#L231-L249) in tidyr.
+Particularly challenging comments like this one should come with tests that can provide concrete examples of the issue, like [these](https://github.com/tidyverse/tidyr/blob/0764e65fad777b71aa2a81ffd5447d04a61f8d5e/tests/testthat/test-chop.R#L231-L249) in tidyr:
+
+``` r
+test_that("unchopping a bare empty list results in unspecified()", {
+  df <- tibble(x = integer(), y = list())
+  expect <- tibble(x = integer(), y = unspecified())
+
+  expect_identical(unchop(df, y), expect)
+  expect_identical(unchop(df, y, keep_empty = TRUE), expect)
+})
+
+test_that("unchopping a bare fully `NULL` list results in unspecified()", {
+  df <- tibble(x = 1:2, y = list(NULL, NULL), z = list(NULL, NULL))
+  expect <- tibble(x = integer(), y = unspecified(), z = unspecified())
+  expect_identical(unchop(df, c(y, z)), expect)
+})
+```
 
 Note that comments are different from [documentation](#sec-documentation) of functions, which should instead express the purpose of a piece of code, how it should be used, and how it behaves when used.
 
@@ -103,7 +121,7 @@ Admittedly, many of us don't use these tools religiously.
 The important thing is that if there is a point of contention about style in a PR, we can point to the style guide to resolve it.
 
 The author of the PR should not include major style changes combined with other changes.
-It makes it hard to see what is being changed in the PR, makes merges and rollbacks more complex, and causes other problems.
+It makes it hard to see what is being changed in the PR and makes merges more complex.
 If the author wants to reformat the whole file, request that they send you just the reformatting as one PR, and then send another PR with their functional changes after that.
 
 ## Consistency
@@ -112,7 +130,7 @@ In some cases, the style guide makes recommendations rather than declaring requi
 In these cases, it's a judgment call (typically by the reviewer / maintainer) whether the new code should be consistent with the recommendations or the surrounding code.
 
 Consistency is also heavily related to [naming](#sec-naming), and the reviewer should ensure that the author has chosen function names, argument names, and local variable names that are consistent with the rest of the codebase.
-Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that, say, `loc` always stands for an integer value corresponding to a vector index.
+Consistent naming makes code significantly easier to understand, because it lowers your cognitive burden if you know that, say, `loc` always stands for a positive integer value corresponding to a vector index.
 This is particularly helpful in R, since static typing isn't available to provide this information for you.
 
 ## Documentation {#sec-documentation}
@@ -172,14 +190,14 @@ df_append <- function(x, y, after = NULL, remove = FALSE) {
 
 ## Every line {#every-line}
 
-In the general case, look at *every* line of code that you have been assigned to review.
+In general, you should look at every line of code that you have been assigned to review.
 Some things like data files, generated code, or large data structures you can scan over sometimes, but don't scan over a human-written function or block of code and assume that what's inside of it is okay.
 Obviously some code deserves more careful scrutiny than other code---that's a judgment call that you have to make---but you should at least be sure that you *understand* what all the code is doing.
 
 If reviewing every line is too hard and is slowing down the review, then you should let the author know and ask them to clarify it (possibly providing suggestions of your own, if possible).
-This also applies to code that you understand, but it took a long time for you to figure it out (or you had to run it locally to understand it).
+This also applies to code that you understand, but it took a long time for you to figure it out (or if you had to run it locally to understand it).
 If you can't understand the code, it is likely that other reviewers won't be able to either!
-Taking a moment to have the author clarify confusing sections of code will help future developers when it is modified further.
+Taking a moment to add a [comment](#sec-comments) requesting that the author clarify a confusing section of code will improve the overall quality of the package and help future developers.
 
 If you understand the code but you don't feel qualified to do some part of the review, it is perfectly acceptable (and preferred!) that you let the author know, and suggest that they request a review from another colleague who has more expertise in that area.
 
@@ -190,19 +208,19 @@ Usually the code review tool on GitHub will only show you a few lines of code ar
 Sometimes you have to look at the whole file to be sure that the change actually makes sense.
 For example, you might see only four new lines being added, but when you look at the whole file, you see those four lines are in a 50-line helper that now really needs to be broken up into smaller functions.
 
-It's also useful to think about the PR in the context of the system as a whole.
-Is this PR improving the code health of the system or is it making the whole system more complex, less tested, etc.?
-PRs should *always* maintain or improve the overall health of the codebase.
-Most systems become complex through many small changes that add up, so it's important to prevent even small complexities in new changes.
+It's also useful to think about the PR in the context of the package as a whole.
+Is this PR improving the code health of the package or is it making the package more complex, less tested, etc.?
+PRs should *always* maintain or improve the overall health of the package.
+Most systems become complex through many small changes that add up, so it's important to prevent even small complexities in new changes if possible.
 
 Sometimes the timing of the PR isn't right.
-It is possible that the codebase may need restructuring before a PR can be accepted.
-You can generally recognize this when the PR has a large number of changes to parts of the codebase that are seemingly unrelated to the purpose of the PR itself.
-In those cases, it is often worth suggesting that the author submit a few smaller focused PRs first that prepare the codebase for the larger PR.
+It is possible that the package may need restructuring before a PR can be accepted.
+You can generally recognize this when the PR has a large number of changes to parts of the package that are seemingly unrelated to the purpose of the PR itself.
+In those cases, it is often worth suggesting that the author submit a few smaller [focused](#sec-focused) PRs first that prepare the package for the larger PR.
 This reduces the complexity of the larger PR, making it easier to understand and faster to review.
 
 ## Compliments {#good-things}
 
 If you see something nice in the PR, tell the author, especially when they addressed one of your comments in a great way.
-Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices, as well.
+Code reviews often just focus on mistakes, but they should offer encouragement and appreciation for good practices as well.
 It's sometimes even more valuable, in terms of mentoring, to tell an author what they did right than to tell them what they did wrong.

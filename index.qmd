@@ -1,17 +1,22 @@
 # Welcome {.unnumbered}
 
 A code review is a process where someone other than the author of a piece of code examines that code.
-At Posit, we use code review to maintain the quality of our code and products.
+At Posit, we use code review to maintain the quality of our packages and products.
 
-This guide serves as a reference for different aspects of the code review process.
-It is written with the *tidyteam* in mind, which make up the combination of the [tidyverse](https://www.tidyverse.org/), [tidymodels](https://www.tidymodels.org/), and [mlops](https://vetiver.rstudio.com/) groups, but is generally applicable to a large amount of the software development we do at Posit.
-The guide is intended to be used as a way to get new developers up to speed on how we perform code review, and to serve as a linkable resource when there are questions about aspects of the code review process.
+The principles in this guide cover various aspects of the code review process.
+They are written with the *tidyteam* in mind, which make up the combination of the [tidyverse](https://www.tidyverse.org/), [tidymodels](https://www.tidymodels.org/), and [mlops](https://vetiver.rstudio.com/) groups, but are generally applicable to a large amount of the software development we do at Posit.
 
-We mostly use [GitHub](https://github.com/) as the hosting platform for our code, so many details of this guide might refer to aspects specific to doing pull requests using GitHub's tooling.
+This guide functions as:
+
+-   A resource for new contributors, whether they are community members or Posit employees.
+
+-   A linkable source of truth when there are questions about our code review process.
+
+We mostly use [GitHub](https://github.com/) as the hosting platform for our code, so many details of this guide are specific to GitHub's tooling.
 Additionally, we have a number of R packages that facilitate working on R packages and authoring/reviewing pull requests, such as [`devtools`](https://devtools.r-lib.org/) and [`usethis`](https://usethis.r-lib.org/).
 In particular, the family of [`usethis::pr_*()`](https://usethis.r-lib.org/articles/pr-functions.html) functions are extremely useful for managing pull requests on R packages.
 
-We will use the abbreviation PR to mean a *pull request*, typically on GitHub.
+We will use the abbreviation PR to mean a *pull request*.
 
 ## Acknowledgements
 

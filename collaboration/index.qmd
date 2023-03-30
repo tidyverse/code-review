@@ -1,16 +1,16 @@
 # Patterns of collaboration {#sec-patterns-of-collaboration .unnumbered}
 
-Within the tidyteam group, the way we collaborate with colleagues and external contributors is highly dependent on the context of who is working on a particular package, how closely the contributors are working together, and how often that package is updated.
-A large amount of the advice in this guide is independent of any specific collaboration context, but some aspects, such as the expected turnaround time of a code review, and the level of detail that is expected from a review, is closely tied to it.
+Within the tidyteam group, the way we collaborate with colleagues and external contributors is highly dependent on who is working on a particular package, how closely the contributors are working together, and how often that package is updated.
+A large amount of the advice in this guide is independent of any specific collaboration context, but some aspects, such as the expected turnaround time of a code review and the level of detail that is expected from a review, is closely tied to it.
 
-It is important to keep in mind that package development within the tidyteam group is probably a little different from software development at other companies.
+It is important to keep in mind that package development within the tidyteam is probably a little different from software development at other companies.
 Packages often lie dormant for awhile as the core maintainer works on other projects, which means that sometimes PRs take longer to get reviewed than expected.
-This is typically expected when working with other tidyteam colleagues, but can be surprising to a community member that is submitting their first PR.
+Posit employees are typically already aware of this workflow, but it can be surprising to a community member submitting their first PR when they don't receive immediate feedback.
 If you don't see any recent activity on the `main` branch of a package, it is likely that the package is dormant, but rest assured that we will eventually get to your PR.
 
-In the following sections, we discuss three patterns of collaboration that we use in the tidyteam group which help us to be explicit about our expectations.
+In the following sections, we discuss three patterns of collaboration between PR author and PR reviewer that we use in the tidyteam which help us explicitly state our expectations.
 These patterns act as a guide and reference, rather than something that is set in stone.
-Developers should feel free to modify the patterns as needed - the most important thing is that you are *communicating* these expectations to your team and to your larger user base.
+Developers should feel free to modify the patterns as needed - the most important thing is that you are communicating these expectations to your team and to your larger user base.
 
 In other sections of this guide, we reference these three patterns when making a distinction between them is useful.
 
@@ -20,17 +20,17 @@ In a close-knit collaboration, the PR author and PR reviewer are both heavy cont
 It is common for them to be in close contact with each other (i.e. over Slack), and they often coordinate with each other to avoid overlapping each other's work.
 
 With this pattern, reviews are typically swift to avoid blocking one another, which means it is particularly important to write [focused](#sec-focused) PRs.
-Reviews are also in-depth by default, since both the author and reviewer have significant amount of experience with the package, and should communicate with each other if a superficial review is good enough.
+Reviews are also in-depth by default, since both the author and reviewer have significant amount of experience with the package, and they should communicate with each other if a superficial review is good enough.
 
 Note that close-knit collaborators aren't restricted to Posit employees.
-ggplot2, dtplyr, and dbplyr have a number of core contributors that aren't employed by Posit that would be considered under this pattern.
+[ggplot2](https://github.com/tidyverse/ggplot2/blob/d7f22413efea3dd2a7c9effff05d4b2aa2c2d300/DESCRIPTION#L4-L22), [dtplyr](https://github.com/tidyverse/dtplyr/blob/68988ec96348e4746c1e200bca707c000f4f6bd1/DESCRIPTION#L4-L10), and [dbplyr](https://github.com/tidyverse/dbplyr/blob/7b0ed3047c0bb24b29fef58134b19b845e194a45/DESCRIPTION#L5-L10) have a number of core contributors that aren't employed by Posit that would be considered under this pattern.
 
 ### The understudy {#sec-the-understudy}
 
 An understudy typically follows a project from afar, generally submitting smaller PRs or doing superficial code review with a focus on API design, unit tests, and documentation.
-This allows the understudy to stay up to date with a project they may potentially take over in the future.
+This allows the understudy to stay up to date with a project they may contribute to more or take over in the future.
 
-When an understudy submits a PR, review is typically swift, in-depth, and comes from a core maintainer as long as that maintainer is actively working on that package.
+When an understudy submits a PR, review is typically swift, in-depth, and comes from a core maintainer as long as there is one actively working on that package.
 Understudy PRs are often smaller in scope, and can occasionally require multiple rounds of review if they aren't intimately familiar with the specifics of the package they are working on.
 If both the understudy and reviewer are Posit employees, discussing the review live (i.e. over Zoom) is often very beneficial for the understudy's overall understanding of the package.
 
@@ -42,7 +42,7 @@ An understudy may be an intern at Posit, a motivated community member, or anothe
 ### External contributions {#sec-external-contributions}
 
 An external contribution is a PR authored by someone who isn't a regular contributor to a package.
-This may be a one-off PR from a community member, but is often another tidyteam member that notices a small bug or feature that is missing from a package they don't typically work on.
+This may be a one-off PR from a community member or from another tidyteam member that notices a small bug or feature that is missing from a package they don't typically work on.
 For example, I am not a regular contributor to usethis, but noticed a small non-critical bug and [sent in a PR for it](https://github.com/r-lib/usethis/pull/1786).
 
 When an external contributor authors a PR, they should not expect an immediate review.

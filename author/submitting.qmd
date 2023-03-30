@@ -183,7 +183,7 @@ The reviewer you choose depends on their expertise with the part of the codebase
 When you are in [close collaboration](#sec-close-knit-collaboration) with someone, then they are typically the obvious choice of reviewer.
 If the author of the PR is also the package maintainer, the choice of reviewer may be less obvious.
 Typically, it is reasonable to request a high-level review from another team member, even if they aren't an expert on the package in question.
-For example, I am not an expert on testthat, but was requested to review [this PR](https://github.com/r-lib/testthat/pull/1760) for its overall structure, design decisions, and clarity.
+For example, I am not an expert on testthat, but was requested to review [this PR](https://github.com/r-lib/testthat/pull/1760) as an [understudy](#sec-the-understudy) for its overall structure, design decisions, and clarity.
 
 Occasionally, it can be useful to select two reviewers for different purposes - one for high-level API design feedback, and one for a full in-depth review.
 

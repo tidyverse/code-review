@@ -63,7 +63,7 @@ If you find that you are having a problem that looks similar to an existing clos
 Some repositories have even set up a GitHub Actions [workflow](https://github.com/tidymodels/.github/blob/main/lock.yaml) that locks old issues, preventing this.
 It is typically much easier for us to keep track of open issues, so the chance of your issue being resolved is much higher if you open a new one with full context, a reprex, and a link to the issue that you believe is related.
 
-## Issue first, PR second
+## Issue first, PR second {#sec-issue-first-pr-second}
 
 If you are an [external contributor](#sec-external-contributions) to a package and feel that you have found a bug, it is highly recommended that you open an issue *first* before attempting a PR.
 This gives the maintainer a chance to confirm that what you are seeing is actually an issue, and that they are willing to accept a PR for it.
