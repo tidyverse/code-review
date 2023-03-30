@@ -79,7 +79,7 @@ The important thing here is that all of the changes are highly connected, and no
 There are a number of things that are useful to point out regarding this PR:
 
 -   This was a case where the author felt like the reviewer might not be as "close" to the code as the author was, so a high-level review to look for any structural problems was good enough.
-    Since an in-depth review is the default, the author made sure to mention that a high-level review was fine up near the top of the description.
+    Since an in-depth review is the default for these two colleagues, the author made sure to mention that a high-level review was fine up near the top of the description.
 
 -   The description enumerates the possible options for `relationship`, along with giving examples of how it would directly tie into dplyr (i.e. providing broader context outside just this PR), and inline code examples.
     This gives the reviewer as much context as possible up front, and creates an extremely useful history to look back on if the PR ever needs to be revisited.

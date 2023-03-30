@@ -28,7 +28,7 @@ If the code can't be clarified, add a code comment that explains why the code is
 If a comment seems pointless, only then should your only response be an explanation in the code review tool.
 
 If a reviewer didn't understand some piece of your code, it's likely other future readers of the code won't understand either.
-Writing a response in the code review tool doesn't help future code readers, but clarifying your code or adding code comments does help them.
+Writing a response in the code review tool doesn't help future code readers, but clarifying your code or adding code comments does.
 
 ## Think collaboratively {#sec-think-collaboratively}
 
@@ -37,9 +37,7 @@ It's often really satisfying to finally send one out for review, feel like it's 
 It can be frustrating to receive comments asking for changes, especially if you don't agree with them.
 
 At times like this, take a moment to step back and consider if the reviewer is providing valuable feedback that will improve the package.
-Your first question to yourself should always be, "Do I understand what the reviewer is asking for?"
-
-If you can't answer that question, ask the reviewer for clarification.
+Your first question to yourself should always be, "Do I understand what the reviewer is asking for?" If you can't answer that question, ask the reviewer for clarification.
 
 If you understand the comments but disagree with them, it's important to think collaboratively, not combatively or defensively:
 
@@ -48,9 +46,9 @@ If you understand the comments but disagree with them, it's important to think c
 > Good: "I went with X because of \[these pros/cons\] with \[these tradeoffs\]. My understanding is that using Y would be worse because of \[these reasons\]. Can you help me understand if there is something that I am missing?"
 
 Remember, **courtesy and respect** **should always be a first priority**.
-If you disagree with the reviewer, find ways to collaborate: ask for clarifications, discuss pros/cons, and provide explanations of why your method of doing things is better for the codebase and for users.
+If you disagree with the reviewer, find ways to collaborate: ask for clarifications, discuss pros/cons, and provide explanations of why your method of doing things is better for the package and for users.
 
-Sometimes, you might know something about the users, codebase, or PR that the reviewer doesn't know.
+Sometimes, you might know something about the users, package, or PR that the reviewer doesn't know.
 [Fix the code](#sec-fix-code) where appropriate, and engage your reviewer in discussion, including giving them more context.
 Usually you can come to some consensus between yourself and the reviewer based on technical facts.
 
@@ -61,7 +59,7 @@ On GitHub, there is button for `Resolve conversation` that appears under a comme
 ![](img/resolve-conversation.png){fig-align="center" width="900"}
 
 This button will collapse the conversation, essentially marking the comment as "completed." Both the author and reviewer see this button, so who's job is it to resolve?
-Within the tidyteam group, we typically expect the PR author to use the resolve button.
+Within the tidyteam, we typically expect the PR author to use the resolve button.
 One typical workflow is to add a thumbs-up emoji or a comment saying that you have handled their comment, and to then resolve the conversation.
 If you have a question about their comment that requires further input, then add a comment of your own and leave the thread open.
 Closing resolved threads can reduce the overall noise in the PR, especially if it goes through multiple rounds of review.
