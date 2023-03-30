@@ -60,6 +60,7 @@ Hadley's [minimal reprex](https://github.com/tidyverse/dplyr/issues/6674#issueco
 ## New issues vs closed issues
 
 If you find that you are having a problem that looks similar to an existing closed issue, we in the tidyteam greatly prefer that you open a new issue rather than commenting on an existing closed one.
+Some repositories have even set up a GitHub Actions [workflow](https://github.com/tidymodels/.github/blob/main/lock.yaml) that locks old issues, preventing this.
 It is typically much easier for us to keep track of open issues, so the chance of your issue being resolved is much higher if you open a new one with full context, a reprex, and a link to the issue that you believe is related.
 
 ## Issue first, PR second
