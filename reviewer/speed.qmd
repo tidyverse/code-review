@@ -7,14 +7,13 @@ When code reviews are slow, several things happen:
 
 -   **Authors start to protest the code review process.** If a reviewer only responds every few days, but requests major changes to the PR each time, that can be frustrating and difficult for the author.
     If the reviewer requests the *same* substantial changes (changes which really do improve code health), but responds *quickly* every time the author makes an update, the frustration tends to disappear.
-    **Most complaints about the code review process are actually resolved by making the process faster.**
 
 -   **The velocity of the team as a whole is decreased.** Yes, the individual who doesn't respond quickly to the review gets other work done.
     However, new features and bug fixes for the rest of the team are delayed by days, weeks, or months as each PR waits for review.
 
 -   **Code health can be impacted.** When reviews are slow, authors are actually incentivized to submit *fewer* PRs and to make each one *larger*.
     If you think that it is going to take days to get a single small change reviewed, you are going to be pressured to include *one more thing* in your PR just to avoid another multi-day review process.
-    To ensure that each PR only improves the health of the codebase, code review must be fast enough that authors don't feel hamstrung by it.
+    To ensure that each PR only improves the health of the package, code review must be fast enough that authors don't feel hamstrung by it.
 
 ## What do we mean by "fast"?
 
@@ -28,7 +27,7 @@ If you are feeling overwhelmed by the amount of PRs that you are in charge of, i
 If you have so many PRs to review that you can't get to your own work, then you might need to distribute the reviews across your team more evenly.
 Not speaking up when you are overwhelmed by PRs can in turn slow down an entire team!
 
-## Speed vs Interruption {#sec-interruption}
+## Speed vs interruption {#sec-interruption}
 
 There is one time where the consideration of personal velocity trumps team velocity.
 **If you are in the middle of a focused task, such as writing code, don't interrupt yourself to do a code review.** Research has shown that it can take a long time for a developer to get back into a smooth flow of development after being interrupted.
@@ -42,14 +41,14 @@ Most "deep work" sessions last around 2-3 hours, so batching your code reviews a
 ## Detailed review
 
 With all of this discussion about speed, it can be tempting to just do a surface level review and respond with "LGTM." Resist this temptation!
-The whole [purpose of code review](#sec-purpose) is to ensure that the code health of the code base is improving, and you are unlikely to catch potential bugs with a surface level review.
+The whole [purpose of code review](#sec-purpose) is to ensure that the code health of the package is improving, and you are unlikely to catch potential bugs with a surface level review.
 
 PRs vary greatly in their complexity and sufficiently carrying out the review can take a non-trivial amount of time and cognitive effort.
 In general:
 
 -   **Small PRs** take anywhere from **5-15 minutes** and don't typically require checking the code out locally.
     This should be the majority of code reviews that tackle small bugs or documentation changes.
-    You should typically be able to "run" the code related to these changes in your head.
+    Experienced reviewers should be able to "run" the code related to these changes in their heads.
 
 -   **Medium PRs** take up to **30 minutes** and often involve using `usethis::pr_fetch()` and exploring the code locally.
     This typically includes PRs that implement new features or small UI changes.
@@ -57,7 +56,7 @@ In general:
 -   **Large PRs** can take up to **1 hour**, and occasionally even longer.
     These should be very rare, and are reserved for large refactorings, especially if there are unavoidable behavior changes mixed in.
     Large PRs are typically undesirable because they slow the velocity of the entire team, so typically the reviewer should ask the author if the PR can be [split into multiple smaller focused PRs](#sec-focused).
-    If you don't have time to review a large PR and it can't be made any smaller, provide some broad comments on the design of the PR, and consider requesting another colleague to take a look.
+    If you don't have time to review a large PR and it can't be made any smaller, provide some broad comments on the design of the PR, and consider requesting another colleague to take a second look.
 
 ## Cross time zone reviews {#sec-cross-time-zone}
 

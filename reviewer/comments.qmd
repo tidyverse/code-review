@@ -20,13 +20,13 @@ You don't always need to include this information in your review comments, but s
 
 **In general it is the author's responsibility to fix a PR, not the reviewer's.** You are not required to do detailed design of a solution or write code for the author.
 
-This doesn't mean the reviewer should be unhelpful, though.
+This doesn't mean the reviewer should be unhelpful.
 In general you should strike an appropriate balance between pointing out problems and providing direct guidance.
-Pointing out problems and letting the author make a decision often helps the author learn, and makes it easier to do future code reviews.
-It also can result in a better solution, because the author is typically closer to the code than the reviewer is.
+Pointing out problems and letting the author make a decision often helps the author learn, resulting in higher quality PRs in the future.
+It can also result in a better solution, because the author is typically closer to the code than the reviewer is.
 
-One example of this is to simply point out a section of code that confused you, or which took a long time to understand.
-This isn't a direct call to action, but prompts the author to take another look at the code of that section to see if it can be further simplified or clarified (like with a *why* [code comment](#sec-code-comments)).
+One example of this is to simply point out a section of code that confused you, or which took a long time to understand (like with a *why* [code comment](#sec-code-comments)).
+This isn't a direct call to action, but prompts the author to take another look at the code in section to see if it can be further simplified or clarified.
 
 Another way to demonstrate an issue is to provide the author a [reprex](https://reprex.tidyverse.org/) that demonstrates that there is still a bug in their PR.
 The author can then decide how to resolve it.
@@ -49,6 +49,9 @@ As a reviewer, you can add suggestions using the workflow shown below, and the a
 
 ![](img/write-suggestion.png){fig-align="center" width="900"}
 
+Note that if your suggestion touches documentation, then the author will have to merge, pull locally, and run `devtools::document()`.
+If you notice this situation, it is typically polite to mention to the author that they will need to `document()` locally after committing the suggestions, because that is particularly hard to remember.
+
 As a reviewer, you can add multiple suggestions and the author can *batch* multiple suggestions into a single commit.
 
 ## Label comment severity {#sec-label-comment-severity}
@@ -58,7 +61,6 @@ Consider labeling the severity of your comments, differentiating required change
 Here are some examples:
 
 > Nit: This is a minor thing.
-> Technically you should do it, but it won't hugely impact things.
 >
 > Optional (or Consider): I think this may be a good idea, but it's not strictly required.
 >
@@ -69,8 +71,8 @@ It also helps avoid misunderstandings; for example, without comment labels, auth
 
 ## Approve with comments {#sec-approve-with-comments}
 
-When you've finished leaving review comments, GitHub provides a number of options for categorizing your review.
-The most common kind of PR review within the tidyteam group is known as "approved with comments." It involves leaving a few minor comments on a PR, while also hitting the `Approve` button on the GitHub review UI:
+When you've finished leaving review comments, GitHub provides a number of options for finalizing your review.
+The most common kind of PR review within the tidyteam is known as "approved with comments." It involves leaving a few minor comments on a PR, while also hitting the `Approve` button on the GitHub review UI:
 
 ![](img/approve-with-comments.png){fig-align="center" width="600"}
 
@@ -81,14 +83,15 @@ This is done when either:
 -   The remaining changes are minor and don't *have* to be done by the author.
 
 Approving with comments is largely about the experience of the PR author.
-For new authors that are still being onboarded, it is common for reviewers to use the `Comment` option instead, which is a signal to the author that they should request another round of review when they have finished addressing your comments.
+[Close-knit collaborators](#sec-close-knit-collaboration) often approve each other's work after just one round of review, because both parties have significant experience working on the package and the PR is likely to be mostly correct from the beginning.
+For [understudies](#sec-the-understudy) and [external contributions](#sec-external-contributions) from new contributors, it is common for reviewers to use the `Comment` option instead, which is a signal to the author that they should request another round of review when they have finished addressing your comments.
 It is important to remember to be patient with new developers; they are going to need multiple rounds of detailed reviews early on, but putting in this extra effort up front tends to lead to faster PRs in the future as the author learns more about what is expected from their PRs.
 
 ## Requesting changes {#sec-request-changes}
 
 GitHub also includes a third option when submitting a review, `Request changes`.
 This is typically reserved for more drastic changes that absolutely require another round of review.
-This option is rare to see in [close-knit collaboration](#sec-close-knit-collaboration), when both the author and reviewer are experts, but is somewhat common when the author is an [understudy](#sec-the-understudy) and with [external contributions](#sec-external-contributions), where the author likely doesn't have as much expertise as the reviewer.
+This option is rare to see in [close-knit collaboration](#sec-close-knit-collaboration), but is somewhat common when the author is an [understudy](#sec-the-understudy) and with [external contributions](#sec-external-contributions), where the author likely doesn't have as much expertise as the reviewer.
 
 ## Finishing off an external contribution {#sec-finishing-off-an-external-contribution}
 
@@ -96,6 +99,6 @@ Sometimes when we receive [external contributions](#sec-external-contributions),
 This typically happens when we come back to work on a package after letting it lie dormant for a few months, and we find that we have a few PRs from external contributors.
 Sometimes these PRs can sit for awhile while no one is actively working on the package, and it might not make much sense to leave comments for the PR author weeks after they sent the PR in.
 Using `usethis::pr_fetch()` and `usethis::pr_push()`, you can instead just take over the PR, fix any minor issues, and merge it in.
-Make sure that if you do this, you also thank the contributor for their contributions!
+Make sure that if you do this, you also thank the author for their contributions!
 
 It is also appropriate to inform a PR author that you'll finish off a PR if you have already gone through 1-2 rounds of PR review and there are still a few minor edits that need to be made before the PR is ready to be merged.

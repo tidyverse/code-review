@@ -15,8 +15,8 @@ Before looking at any code, you should familiarize yourself with the GitHub issu
 Does this change even make sense?
 You can save everyone time if the answer is *no* by stopping the review there and responding with an explanation of why the change isn't necessary.
 Ideally, when performing [close-knit collaboration](#sec-close-knit-collaboration), you will have discussed this ahead of time to avoid the author putting in unnecessary work (and feeling bad if their work is rejected).
-For [external contributions](#sec-external-contributions), occasionally you do have to reject PRs if they don't fit the overall [design](#sec-design) of the codebase.
-You should do this nicely, thanking them for their contribution, and requesting that next time they open an issue first and ask if we'd accept a PR for that issue, which would have saved them time if we had an opportunity to preemptively say no.
+For [external contributions](#sec-external-contributions), occasionally you do have to reject PRs if they don't fit the overall [design](#sec-design) of the package.
+You should do this nicely, thanking them for their contribution, and requesting that next time they [open an issue first](#sec-issue-first-pr-second) and ask if you'd accept a PR for that issue, which would have saved them time if you had an opportunity to preemptively say no.
 
 For example, you might say: "Looks like you put some good work into this, thanks! However, we're actually going in the direction of removing the `foo()` helper that you're modifying here, and so we don't want to make any new modifications to it right now. In the future, it is best if you open an issue first to highlight the bug or feature and ask if we'd accept a pull request for it at this time."
 
@@ -47,4 +47,4 @@ Sometimes it's also helpful to read the tests first before you read the main cod
 For R code, you can generally ignore the generated documentation files ending in `.Rd` while reviewing the PR.
 GitHub will collapse these by default.
 
-While reading through the PR, make sure to keep the [aspects of a PR](#sec-aspects) in mind.
+When you've finished your review, if you've checked out the PR locally you can remove it with `usethis::pr_forget()`.
