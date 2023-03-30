@@ -1,7 +1,0 @@
-# How to author a pull request {#sec-author}
-
-The pages in this section contain best practices for developers authoring a pull request to be reviewed.
-These guidelines should help you get through reviews faster and with higher-quality results.
-You don't have to read them all, but many people have found it helpful to read the whole set.
-
-The other half of this guide is contained within [How to review a pull request](#sec-reviewer).
