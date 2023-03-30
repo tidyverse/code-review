@@ -396,7 +396,7 @@
     "href": "issues/index.html#new-issues-vs-closed-issues",
     "title": "Issues",
     "section": "New issues vs closed issues",
-    "text": "New issues vs closed issues\nIf you find that you are having a problem that looks similar to an existing closed issue, we in the tidyteam greatly prefer that you open a new issue rather than commenting on an existing closed one. It is typically much easier for us to keep track of open issues, so the chance of your issue being resolved is much higher if you open a new one with full context, a reprex, and a link to the issue that you believe is related."
+    "text": "New issues vs closed issues\nIf you find that you are having a problem that looks similar to an existing closed issue, we in the tidyteam greatly prefer that you open a new issue rather than commenting on an existing closed one. Some repositories have even set up a GitHub Actions workflow that locks old issues, preventing this. It is typically much easier for us to keep track of open issues, so the chance of your issue being resolved is much higher if you open a new one with full context, a reprex, and a link to the issue that you believe is related."
   },
   {
     "objectID": "issues/index.html#issue-first-pr-second",
