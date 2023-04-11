@@ -17,9 +17,7 @@ Future developers will search for your PR based on its description.
 Someone in the future might be looking for your change because of a faint memory of its relevance but without the specifics handy.
 If all the important information is in the code and not the description, it's going to be a lot harder for them to locate your PR.
 
-### Orienting your reviewer {#sec-orienting}
-
-#### Title
+### Title
 
 The title of your pull request should be a very short summary of *what* is being done.
 Ideally it should be shorter than 72 characters, because this is what appears in version control history summaries and that is the typical limit before the title is truncated.
@@ -41,7 +39,7 @@ Other similarly bad titles include:
 Avoid restating the title of the corresponding issue in the title of the PR.
 Focus on summarizing what the actual change you made does, rather than what is being fixed.
 
-#### Body {#sec-body}
+### Body {#sec-body}
 
 The body of a PR description should contain the context a reviewer needs to get into a mental state where they can understand your PR.
 It might include:
@@ -62,14 +60,14 @@ By outlining any potential shortcomings, you give the reviewer ideas to keep in 
 If your PR closes a complicated issue that involved a large amount of back and forth discussion, it is worth summarizing the outcome of that discussion in the body of the description.
 This is especially important if the reviewer wasn't a part of that discussion, since they'd otherwise have to wade through a large amount of comments to understand why this particular implementation was chosen.
 
-##### Reading order {#sec-reading-order}
+### Reading order {#sec-reading-order}
 
 For large PRs, it can also be useful to suggest a recommended reading order to your reviewer.
 This might involve looking at one particular function before another, but could also be a suggestion to look at the examples or tests before looking at the implementation itself, if you feel that they would clarify the purpose of the PR.
 
-### Examples of good PR descriptions {#sec-good-pr-descriptions}
+## Examples of good PR descriptions {#sec-good-pr-descriptions}
 
-#### New feature
+### New feature
 
 This [vctrs PR](https://github.com/r-lib/vctrs/pull/1791) contains an example of adding a new feature to an existing function.
 In this case, a new `relationship` argument was added to `vctrs::vec_locate_matches()`, a function that underlies dplyr's joins, like `left_join()`.
@@ -90,7 +88,7 @@ There are a number of things that are useful to point out regarding this PR:
 
 -   The reviewer brought up [a concern of their own](https://github.com/r-lib/vctrs/pull/1791#discussion_r1114087922), which the author then provided justification for, and the "tie" went to the author since neither party felt strongly about it.
 
-#### Performance improvement
+### Performance improvement
 
 This [vctrs PR](https://github.com/r-lib/vctrs/pull/1760) contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package.
 If you look at the changed lines of code, there is really only 1 changed line:
