@@ -1,7 +1,7 @@
 # Welcome {.unnumbered}
 
-A code review is a process where someone other than the author of a piece of code examines that code.
 At Posit, we use code review to maintain the quality of our packages and products.
+Code review is also a great opportunity for newer contributors to learn and improve from constructive feedback provided by more experienced package developers.
 
 The principles in this guide cover various aspects of the code review process.
 They are written with the *tidyteam* in mind, which make up the combination of the [tidyverse](https://www.tidyverse.org/), [tidymodels](https://www.tidymodels.org/), and [mlops](https://vetiver.rstudio.com/) groups, but are generally applicable to a large amount of the software development we do at Posit.
