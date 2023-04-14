@@ -43,7 +43,7 @@ Just as with all comments, include why you liked something, further encouraging 
 ## GitHub suggestions
 
 For very small tweaks, like typos or additions to comments, GitHub provides a feature known as [*suggestions*](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request).
-As a reviewer, you can add suggestions using the workflow shown below, and the author can accept them directly in the GitHub UI and commit them into the PR (which can then pull locally to get everything up to date if they have more work to do).
+As a reviewer, you can add suggestions using the workflow shown below, and the author can accept them directly in the GitHub UI and commit them into the PR (which they can then pull locally to get everything up to date if they have more work to do).
 
 ![](img/add-suggestion.png){fig-align="center" width="900"}
 
@@ -53,6 +53,13 @@ Note that if your suggestion touches documentation, then the author will have to
 If you notice this situation, it is typically polite to mention to the author that they will need to `document()` locally after committing the suggestions, because that is particularly hard to remember.
 
 As a reviewer, you can add multiple suggestions and the author can *batch* multiple suggestions into a single commit.
+The author must first hit `Files changed` to switch to the viewer mode, at which point the suggestion will show up with an additional option - `Add suggestion to batch`.
+
+![](img/add-to-batch.png)
+
+After the author has finished adding suggestions to the batch, they can `Commit suggestions` en masse using the button at the top of the screen.
+
+![](img/commit-batch.png)
 
 ## Label comment severity {#sec-label-comment-severity}
 
