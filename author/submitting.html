@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -131,11 +103,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../author/submitting.html">Authoring</a></li><li class="breadcrumb-item"><a href="../author/submitting.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -143,133 +120,148 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Tidyteam code review principles</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/tidyverse/code-review" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/tidyverse/code-review" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../collaboration/index.html" class="sidebar-item-text sidebar-link">Patterns of collaboration</a>
+  <a href="../collaboration/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Patterns of collaboration</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Reviewing</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Reviewing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/purpose.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The purpose of code review</span></a>
+  <a href="../reviewer/purpose.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The purpose of code review</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/aspects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aspects of a PR</span></a>
+  <a href="../reviewer/aspects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aspects of a PR</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a PR in review</span></a>
+  <a href="../reviewer/navigate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Navigating a PR in review</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of reviews</span></a>
+  <a href="../reviewer/speed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Speed of reviews</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing review comments</span></a>
+  <a href="../reviewer/comments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Writing review comments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback</span></a>
+  <a href="../reviewer/pushback.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Handling pushback</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Authoring</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Authoring</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/submitting.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></a>
+  <a href="../author/submitting.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/focused.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Focused PRs</span></a>
+  <a href="../author/focused.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Focused PRs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../author/handling-comments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling reviewer comments</span></a>
+  <a href="../author/handling-comments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Handling reviewer comments</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../issues/index.html" class="sidebar-item-text sidebar-link">Issues</a>
+  <a href="../issues/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Issues</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-descriptions" id="toc-sec-descriptions" class="nav-link active" data-scroll-target="#sec-descriptions"><span class="toc-section-number">7.1</span>  Writing PR descriptions</a>
+  <li><a href="#sec-descriptions" id="toc-sec-descriptions" class="nav-link active" data-scroll-target="#sec-descriptions"><span class="header-section-number">7.1</span> Writing PR descriptions</a>
   <ul class="collapse">
-  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title"><span class="toc-section-number">7.1.1</span>  Title</a></li>
-  <li><a href="#sec-body" id="toc-sec-body" class="nav-link" data-scroll-target="#sec-body"><span class="toc-section-number">7.1.2</span>  Body</a></li>
-  <li><a href="#sec-reading-order" id="toc-sec-reading-order" class="nav-link" data-scroll-target="#sec-reading-order"><span class="toc-section-number">7.1.3</span>  Reading order</a></li>
+  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title"><span class="header-section-number">7.1.1</span> Title</a></li>
+  <li><a href="#sec-body" id="toc-sec-body" class="nav-link" data-scroll-target="#sec-body"><span class="header-section-number">7.1.2</span> Body</a></li>
+  <li><a href="#sec-reading-order" id="toc-sec-reading-order" class="nav-link" data-scroll-target="#sec-reading-order"><span class="header-section-number">7.1.3</span> Reading order</a></li>
   </ul></li>
-  <li><a href="#sec-good-pr-descriptions" id="toc-sec-good-pr-descriptions" class="nav-link" data-scroll-target="#sec-good-pr-descriptions"><span class="toc-section-number">7.2</span>  Examples of good PR descriptions</a>
+  <li><a href="#sec-good-pr-descriptions" id="toc-sec-good-pr-descriptions" class="nav-link" data-scroll-target="#sec-good-pr-descriptions"><span class="header-section-number">7.2</span> Examples of good PR descriptions</a>
   <ul class="collapse">
-  <li><a href="#new-feature" id="toc-new-feature" class="nav-link" data-scroll-target="#new-feature"><span class="toc-section-number">7.2.1</span>  New feature</a></li>
-  <li><a href="#performance-improvement" id="toc-performance-improvement" class="nav-link" data-scroll-target="#performance-improvement"><span class="toc-section-number">7.2.2</span>  Performance improvement</a></li>
+  <li><a href="#new-feature" id="toc-new-feature" class="nav-link" data-scroll-target="#new-feature"><span class="header-section-number">7.2.1</span> New feature</a></li>
+  <li><a href="#performance-improvement" id="toc-performance-improvement" class="nav-link" data-scroll-target="#performance-improvement"><span class="header-section-number">7.2.2</span> Performance improvement</a></li>
   </ul></li>
-  <li><a href="#sec-github-features" id="toc-sec-github-features" class="nav-link" data-scroll-target="#sec-github-features"><span class="toc-section-number">7.3</span>  GitHub features</a>
+  <li><a href="#sec-github-features" id="toc-sec-github-features" class="nav-link" data-scroll-target="#sec-github-features"><span class="header-section-number">7.3</span> GitHub features</a>
   <ul class="collapse">
-  <li><a href="#closes" id="toc-closes" class="nav-link" data-scroll-target="#closes"><span class="toc-section-number">7.3.1</span>  Closes</a></li>
-  <li><a href="#checklists" id="toc-checklists" class="nav-link" data-scroll-target="#checklists"><span class="toc-section-number">7.3.2</span>  Checklists</a></li>
-  <li><a href="#sec-commenting-on-your-own-pr" id="toc-sec-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#sec-commenting-on-your-own-pr"><span class="toc-section-number">7.3.3</span>  Commenting on your own PR</a></li>
+  <li><a href="#closes" id="toc-closes" class="nav-link" data-scroll-target="#closes"><span class="header-section-number">7.3.1</span> Closes</a></li>
+  <li><a href="#checklists" id="toc-checklists" class="nav-link" data-scroll-target="#checklists"><span class="header-section-number">7.3.2</span> Checklists</a></li>
+  <li><a href="#sec-commenting-on-your-own-pr" id="toc-sec-commenting-on-your-own-pr" class="nav-link" data-scroll-target="#sec-commenting-on-your-own-pr"><span class="header-section-number">7.3.3</span> Commenting on your own PR</a></li>
   </ul></li>
-  <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="toc-section-number">7.4</span>  Review before submitting</a></li>
-  <li><a href="#sec-request-a-review" id="toc-sec-request-a-review" class="nav-link" data-scroll-target="#sec-request-a-review"><span class="toc-section-number">7.5</span>  Requesting a review</a></li>
-  <li><a href="#finishing-a-pr" id="toc-finishing-a-pr" class="nav-link" data-scroll-target="#finishing-a-pr"><span class="toc-section-number">7.6</span>  Finishing a PR</a></li>
-  <li><a href="#sec-draft-pr" id="toc-sec-draft-pr" class="nav-link" data-scroll-target="#sec-draft-pr"><span class="toc-section-number">7.7</span>  Draft PRs</a></li>
-  <li><a href="#self-reviews" id="toc-self-reviews" class="nav-link" data-scroll-target="#self-reviews"><span class="toc-section-number">7.8</span>  Self-reviews</a></li>
+  <li><a href="#review-before-submitting" id="toc-review-before-submitting" class="nav-link" data-scroll-target="#review-before-submitting"><span class="header-section-number">7.4</span> Review before submitting</a></li>
+  <li><a href="#sec-request-a-review" id="toc-sec-request-a-review" class="nav-link" data-scroll-target="#sec-request-a-review"><span class="header-section-number">7.5</span> Requesting a review</a></li>
+  <li><a href="#finishing-a-pr" id="toc-finishing-a-pr" class="nav-link" data-scroll-target="#finishing-a-pr"><span class="header-section-number">7.6</span> Finishing a PR</a></li>
+  <li><a href="#sec-draft-pr" id="toc-sec-draft-pr" class="nav-link" data-scroll-target="#sec-draft-pr"><span class="header-section-number">7.7</span> Draft PRs</a></li>
+  <li><a href="#self-reviews" id="toc-self-reviews" class="nav-link" data-scroll-target="#self-reviews"><span class="header-section-number">7.8</span> Self-reviews</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tidyverse/code-review/edit/main/author/submitting.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/tidyverse/code-review/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -278,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Submitting a PR</span></h1>
 </div>
 
 
@@ -349,9 +341,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="performance-improvement" class="level3" data-number="7.2.2">
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="performance-improvement"><span class="header-section-number">7.2.2</span> Performance improvement</h3>
 <p>This <a href="https://github.com/r-lib/vctrs/pull/1760">vctrs PR</a> contains an example of a PR intended to improve the performance of the dictionary data structure used by many functions in that package. If you look at the changed lines of code, there is really only 1 changed line:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">double</span> load_adjusted_size <span class="op">=</span> x_size <span class="op">/</span> <span class="fl">0.77</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">double</span> load_adjusted_size <span class="op">=</span> x_size <span class="op">/</span> <span class="dv">0</span><span class="er">.77</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Changed to:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">double</span> load_adjusted_size <span class="op">=</span> x_size <span class="op">/</span> <span class="fl">0.50</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">double</span> load_adjusted_size <span class="op">=</span> x_size <span class="op">/</span> <span class="dv">0</span><span class="er">.50</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is an example where even though the number of lines of changed code is very small, the PR itself required a large amount of context and justification. This context doesn’t belong inside the codebase, but is important for the reviewer as they try to understand why this change was made and whether or not it was the right decision. The PR mentions:</p>
 <ul>
 <li><p>Other sources of information justifying the change</p></li>
@@ -373,7 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Don't forget this</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> And this</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Which get rendered in the GitHub UI as:</p>
-<p><img src="img/checklists.png" class="img-fluid"></p>
+<p><img src="img/checklists.png" class="img-fluid" alt="GitHub interface showing a commit message with a checklist of items each of which has an unchecked box."></p>
 <p>Checklists are particularly useful in combination with <a href="#sec-draft-pr">Draft PRs</a> where you might push a partially finished PR to GitHub (to get CI to run, or to ask for advice), but you still have a number of tweaks to make that you don’t want to forget about.</p>
 </section>
 <section id="sec-commenting-on-your-own-pr" class="level3" data-number="7.3.3">
@@ -381,13 +373,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>GitHub allows the PR author to <em>also</em> be their own reviewer. If you open the <code>Files changed</code> menu on GitHub, you can add comments on sections of code that you’ve written, like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/leaving-a-comment.png" class="img-fluid figure-img" width="900"></p>
+<p><img src="img/leaving-a-comment.png" class="img-fluid figure-img" alt="GitHub UI for commenting on code. Selected lines are listed (&quot;Commenting on lines 35 to 37) above the text area where the commenter can write." width="900"></p>
 </figure>
 </div>
 <p>Once you’ve added your “review,” you can then <code>Comment</code> on the PR:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/finish-review.png" class="img-fluid figure-img" width="900"></p>
+<p><img src="img/finish-review.png" class="img-fluid figure-img" alt="GitHub UI for submitting a review. There is a text area to write comments, and radio buttons with three options for type of feedback submitted: Comment, Approve, and Request changes." width="900"></p>
 </figure>
 </div>
 <p>You won’t be able to <code>Approve</code>, as you can’t approve your own PR.</p>
@@ -408,7 +400,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="sec-request-a-review" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="sec-request-a-review"><span class="header-section-number">7.5</span> Requesting a review</h2>
 <p>For <a href="../collaboration/index.html#sec-close-knit-collaboration">close-knit collaboration</a> and when submitting a PR as an <a href="../collaboration/index.html#sec-the-understudy">understudy</a>, it is expected that the author will use GitHub’s “request a review” feature to officially ask one or more colleagues to be their reviewer.</p>
-<p><img src="img/request-a-review.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/request-a-review.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GitHub UI for a submitted PR. In the sidebar, there is a dropdown titled “Reviewers” which is selected, showing a list of GitHub users from whom one can be selected to review.</figcaption>
+</figure>
+</div>
 <p>The reviewer you choose depends on their expertise with the part of the codebase your PR affects. When you are in <a href="../collaboration/index.html#sec-close-knit-collaboration">close collaboration</a> with someone, then they are typically the obvious choice of reviewer. If the author of the PR is also the package maintainer, the choice of reviewer may be less obvious. Typically, it is reasonable to request a high-level review from another team member, even if they aren’t an expert on the package in question. For example, I am not an expert on testthat, but was requested to review <a href="https://github.com/r-lib/testthat/pull/1760">this PR</a> as an <a href="../collaboration/index.html#sec-the-understudy">understudy</a> for its overall structure, design decisions, and clarity.</p>
 <p>Occasionally, it can be useful to select two reviewers for different purposes - one for high-level API design feedback, and one for a full in-depth review.</p>
 <p>For <a href="../collaboration/index.html#sec-external-contributions">external contributions</a>, the author likely won’t have the ability to select a reviewer. In this case, it is expected that the maintainer of the package will review the PR when they next actively work on it. If the author is a Posit employee and this PR is blocking other work, then the author should reach out to the maintainer (i.e.&nbsp;over Slack) to agree on an expected timeline for the review.</p>
@@ -421,7 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>GitHub provides various options for actually merging the PR:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/merging.png" class="img-fluid figure-img" width="400"></p>
+<p><img src="img/merging.png" class="img-fluid figure-img" alt="GitHub UI for merging. Dropdown is shown with three options: Create a merge commit; Squash and merge; and Rebase and merge." width="400"></p>
 </figure>
 </div>
 <p>Most of the time, we use <code>Squash and merge</code>, which collapses all of the commits into a single commit that gets merged into the main branch. Because of this, we typically don’t care what the commit history of the actual PR looks like, because it will likely be collapsed anyways.</p>
@@ -471,9 +468,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -538,6 +549,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
