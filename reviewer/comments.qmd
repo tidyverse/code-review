@@ -45,9 +45,9 @@ Just as with all comments, include why you liked something, further encouraging 
 For very small tweaks, like typos or additions to comments, GitHub provides a feature known as [*suggestions*](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request).
 As a reviewer, you can add suggestions using the workflow shown below, and the author can accept them directly in the GitHub UI and commit them into the PR (which they can then pull locally to get everything up to date if they have more work to do).
 
-![](img/add-suggestion.png){fig-align="center" width="900"}
+![](img/add-suggestion.png){fig-alt="Screenshot of GitHub UI for review comment box. The tooltip for the file-diff icon is open and reads \"Add a suggestion, <Cmd + g>\"." fig-align="center" width="900"}
 
-![](img/write-suggestion.png){fig-align="center" width="900"}
+![](img/write-suggestion.png){fig-alt="Screenshot of GitHub UI for commenting on a changed file for a pull request. The markup for making a suggestion is shown in the comment box: three backticks before the word suggestion begin the suggested code change, which is followed by three closing backticks." fig-align="center" width="900"}
 
 Note that if your suggestion touches documentation, then the author will have to merge, pull locally, and run `devtools::document()`.
 If you notice this situation, it is typically polite to mention to the author that they will need to `document()` locally after committing the suggestions, because that is particularly hard to remember.
@@ -55,11 +55,11 @@ If you notice this situation, it is typically polite to mention to the author th
 As a reviewer, you can add multiple suggestions and the author can *batch* multiple suggestions into a single commit.
 The author must first hit `Files changed` to switch to the viewer mode, at which point the suggestion will show up with an additional option - `Add suggestion to batch`.
 
-![](img/add-to-batch.png)
+![](img/add-to-batch.png){fig-alt="Screenshot of a GitHub interface for review comment with a suggestion. The tooltip over \"Add suggestion to batch\" button is open and reads \"Add this suggestion to a batch that can be applied as a single commit.\""}
 
 After the author has finished adding suggestions to the batch, they can `Commit suggestions` en masse using the button at the top of the screen.
 
-![](img/commit-batch.png)
+![](img/commit-batch.png){fig-alt="Screenshot of GitHub interface for committing suggestions open. User can supply a title and description and select the \"Commit changes\" button to apply multiple changes."}
 
 ## Label comment severity {#sec-label-comment-severity}
 
@@ -81,7 +81,7 @@ It also helps avoid misunderstandings; for example, without comment labels, auth
 When you've finished leaving review comments, GitHub provides a number of options for finalizing your review.
 The most common kind of PR review within the tidyteam is known as "approved with comments." It involves leaving a few minor comments on a PR, while also hitting the `Approve` button on the GitHub review UI:
 
-![](img/approve-with-comments.png){fig-align="center" width="600"}
+![](img/approve-with-comments.png){fig-alt="Screenshot of options in the GitHub review UI. Radio buttons for: Comment, Approve, and Request changes." fig-align="center" width="600"}
 
 This gives the PR author permission to merge the PR as soon as they have addressed the comments without needing to request another round of review.
 This is done when either:
