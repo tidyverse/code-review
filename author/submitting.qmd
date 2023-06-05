@@ -134,7 +134,7 @@ Since GitHub supports Markdown, you can also add checklists to your PR descripti
 
 Which get rendered in the GitHub UI as:
 
-![](img/checklists.png)
+![](img/checklists.png){fig-alt="GitHub interface showing a commit message with a checklist of items each of which has an unchecked box."}
 
 Checklists are particularly useful in combination with [Draft PRs](#sec-draft-pr) where you might push a partially finished PR to GitHub (to get CI to run, or to ask for advice), but you still have a number of tweaks to make that you don't want to forget about.
 
@@ -143,11 +143,11 @@ Checklists are particularly useful in combination with [Draft PRs](#sec-draft-pr
 GitHub allows the PR author to *also* be their own reviewer.
 If you open the `Files changed` menu on GitHub, you can add comments on sections of code that you've written, like this:
 
-![](img/leaving-a-comment.png){fig-align="center" width="900"}
+![](img/leaving-a-comment.png){fig-alt="GitHub UI for commenting on code. Selected lines are listed (\"Commenting on lines 35 to 37) above the text area where the commenter can write." fig-align="center" width="900"}
 
 Once you've added your "review," you can then `Comment` on the PR:
 
-![](img/finish-review.png){fig-align="center" width="900"}
+![](img/finish-review.png){fig-alt="GitHub UI for submitting a review. There is a text area to write comments, and radio buttons with three options for type of feedback submitted: Comment, Approve, and Request changes." fig-align="center" width="900"}
 
 You won't be able to `Approve`, as you can't approve your own PR.
 
@@ -175,7 +175,7 @@ If your codebase uses continuous integration to also run checks on your PR, you 
 
 For [close-knit collaboration](#sec-close-knit-collaboration) and when submitting a PR as an [understudy](#sec-the-understudy), it is expected that the author will use GitHub's "request a review" feature to officially ask one or more colleagues to be their reviewer.
 
-![](img/request-a-review.png)
+![GitHub UI for a submitted PR. In the sidebar, there is a dropdown titled "Reviewers" which is selected, showing a list of GitHub users from whom one can be selected to review.](img/request-a-review.png)
 
 The reviewer you choose depends on their expertise with the part of the codebase your PR affects.
 When you are in [close collaboration](#sec-close-knit-collaboration) with someone, then they are typically the obvious choice of reviewer.
@@ -202,7 +202,7 @@ Depending on the circumstances, the reviewer may also [finish off the PR for you
 
 GitHub provides various options for actually merging the PR:
 
-![](img/merging.png){fig-align="center" width="400"}
+![](img/merging.png){fig-alt="GitHub UI for merging. Dropdown is shown with three options: Create a merge commit; Squash and merge; and Rebase and merge." fig-align="center" width="400"}
 
 Most of the time, we use `Squash and merge`, which collapses all of the commits into a single commit that gets merged into the main branch.
 Because of this, we typically don't care what the commit history of the actual PR looks like, because it will likely be collapsed anyways.
